@@ -1,7 +1,8 @@
 <?php 
     include("includes/db.php"); 
     session_start();
-    $user = $_SESSION['user_id'];
+    if(isset($_SESSION['user_id'])){
+        $user = $_SESSION['user_id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -75,15 +76,16 @@
             //next 3 lines is to find number of previous submissions by perticular user
             $pre_submissions = "SELECT `no_of_submission` FROM `user-answer` WHERE `user_id` = '$user'";
             $pre_submissions_run = mysqli_query($con, $pre_submissions);
-            $pre_submissions_res = mysqli_num_rows($pre_submissions_run);
+            $pre_submissions_res = mysqli_fetch_assoc($pre_submissions_run);
+            $no_prv_submission = $pre_submissions_res['no_of_submission'];
             
             //next 3 lines is for inserting new submission with increment in number of submission
-            $pre_submissions_res = $pre_submissions_res + 1;
-            $submission = "INSERT INTO `user-answer`(`user_id`, `no_of_submission`) VALUES ('$user', '$pre_submissions_res')";
+            $no_prv_submission = $no_prv_submission + 1;
+            $submission = "INSERT INTO `user-answer`(`user_id`, `no_of_submission`) VALUES ('$user', '$no_prv_submission')";
             $submission_run = mysqli_query($con, $submission);
 
             //next three lines is for find the lastest submission id so that while inserting ans submission id is their
-            $submission_id = "SELECT `submission_id` FROM `user-answer` WHERE `no_of_submission` = '$pre_submissions_res' AND `user_id` = '$user'";
+            $submission_id = "SELECT `submission_id` FROM `user-answer` WHERE `no_of_submission` = '$no_prv_submission' AND `user_id` = '$user'";
             $submission_id_run = mysqli_query($con, $submission_id);
             $submission_id_res = mysqli_fetch_assoc($submission_id_run);
             $lastest_submission_id = $submission_id_res['submission_id'];
@@ -120,3 +122,9 @@
 </body>
 
 </html>
+
+<?php 
+    } else {
+        header('location: index.html');
+    }
+?>

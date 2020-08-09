@@ -1,7 +1,7 @@
 <?php 
     include('includes/db.php');
     session_start();
-    if(isset($_POST['submit'])){
+    if(isset($_POST['username']) && isset($_POST['pass'])){
         $username = $_POST['username'];
         $pass = $_POST['pass'];
         // echo $username;
