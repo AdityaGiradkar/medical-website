@@ -1,7 +1,7 @@
 <?php 
     include("includes/db.php"); 
     session_start();
-    //echo $_SESSION['user_id'];
+    $user = $_SESSION['user_id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,25 +38,25 @@
                             <h4><?php echo $count." ".$record['question']; ?></h4>
                             <div class="container">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_1_q_".$count; ?>" value="<?php echo "op_".$count; ?>">
+                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_1_q_".$count; ?>" value="op_1">
                                     <label class="form-check-label" for="<?php echo "ans_1_q_".$count; ?>">
                                         <?php echo $record['op_1']; ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_2_q_".$count; ?>" value="<?php echo "op_".$count; ?>">
+                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_2_q_".$count; ?>" value="op_2">
                                     <label class="form-check-label" for="<?php echo "ans_2_q_".$count; ?>">
                                         <?php echo $record['op_2']; ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_3_q_".$count; ?>" value="<?php echo "op_".$count; ?>">
+                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_3_q_".$count; ?>" value="op_3">
                                     <label class="form-check-label" for="<?php echo "ans_3_q_".$count; ?>">
                                         <?php echo $record['op_3']; ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_4_q_".$count; ?>" value="<?php echo "op_".$count; ?>">
+                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_4_q_".$count; ?>" value="op_4">
                                     <label class="form-check-label" for="<?php echo "ans_4_q_".$count; ?>">
                                         <?php echo $record['op_4']; ?>
                                     </label>
@@ -68,10 +68,38 @@
                     }
                 }
             ?>
-            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+            <button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
         </form>
         <?php 
         if(isset($_POST['submit'])){
+            //next 3 lines is to find number of previous submissions by perticular user
+            $pre_submissions = "SELECT `no_of_submission` FROM `user-answer` WHERE `user_id` = '$user'";
+            $pre_submissions_run = mysqli_query($con, $pre_submissions);
+            $pre_submissions_res = mysqli_num_rows($pre_submissions_run);
+            
+            //next 3 lines is for inserting new submission with increment in number of submission
+            $pre_submissions_res = $pre_submissions_res + 1;
+            $submission = "INSERT INTO `user-answer`(`user_id`, `no_of_submission`) VALUES ('$user', '$pre_submissions_res')";
+            $submission_run = mysqli_query($con, $submission);
+
+            //next three lines is for find the lastest submission id so that while inserting ans submission id is their
+            $submission_id = "SELECT `submission_id` FROM `user-answer` WHERE `no_of_submission` = '$pre_submissions_res' AND `user_id` = '$user'";
+            $submission_id_run = mysqli_query($con, $submission_id);
+            $submission_id_res = mysqli_fetch_assoc($submission_id_run);
+            $lastest_submission_id = $submission_id_res['submission_id'];
+
+            $value = "";
+            $i = 1;
+            for($i = 1; $i < $count-1; $i++) {
+                //$answer['q_'.$i] = $_POST['q_'.$i];
+                $value = $value."(".$lastest_submission_id.", ".$i.", '".$_POST['q_'.$i]."'), ";
+            }
+            $value = $value."(".$lastest_submission_id.", ".$i.", '".$_POST['q_'.$i]."')";
+            //print_r($value);
+            $insert_ans = "INSERT INTO `answers`(`submission_id`, `question_id`, `answer`) VALUES ".$value;
+            //print_r($insert_ans);
+            $insert_ans_run = mysqli_query($con, $insert_ans);
+
             
         }
         
