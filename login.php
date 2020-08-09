@@ -1,5 +1,6 @@
 <?php 
     include('includes/db.php');
+    session_start();
     if(isset($_POST['submit'])){
         $username = $_POST['username'];
         $pass = $_POST['pass'];
@@ -8,7 +9,9 @@
         $qry = "SELECT * FROM `user` WHERE `user_name` = '$username' AND `password` = '$pass'";
         $run = mysqli_query($con, $qry);
         $row = mysqli_num_rows($run);
+        $record = mysqli_fetch_array($run);
         if($row == 1){
+            $_SESSION['user_id'] = $record['user_id'];
             header('location: quiz.php');
         }else{
             ?>
@@ -31,8 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
     <title>login</title>
 </head>
@@ -63,9 +65,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-    </script>
+    <script type="text/javascript" src="bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,8 @@
-<?php include("includes/db.php"); ?>
+<?php 
+    include("includes/db.php"); 
+    session_start();
+    //echo $_SESSION['user_id'];
+?>
 <!doctype html>
 <html lang="en">
 
@@ -21,11 +25,13 @@
         </div>
         <form method="POST" action="quiz.php">
             <?php 
+            //fetch all the questions from database
                 $qry = "SELECT * FROM `questions`";
                 $run = mysqli_query($con, $qry);
                 $rows=mysqli_num_rows($run);
                 if($rows > 0) {
                     $count = 1;
+                    //printing one one questions from the database
                     while($record=mysqli_fetch_assoc($run)) {
             ?>
                         <div>
