@@ -9,14 +9,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
-    <title>medical</title>
+    <title>login</title>
 </head>
 
 <body>
-    <a href="quiz.php">Take test</a><br>
-    <a href="user_page.html">user</a><br>
-    <a href="login.php">Login</a><br>
-    <a href="register.html">Register</a>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

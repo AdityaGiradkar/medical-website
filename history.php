@@ -1,3 +1,11 @@
+<?php 
+    include("includes/db.php");
+    session_start();
+    $user = $_SESSION['user_id'];
+    $status = $_GET['status'];
+    $past_submissions = "SELECT * FROM `user-answer` WHERE `user_id` = '$user' AND `status` = '$status'";
+    $past_submissions_run = mysqli_query($con, $past_submissions);
+?>
 <!doctype html>
 <html lang="en">
 
@@ -9,14 +17,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
-    <title>medical</title>
+    <title>login</title>
 </head>
 
 <body>
-    <a href="quiz.php">Take test</a><br>
-    <a href="user_page.html">user</a><br>
-    <a href="login.php">Login</a><br>
-    <a href="register.html">Register</a>
+    <ul class="list-group">
+        <?php
+            while($past_submissions_result = mysqli_fetch_assoc($past_submissions_run)) {
+        ?>
+            <li class="list-group-item"><a href="treat_details.php?submission_id=<?php echo $past_submissions_result['submission_id'] ?>"><?php echo $past_submissions_result['time'] ?></a></li>
+        <?php
+            }
+        ?>
+    </ul>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

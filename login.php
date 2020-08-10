@@ -12,7 +12,7 @@
         $record = mysqli_fetch_array($run);
         if($row == 1){
             $_SESSION['user_id'] = $record['user_id'];
-            header('location: quiz.php');
+            header('location: index.html');
         }else{
             ?>
             <script>
