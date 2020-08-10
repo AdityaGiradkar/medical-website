@@ -34,6 +34,7 @@
                     $count = 1;
                     //printing one one questions from the database
                     while($record=mysqli_fetch_assoc($run)) {
+                        $question_id[$count] = $record['question_id'];
             ?>
                         <div>
                             <h4><?php echo $count." ".$record['question']; ?></h4>
@@ -74,10 +75,10 @@
         <?php 
         if(isset($_POST['submit'])){
             //next 3 lines is to find number of previous submissions by perticular user
-            $pre_submissions = "SELECT `no_of_submission` FROM `user-answer` WHERE `user_id` = '$user'";
+            $pre_submissions = "SELECT max(`no_of_submission`) FROM `user-answer` WHERE `user_id` = '$user'";
             $pre_submissions_run = mysqli_query($con, $pre_submissions);
             $pre_submissions_res = mysqli_fetch_assoc($pre_submissions_run);
-            $no_prv_submission = $pre_submissions_res['no_of_submission'];
+            $no_prv_submission = $pre_submissions_res['max(`no_of_submission`)'];
             
             //next 3 lines is for inserting new submission with increment in number of submission
             $no_prv_submission = $no_prv_submission + 1;
@@ -92,11 +93,12 @@
 
             $value = "";
             $i = 1;
+
             for($i = 1; $i < $count-1; $i++) {
                 //$answer['q_'.$i] = $_POST['q_'.$i];
-                $value = $value."(".$lastest_submission_id.", ".$i.", '".$_POST['q_'.$i]."'), ";
+                $value = $value."(".$lastest_submission_id.", ".$question_id[$i].", '".$_POST['q_'.$i]."'), ";
             }
-            $value = $value."(".$lastest_submission_id.", ".$i.", '".$_POST['q_'.$i]."')";
+            $value = $value."(".$lastest_submission_id.", ".$question_id[$i].", '".$_POST['q_'.$i]."')";
             //print_r($value);
             $insert_ans = "INSERT INTO `answers`(`submission_id`, `question_id`, `answer`) VALUES ".$value;
             //print_r($insert_ans);
