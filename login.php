@@ -1,18 +1,17 @@
 <?php 
     include('includes/db.php');
     session_start();
+    if(!isset($_SESSION['user_id'])) {
     if(isset($_POST['username']) && isset($_POST['pass'])){
         $username = $_POST['username'];
         $pass = $_POST['pass'];
-        // echo $username;
-        // echo $pass;
         $qry = "SELECT * FROM `user` WHERE `user_name` = '$username' AND `password` = '$pass'";
         $run = mysqli_query($con, $qry);
         $row = mysqli_num_rows($run);
         $record = mysqli_fetch_array($run);
         if($row == 1){
             $_SESSION['user_id'] = $record['user_id'];
-            header('location: index.html');
+            header('location: index.php');
         }else{
             ?>
             <script>
@@ -69,3 +68,9 @@
 </body>
 
 </html>
+
+<?php 
+    }else{
+        header('location:index.php');
+    }
+?>

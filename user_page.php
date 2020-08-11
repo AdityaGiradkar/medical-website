@@ -1,3 +1,9 @@
+<?php 
+session_start();
+
+if(isset($_SESSION['user_id'])) {
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -9,14 +15,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
-    <title>medical</title>
+    <title>User Page</title>
 </head>
 
 <body>
-    <a href="quiz.php">Take test</a><br>
-    <a href="user_page.html">user</a><br>
-    <a href="login.php">Login</a><br>
-    <a href="register.html">Register</a>
+    <h1><a href="history.php?status=open">OnGoing Treatment</a></h1>
+    <h1><a href="history.php?status=closed">History</a></h1>
+    <h1><a href="history.html">update info</a></h1>
+    <h1><a href="history.html">Change Password</a></h1>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -30,3 +36,9 @@
 </body>
 
 </html>
+
+<?php 
+}else{
+    header('location:index.php');
+}
+?>

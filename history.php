@@ -1,10 +1,11 @@
 <?php 
     include("includes/db.php");
     session_start();
-    $user = $_SESSION['user_id'];
-    $status = $_GET['status'];
-    $past_submissions = "SELECT * FROM `user-answer` WHERE `user_id` = '$user' AND `status` = '$status'";
-    $past_submissions_run = mysqli_query($con, $past_submissions);
+    if(isset($_SESSION['user_id'])){
+        $user = $_SESSION['user_id'];
+        $status = $_GET['status'];
+        $past_submissions = "SELECT * FROM `user-answer` WHERE `user_id` = '$user' AND `status` = '$status'";
+        $past_submissions_run = mysqli_query($con, $past_submissions);
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,3 +44,9 @@
 </body>
 
 </html>
+
+<?php 
+    }else{
+        header('location:index.php');
+    }
+?>
