@@ -11,7 +11,11 @@
         $record = mysqli_fetch_array($run);
         if($row == 1){
             $_SESSION['user_id'] = $record['user_id'];
-            header('location: index.php');
+            if($record['role'] == 'patient'){
+                header('location: index.php');
+            }else if($record['role'] == 'doctor') {
+                header('location: admin/users.php');
+            }
         }else{
             ?>
             <script>

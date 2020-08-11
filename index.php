@@ -43,7 +43,7 @@
                     <a class="nav-link" href="payment_gateway.php">Test</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="user_page.html">User</a>
+                    <a class="nav-link" href="user_page.php">User</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Logout</a>
