@@ -40,7 +40,7 @@
                     } else {
                         ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="quiz.php">Test</a>
+                    <a class="nav-link" href="payment_gateway.php">Test</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="user_page.html">User</a>

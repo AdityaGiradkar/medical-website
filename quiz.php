@@ -21,10 +21,17 @@
 
 <body>
     <div class="container">
-        <div>
-            <h1>Quick Test</h1>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="row">    
+                <div class="col-xl-8">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/nCD2hj6zJEc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>  
+                <div class="col-xl-4">  
+                    <h1>Quick Test</h1>        
+                </div>
+            </div>
         </div>
-        <form method="POST" action="quiz.php">
+        <form method="POST">
             <?php 
             //fetch all the questions from database
                 $qry = "SELECT * FROM `questions`";
@@ -102,9 +109,13 @@
             //print_r($value);
             $insert_ans = "INSERT INTO `answers`(`submission_id`, `question_id`, `answer`) VALUES ".$value;
             //print_r($insert_ans);
-            $insert_ans_run = mysqli_query($con, $insert_ans);
-
-            
+            if($insert_ans_run = mysqli_query($con, $insert_ans)){
+                $payment_id = $_SESSION['payment_id'];
+                $update_related_submission = "UPDATE `payments` SET `related_submission`='$lastest_submission_id' WHERE `payment_id`='$payment_id' AND `user_id`='$user'";
+                if($update_related_submission_run = mysqli_query($con, $update_related_submission)){
+                    header('location: index.php');
+                }
+            }
         }
         
         ?>
