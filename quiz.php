@@ -41,31 +41,31 @@
                     $count = 1;
                     //printing one one questions from the database
                     while($record=mysqli_fetch_assoc($run)) {
-                        $question_id[$count] = $record['question_id'];
+                        $question_id[$count] = $record['question'];
             ?>
                         <div>
                             <h4><?php echo $count." ".$record['question']; ?></h4>
                             <div class="container">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_1_q_".$count; ?>" value="op_1">
+                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_1_q_".$count; ?>" value="<?php echo $record['op_1']; ?>">
                                     <label class="form-check-label" for="<?php echo "ans_1_q_".$count; ?>">
                                         <?php echo $record['op_1']; ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_2_q_".$count; ?>" value="op_2">
+                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_2_q_".$count; ?>" value="<?php echo $record['op_2']; ?>">
                                     <label class="form-check-label" for="<?php echo "ans_2_q_".$count; ?>">
                                         <?php echo $record['op_2']; ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_3_q_".$count; ?>" value="op_3">
+                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_3_q_".$count; ?>" value="<?php echo $record['op_3']; ?>">
                                     <label class="form-check-label" for="<?php echo "ans_3_q_".$count; ?>">
                                         <?php echo $record['op_3']; ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_4_q_".$count; ?>" value="op_4">
+                                    <input class="form-check-input" type="radio" name="<?php echo "q_".$count; ?>" id="<?php echo "ans_4_q_".$count; ?>" value="<?php echo $record['op_4']; ?>">
                                     <label class="form-check-label" for="<?php echo "ans_4_q_".$count; ?>">
                                         <?php echo $record['op_4']; ?>
                                     </label>
@@ -103,9 +103,9 @@
 
             for($i = 1; $i < $count-1; $i++) {
                 //$answer['q_'.$i] = $_POST['q_'.$i];
-                $value = $value."(".$lastest_submission_id.", ".$question_id[$i].", '".$_POST['q_'.$i]."'), ";
+                $value = $value."(".$lastest_submission_id.", '".$question_id[$i]."', '".$_POST['q_'.$i]."'), ";
             }
-            $value = $value."(".$lastest_submission_id.", ".$question_id[$i].", '".$_POST['q_'.$i]."')";
+            $value = $value."(".$lastest_submission_id.", '".$question_id[$i]."', '".$_POST['q_'.$i]."')";
             //print_r($value);
             $insert_ans = "INSERT INTO `answers`(`submission_id`, `question_id`, `answer`) VALUES ".$value;
             //print_r($insert_ans);
@@ -113,7 +113,12 @@
                 $payment_id = $_SESSION['payment_id'];
                 $update_related_submission = "UPDATE `payments` SET `related_submission`='$lastest_submission_id' WHERE `payment_id`='$payment_id' AND `user_id`='$user'";
                 if($update_related_submission_run = mysqli_query($con, $update_related_submission)){
-                    header('location: index.php');
+                    echo "<script>
+                                alert('Your submission will check by doctor, YOu can see it in ongoing treatment tab.');
+                                window.location.href = 'index.php';
+                        </script>";
+                    
+                    //header('location: index.php');
                 }
             }
         }
