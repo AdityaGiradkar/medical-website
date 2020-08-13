@@ -8,6 +8,14 @@
     $detail_run = mysqli_query($con, $detail);
     $record = mysqli_fetch_assoc($detail_run);
 
+    //check wheather patient is already checked
+    if($record['status'] != 'new'){
+      echo "<script> 
+              alert('already checked');
+              window.location.href='new_patient.php';
+            </script>";
+    }
+
 
     //fetching question answer of given submission id;
     $que_ans = "SELECT * FROM `answers` WHERE `submission_id`='$submission_id'";
@@ -243,38 +251,87 @@
 
             <!-- user submitted question answers -->
             <div class="border border-primary rounded-lg p-3 mt-4">
-                <?php 
-                    $count = 1;
-                    while($que_ans_res = mysqli_fetch_assoc($que_ans_run)){
-                ?>
-                <p><b><?php echo $count.". ".$que_ans_res['question_id']; ?></b></p>
-                <p><?php echo "Ans :- ".$que_ans_res['answer']; ?></p>
+              <div class="row">
+              <?php 
+                $count = 1;
+                while($que_ans_res = mysqli_fetch_assoc($que_ans_run)){
+              ?>
+                <div class="col-md-6">
+                  <p><b><?php echo $count.". ".$que_ans_res['question_id']; ?></b></p>
+                  <p><?php echo "Ans :- ".$que_ans_res['answer']; ?></p>
+                </div>
                 <?php 
                     $count++;
                     }
                 ?>
+              </div>
+                
+                
+                
             </div>
 
-
+            <!-- Action button close, start, and suspend -->
             <div class="border border-primary rounded-lg p-3 mt-4">
                 <div class="m-auto">
                     <div class="d-inline-block">
-                        <button type="button" class="btn btn-success">Close treatment</button>
+                      <form method="post" onsubmit="return close_treatment()">
+                          <button type="submit" name="close" class="btn btn-success">Close treatment</button>
+                      </form>
                     </div>
                     <div class="d-inline-block">
-                        <button type="button" onClick="startTreatment()" class="btn btn-primary">Start treatment</button>
-                    </div>
-                    <div class="d-inline-block">
-                        <button type="button" class="btn btn-warning">Suspend Treatment</button>
+                        <button type="button" onClick="startTreatment()" name="start" class="btn btn-primary">Start treatment</button>
                     </div>
                 </div>
             </div>
+            <!-- End of Action button close, start, and suspend -->
 
             <!-- Treatment pannel. Initially hidden show when start treatment -->
             <div class="border border-primary rounded-lg p-3 mt-4 d-none treat-panel">
+                    <?php 
+                      $all_medicines = "SELECT * FROM `medicines`";
+                      $all_medicines_run = mysqli_query($con, $all_medicines);
+                      $count = 0;
+                      while($medi = mysqli_fetch_assoc($all_medicines_run)){
+                        $medicines[$count] = $medi['Name'];
+                        $count++; 
+                      }
+                    ?>
+                    <!-- Passing medicine array in the js file  -->
+                    <script>
+                      var medicineArray = <?php echo json_encode($medicines); ?> 
+                    </script>
+                    <!-- Passing medicine array in the js file  -->
+
                 <p>Treatment start</p>
+                <form method="post" onsubmit="return confirm_submission();">
+                  <div class="form-group">
+                    <label for="">Medicines</label><br>
+                    
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Medicine Name</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Dose</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                      </thead>
+                      <tbody  id="medicine">
+                        <!-- Medicine rows are added Dynamically through javascript -->
+                      </tbody>
+                    </table>
+                    
+                    <button type="button" onClick="addMedicine()" class="btn btn-primary">Add Medicines</button>
+                  </div>
+                  <div class="form-group">
+                    <label for="note">Extra Note</label>
+                    <textarea class="form-control" placeholder="If nothing type 'NA'" id="note" name="note" rows="3" required></textarea>
+                  </div>
+                  <input type="submit" name="treat" class="btn btn-primary"></input>
+                </form>
             </div>
             <!-- end of tratment Pannel -->
+
         </div>
         <!-- /.container-fluid -->
 
@@ -336,3 +393,45 @@
 </body>
 
 </html>
+
+
+<?php 
+  if(isset($_POST['treat'])){
+    $medicine_name = $_POST['medicine_name'];
+    $quantity = $_POST['quentity'];
+    $dose = $_POST['dose'];
+    $note = $_POST['note'];
+
+    $value = "";
+  foreach($medicine_name as $key=>$medicine) {
+    $q = $quantity[$key];
+    $d = $dose[$key];
+    $value = $value."(".$submission_id.", '".$medicine."', '".$q."', '".$d."'),";
+  }
+  $value = substr($value, 0, -1);
+  $entry = "INSERT INTO `prescribed-medicine`(`submission_id`, `medicine_name`, `quantity`, `dose`) VALUES ".$value.";";
+  
+  $update_status = "UPDATE `user-answer` SET `status`='open',`doctor-note`='$note' WHERE `submission_id`='$submission_id'";
+  $entry_run = mysqli_query($con, $entry) ;
+  $update_status_run = mysqli_query($con, $update_status);
+  
+    if($entry_run || $update_status_run){
+      echo "<script> 
+              alert('Treatment is started. You can see this in All patient list');
+              window.location.href='new_patient.php';
+      </script>";
+    }
+  
+}
+
+if(isset($_POST['close'])){
+  $update_status = "UPDATE `user-answer` SET `status`='closed' WHERE `submission_id`='$submission_id'";
+  if($update_status_run = mysqli_query($con, $update_status)){
+    echo "<script> 
+            alert('Treatment is closed. You can see this in All patient list');
+            window.location.href='new_patient.php';
+        </script>";
+  }
+}
+
+?>
