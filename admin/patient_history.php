@@ -1,10 +1,10 @@
 <?php 
     include("../includes/db.php");
-    $all_user = "SELECT * 
-                FROM `user` RIGHT JOIN `user-answer` 
-                ON `user`.`user_id`=`user-answer`.`user_id`  
-                ORDER BY `user-answer`.`time`";
-    $all_user_run = mysqli_query($con, $all_user);
+    $user_id = $_GET['uid'];
+    $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
+    $user_info_run = mysqli_query($con, $user_info);
+    $record = mysqli_fetch_assoc($user_info_run);
+
 ?>
 
 <!DOCTYPE html>
@@ -18,19 +18,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Tables</title>
+  <title>SB Admin 2 - Blank</title>
 
-  <!-- Custom fonts for this template -->
+  <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
+  <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -70,8 +65,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Components</span>
         </a>
@@ -86,8 +80,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-          aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Utilities</span>
         </a>
@@ -111,13 +104,12 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-          aria-controls="collapsePages">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="login.html">Login</a>
@@ -126,7 +118,7 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
             <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <a class="collapse-item active" href="blank.html">Blank Page</a>
           </div>
         </div>
       </li>
@@ -139,7 +131,7 @@
       </li>
 
       <!-- Nav Item - Tables -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="tables.html">
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
@@ -166,18 +158,16 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
-          <form class="form-inline">
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-              <i class="fa fa-bars"></i>
-            </button>
-          </form>
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
@@ -210,59 +200,94 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p>All are patients.</p>
-          
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <!-- Person info -->
+            <div class="border border-primary rounded-lg p-3" style="background-color:#fff; box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.35)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            <b>Name :</b> <?php echo $record['first_name']." ".$record['last_name']; ?>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <b>Contact :</b> <?php echo $record['contact_no']; ?>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <b>Email :</b> <?php echo $record['email_id']; ?>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            <b>Gender :</b> <?php echo $record['gender']; ?>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Sr. No.</th>
-                      <th>name</th>
-                      <th>Gender</th>
-                      <th>Age</th>
-                      <th>Contact No.</th>
-                      <th>Date & Time</th>
-                      <th>Status</th>
-                      <th>Details</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      <?php 
-                      $count = 1;
-                      while($record = mysqli_fetch_assoc($all_user_run)){
-                          
-                      ?>
-                    <tr>
-                      <th><?php echo $count; ?></th>
-                      <td><?php echo $record['first_name']." ".$record['last_name']; ?></td>
-                      <td><?php echo $record['gender']; ?></td>
-                      <td>61</td>
-                      <td><?php echo $record['contact_no']; ?></td>
-                      <td><?php echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td>
-                      <td><?php echo $record['status']; ?></td>
-                      <td><a href="patient_history.php?uid=<?php echo $record['user_id']; ?>">view</a></td>
-                    </tr>
-                    <?php 
-                        $count++;
-                          
-                      }
-                    ?>
+            <!-- person info ends  -->
+
+            <div class="border border-primary rounded-lg p-3 mt-4"> 
+                <h5>Treatment history</h5>
+
+                <div class="container-fluid pl-0 pr-0">
+                <?php
+                        $all_treat = "SELECT * FROM `user-answer` WHERE `user_id`='$user_id'";
+                        $all_treat_run = mysqli_query($con, $all_treat);
+                        $count=1;
+                        while($all_treat_res = mysqli_fetch_assoc($all_treat_run)){
+                            $sub_id = $all_treat_res['submission_id'];
+                ?>
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><?php echo date("d/m/Y H:i:s", strtotime($all_treat_res['time'])); ?></div>
+                                    <div class="text-xs font-weight-bold text-primary mt-2 mb-1">
+                                        <?php 
+                                            $prescribed_med = "SELECT * FROM `prescribed-medicine` WHERE `submission_id`='$sub_id'";
+                                            $prescribed_med_run = mysqli_query($con, $prescribed_med);
+                                            while($prescribed_med_res = mysqli_fetch_assoc($prescribed_med_run)){
+                                                echo $prescribed_med_res['medicine_name'];
+                                        ?>
+                                        - <?php echo $prescribed_med_res['quantity']; ?>
+                                        &nbsp;|&nbsp;
+                                            <?php }?>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="#"><i class="fas fa-arrow-down fa-2x"></i></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-1">
+                            <b>Details</b>
+                            <div class="row">
+                            <?php 
+                                $all_queans = "SELECT * FROM `answers` WHERE `submission_id`='$sub_id'";
+                                $all_queans_run = mysqli_query($con, $all_queans);
+                                $que_no = 1;
+                                while($all_queans_res = mysqli_fetch_assoc($all_queans_run)){
+                            ?>
+                                <div class="col-md-6">
+                                    <p><b><?php echo $que_no.". ".$all_queans_res['question_id']; ?></b></p>
+                                    <p><?php echo "Ans:- ".$all_queans_res['answer']; ?></p>
+                                </div>
+                            <?php 
+                                $que_no++;
+                                }
+                            ?>
+                            </div>
+                        </div>
+                    </div>
                     
-                  </tbody>
-                </table>
-              </div>
+
+                    <?php
+                        $count++; 
+                        }
+                    ?>
+                </div>
             </div>
-          </div>
 
         </div>
         <!-- /.container-fluid -->
@@ -292,8 +317,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -320,13 +344,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
