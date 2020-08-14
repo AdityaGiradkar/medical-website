@@ -1,0 +1,13 @@
+.up-down-arrow {
+    cursor: pointer;
+
+}
+
+.arrow::before {
+    color: lightblue;
+    transition: 0.2s;
+}
+
+.arrow:hover::before {
+    color: blue;
+}

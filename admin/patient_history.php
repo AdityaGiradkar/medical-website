@@ -4,6 +4,7 @@
     $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
     $user_info_run = mysqli_query($con, $user_info);
     $record = mysqli_fetch_assoc($user_info_run);
+    if($record){
 
 ?>
 
@@ -26,6 +27,9 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- custome style -->
+  <link rel="stylesheet" href="css/patient_history.css">
 
 </head>
 
@@ -242,7 +246,7 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><?php echo date("d/m/Y H:i:s", strtotime($all_treat_res['time'])); ?></div>
+                                    <div class="h6 mb-0 font-weight-bold text-gray-800"><?php echo date("d/m/Y", strtotime($all_treat_res['time'])); ?></div>
                                     <div class="text-xs font-weight-bold text-primary mt-2 mb-1">
                                         <?php 
                                             $prescribed_med = "SELECT * FROM `prescribed-medicine` WHERE `submission_id`='$sub_id'";
@@ -253,15 +257,16 @@
                                         - <?php echo $prescribed_med_res['quantity']; ?>
                                         &nbsp;|&nbsp;
                                             <?php }?>
+                                            <?php echo "Status: ".$all_treat_res['status']; ?>
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="#"><i class="fas fa-arrow-down fa-2x"></i></i></a>
+                                    <a class="up-down-arrow" onClick="showDetails('d_<?php echo $count; ?>')"><i class="fas arrow fa-angle-right fa-2x" id="d_<?php echo $count; ?>_arrow"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body pt-1">
-                            <b>Details</b>
+                        <div class="card-body pt-1" style="display:none" id="d_<?php echo $count; ?>">
+                            <b>Details : </b>
                             <div class="row">
                             <?php 
                                 $all_queans = "SELECT * FROM `answers` WHERE `submission_id`='$sub_id'";
@@ -278,6 +283,64 @@
                                 }
                             ?>
                             </div>
+                            <b>Treatment</b>
+                            <div class="">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Sr. No.</th>
+                                            <th scope="col">Medicine name</th>
+                                            <th scope="col">quantity</th>
+                                            <th scope="col">Dose</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php 
+                                        $medicine_no = 1;
+                                        $prescribed_med_run = mysqli_query($con, $prescribed_med);
+                                        while($prescribed_med_res = mysqli_fetch_assoc($prescribed_med_run)){
+                                    ?>
+                                        <tr>
+                                            <th scope="row"><?php echo $medicine_no; ?></th>
+                                            <td><?php echo $prescribed_med_res['medicine_name']; ?></td>
+                                            <td><?php echo $prescribed_med_res['quantity']; ?></td>
+                                            <td><?php echo $prescribed_med_res['dose']; ?></td>
+                                        </tr>
+                                    <?php
+                                        $medicine_no++;
+                                        }
+                                    ?>
+                                        <tr>
+                                            <td scope="row" colspan="4"><?php echo "<b>Note : </b>".$all_treat_res['doctor-note']; ?></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                            <div class="Actions">
+                                <?php 
+                                if($all_treat_res['status'] !== "closed"){
+                                ?>
+                                <div class="d-inline-block">
+                                    <form method="post" onsubmit="return close_treatment()">
+                                        <button type="submit" name="close_<?php echo $count; ?>" class="btn btn-success">Close treatment</button>
+                                    </form>
+                                    <?php 
+                                        if(isset($_POST['close_'.$count])){
+                                            $update_status = "UPDATE `user-answer` SET `status`='closed' WHERE `submission_id`='$sub_id'";
+                                            if($update_status_run = mysqli_query($con, $update_status)){
+                                                echo "<script> 
+                                                        alert('Treatment is closed. You can see this in All patient list');
+                                                        window.location.href='all_patients.php';
+                                                    </script>";
+                                            }
+                                        }
+                                    ?>
+                                </div>
+                                <?php } ?>
+                            </div>
+
                         </div>
                     </div>
                     
@@ -345,6 +408,19 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
+  <!-- custom js file for opening details -->
+<script src="js/patient_history.js"></script>
 </body>
 
 </html>
+
+
+
+<?php 
+}else{
+    echo "<script>
+        alert('No record found');
+        window.location.href='all_patients.php';
+    </script>";
+}
+?>
