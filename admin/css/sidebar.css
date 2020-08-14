@@ -1,0 +1,21 @@
+.sidebar {
+    z-index: 1031 !important;
+}
+
+.main-top {
+    padding-top: 5.5rem;
+}
+
+
+
+.main-left {
+    padding-left: 16rem;
+}
+
+
+@media (max-width: 768px) {
+    .main-left {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}

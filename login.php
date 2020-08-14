@@ -14,7 +14,7 @@
             if($record['role'] == 'patient'){
                 header('location: index.php');
             }else if($record['role'] == 'doctor') {
-                header('location: admin/');
+                header('location: admin/index.php');
             }
         }else{
             ?>
