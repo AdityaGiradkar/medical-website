@@ -1,5 +1,7 @@
 <?php 
     include("../includes/db.php");
+    session_start();
+
     $all_user = "SELECT * 
                 FROM `user` RIGHT JOIN `user-answer` 
                 ON `user`.`user_id`=`user-answer`.`user_id` 
@@ -164,7 +166,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user_details_res['first_name']." ".$user_details_res['last_name']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->

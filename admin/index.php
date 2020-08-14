@@ -1,10 +1,6 @@
 <?php 
   include("../includes/db.php");
   session_start();
-  $uid = $_SESSION['user_id'];
-  $user_details = "SELECT * FROM `user` WHERE `user_id`='$uid'";
-  $user_details_run = mysqli_query($con, $user_details);
-  $user_details_res = mysqli_fetch_assoc($user_details_run);
 ?>
 
 <!DOCTYPE html>
@@ -161,7 +157,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user_details_res['first_name']." ".$user_details_res['last_name']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
