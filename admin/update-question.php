@@ -1,10 +1,20 @@
 <?php 
     include("../includes/db.php");
     session_start();
-    $id = $_GET['id'];
-    $get_question = "SELECT * FROM `questions` WHERE `question_id`='$id'";
-    $get_question_run = mysqli_query($con, $get_question);
-    $result = mysqli_fetch_assoc($get_question_run);
+
+    //checking if user logged in 
+    //if session is set means user logged in then show this page otherwise redirect to login page
+    if(isset($_SESSION['user_id'])){
+      $id = $_GET['id'];
+      $get_question = "SELECT * FROM `questions` WHERE `question_id`='$id'";
+      $get_question_run = mysqli_query($con, $get_question);
+      $result = mysqli_fetch_assoc($get_question_run);
+
+      //finding total number of new patient
+      $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+      $new_patient_count_run = mysqli_query($con, $new_patient_count);
+      $data=mysqli_fetch_assoc($new_patient_count_run);
+      //finding total number of new patient
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,12 +80,12 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
-          <span>Patients</span>
+          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
         </a>
         <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient</a>
+            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
         </div>
@@ -306,4 +316,13 @@
         }
         
     }
+    
+  }else{
+    //else part if session is not set
+    echo "<script>
+            window.location.href='../error/login_error.html';
+          </script>";
+  }
+
+
 ?>

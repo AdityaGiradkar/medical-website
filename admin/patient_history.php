@@ -1,11 +1,23 @@
 <?php 
     include("../includes/db.php");
     session_start();
-    $user_id = $_GET['uid'];
-    $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
-    $user_info_run = mysqli_query($con, $user_info);
-    $record = mysqli_fetch_assoc($user_info_run);
-    if($record){
+
+    //checking if user logged in 
+    //if session is set means user logged in then show this page otherwise redirect to login page
+    if(isset($_SESSION['user_id'])){
+      $user_id = $_GET['uid'];
+      $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
+      $user_info_run = mysqli_query($con, $user_info);
+      $record = mysqli_fetch_assoc($user_info_run);
+      //checking if any medical history present for perticular patient 
+      //if not then redirect to all patient page
+      if($record){
+        
+        //finding total number of new patient
+        $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+        $new_patient_count_run = mysqli_query($con, $new_patient_count);
+        $data=mysqli_fetch_assoc($new_patient_count_run);
+        //finding total number of new patient
 
 ?>
 
@@ -76,12 +88,12 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePatient"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
-          <span>Patients</span>
+          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
         </a>
         <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient</a>
+            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
             <a class="collapse-item active" href="all_patients.php">All Patient</a>
           </div>
         </div>
@@ -224,13 +236,13 @@
 
                 <div class="container-fluid pl-0 pr-0">
                 <?php
-                        $all_treat = "SELECT * FROM `user-answer` WHERE `user_id`='$user_id'";
+                        $all_treat = "SELECT * FROM `user-answer` WHERE `user_id`='$user_id' ORDER BY `time` DESC";
                         $all_treat_run = mysqli_query($con, $all_treat);
                         $count=1;
                         while($all_treat_res = mysqli_fetch_assoc($all_treat_run)){
                             $sub_id = $all_treat_res['submission_id'];
                 ?>
-                    <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card border-left-primary shadow h-100 py-2 mb-3">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
@@ -253,7 +265,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body pt-1" style="display:none" id="d_<?php echo $count; ?>">
+                        <div class="card-body pt-2" style="display:none" id="d_<?php echo $count; ?>">
                             <b>Details : </b>
                             <div class="row">
                             <?php 
@@ -271,8 +283,9 @@
                                 }
                             ?>
                             </div>
-                            <b>Treatment</b>
-                            <div class="">
+                            
+                            <div class="pt-4">
+                              <b>Treatment : </b>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
@@ -405,10 +418,20 @@
 
 
 <?php 
-}else{
-    echo "<script>
-        alert('No record found');
-        window.location.href='all_patients.php';
-    </script>";
-}
+      }else{
+        //else part if
+          echo "<script>
+              alert('No record found');
+              window.location.href='all_patients.php';
+          </script>";
+      }
+
+    }else{
+      //else part if session is not set
+      echo "<script>
+              window.location.href='../error/login_error.html';
+            </script>";
+    }
+
+
 ?>

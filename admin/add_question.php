@@ -1,6 +1,15 @@
 <?php 
     include("../includes/db.php");
     session_start();
+    //checking if user logged in 
+    //if session is set means user logged in then show this page otherwise redirect to login page
+    if(isset($_SESSION['user_id'])){
+
+    //finding total number of new patient
+    $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+    $new_patient_count_run = mysqli_query($con, $new_patient_count);
+    $data=mysqli_fetch_assoc($new_patient_count_run);
+    //finding total number of new patient
 ?>
 
 <!DOCTYPE html>
@@ -67,12 +76,12 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
-          <span>Patients</span>
+          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
         </a>
         <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient</a>
+            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
         </div>
@@ -280,20 +289,29 @@
 
 
 <?php
-    if(isset($_POST['add'])){
-        $que = $_POST['que'];
-        $o1 = $_POST['o1'];
-        $o2 = $_POST['o2'];
-        $o3 = $_POST['o3']; 
-        $o4 = $_POST['o4'];
+      if(isset($_POST['add'])){
+          $que = $_POST['que'];
+          $o1 = $_POST['o1'];
+          $o2 = $_POST['o2'];
+          $o3 = $_POST['o3']; 
+          $o4 = $_POST['o4'];
 
-        $add_que = "INSERT INTO `questions`(`question`, `op_1`, `op_2`, `op_3`, `op_4`) VALUES('$que','$o1','$o2','$o3','$o4')";
-        if($update_run = mysqli_query($con, $add_que)) {
-            echo "<script>
-                        alert('1 question Added Sucessfully');
-                        window.location.href='all_questions.php';
-                    </script>";
-        }
-        
+          $add_que = "INSERT INTO `questions`(`question`, `op_1`, `op_2`, `op_3`, `op_4`) VALUES('$que','$o1','$o2','$o3','$o4')";
+          if($update_run = mysqli_query($con, $add_que)) {
+              echo "<script>
+                          alert('1 question Added Sucessfully');
+                          window.location.href='all_questions.php';
+                      </script>";
+          }
+          
+      }
+      
+    }else{
+      //else part if session is not set
+      echo "<script>
+              window.location.href='../error/login_error.html';
+            </script>";
     }
+
+
 ?>

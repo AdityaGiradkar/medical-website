@@ -2,26 +2,36 @@
     include("../includes/db.php");
     session_start();
 
-    $submission_id = $_GET['subid'];
-    $detail = "SELECT * 
-                FROM `user` RIGHT JOIN `user-answer` 
-                ON `user`.`user_id`=`user-answer`.`user_id` 
-                WHERE `user-answer`.`submission_id`='$submission_id'";
-    $detail_run = mysqli_query($con, $detail);
-    $record = mysqli_fetch_assoc($detail_run);
+    //checking if user logged in 
+    //if session is set means user logged in then show this page otherwise redirect to login page
+    if(isset($_SESSION['user_id'])){
 
-    //check wheather patient is already checked
-    if($record['status'] != 'new'){
-      echo "<script> 
-              alert('already checked');
-              window.location.href='new_patient.php';
-            </script>";
-    }
+      $submission_id = $_GET['subid'];
+      $detail = "SELECT * 
+                  FROM `user` RIGHT JOIN `user-answer` 
+                  ON `user`.`user_id`=`user-answer`.`user_id` 
+                  WHERE `user-answer`.`submission_id`='$submission_id'";
+      $detail_run = mysqli_query($con, $detail);
+      $record = mysqli_fetch_assoc($detail_run);
+
+      //check wheather patient is already checked
+      if($record['status'] != 'new'){
+        echo "<script> 
+                alert('already checked');
+                window.location.href='new_patient.php';
+              </script>";
+      }
 
 
-    //fetching question answer of given submission id;
-    $que_ans = "SELECT * FROM `answers` WHERE `submission_id`='$submission_id'";
-    $que_ans_run = mysqli_query($con, $que_ans);
+      //fetching question answer of given submission id;
+      $que_ans = "SELECT * FROM `answers` WHERE `submission_id`='$submission_id'";
+      $que_ans_run = mysqli_query($con, $que_ans);
+
+      //finding total number of new patient
+      $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+      $new_patient_count_run = mysqli_query($con, $new_patient_count);
+      $data=mysqli_fetch_assoc($new_patient_count_run);
+      //finding total number of new patient
     
 ?>
 
@@ -89,12 +99,12 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePatient"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
-          <span>Patients</span>
+          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
         </a>
         <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item active" href="new_patient.php">New Patient</a>
+            <a class="collapse-item active" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
         </div>
@@ -410,16 +420,25 @@
       </script>";
     }
   
+  }
+
+  if(isset($_POST['close'])){
+    $update_status = "UPDATE `user-answer` SET `status`='closed' WHERE `submission_id`='$submission_id'";
+    if($update_status_run = mysqli_query($con, $update_status)){
+      echo "<script> 
+              alert('Treatment is closed. You can see this in All patient list');
+              window.location.href='new_patient.php';
+          </script>";
+    }
+  }
+
+
+}else{
+  //else part if session is not set
+  echo "<script>
+          window.location.href='../error/login_error.html';
+        </script>";
 }
 
-if(isset($_POST['close'])){
-  $update_status = "UPDATE `user-answer` SET `status`='closed' WHERE `submission_id`='$submission_id'";
-  if($update_status_run = mysqli_query($con, $update_status)){
-    echo "<script> 
-            alert('Treatment is closed. You can see this in All patient list');
-            window.location.href='new_patient.php';
-        </script>";
-  }
-}
 
 ?>
