@@ -1,45 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
-    <title>login</title>
+    <!-- Custom External StyleSheet -->
+    <link rel="stylesheet" href="css/register.css">
+
+    <title>register</title>
 </head>
 
 <body>
-    <form>
-        <div class="form-group">
-            <label for="exampleInputPassword1">First Name</label>
-            <input type="text" class="form-control" id="exampleInputPassword1">
+
+    <div class="overlay">
+        <div class="card centered" style="width: 25rem;">
+            <div class="card-body">
+                <img src="images/AtmaVeda Logo.png" class="mx-auto d-block" alt="AtmaVeda Logo" />
+                <p class="card-title mx-auto brand-name">AtmaVeda Yog</p>
+                <form method="#" action="#">
+                    <div class="form-group mt-5 mb-4">
+                        <!-- <label for="exampleInputEmail1">Username</label> -->
+                        <input type="text" class="form-control input-box" placeholder="Username" name="username"
+                            id="exampleInputEmail1">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="exampleInputPassword1">Password</label> -->
+                        <input type="password" class="form-control input-box" placeholder="Password" name="pass"
+                            id="exampleInputPassword1">
+                    </div>
+                    <a href="#"><small class="form-text text-muted text-right"><em>Forget Password ?</em></small></a>
+                    <button type="submit" class="login-btn mt-5" name="submit">LOGIN</button>
+                </form>
+                <small class="form-text text-center mt-5"><em>Not an existing user ?</em> <a href="#">Create
+                        New</a></small>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Last Name</label>
-            <input type="text" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">User Name</label>
-            <input type="text" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Contact Number</label>
-            <input type="text" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
