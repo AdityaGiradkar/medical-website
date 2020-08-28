@@ -1,10 +1,25 @@
+/* Header section */
+.red-dot::before {
+    content: "•";
+    width: 17px;
+    height: 17px;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+/* end Header section */
+
+
 /* banner css */
 .intro {
     background-color: rgb(246, 250, 255);
-    /* width: 100%; */
+    margin-top: -45px;
 }
 
-/* **************** */
+/* end banner css */
+
+
+/* About section */
 .about-heading {
     font-size: 38px;
     font-family: "Mongolian Baiti";
@@ -20,6 +35,10 @@
     background-image: -ms-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
 }
 
+/* end About section */
+
+
+
 .consult,
 .test {
     background-image: -moz-linear-gradient(180deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
@@ -29,27 +48,27 @@
 }
 
 
+/* ******************************************* */
+/* Start of medical-treatment, yoga and diet */
 .medical-treatment,
 .yoga {
     background-color: rgb(249, 250, 255);
 }
 
-.marginTop {
-    margin-top: 6rem !important;
+.text-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
 }
 
-.paddingTobBottom {
-    padding-top: 5rem !important;
-    padding-bottom: 5rem !important;
+.text-img img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
 }
 
-
-
-
-
-
-
-
+/* third party slider css */
 .post-slide {
     padding-bottom: 10px;
     margin: 0 15px;
@@ -124,8 +143,9 @@
     }
 }
 
+/* third party slider */
 
-
+/* overlay of perticular slider image */
 .contain {
     position: relative;
     width: 100%;
@@ -144,243 +164,100 @@
     transition: .3s ease;
     background-color: #000080;
     border-radius: 12px;
+    transition: 0.3s;
 }
 
 .contain:hover .overlay-img {
     opacity: 0.6;
 }
 
-/* The icon inside the overlay is positioned in the middle vertically and horizontally */
 .explore {
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    /* -ms-transform: translate(-50%, -50%); */
     text-align: center;
-    padding: 6% 15%;
+    padding: 5% 12% !important;
     border: 3px solid;
     border-radius: 15px;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* When you move the mouse over the icon, change color */
 .explore:hover {
     color: #eee;
     background-color: white;
     color: blue;
 }
 
+/* end overlay of perticular slider image */
+/* End of medical-treatment, yoga and diet */
+
+
+/* test section */
+.take-test {
+    font-size: 20px;
+    color: black;
+    background-color: rgb(2, 233, 236);
+    padding: 1% 2%;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.take-test::after {
+    content: '\2192';
+    padding-left: 1%;
+}
+
+/* endtest section */
+
+
+/* Review section */
+.review {
+    margin-bottom: -320px;
+    margin-top: 20px;
+}
+
 
 .review-background {
     background-image: url('images/background_review.png');
-
 }
 
-
-
-
-
-
-
-
-
-
-
-/* .demo {
-    background-color: #cd2d6a;
+.review-text {
+    position: relative;
+    top: -405px;
+    width: 450px;
 }
 
-.modal-box {
-    font-family: 'Ubuntu', sans-serif;
+/* End Review section */
+
+
+/* Modal related css */
+.modal {
+    background-color: #ccc;
 }
 
-.modal-box .show-modal {
-    color: #cd2d6a;
-    background-color: #fff;
-    font-size: 17px;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 10px 15px;
-    margin: 80px auto 0;
-    border: none;
-    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.2);
-    display: block;
-}
-
-.modal-box .show-modal:hover {
-    color: #cd2d6a;
-    border: none;
-}
-
-.modal-box .modal {
-    top: 90px !important;
-}
-
-.modal-box .modal-dialog {
-    width: 400px;
-    margin: 20px auto 0;
-}
-
-.modal-box .modal-dialog .modal-content {
-    text-align: center;
+.modal-content {
+    padding: 5%;
+    background-color: rgb(249, 250, 255);
+    /* box-shadow: 0px 10px 28px 7px rgba(0, 0, 0, 0.1); */
+    border: 0;
     border-radius: 20px;
+    box-shadow: 0px 4px 26px 1px rgba(51, 50, 51, 1);
 }
 
-.modal-box .modal-dialog .modal-content .close {
-    color: #c32262;
-    font-size: 30px;
-    text-shadow: none;
-    line-height: 25px;
-    height: 30px;
-    width: 30px;
-    opacity: 1;
-    position: absolute;
-    left: auto;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
-    transition: all 0.3s;
+/* end model related css */
+
+
+.marginTop {
+    margin-top: 6rem !important;
 }
 
-.modal-box .modal-dialog .modal-content .close span {
-    margin: -2px 0 0 0;
-    display: block;
+.paddingTobBottom {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
 }
-
-.modal-box .modal-dialog .modal-content .close:hover {
-    text-shadow: 0 0 5px #555;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body {
-    padding: 50px 20px 20px !important;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon {
-    color: #cd2d6a;
-    font-size: 100px;
-    margin: 0 0 40px;
-    display: inline-block;
-    position: relative;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top,
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top:before,
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top:after {
-    background: #bcbfbe;
-    width: 35%;
-    height: 3px;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top:before,
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top:after {
-    content: "";
-    width: 75%;
-    top: 20px;
-    left: 15px;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top:after {
-    width: 50%;
-    top: 35px;
-    left: 30px;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top-1 {
-    transform: rotate(0deg) translateX(-225%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top-2 {
-    transform: rotate(45deg) translateX(-225%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top-3 {
-    transform: rotate(90deg) translateX(-225%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top-4 {
-    transform: rotate(135deg) translateX(-225%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top-5 {
-    transform: rotate(180deg) translateX(-225%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top-6 {
-    transform: rotate(225deg) translateX(-225%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top-7 {
-    transform: rotate(270deg) translateX(-225%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top-8 {
-    transform: rotate(315deg) translateX(-225%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top:before {
-    transform: rotate(-25deg) translateX(-30%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .icon .box-top:after {
-    transform: rotate(-35deg) translateX(-25%);
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .description {
-    color: #555;
-    font-size: 16px;
-    margin: 0 20px 40px;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .description span {
-    color: #cd2d6a;
-    text-transform: capitalize;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .subscribe {
-    color: #fff;
-    background: #c32262;
-    font-size: 18px;
-    font-size: 700;
-    padding: 20px 60px;
-    margin: 0 0 20px;
-    border: none;
-    border-radius: 50px;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    transition: all 0.2s ease-in-out 0s;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .subscribe:before,
-.modal-box .modal-dialog .modal-content .modal-body .subscribe:after {
-    content: "";
-    background-color: #F50057;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    transform: translateX(-50%) translateY(-50%) scale(1);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
-    transition: all 0.5s ease 0s;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .subscribe:after {
-    background-color: #880E4F;
-    z-index: -2;
-    transition: all 0.4s ease 0.3s;
-}
-
-.modal-box .modal-dialog .modal-content .modal-body .subscribe:hover:before,
-.modal-box .modal-dialog .modal-content .modal-body .subscribe:hover:after {
-    transform: translateX(-50%) translateY(-50%) scale(0);
-} */
