@@ -7,13 +7,19 @@
     padding-left: 3%;
 }
 
+.li-header {
+    text-decoration: none !important;
+    color: rgb(0, 48, 123);
+    font-weight: bold;
+}
+
 /* end Header section */
 
 
 /* banner css */
 .intro {
     background-color: rgb(246, 250, 255);
-    margin-top: -45px;
+    margin-top: -25px;
 }
 
 /* end banner css */
@@ -30,21 +36,33 @@
 }
 
 .Explore-box {
-    background-image: -moz-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+    /* background-image: -moz-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
     background-image: -webkit-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
-    background-image: -ms-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+    background-image: -ms-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%); */
+
+    font-size: 20px;
+    color: white;
+    background-image: -moz-linear-gradient(180deg, #0265c2 0%, #01195b 100%);
+    background-image: -webkit-linear-gradient(180deg, #0265c2 0%, #01195b 100%);
+    background-image: -ms-linear-gradient(180deg, #0265c2 0%, #01195b 100%);
+    padding: 1% 2%;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.Explore-box::after {
+    content: '\2192';
+    padding-left: 1%;
 }
 
 /* end About section */
 
 
 
-.consult,
-.test {
-    background-image: -moz-linear-gradient(180deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
-    background-image: -webkit-linear-gradient(180deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
-    background-image: -ms-linear-gradient(180deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
-
+#consult {
+    background-image: -moz-linear-gradient(180deg, #d4f7fb 0%, #d4e1f3 100%);
+    background-image: -webkit-linear-gradient(180deg, #d4f7fb 0%, #d4e1f3 100%);
+    background-image: -ms-linear-gradient(180deg, #d4f7fb 0%, #d4e1f3 100%);
 }
 
 
@@ -76,34 +94,37 @@
 }
 
 .owl-controls .owl-buttons {
-    /* margin-top: 15%; */
+    /* padding-top: 30%; */
+    /* margin-top: 30%; */
     position: relative;
 }
 
 .owl-controls .owl-prev {
     position: absolute;
     left: -40px;
-    bottom: 230px;
-    padding: 8px 17px;
-    background: rgb(2, 56, 179);
-    transition: background 0.50s ease;
+    /* bottom: 230px; */
+    padding: 4px 12px;
+    /* background: rgb(2, 56, 179); */
+
+    transition: 0.50s ease;
 }
 
 .owl-controls .owl-next {
     position: absolute;
     right: -40px;
-    bottom: 230px;
-    padding: 8px 17px;
-    background: rgb(2, 56, 179);
-    transition: background 0.50s ease;
+    padding: 4px 12px;
+    /* background: rgb(2, 56, 179); */
+    transition: 0.50s ease;
 }
 
 .owl-controls .owl-prev:after,
 .owl-controls .owl-next:after {
     content: "\2190";
     font-family: FontAwesome;
-    color: #d3d3d3;
-    font-size: 16px;
+    /* color: #d3d3d3; */
+    color: rgb(2, 56, 179);
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .owl-controls .owl-next:after {
@@ -112,7 +133,14 @@
 
 .owl-controls .owl-prev:hover,
 .owl-controls .owl-next:hover {
-    background: #e74c3c;
+    /* background: #e74c3c; */
+    background: rgb(2, 56, 179);
+
+}
+
+.owl-controls .owl-prev:hover:after,
+.owl-controls .owl-next:hover:after {
+    color: white;
 }
 
 @media only screen and (max-width: 990px) {
@@ -199,6 +227,12 @@
 
 
 /* test section */
+#test {
+    background-image: -moz-linear-gradient(180deg, #0265c2 0%, #01195b 100%);
+    background-image: -webkit-linear-gradient(180deg, #0265c2 0%, #01195b 100%);
+    background-image: -ms-linear-gradient(180deg, #0265c2 0%, #01195b 100%);
+}
+
 .take-test {
     font-size: 20px;
     color: black;
@@ -237,9 +271,10 @@
 
 
 /* Modal related css */
-.modal {
+/* .modal {
     background-color: #ccc;
-}
+    opacity: .5;
+} */
 
 .modal-content {
     padding: 5%;
@@ -261,3 +296,74 @@
     padding-top: 5rem !important;
     padding-bottom: 5rem !important;
 }
+
+
+
+/* Book appointment modal */
+.overlay {
+    opacity: 0.8;
+    background-color: #ccc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    background-color: rgb(249, 250, 255);
+    box-shadow: 0px 10px 28px 7px rgba(0, 0, 0, 0.1);
+}
+
+.brand-name {
+    font-size: 30px;
+    font-family: "Mongolian Baiti";
+    color: rgb(0, 48, 123);
+    /* line-height: 1.25; */
+    margin-top: 15px;
+    text-align: center;
+}
+
+.input-box {
+    border-radius: 12px;
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 45px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-family: "Mongolian Baiti";
+    color: rgb(0, 48, 123);
+}
+
+.info-btn {
+    float: right;
+    text-decoration: none !important;
+    color: blue;
+    cursor: pointer;
+}
+
+.login-btn {
+    border-radius: 12px;
+    background-image: -moz-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+    background-image: -webkit-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+    background-image: -ms-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+    width: 100%;
+    height: 45px;
+    border: 0;
+}
+
+.login-btn:hover {
+    background-image: -moz-linear-gradient(-179deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+    background-image: -webkit-linear-gradient(-179deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+    background-image: -ms-linear-gradient(-179deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+
+}
+
+/* End of Book Appointment modal */

@@ -54,7 +54,12 @@
     border: 0;
 }
 
+.login-btn:hover {
+    background-image: -moz-linear-gradient(-179deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+    background-image: -webkit-linear-gradient(-179deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+    background-image: -ms-linear-gradient(-179deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
 
+}
 
 
 
