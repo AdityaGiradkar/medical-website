@@ -2,66 +2,88 @@
     include('includes/db.php');
     session_start();
     if(!isset($_SESSION['user_id'])) {
-    if(isset($_POST['username']) && isset($_POST['pass'])){
-        $username = $_POST['username'];
-        $pass = $_POST['pass'];
-        $qry = "SELECT * FROM `user` WHERE `user_name` = '$username' AND `password` = '$pass'";
-        $run = mysqli_query($con, $qry);
-        $row = mysqli_num_rows($run);
-        $record = mysqli_fetch_array($run);
-        if($row == 1){
-            $_SESSION['user_id'] = $record['user_id'];
-            $_SESSION['f_name'] = $record['first_name'];
-            $_SESSION['l_name'] = $record['last_name'];
-            if($record['role'] == 'patient'){
-                header('location: index.php');
-            }else if($record['role'] == 'doctor') {
-                header('location: admin/index.php');
+        if(isset($_POST['submit'])){
+            $email = mysqli_real_escape_string($con, $_POST['email']);
+            $pass = mysqli_real_escape_string($con, $_POST['pass']);
+            $qry = "SELECT * FROM `user` WHERE `email_id` = '$email' AND `password` = '$pass'";
+            $run = mysqli_query($con, $qry);
+            $row = mysqli_num_rows($run);
+            $record = mysqli_fetch_array($run);
+            
+            if($row == 1){
+                if($record['verified'] == 1){
+                    //account is verified procced further
+                    $_SESSION['user_id'] = $record['user_id'];
+                    $_SESSION['f_name'] = $record['first_name'];
+                    $_SESSION['l_name'] = $record['last_name'];
+                    if($record['role'] == 'patient'){
+                        header('location: index.html');
+                    }else if($record['role'] == 'doctor') {
+                        header('location: admin/index.php');
+                    }
+                }else{
+                    //account is not verified
+                    ?>
+                        <script>
+                            alert("Email is not verified please verify first. verification mail is sent on <?php echo date("d/m/Y", strtotime($record['creation_date'])); ?>");
+                        </script>
+                    <?php
+                }
+            }else{
+                ?>
+                <script>
+                    alert("User id or password wrong.")
+                </script>
+                <?php
             }
-        }else{
-            ?>
-            <script>
-                alert("User id or password wrong.")
-            </script>
-            <?php
+        
         }
-    }
 
 ?>
-
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
-    <title>login</title>
+    <!-- Custom External StyleSheet -->
+    <link rel="stylesheet" href="css/login.css">
+
+    <title>Login</title>
 </head>
 
 <body>
 
-    <div class="container">
-        <div>
-            <h2>Login</h2>
+    <div class="overlay">
+        <div class="card centered" style="width: 25rem;">
+            <div class="card-body">
+                <img src="images/AtmaVeda Logo.png" class="mx-auto d-block" alt="AtmaVeda Logo" />
+                <p class="card-title mx-auto brand-name">AtmaVeda Yog</p>
+                <form method="post" action="">
+                    <div class="form-group mt-5 mb-4">
+                        <!-- <label for="exampleInputEmail1">Username</label> -->
+                        <input type="text" class="form-control input-box" placeholder="Username or Email" name="email"
+                            id="exampleInputEmail1">
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="exampleInputPassword1">Password</label> -->
+                        <input type="password" class="form-control input-box" placeholder="Password" name="pass"
+                            id="exampleInputPassword1">
+                    </div>
+                    <a href="#"><small class="form-text text-muted text-right"><em>Forget Password ?</em></small></a>
+                    <button type="submit" class="login-btn mt-5" name="submit">LOGIN</button>
+                </form>
+                <small class="form-text text-center mt-5"><em>Not an existing user ?</em> <a href="register.html">Create
+                        New</a></small>
+            </div>
         </div>
-        <form method="POST" action="login.php">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" name="pass" id="exampleInputPassword1">
-            </div>
-            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-        </form>
     </div>
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

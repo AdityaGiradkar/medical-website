@@ -2,7 +2,7 @@
     $db['user']     = "root";
     $db['password'] = "";
     $db['host']     = "localhost";
-    $db['name']     = "medical-quiz";
+    $db['name']     = "medical";
     $con = mysqli_connect($db['host'], $db['user'], $db['password'], $db['name']);
 
     if (mysqli_connect_errno()) {

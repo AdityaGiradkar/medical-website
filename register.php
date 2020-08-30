@@ -1,3 +1,37 @@
+<?php 
+    include("includes/db.php"); 
+    if(isset($_POST['submit'])){
+        //sanitize data
+        $name   = mysqli_real_escape_string($con, $_POST['name']);
+        $email  = mysqli_real_escape_string($con,$_POST['email']);
+        $phone  = mysqli_real_escape_string($con,$_POST['phone']);
+        $pass   = mysqli_real_escape_string($con,$_POST['pass']);
+
+        $vkey = md5(time().$name);
+        
+        $insert = "INSERT INTO `user`(`name`, `contact_no`, `email_id`, `password`, `vkey`) 
+                    VALUES ('$name', '$phone', '$email', '$pass', '$vkey')";
+        $insert_run = mysqli_query($con, $insert);
+
+        if($insert_run){
+            //send mail
+            // ini_set('display_errors', 1);
+            // error_reporting( E_ALL );
+            $to = $email;
+            // $from = 'adityagiradkar11@gmail.com';
+            $subject ="Registration Verification";
+            $message = "To verify your account please click on below link <br> <a href='http://localhost/medical-website/verify.php?vkey=$vkey'>click here</a>";
+            $headers = "From:adityagiradkar11@gmail.com \r\n";
+            $headers .= "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        
+            $sucess = mail($to, $subject, $message, $headers);
+                
+            header('location:verification_sent.html');
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +55,7 @@
             <div class="card-body">
                 <img src="images/AtmaVeda Logo.png" class="mx-auto d-block" width="100" alt="AtmaVeda Logo" />
                 <p class="card-title mx-auto brand-name">AtmaVeda Yog</p>
-                <form method="#" action="#">
+                <form method="post" action="">
                     <div class="form-group mt-5">
                         <!-- <label for="exampleInputEmail1">Username</label> -->
                         <input type="text" class="form-control input-box" placeholder="Full Name" name="name"
