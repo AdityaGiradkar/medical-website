@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if(isset($_SESSION['user_id'])){
+        $id = $_SESSION['user_id'];
+    }
+?>
 <!doctype html>
 <html lang="en">
 
@@ -49,9 +55,15 @@
                     <li class="d-inline red-dot">
                         <a href="" class="li-header">BOOK AN APOINTMENT</a>
                     </li>
-                    <li class="d-inline red-dot">
-                        <a href="login.php" class="li-header">LOGIN</a>
-                    </li>
+                    <?php if(!isset($_SESSION['user_id'])){ ?>
+                        <li class="d-inline red-dot">
+                            <a href="login.php" class="li-header">LOGIN</a>
+                        </li>
+                    <?php }else{ ?>
+                        <li class="d-inline red-dot">
+                            <a href="logout.php" class="li-header">USER</a>
+                        </li>
+                    <?php } ?>
                 </ul>
             </div>
         </div>

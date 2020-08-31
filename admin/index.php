@@ -71,7 +71,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Treatment
+        Consultation
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -88,6 +88,12 @@
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
         </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="consultation_time.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Timing</span></a>
       </li>
 
       <!-- Divider -->

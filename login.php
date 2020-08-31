@@ -14,10 +14,9 @@
                 if($record['verified'] == 1){
                     //account is verified procced further
                     $_SESSION['user_id'] = $record['user_id'];
-                    $_SESSION['f_name'] = $record['first_name'];
-                    $_SESSION['l_name'] = $record['last_name'];
+                    $_SESSION['name'] = $record['name'];
                     if($record['role'] == 'patient'){
-                        header('location: index.html');
+                        header('location: index.php');
                     }else if($record['role'] == 'doctor') {
                         header('location: admin/index.php');
                     }
