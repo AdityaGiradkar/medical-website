@@ -1,7 +1,8 @@
 <?php 
     session_start();
+    include('includes/db.php');
     if(isset($_SESSION['user_id'])){
-        $id = $_SESSION['user_id'];
+        $user_id = $_SESSION['user_id'];
     }
 ?>
 <!doctype html>
@@ -61,7 +62,7 @@
                         </li>
                     <?php }else{ ?>
                         <li class="d-inline red-dot">
-                            <a href="logout.php" class="li-header">USER</a>
+                            <a href="logout.php" class="li-header"><?php echo $_SESSION['name']; ?></a>
                         </li>
                     <?php } ?>
                 </ul>
@@ -157,7 +158,7 @@
                             have a non biased advice. discuss your symptom . disease ,
                             treatment and medicines.
                         </p>
-                        <a href="#" data-target="#Appointment" data-toggle="modal" class="Explore-box">Book an
+                        <a data-target="#Appointment" data-toggle="modal" class="Explore-box">Book an
                             Appointment</a>
                     </div>
                 </div>
@@ -572,7 +573,14 @@
         </div>
     </div>
 
+
     <!-- Modal for appointment -->
+    <?php 
+        $minAvailableDate = "SELECT MAX(`date`) AS maxDate FROM `consultation_time` WHERE `assigned_user`=0";
+        $minAvailableDate_run = mysqli_query($con, $minAvailableDate);
+        $maxDate = mysqli_fetch_assoc($minAvailableDate_run);
+        // echo "Maximum date = ".$maxDate['maxDate'];
+    ?>
     <div class="modal fade" id="Appointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -584,11 +592,11 @@
                 </div>
                 <div class="modal-body">
                     <p class="card-title mx-auto brand-name">BOOK AN APPOINTMENT</p>
-                    <form method="#" action="#">
+                    <form method="post" action="">
                         <div class="form-check pt-3 pb-3">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
+                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type1"
+                                value="1">
+                            <label class="form-check-label" for="consult_type1">
                                 General Consultation
                             </label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
@@ -596,9 +604,9 @@
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check pb-3">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                                value="option2">
-                            <label class="form-check-label" for="exampleRadios2">
+                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type2"
+                                value="2">
+                            <label class="form-check-label" for="consult_type2">
                                 Holistic Pre-program Counselling
                             </label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
@@ -606,9 +614,9 @@
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
-                                value="option3">
-                            <label class="form-check-label" for="exampleRadios3">
+                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type3"
+                                value="3">
+                            <label class="form-check-label" for="consult_type3">
                                 Advanced Holistic Consultation
                             </label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
@@ -617,21 +625,17 @@
                         </div>
                         <div class="form-group mt-5 mb-4">
                             <!-- <label for="exampleInputEmail1">Username</label> -->
-                            <input type="date" class="form-control input-box" placeholder="Username" name="username"
-                                id="datepicker" min="2020-08-11" max="2020-08-15">
+                            <input type="date" class="form-control input-box" name="consult_date" onchange="availableSlots(this.value)"
+                                id="datepicker" min="<?php echo date("Y-m-d"); ?>" max="<?php echo $maxDate['maxDate']; ?>">
                         </div>
                         <div class="form-group">
-                            <select class="form-control input-box" id="exampleFormControlSelect1">
-                                <option selected="true" disabled="disabled" hidden>Select Time</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control input-box" id="time_slots" name="time_slots">
+                                <!-- data will be fetched in real time by using AJAX -->
                             </select>
                         </div>
 
                         <button type="submit" class="login-btn mt-5" style="color:white;font-size: 18px;"
-                            name="submit">Book an
+                            name="appoint">Book an
                             Appointment</button>
                     </form>
                 </div>
@@ -657,6 +661,43 @@
 </body>
 
 </html>
+
+<?php 
+    if(isset($_POST['appoint'])){
+        if(isset($_SESSION['user_id'])){
+            $consult_type = $_POST['consult_type'];
+            $date = $_POST['consult_date'];
+            $time = $_POST['time_slots'];
+
+            $payment_amount = "SELECT * FROM `consult_type` WHERE `id`='$consult_type'";
+            if($payment_amount_run = mysqli_query($con, $payment_amount)){
+                $payment_amount_res = mysqli_fetch_assoc($payment_amount_run);
+                $price = $payment_amount_res['price'];
+                $consult_name = $payment_amount_res['name'];
+                $datetime= date('Y-m-d H:i:s');
+
+                $update_assigned_user = "UPDATE `consultation_time` SET `assigned_user`='$user_id',`consult_type`='$consult_name',`date_submission`='$datetime',`status`='assigned' WHERE `date`='$date' AND `time_range`='$time'";
+                if($update_assigned_user_run = mysqli_query($con, $update_assigned_user)){
+                    echo "<script>
+                            alert('Your appointment is booked you can see it in your profile.');
+                            window.location.href='index.php';
+                    </script>";
+                }
+            }
+            // echo "<script>
+            //     alert('inside index.');
+            //     window.location.href='bookAppointment.php';
+            // </script>";
+        } else {
+            echo "<script>
+                alert('Please login first.');
+                window.location.href='login.php';
+            </script>";
+        }
+    }
+
+
+?>
 
 
  <script>
@@ -706,4 +747,26 @@
 
     // for popover
     $('[data-toggle="popover"]').popover();
+
+
+    function availableSlots(date) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var slots_array = JSON.parse(this.responseText);
+                var htmlSlotsOption = "<option selected='true' disabled='disabled' hidden>Select Time</option>";
+                
+                slots_array.forEach(add);
+                function add(item, index){
+                    htmlSlotsOption = htmlSlotsOption + "<option value='"+ item.time_range +"'>" + item.time_range + "</option>";
+                }
+                document.getElementById("time_slots").innerHTML = htmlSlotsOption;
+                
+                // console.log(slots_array);
+            }
+        };
+        xmlhttp.open("GET","getSlots.php?date="+date,true);
+        xmlhttp.send();
+    }
+    
 </script>

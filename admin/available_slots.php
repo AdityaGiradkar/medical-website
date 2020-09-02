@@ -6,7 +6,7 @@
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
 
-        $slots = "SELECT * FROM `consultation_time` WHERE `date` >= CURDATE() ORDER BY `date`, `time_range`;";
+        $slots = "SELECT * FROM `consultation_time` WHERE `date` >= CURDATE() ORDER BY `date` ASC, `time_range` ASC;";
         $slots_run = mysqli_query($con, $slots);
 
         //finding total number of new patient
@@ -171,7 +171,7 @@
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                 </a>
                 <!-- Dropdown - User Information -->
