@@ -487,7 +487,7 @@
                             omnis iste natus error sit voluptatem
                             accusantium doloremque laudantium.
                         </p>
-                        <a href="#" class="take-test">Take The Test</a>
+                        <a href="#" data-target="#select_test" data-toggle="modal" class="take-test">Take The Test</a>
                     </div>
                     <div class="col-md-3">
                         <img src="images/lady.png" alt="" class="img-fluid" />
@@ -643,6 +643,67 @@
         </div>
     </div>
 
+    <!-- modal for test selection -->
+    <div class="modal fade" id="select_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="card-title mx-auto brand-name">SELECT TEST</p>
+                    <form method="post" action="">
+                        <div class="form-check pt-3 pb-3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type1"
+                                value="1">
+                            <label class="form-check-label" for="consult_type1">
+                                Test A
+                            </label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
+                                title="General Consultation" data-content="Some nice text hereknjfsdb"><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                        <div class="form-check pb-3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type2"
+                                value="2">
+                            <label class="form-check-label" for="consult_type2">
+                                Test B
+                            </label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
+                                title="Holistic Pre-program Counselling" data-content="Some nice text hereknjfsdb"><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                        <div class="form-check pb-3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type3"
+                                value="3">
+                            <label class="form-check-label" for="consult_type3">
+                                Test C
+                            </label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
+                                title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type3"
+                                value="3">
+                            <label class="form-check-label" for="consult_type3">
+                                Test D
+                            </label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
+                                title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                        <button type="submit" class="login-btn mt-5" style="color:white;font-size: 18px;"
+                            name="start_test">START TEST</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Include all modal html -->
     <?php include("modal.php"); ?>
 
@@ -663,6 +724,7 @@
 </html>
 
 <?php 
+    //php for booking appointment
     if(isset($_POST['appoint'])){
         if(isset($_SESSION['user_id'])){
             $consult_type = $_POST['consult_type'];
@@ -684,16 +746,18 @@
                     </script>";
                 }
             }
-            // echo "<script>
-            //     alert('inside index.');
-            //     window.location.href='bookAppointment.php';
-            // </script>";
         } else {
             echo "<script>
                 alert('Please login first.');
                 window.location.href='login.php';
             </script>";
         }
+    }
+
+    // Php for taking test
+    if(isset($_POST['start_test'])){
+        $test_type = $_POST['test_type'];
+        echo "<script>window.location.href='test.php?type=$test_type'</script>";
     }
 
 
