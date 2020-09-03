@@ -62,7 +62,7 @@
                         </li>
                     <?php }else{ ?>
                         <li class="d-inline red-dot">
-                            <a href="logout.php" class="li-header"><?php echo $_SESSION['name']; ?></a>
+                            <a href="user_page.php" class="li-header"><?php echo $_SESSION['name']; ?></a>
                         </li>
                     <?php } ?>
                 </ul>

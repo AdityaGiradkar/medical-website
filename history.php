@@ -2,9 +2,9 @@
     include("includes/db.php");
     session_start();
     if(isset($_SESSION['user_id'])){
-        $user = $_SESSION['user_id'];
+        $user_id = $_SESSION['user_id'];
         $status = $_GET['status'];
-        $past_submissions = "SELECT * FROM `user-answer` WHERE `user_id` = '$user' AND `status` = '$status'";
+        $past_submissions = "SELECT * FROM `consultation_time` WHERE `assigned_user`='$user_id' ORDER BY `date_submission` DESC";
         $past_submissions_run = mysqli_query($con, $past_submissions);
 ?>
 <!doctype html>
@@ -26,7 +26,7 @@
         <?php
             while($past_submissions_result = mysqli_fetch_assoc($past_submissions_run)) {
         ?>
-            <li class="list-group-item"><a href="treat_details.php?submission_id=<?php echo $past_submissions_result['submission_id'] ?>"><?php echo $past_submissions_result['time'] ?></a></li>
+            <li class="list-group-item"><?php echo $past_submissions_result['date']; ?> <?php echo $past_submissions_result['time_range']; ?> <?php echo $past_submissions_result['consult_type']; ?></li>
         <?php
             }
         ?>

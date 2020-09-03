@@ -20,7 +20,7 @@ if(isset($_SESSION['user_id'])) {
 
 <body>
     <h1><a href="history.php?status=open">OnGoing Treatment</a></h1>
-    <h1><a href="history.php?status=closed">History</a></h1>
+    <h1><a href="history.php?status=checked">History</a></h1>
     <h1><a href="history.html">update info</a></h1>
     <h1><a href="history.html">Change Password</a></h1>
 

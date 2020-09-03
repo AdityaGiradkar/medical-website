@@ -92,7 +92,7 @@
         </a>
         <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Patients : </h6>
+            <h6 class="collapse-header">Consultation : </h6>
             <a class="collapse-item active" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
