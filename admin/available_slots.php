@@ -10,7 +10,7 @@
         $slots_run = mysqli_query($con, $slots);
 
         //finding total number of new patient
-        $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
         $new_patient_count_run = mysqli_query($con, $new_patient_count);
         $data=mysqli_fetch_assoc($new_patient_count_run);
         //finding total number of new patient
@@ -80,19 +80,35 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-user-injured"></i>
             <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
-        </a>
-        <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            </a>
+            <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
-            <a class="collapse-item" href="all_patients.php">All Patient</a>
+                <h6 class="collapse-header">Patients : </h6>
+                <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
+                <a class="collapse-item" href="#">New Treatment</a>
+                <a class="collapse-item" href="all_patients.php">All Patient</a>
             </div>
-        </div>
+            </div>
         </li>
+
+        <li class="nav-item  active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-clock"></i>
+          <span>Timing</span>
+        </a>
+        <div id="timing" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Time Slots:</h6>
+            <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
+            <a class="collapse-item active" href="available_slots.php">Available Slots</a>
+          </div>
+        </div>
+      </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -118,16 +134,16 @@
         </div>
         </li>
 
-        <li class="nav-item active">
+        <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMedicine"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-pills"></i>
             <span>Medicines</span>
         </a>
-        <div id="collapseMedicine" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Medicine Section:</h6>
-            <a class="collapse-item active" href="all_medicines.php">All Medicines</a>
+            <a class="collapse-item" href="all_medicines.php">All Medicines</a>
             <a class="collapse-item" href="add_medicine.php">Add Medicine</a>
             </div>
         </div>

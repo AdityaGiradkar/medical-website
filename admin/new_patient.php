@@ -93,7 +93,8 @@
         <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Consultation : </h6>
-            <a class="collapse-item active" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item active" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="#">New Treatment</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
         </div>
@@ -244,7 +245,7 @@
                       <!-- <td><?php //echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td> -->
                       <td><?php echo $record['consult_type']; ?></td>
                       <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
-                      <td><a href="mark_done.php?date=<?php echo $record['date']; ?>&time=<?php echo $record['time_range']; ?>">done</a></td>
+                      <td><a href="mark_done.php?date=<?php echo $record['date']; ?>&time=<?php echo $record['time_range']; ?>" onClick="javascript: return confirm('you want to mark done to user <?php echo $record['name']; ?>?');">done</a></td>
                     </tr>
                     
                     <?php 

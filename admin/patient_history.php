@@ -14,7 +14,7 @@
       if($record){
         
         //finding total number of new patient
-        $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
         $new_patient_count_run = mysqli_query($con, $new_patient_count);
         $data=mysqli_fetch_assoc($new_patient_count_run);
         //finding total number of new patient
@@ -176,7 +176,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -209,7 +209,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <p>
-                            <b>Name :</b> <?php echo $record['first_name']." ".$record['last_name']; ?>
+                            <b>Name :</b> <?php echo $record['name']; ?>
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -236,7 +236,7 @@
 
                 <div class="container-fluid pl-0 pr-0">
                 <?php
-                        $all_treat = "SELECT * FROM `user-answer` WHERE `user_id`='$user_id' ORDER BY `time` DESC";
+                        $all_treat = "SELECT * FROM `consultation_time` WHERE `assigned_user`='$user_id' ORDER BY `date` DESC, `time_range` DESC";
                         $all_treat_run = mysqli_query($con, $all_treat);
                         $count=1;
                         while($all_treat_res = mysqli_fetch_assoc($all_treat_run)){

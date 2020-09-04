@@ -7,7 +7,7 @@
   if(isset($_SESSION['user_id'])){
 
     //finding total number of new patient
-    $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+    $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
     $new_patient_count_run = mysqli_query($con, $new_patient_count);
     $data=mysqli_fetch_assoc($new_patient_count_run);
     //finding total number of new patient
@@ -84,16 +84,26 @@
         <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="#">New Treatment</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
         </div>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="consultation_time.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Timing</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-clock"></i>
+          <span>Timing</span>
+        </a>
+        <div id="timing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Time Slots:</h6>
+            <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
+            <a class="collapse-item" href="available_slots.php">Available Slots</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->

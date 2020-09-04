@@ -9,7 +9,7 @@
       $all_user_run = mysqli_query($con, $all_user);
 
       //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
       $new_patient_count_run = mysqli_query($con, $new_patient_count);
       $data=mysqli_fetch_assoc($new_patient_count_run);
       //finding total number of new patient
@@ -80,16 +80,32 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
-          aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-user-injured"></i>
-          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-user-injured"></i>
+            <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
+            </a>
+            <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Patients : </h6>
+                <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
+                <a class="collapse-item" href="#">New Treatment</a>
+                <a class="collapse-item" href="all_patients.php">All Patient</a>
+            </div>
+            </div>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-clock"></i>
+          <span>Timing</span>
         </a>
-        <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="timing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
-            <a class="collapse-item" href="all_patients.php">All Patient</a>
+            <h6 class="collapse-header">Time Slots:</h6>
+            <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
+            <a class="collapse-item" href="available_slots.php">Available Slots</a>
           </div>
         </div>
       </li>
@@ -171,7 +187,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -220,8 +236,7 @@
                       <th>Gender</th>
                       <th>Age</th>
                       <th>Contact No.</th>
-                      <th>Status</th>
-                      <th>Details</th>
+                      <th>Email ID</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -232,12 +247,11 @@
                       ?>
                     <tr>
                       <th><?php echo $count; ?></th>
-                      <td><?php echo $record['first_name']." ".$record['last_name']; ?></td>
+                      <td><?php echo $record['name']; ?></td>
                       <td><?php echo $record['gender']; ?></td>
                       <td>61</td>
                       <td><?php echo $record['contact_no']; ?></td>
-                      <td>open</td>
-                      <td><a href="#">view</a></td>
+                      <td><?php echo $record['email_id']; ?></td>
                     </tr>
                     <?php 
                         $count++;

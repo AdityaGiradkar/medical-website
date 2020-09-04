@@ -6,14 +6,19 @@
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
 
+      // $all_user = "SELECT * 
+      //             FROM `user` RIGHT JOIN `user-answer` 
+      //             ON `user`.`user_id`=`user-answer`.`user_id`  
+      //             ORDER BY `user-answer`.`time`";
       $all_user = "SELECT * 
-                  FROM `user` RIGHT JOIN `user-answer` 
-                  ON `user`.`user_id`=`user-answer`.`user_id`  
-                  ORDER BY `user-answer`.`time`";
+                  FROM `user` RIGHT JOIN `consultation_time` 
+                  ON `user`.`user_id`=`consultation_time`.`assigned_user` 
+                  WHERE `consultation_time`.`status`='assigned' OR `consultation_time`.`status`='checked'
+                  ORDER BY `consultation_time`.`date` DESC, `consultation_time`.`time_range` DESC";
       $all_user_run = mysqli_query($con, $all_user);
 
       //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
       $new_patient_count_run = mysqli_query($con, $new_patient_count);
       $data=mysqli_fetch_assoc($new_patient_count_run);
       //finding total number of new patient
@@ -84,7 +89,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePatient"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
           <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
@@ -92,7 +97,8 @@
         <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="#">New Treatment</a>
             <a class="collapse-item active" href="all_patients.php">All Patient</a>
           </div>
         </div>
@@ -175,7 +181,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -220,12 +226,10 @@
                   <thead>
                     <tr>
                       <th>Sr. No.</th>
+                      <th>Date</th>
+                      <th>Time</th>
                       <th>name</th>
-                      <th>Gender</th>
-                      <th>Age</th>
                       <th>Contact No.</th>
-                      <th>Date & Time</th>
-                      <th>Status</th>
                       <th>Details</th>
                     </tr>
                   </thead>
@@ -237,13 +241,14 @@
                       ?>
                     <tr>
                       <th><?php echo $count; ?></th>
-                      <td><?php echo $record['first_name']." ".$record['last_name']; ?></td>
-                      <td><?php echo $record['gender']; ?></td>
-                      <td>61</td>
+                      <td><?php echo date("d/m/Y", strtotime($record['date'])); ?></td>
+                      <td><?php echo $record['time_range']; ?></td>
+                      <td><?php echo $record['name']; ?></td>
                       <td><?php echo $record['contact_no']; ?></td>
-                      <td><?php echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td>
-                      <td><?php echo $record['status']; ?></td>
-                      <td><a href="patient_history.php?uid=<?php echo $record['user_id']; ?>">view</a></td>
+                      
+                      <!-- <td><?php //echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td> -->
+                      
+                      <td><a href="patient_history.php?uid=<?php echo $record['assigned_user']; ?>">view</a></td>
                     </tr>
                     <?php 
                         $count++;
