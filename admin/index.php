@@ -146,6 +146,21 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs"
+          aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-pills"></i>
+          <span>Blogs</span>
+        </a>
+        <div id="collapseBlogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Blogs Section:</h6>
+            <a class="collapse-item" href="blogs_table.php">All Blogs</a>
+            <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="users.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Users</span></a>
