@@ -571,6 +571,49 @@
                 </div>
             </div>
         </div>
+
+        <?php 
+            $all_blogs ="SELECT * FROM `blogs`";
+            $all_blogs_run = mysqli_query($con, $all_blogs);
+             
+        ?>
+        <div class="blogs paddingTobBottom" style="margin-top: 405px;  background-color: rgb(249, 250, 255);">
+            <div class="container">
+                <h2 class="text-center">Blogs</h2>
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <div id="blog-slider" class="owl-carousel">
+                            <?php 
+                                while($all_blogs_res = mysqli_fetch_assoc($all_blogs_run)){
+                            ?>
+                            <div class="post-slide">
+                                <div class="card mx-auto" style="width: 15rem; border-radius: 12px;">
+                                    <div class="contain">
+                                        <img src="admin/img/blog_images/<?php echo $all_blogs_res['cover_img']; ?>"  height="300" class="card-img-top image"
+                                            alt="...">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="post-title text-center">
+                                            <a href="<?php echo $all_blogs_res['blog_link']; ?>" target="_blank" title="User Profile">
+                                                <?php echo $all_blogs_res['blog_name']; ?>
+                                            </a>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php 
+                                }
+                            ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-dark" style="padding:1%; color:white;">
+            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd.</h6>
+        </div>
     </div>
 
 
@@ -801,6 +844,16 @@
             items: 1,
             itemsDesktop: [1199, 1],
             itemsDesktopSmall: [980, 1],
+            itemsMobile: [600, 1],
+            navigation: true,
+            navigationText: ["", ""],
+            pagination: true,
+            autoPlay: false
+        });
+        $("#blog-slider").owlCarousel({
+            items: 3,
+            itemsDesktop: [1199, 2],
+            itemsDesktopSmall: [980, 2],
             itemsMobile: [600, 1],
             navigation: true,
             navigationText: ["", ""],

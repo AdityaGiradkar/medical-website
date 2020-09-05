@@ -305,7 +305,7 @@
         $blog_name = mysqli_real_escape_string($con, $_POST['blog_name']);
         $blog_link = mysqli_real_escape_string($con, $_POST['blog_link']);
         $discription = mysqli_real_escape_string($con, $_POST['discription']);
-        $file = $_FILES['cover_image'];
+        $file = mysqli_real_escape_string($con, $_FILES['cover_image']);
         
         $file_original = $_FILES['cover_image']['name'];
         $file_tmp_name = $_FILES['cover_image']['tmp_name'];
