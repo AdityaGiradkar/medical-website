@@ -1,3 +1,13 @@
+<?php 
+  session_start();
+  include("includes/db.php");
+  $user_id = $_SESSION['user_id'];
+
+  $user_details = "SELECT * FROM `user` u, `medical_history` m where u.`user_id` = m.`user_id` AND u.`user_id`='$user_id'";
+  $user_details_run = mysqli_query($con, $user_details);
+  $user_details_res = mysqli_fetch_assoc($user_details_run);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -169,197 +179,207 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" value="giradkaraditya3@gmail.com" id="email"
+                <input type="email" class="form-control" value="<?php echo $user_details_res['email_id']; ?>" id="email"
                   aria-describedby="emailHelp" disabled>
               </div>
               <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Your WhatsApp Number</label>
-                <input type="text" class="form-control" value="9404408640" id="number">
+                <input type="text" class="form-control" name="contact" value="<?php echo $user_details_res['contact_no']; ?>" id="number">
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Your Name</label>
-                <input type="text" class="form-control" value="Aditya Giradkar" id="name">
+                <input type="text" class="form-control"name="name"  value="<?php echo $user_details_res['name']; ?>" id="name">
               </div>
               <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Your husband's / father's name</label>
-                <input type="text" class="form-control" value="Diwakar Giradkar" id="f_name">
+                <input type="text" class="form-control" name="father_name" value="<?php echo $user_details_res['father_name']; ?>" id="f_name">
               </div>
             </div>
 
             <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputCity">Are you working?</label>
-                <select id="inputState" class="form-control">
-                  <option selected disabled>Choose...</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                  <option>Work From Home</option>
+              <div class="form-group col-md-3">
+                <label for="inputState">Gender</label>
+                <select id="inputState" name="gender" class="form-control">
+                  <option selected disabled hidden>Choose...</option>
+                  <option value="Male" <?php if($user_details_res['gender']=="Male") echo 'selected="selected"'; ?>>Male</option>
+                  <option value="Female" <?php if($user_details_res['gender']=="Female") echo 'selected="selected"'; ?>>Female</option>
+                  <option value="Other" <?php if($user_details_res['gender']=="Other") echo 'selected="selected"'; ?>>Other</option>
                 </select>
               </div>
-              <div class="form-group col-md-4">
-                <label for="inputState">Date of Birth</label>
-                <input class="form-control" type="date" name="date" />
+              <div class="form-group col-md-3">
+                <label for="inputCity">Are you working?</label>
+                <select id="inputState" name="working" class="form-control">
+                  <option selected disabled hidden>Choose...</option>
+                  <option value="YES" <?php if($user_details_res['working']=="YES") echo 'selected="selected"'; ?>>Yes</option>
+                  <option value="NO" <?php if($user_details_res['working']=="NO") echo 'selected="selected"'; ?>>No</option>
+                  <option value="Work From Home" <?php if($user_details_res['working']=="Work From Home") echo 'selected="selected"'; ?>>Work From Home</option>
+                </select>
               </div>
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-3">
+                <label for="inputState">Date of Birth</label>
+                <input class="form-control" type="date" name="dob" value="<?php if($user_details_res['dob'] != ''){ echo strftime('%Y-%m-%d', strtotime($user_details_res['dob']));} ?>" />
+              </div>
+              <div class="form-group col-md-3">
                 <label for="inputZip">Maritial Status</label>
-                <select id="maritial_status" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>married</option>
-                  <option>unmarried</option>
-                  <option>other</option>
+                <select id="maritial_status" name="married" class="form-control">
+                  <option selected disabled hidden>Choose...</option>
+                  <option value="YES" <?php if($user_details_res['married']=="YES") echo 'selected="selected"'; ?>>married</option>
+                  <option value="NO" <?php if($user_details_res['married']=="NO") echo 'selected="selected"'; ?>>unmarried</option>
+                  <option value="Other" <?php if($user_details_res['married']=="Other") echo 'selected="selected"'; ?>>other</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
               <label for="address">Residential postal address</label>
-              <textarea class="form-control" id="address" rows="3"></textarea>
+              <textarea class="form-control" name="address" id="address" rows="3"><?php echo $user_details_res['address']; ?></textarea>
             </div>
 
+            <hr>
             <!-- Page Heading -->
-            <h2 class="h4 mb-3 mt-5 text-gray-800">Medical Details</h2>
+            <h2 class="h4 mb-3 mt-4 text-gray-800">Medical Details</h2>
 
             <div class="form-group">
               <label><strong>What are problems you have ? </strong></label>
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Fitness" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">Fitness</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Weight /obesity" id="defaultCheck2">
                     <label class="form-check-label" for="defaultCheck2">Weight /obesity</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Health issue" id="defaultCheck3">
                     <label class="form-check-label" for="defaultCheck3">Health issue</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Stress" id="defaultCheck4">
                     <label class="form-check-label" for="defaultCheck4">Stress</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="PCOD" id="defaultCheck5">
                     <label class="form-check-label" for="defaultCheck5">PCOD</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Gynaec problem" id="defaultCheck6">
                     <label class="form-check-label" for="defaultCheck6">Gynaec problem</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Infertility" id="defaultCheck7">
                     <label class="form-check-label" for="defaultCheck7">Infertility</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck8">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Heart disease" id="defaultCheck8">
                     <label class="form-check-label" for="defaultCheck8">Heart disease</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck9">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Diabetes" id="defaultCheck9">
                     <label class="form-check-label" for="defaultCheck9">Diabetes</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="ARTHRITIS" id="defaultCheck10">
                     <label class="form-check-label" for="defaultCheck10">ARTHRITIS</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck11">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Spine problem" id="defaultCheck11">
                     <label class="form-check-label" for="defaultCheck11">Spine problem</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck12">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Liver disease" id="defaultCheck12">
                     <label class="form-check-label" for="defaultCheck12">Liver disease</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck13">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Infection" id="defaultCheck13">
                     <label class="form-check-label" for="defaultCheck13">Infection</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck14">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Cancer" id="defaultCheck14">
                     <label class="form-check-label" for="defaultCheck14">Cancer</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck15">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Respiratory disorder" id="defaultCheck15">
                     <label class="form-check-label" for="defaultCheck15">Respiratory disorder</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck16">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Stomach" id="defaultCheck16">
                     <label class="form-check-label" for="defaultCheck16">Stomach</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck17">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Colon and Rectum" id="defaultCheck17">
                     <label class="form-check-label" for="defaultCheck17">Colon and Rectum</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck18">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Blood disorder" id="defaultCheck18">
                     <label class="form-check-label" for="defaultCheck18">Blood disorder</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck19">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Brain related disease" id="defaultCheck19">
                     <label class="form-check-label" for="defaultCheck19">Brain related disease</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck20">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Skin disease" id="defaultCheck20">
                     <label class="form-check-label" for="defaultCheck20">Skin disease</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck21">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Kidney disease" id="defaultCheck21">
                     <label class="form-check-label" for="defaultCheck21">Kidney disease</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck22">
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Circulation disorder" id="defaultCheck22">
                     <label class="form-check-label" for="defaultCheck22">Circulation disorder</label>
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck23">
+                  <div class="form-check"> 
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Chronic disease" id="defaultCheck23">
                     <label class="form-check-label" for="defaultCheck23">Chronic disease</label>
                   </div>
                 </div>
@@ -371,49 +391,49 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Check1">
+                    <input class="form-check-input" type="checkbox" name="treatment_tried[]" value="Allopathy" id="Check1">
                     <label class="form-check-label" for="Check1">Allopathy</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Check2">
+                    <input class="form-check-input" type="checkbox" name="treatment_tried[]" value="Ayurveda" id="Check2">
                     <label class="form-check-label" for="Check2">Ayurveda</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Check3">
+                    <input class="form-check-input" type="checkbox" name="treatment_tried[]" value="Homeopathy" id="Check3">
                     <label class="form-check-label" for="Check3">Homeopathy</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Check4">
+                    <input class="form-check-input" type="checkbox" name="treatment_tried[]" value="Herbal" id="Check4">
                     <label class="form-check-label" for="Check4">Herbal</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Check5">
+                    <input class="form-check-input" type="checkbox" name="treatment_tried[]" value="Home remedies" id="Check5">
                     <label class="form-check-label" for="Check5">Home remedies</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Check6">
+                    <input class="form-check-input" type="checkbox" name="treatment_tried[]" value="Naturopathy" id="Check6">
                     <label class="form-check-label" for="Check6">Naturopathy</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Check7">
+                    <input class="form-check-input" type="checkbox" name="treatment_tried[]" value="Yoga" id="Check7">
                     <label class="form-check-label" for="Check7">Yoga</label>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="Check8">
+                    <input class="form-check-input" type="checkbox" name="treatment_tried[]" value="Other" id="Check8">
                     <label class="form-check-label" for="Check8">Other</label>
                   </div>
                 </div>
@@ -423,35 +443,31 @@
             <div class="form-group">
               <label><strong>Would you like a programme which has no side effects?</strong> </label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="side_effect" id="side_effect1" value="option1">
-                <label class="form-check-label" for="side_effect1">
-                  Yes
-                </label>
+                <input class="form-check-input" type="radio" name="side_effect" id="side_effect1" value="YES" <?php if($user_details_res['side_effect']=="YES") echo 'selected="selected"'; ?>>
+                <label class="form-check-label" for="side_effect1">Yes</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="side_effect" id="side_effect2" value="option2">
-                <label class="form-check-label" for="side_effect2">
-                  No
-                </label>
+                <input class="form-check-input" type="radio" name="side_effect" id="side_effect2" value="NO" <?php if($user_details_res['side_effect']=="NO") echo 'selected="selected"'; ?>>
+                <label class="form-check-label" for="side_effect2">No</label>
               </div>
             </div>
 
             <div class="form-group">
               <label><strong>What time is best daily for your health session?</strong> </label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="health_session" id="health_session1" value="option1">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session1" value="morning">
                 <label class="form-check-label" for="health_session1">morning</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="health_session" id="health_session2" value="option2">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session2" value="afternoon">
                 <label class="form-check-label" for="health_session2">afternoon</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="health_session" id="health_session3" value="option2">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session3" value="evening">
                 <label class="form-check-label" for="health_session3">evening</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="health_session" id="health_session4" value="option2">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session4" value="after dinner">
                 <label class="form-check-label" for="health_session4">after dinner</label>
               </div>
             </div>
@@ -459,15 +475,15 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputState"><strong>date of first illness detected </strong></label>
-                <input class="form-control" type="date" name="date" />
+                <input class="form-control" type="date" name="date_illness" value="<?php if($user_details_res['date_first_illness'] != ''){ echo strftime('%Y-%m-%d', strtotime($user_details_res['date_first_illness']));} ?>" />
               </div>
               <div class="form-group col-md-6">
                 <label for="inputState"><strong>Diagnosis made by doctors.</strong></label>
-                <input class="form-control" type="text" name="date" placeholder="if not then mention 'NO'" />
+                <input class="form-control" type="text" name="pre_doctor" placeholder="if not then mention 'NO'" />
               </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Update Details</button>
+            <button type="submit" name="update" class="btn btn-primary">Update Details</button>
           </form>
         </div>
         <!-- /.container-fluid -->
@@ -529,3 +545,66 @@
 </body>
 
 </html>
+
+<?php 
+  if(isset($_POST['update'])){
+    $name             = mysqli_real_escape_string($con, $_POST['name']);
+    $father_name      = mysqli_real_escape_string($con, $_POST['father_name']);
+    $gender           = mysqli_real_escape_string($con, $_POST['gender']);
+    $contact          = mysqli_real_escape_string($con, $_POST['contact']);
+    $dob              = mysqli_real_escape_string($con, $_POST['dob']);
+    $married          = mysqli_real_escape_string($con, $_POST['married']);
+    $working          = mysqli_real_escape_string($con, $_POST['working']);
+    $address          = mysqli_real_escape_string($con, $_POST['address']);
+    $problems         = $_POST['problems'];
+    $treatment_tried  = $_POST['treatment_tried'];
+    $side_effect      = mysqli_real_escape_string($con, $_POST['side_effect']);
+    $health_session   = mysqli_real_escape_string($con, $_POST['health_session']);
+    $date_illness     = mysqli_real_escape_string($con, $_POST['date_illness']);
+    $pre_doctor       = mysqli_real_escape_string($con, $_POST['pre_doctor']); 
+
+    //convert array to comma seprated string for desease
+    $problem_string = "";
+    foreach ($problems as $desease) {
+      $problem_string .= $desease.", ";
+    }
+    $problem_string = mysqli_real_escape_string($con, $problem_string);
+
+    //convert array to comma seprated string for treatment tried
+    $treatment_tried_string = "";
+    foreach ($treatment_tried as $treat) {
+      $treatment_tried_string .= $treat.", ";
+    }
+    $treatment_tried_string = mysqli_real_escape_string($con, $treatment_tried_string);
+
+    //flag1 is 1 if user profile update sucessfully similarly in flag2 when medical history update sucess
+    $flag1 = 0;
+    $update_user = "UPDATE `user` 
+                    SET `name`='$name',`father_name`='$father_name',`gender`='$gender',`contact_no`='$contact',`dob`='$dob',`married`='$married',`working`='$working',`address`='$address' 
+                    WHERE `user_id`='$user_id'";
+    $update_user_run = mysqli_query($con, $update_user);
+    if(mysqli_affected_rows($con)){
+      $flag1 = 1;
+    }
+
+    $flag2 = 0;
+    $update_medical_history = "UPDATE `medical_history` 
+                                SET `problems`='$problem_string',`teratment_tried`='$treatment_tried_string',`side_effect`='$side_effect',`health_session`='$health_session',`date_first_illness`='$date_illness',`prev_doctor`='$pre_doctor'
+                                WHERE `user_id`='$user_id'";
+    $update_medical_history_run = mysqli_query($con, $update_medical_history);
+    if(mysqli_affected_rows($con)){
+      $flag2 = 1;
+    }
+
+    if($flag1 == 1 && $flag2 == 1){
+      echo "<script>
+          alert('user Info updated sucessfully');
+          window.location.href='update_details.php';
+      </script>";
+    }
+
+
+  }
+
+
+?>

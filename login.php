@@ -77,7 +77,7 @@
                     <a href="#"><small class="form-text text-muted text-right"><em>Forget Password ?</em></small></a>
                     <button type="submit" class="login-btn mt-5" name="submit">LOGIN</button>
                 </form>
-                <small class="form-text text-center mt-5"><em>Not an existing user ?</em> <a href="register.html">Create
+                <small class="form-text text-center mt-5"><em>Not an existing user ?</em> <a href="register.php">Create
                         New</a></small>
             </div>
         </div>
