@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Edit Question</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- custom style sheet for sidebar and navigation bar -->
+  <link rel="stylesheet" href="admin/css/sidebar.css">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <i class="fas fa-fw fa-home"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Home site</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="../index.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Hospital
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>History</span>
+        </a>
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Treatment History:</h6>
+            <a class="collapse-item" href="all_consultations.php">All Consultations</a>
+            <a class="collapse-item active" href="add_question.php">Add Question</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="history.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Treatment History</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Personal
+      </div>
+
+      <li class="nav-item">
+        <a class="nav-link" href="update_details.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Update Details</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Change Password</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Logout</span></a>
+      </li>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']; ?></span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid main-left">
+          <form method="post">
+            <!-- Page Heading -->
+            <h2 class="h4 mb-3 text-gray-800">Personal Details</h2>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" value="giradkaraditya3@gmail.com" id="email"
+                  aria-describedby="emailHelp" disabled>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Your WhatsApp Number</label>
+                <input type="text" class="form-control" value="9404408640" id="number">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Your Name</label>
+                <input type="text" class="form-control" value="Aditya Giradkar" id="name">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Your husband's / father's name</label>
+                <input type="text" class="form-control" value="Diwakar Giradkar" id="f_name">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputCity">Are you working?</label>
+                <select id="inputState" class="form-control">
+                  <option selected disabled>Choose...</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Work From Home</option>
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">Date of Birth</label>
+                <input class="form-control" type="date" name="date" />
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputZip">Maritial Status</label>
+                <select id="maritial_status" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>married</option>
+                  <option>unmarried</option>
+                  <option>other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Residential postal address</label>
+              <textarea class="form-control" id="address" rows="3"></textarea>
+            </div>
+
+            <!-- Page Heading -->
+            <h2 class="h4 mb-3 mt-5 text-gray-800">Medical Details</h2>
+
+            <div class="form-group">
+              <label><strong>What are problems you have ? </strong></label>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">Fitness</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                    <label class="form-check-label" for="defaultCheck2">Weight /obesity</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                    <label class="form-check-label" for="defaultCheck3">Health issue</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                    <label class="form-check-label" for="defaultCheck4">Stress</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                    <label class="form-check-label" for="defaultCheck5">PCOD</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
+                    <label class="form-check-label" for="defaultCheck6">Gynaec problem</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                    <label class="form-check-label" for="defaultCheck7">Infertility</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck8">
+                    <label class="form-check-label" for="defaultCheck8">Heart disease</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck9">
+                    <label class="form-check-label" for="defaultCheck9">Diabetes</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck10">
+                    <label class="form-check-label" for="defaultCheck10">ARTHRITIS</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck11">
+                    <label class="form-check-label" for="defaultCheck11">Spine problem</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck12">
+                    <label class="form-check-label" for="defaultCheck12">Liver disease</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck13">
+                    <label class="form-check-label" for="defaultCheck13">Infection</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck14">
+                    <label class="form-check-label" for="defaultCheck14">Cancer</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck15">
+                    <label class="form-check-label" for="defaultCheck15">Respiratory disorder</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck16">
+                    <label class="form-check-label" for="defaultCheck16">Stomach</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck17">
+                    <label class="form-check-label" for="defaultCheck17">Colon and Rectum</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck18">
+                    <label class="form-check-label" for="defaultCheck18">Blood disorder</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck19">
+                    <label class="form-check-label" for="defaultCheck19">Brain related disease</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck20">
+                    <label class="form-check-label" for="defaultCheck20">Skin disease</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck21">
+                    <label class="form-check-label" for="defaultCheck21">Kidney disease</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck22">
+                    <label class="form-check-label" for="defaultCheck22">Circulation disorder</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck23">
+                    <label class="form-check-label" for="defaultCheck23">Chronic disease</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label><strong>what type of treatment you tried before?</strong> </label>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Check1">
+                    <label class="form-check-label" for="Check1">Allopathy</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Check2">
+                    <label class="form-check-label" for="Check2">Ayurveda</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Check3">
+                    <label class="form-check-label" for="Check3">Homeopathy</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Check4">
+                    <label class="form-check-label" for="Check4">Herbal</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Check5">
+                    <label class="form-check-label" for="Check5">Home remedies</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Check6">
+                    <label class="form-check-label" for="Check6">Naturopathy</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Check7">
+                    <label class="form-check-label" for="Check7">Yoga</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="Check8">
+                    <label class="form-check-label" for="Check8">Other</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label><strong>Would you like a programme which has no side effects?</strong> </label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="side_effect" id="side_effect1" value="option1">
+                <label class="form-check-label" for="side_effect1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="side_effect" id="side_effect2" value="option2">
+                <label class="form-check-label" for="side_effect2">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label><strong>What time is best daily for your health session?</strong> </label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session1" value="option1">
+                <label class="form-check-label" for="health_session1">morning</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session2" value="option2">
+                <label class="form-check-label" for="health_session2">afternoon</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session3" value="option2">
+                <label class="form-check-label" for="health_session3">evening</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session4" value="option2">
+                <label class="form-check-label" for="health_session4">after dinner</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputState"><strong>date of first illness detected </strong></label>
+                <input class="form-control" type="date" name="date" />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputState"><strong>Diagnosis made by doctors.</strong></label>
+                <input class="form-control" type="text" name="date" placeholder="if not then mention 'NO'" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Details</button>
+          </form>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="../logout.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="admin/vendor/jquery/jquery.min.js"></script>
+  <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="admin/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>
