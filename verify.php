@@ -7,7 +7,7 @@
         $search_for_account = mysqli_query($con, $search_for_account);
         $row = mysqli_num_rows($search_for_account);
         if($row == 1){
-            $update_verification = "UPDATE `user` SET `verified`=1 WHERE `vkey`='$vkey' LIMIT 1";
+            $update_verification = "UPDATE `user` SET `verified`=1,`vkey`='0' WHERE `vkey`='$vkey' LIMIT 1";
             if(mysqli_query($con, $update_verification)){
                 echo "Account verified sucessfully";
             }

@@ -15,6 +15,7 @@
                     //account is verified procced further
                     $_SESSION['user_id'] = $record['user_id'];
                     $_SESSION['name'] = $record['name'];
+                    $_SESSION['email'] = $record['email_id'];
                     if($record['role'] == 'patient'){
                         header('location: index.php');
                     }else if($record['role'] == 'doctor') {
