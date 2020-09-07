@@ -237,6 +237,7 @@
                       <th>Age</th>
                       <th>Contact No.</th>
                       <th>Email ID</th>
+                      <th>User Details</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -252,6 +253,7 @@
                       <td>61</td>
                       <td><?php echo $record['contact_no']; ?></td>
                       <td><?php echo $record['email_id']; ?></td>
+                      <td><a href="user_details.php?uid=<?php echo $record['user_id']; ?>">View</a></td>
                     </tr>
                     <?php 
                         $count++;

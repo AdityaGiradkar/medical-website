@@ -702,9 +702,7 @@
                         <div class="form-check pt-3 pb-3">
                             <input class="form-check-input" type="radio" name="test_type" id="test_type1"
                                 value="1">
-                            <label class="form-check-label" for="consult_type1">
-                                Test A
-                            </label>
+                            <label class="form-check-label" for="test_type1">Test A</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="General Consultation" data-content="Some nice text hereknjfsdb"><i
                                     class="fas fa-info-circle"></i></a>
@@ -712,29 +710,15 @@
                         <div class="form-check pb-3">
                             <input class="form-check-input" type="radio" name="test_type" id="test_type2"
                                 value="2">
-                            <label class="form-check-label" for="consult_type2">
-                                Test B
-                            </label>
+                            <label class="form-check-label" for="test_type2">YogE @ HOME</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="Holistic Pre-program Counselling" data-content="Some nice text hereknjfsdb"><i
+                                title="YogE @ HOME" data-content="Vital parameters and measurements give an instant insight in to the condition of the patient. Our application helps to manage the simple ,moderate and critical cases at home or under domicillary hospitalization or in hospitals. It is a helping hand of a doctor 24hr round the clock.  it helps in disease staging . disease prognosis, disease diagnosis, treatment response, detecting alarm signs etc."><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check pb-3">
                             <input class="form-check-input" type="radio" name="test_type" id="test_type3"
                                 value="3">
-                            <label class="form-check-label" for="consult_type3">
-                                Test C
-                            </label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type3"
-                                value="3">
-                            <label class="form-check-label" for="consult_type3">
-                                Test D
-                            </label>
+                            <label class="form-check-label" for="test_type3">Test C</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
                                     class="fas fa-info-circle"></i></a>
@@ -799,8 +783,21 @@
 
     // Php for taking test
     if(isset($_POST['start_test'])){
-        $test_type = $_POST['test_type'];
-        echo "<script>window.location.href='test.php?type=$test_type'</script>";
+        if(isset($_SESSION['user_id'])){
+            $test_type = $_POST['test_type'];
+            if($test_type == 1){
+                echo "<script>window.location.href='test1.php'</script>";
+            }else if($test_type == 2){
+                echo "<script>window.location.href='YogE_HOME.php'</script>";
+            }else if($test_type == 3){
+                echo "<script>window.location.href='test3.php'</script>";
+            } 
+        }else{
+            echo "<script>
+                alert('Please login first.');
+                window.location.href='login.php';
+            </script>";
+        }
     }
 
 
