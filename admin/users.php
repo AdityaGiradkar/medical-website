@@ -75,25 +75,26 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Treatment
+        Consultation
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-user-injured"></i>
-            <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
-            </a>
-            <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Patients : </h6>
-                <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
-                <a class="collapse-item" href="#">New Treatment</a>
-                <a class="collapse-item" href="all_patients.php">All Patient</a>
-            </div>
-            </div>
-        </li>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
+          aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-user-injured"></i>
+          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle"
+                style="font-size: .75em !important;"></i></sup><?php } ?></span>
+        </a>
+        <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Patients : </h6>
+            <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
+            <a class="collapse-item" href="all_patients.php">All Patient</a>
+          </div>
+        </div>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
@@ -118,26 +119,10 @@
         Hospital
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-newspaper"></i>
-          <span>Quiz</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Quiz Section:</h6>
-            <a class="collapse-item" href="all_questions.php">All Questions</a>
-            <a class="collapse-item" href="add_question.php">Add Question</a>
-          </div>
-        </div>
-      </li>
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-pills"></i>
+          <i class="fas fa-fw fa-pills"></i>
           <span>Medicines</span>
         </a>
         <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -145,6 +130,21 @@
             <h6 class="collapse-header">Medicine Section:</h6>
             <a class="collapse-item" href="all_medicines.php">All Medicines</a>
             <a class="collapse-item" href="add_medicine.php">Add Medicine</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-pills"></i>
+          <span>Blogs</span>
+        </a>
+        <div id="collapseBlogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Blogs Section:</h6>
+            <a class="collapse-item" href="blogs_table.php">All Blogs</a>
+            <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
           </div>
         </div>
       </li>
@@ -219,7 +219,7 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tables</h1>
           <p>All are patients.</p>
-          
+
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -241,7 +241,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <?php 
+                    <?php 
                       $count = 1;
                       while($record = mysqli_fetch_assoc($all_user_run)){
                           if($record['role'] != "doctor"){
@@ -260,7 +260,7 @@
                           }
                       }
                     ?>
-                    
+
                   </tbody>
                 </table>
               </div>

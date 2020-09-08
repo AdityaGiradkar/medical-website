@@ -7,7 +7,7 @@
     if(isset($_SESSION['user_id'])){
 
       //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
       $new_patient_count_run = mysqli_query($con, $new_patient_count);
       $data=mysqli_fetch_assoc($new_patient_count_run);
       //finding total number of new patient
@@ -27,7 +27,9 @@
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -68,7 +70,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Treatment
+        Consultation
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -81,8 +83,24 @@
         <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-clock"></i>
+          <span>Timing</span>
+        </a>
+        <div id="timing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Time Slots:</h6>
+            <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
+            <a class="collapse-item" href="available_slots.php">Available Slots</a>
           </div>
         </div>
       </li>
@@ -95,22 +113,6 @@
         Hospital
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-newspaper"></i>
-          <span>Quiz</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Quiz Section:</h6>
-            <a class="collapse-item" href="all_questions.php">All Questions</a>
-            <a class="collapse-item" href="add_question.php">Add Question</a>
-          </div>
-        </div>
-      </li>
-
       <li class="nav-item active">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMedicine"
           aria-expanded="true" aria-controls="collapseTwo">
@@ -122,6 +124,21 @@
             <h6 class="collapse-header">Medicine Section:</h6>
             <a class="collapse-item" href="all_medicines.php">All Medicines</a>
             <a class="collapse-item active" href="add_medicine.php">Add Medicine</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs"
+          aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-pills"></i>
+          <span>Blogs</span>
+        </a>
+        <div id="collapseBlogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Blogs Section:</h6>
+            <a class="collapse-item" href="blogs_table.php">All Blogs</a>
+            <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
           </div>
         </div>
       </li>
@@ -154,11 +171,13 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-           
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></span>
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span
+                  class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -191,23 +210,25 @@
         <!-- Begin Page Content -->
         <div class="container-fluid main-left">
 
-            <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
 
-            
-            <form method="post">
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">medicine : </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add medicine Name" name="name" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Dose : </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add standarad dose for above medicine." name="dose" rows="3"></textarea>
-                </div>
-               
-                <button type="submit" name="add" class="btn btn-primary">Add</button>
-            </form>
-            
+
+          <form method="post">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">medicine : </label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add medicine Name"
+                name="name" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Dose : </label>
+              <textarea class="form-control" id="exampleFormControlTextarea1"
+                placeholder="Add standarad dose for above medicine." name="dose" rows="3"></textarea>
+            </div>
+
+            <button type="submit" name="add" class="btn btn-primary">Add</button>
+          </form>
+
         </div>
         <!-- /.container-fluid -->
 
@@ -236,7 +257,8 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

@@ -5,18 +5,24 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
-      $user_id = $_GET['uid'];
-      $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
-      $user_info_run = mysqli_query($con, $user_info);
-      $record = mysqli_fetch_assoc($user_info_run);
-
-      $medical_history = "SELECT * FROM `medical_history` WHERE `user_id`='$user_id'";
-      $medical_history_run = mysqli_query($con, $medical_history);
-      $medical_history_res = mysqli_fetch_assoc($medical_history_run);
+      $test_id = $_GET['testID'];
+      $test_details = "SELECT * FROM `yoge_home` WHERE `test_id`='$test_id'";
+      $test_details_run = mysqli_query($con, $test_details);
+      $record = mysqli_fetch_assoc($test_details_run);
+      $user_id = $record['user_id'];
+      
       //checking if user present for perticular
       //if not then redirect to user page
       if($record){
-        
+
+        $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
+        $user_info_run = mysqli_query($con, $user_info);
+        $user_detail = mysqli_fetch_assoc($user_info_run);
+
+        $medical_history = "SELECT * FROM `medical_history` WHERE `user_id`='$user_id'";
+        $medical_history_run = mysqli_query($con, $medical_history);
+        $medical_history_res = mysqli_fetch_assoc($medical_history_run);
+            
         //finding total number of new patient
         $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
         $new_patient_count_run = mysqli_query($con, $new_patient_count);
@@ -90,18 +96,18 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
-          aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePatient" aria-expanded="true"
+          aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
           <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle"
                 style="font-size: .75em !important;"></i></sup><?php } ?></span>
         </a>
-        <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
             <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
-            <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
+            <a class="collapse-item active" href="test_submissions.php">New Test Submissions</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
         </div>
@@ -160,7 +166,7 @@
         </div>
       </li>
 
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="users.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Users</span></a>
@@ -168,11 +174,6 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <!-- <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" onClick="sidebarTog()" id="sidebarToggle"></button>
-      </div> -->
 
     </ul>
     <!-- End of Sidebar -->
@@ -235,31 +236,31 @@
             <h1 class="h4 mb-2 text-gray-800">Personal Details</h1>
             <div class="row">
               <div class="col-md-4">
-                <b>Name :</b> <?php echo $record['name']; ?>
+                <b>Name :</b> <?php echo $user_detail['name']; ?>
               </div>
               <div class="col-md-4">
-                <b>Father's Name :</b> <?php echo $record['father_name']; ?>
+                <b>Father's Name :</b> <?php echo $user_detail['father_name']; ?>
               </div>
               <div class="col-md-4">
-                <b>Contact :</b> <?php echo $record['contact_no']; ?>
+                <b>Contact :</b> <?php echo $user_detail['contact_no']; ?>
               </div>
               <div class="col-md-4">
-                <b>Email :</b> <?php echo $record['email_id']; ?>
+                <b>Email :</b> <?php echo $user_detail['email_id']; ?>
               </div>
               <div class="col-md-4">
-                <b>Gender :</b> <?php echo $record['gender']; ?>
+                <b>Gender :</b> <?php echo $user_detail['gender']; ?>
               </div>
               <div class="col-md-4">
-                <b>DOB :</b> <?php echo date("d-m-Y", strtotime($record['dob'])); ?>
+                <b>DOB :</b> <?php echo date("d-m-Y", strtotime($user_detail['dob'])); ?>
               </div>
               <div class="col-md-4">
-                <b>Married :</b> <?php echo $record['married']; ?>
+                <b>Married :</b> <?php echo $user_detail['married']; ?>
               </div>
               <div class="col-md-4">
-                <b>Working :</b> <?php echo $record['working']; ?>
+                <b>Working :</b> <?php echo $user_detail['working']; ?>
               </div>
               <div class="col-md-4">
-                <b>Address :</b> <?php echo $record['address']; ?>
+                <b>Address :</b> <?php echo $user_detail['address']; ?>
               </div>
             </div>
 
@@ -294,130 +295,195 @@
           </div>
           <!-- person info ends  -->
 
-          <div class="border border-primary rounded-lg p-3 mt-4">
-            <h5>Treatment history</h5>
-
-            <div class="container-fluid pl-0 pr-0">
-              <?php
-                        $all_treat = "SELECT * FROM `consultation_time` WHERE `assigned_user`='$user_id' ORDER BY `date` DESC, `time_range` DESC";
-                        $all_treat_run = mysqli_query($con, $all_treat);
-                        $count=1;
-                        while($all_treat_res = mysqli_fetch_assoc($all_treat_run)){
-                            $sub_id = $all_treat_res['submission_id'];
-                ?>
-              <div class="card border-left-primary shadow h-100 py-2 mb-3">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="h6 mb-0 font-weight-bold text-gray-800">
-                        <?php echo date("d/m/Y", strtotime($all_treat_res['time'])); ?></div>
-                      <div class="text-xs font-weight-bold text-primary mt-2 mb-1">
-                        <?php 
-                                            $prescribed_med = "SELECT * FROM `prescribed-medicine` WHERE `submission_id`='$sub_id'";
-                                            $prescribed_med_run = mysqli_query($con, $prescribed_med);
-                                            while($prescribed_med_res = mysqli_fetch_assoc($prescribed_med_run)){
-                                                echo $prescribed_med_res['medicine_name'];
-                                        ?>
-                        - <?php echo $prescribed_med_res['quantity']; ?>
-                        &nbsp;|&nbsp;
-                        <?php }?>
-                        <?php echo "Status: ".$all_treat_res['status']; ?>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <a class="up-down-arrow" onClick="showDetails('d_<?php echo $count; ?>')"><i
-                          class="fas arrow fa-angle-right fa-2x" id="d_<?php echo $count; ?>_arrow"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body pt-2" style="display:none" id="d_<?php echo $count; ?>">
-                  <b>Details : </b>
-                  <div class="row">
-                    <?php 
-                                $all_queans = "SELECT * FROM `answers` WHERE `submission_id`='$sub_id'";
-                                $all_queans_run = mysqli_query($con, $all_queans);
-                                $que_no = 1;
-                                while($all_queans_res = mysqli_fetch_assoc($all_queans_run)){
-                            ?>
-                    <div class="col-md-6">
-                      <p><b><?php echo $que_no.". ".$all_queans_res['question_id']; ?></b></p>
-                      <p><?php echo "Ans:- ".$all_queans_res['answer']; ?></p>
-                    </div>
-                    <?php 
-                                $que_no++;
-                                }
-                            ?>
-                  </div>
-
-                  <div class="pt-4">
-                    <b>Treatment : </b>
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th scope="col">Sr. No.</th>
-                          <th scope="col">Medicine name</th>
-                          <th scope="col">quantity</th>
-                          <th scope="col">Dose</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php 
-                                        $medicine_no = 1;
-                                        $prescribed_med_run = mysqli_query($con, $prescribed_med);
-                                        while($prescribed_med_res = mysqli_fetch_assoc($prescribed_med_run)){
-                                    ?>
-                        <tr>
-                          <th scope="row"><?php echo $medicine_no; ?></th>
-                          <td><?php echo $prescribed_med_res['medicine_name']; ?></td>
-                          <td><?php echo $prescribed_med_res['quantity']; ?></td>
-                          <td><?php echo $prescribed_med_res['dose']; ?></td>
-                        </tr>
-                        <?php
-                                        $medicine_no++;
-                                        }
-                                    ?>
-                        <tr>
-                          <td scope="row" colspan="4"><?php echo "<b>Note : </b>".$all_treat_res['doctor-note']; ?></td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-
-                  </div>
-                  <div class="Actions">
-                    <?php 
-                                if($all_treat_res['status'] !== "closed"){
-                                ?>
-                    <div class="d-inline-block">
-                      <form method="post" onsubmit="return close_treatment()">
-                        <button type="submit" name="close_<?php echo $count; ?>" class="btn btn-success">Close
-                          treatment</button>
-                      </form>
-                      <?php 
-                                        if(isset($_POST['close_'.$count])){
-                                            $update_status = "UPDATE `user-answer` SET `status`='closed' WHERE `submission_id`='$sub_id'";
-                                            if($update_status_run = mysqli_query($con, $update_status)){
-                                                echo "<script> 
-                                                        alert('Treatment is closed. You can see this in All patient list');
-                                                        window.location.href='all_patients.php';
-                                                    </script>";
-                                            }
-                                        }
-                                    ?>
-                    </div>
-                    <?php } ?>
-                  </div>
-
-                </div>
-              </div>
-
-
-              <?php
-                        $count++; 
-                        }
-                    ?>
-            </div>
+          <!-- CREATE TABLE OF test details  -->
+          <div class="border border-primary rounded-lg mt-4 p-3">
+            <h1 class="h4 mb-2 text-gray-800">Submitted Test</h1>
+            <table class="table table-bordered table-striped table-responsive-md">
+              <thead>
+                <tr>
+                  <th scope="col">sr. no.</th>
+                  <th scope="col">Question</th>
+                  <th scope="col">Answer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>IF A HOSPITALIZED CASE THEN NAME OF HOSPITAL AND IPD NO.</td>
+                  <td><?php echo $record['hospital_name']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>COVID TESTING DONE</td>
+                  <td><?php echo $record['covid_test']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>COVID19 TEST REPORT</td>
+                  <td><?php echo $record['covid_report']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>DIAGNOSIS as written on hospital /prescription paper</td>
+                  <td><?php echo $record['prescription_paper']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>PULSEOX READING OF SPO2</td>
+                  <td><?php echo $record['SPO2']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>BLOOD PRESSURE</td>
+                  <td><?php echo $record['blod_pressure']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>PULSE RATE</td>
+                  <td><?php echo $record['pulse_rate']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>RESPIRATION RATE(RESPIRATION PER MINS)</td>
+                  <td><?php echo $record['respiration_rate']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">9</th>
+                  <td>Haemoglobin</td>
+                  <td><?php echo $record['haemoglobin']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">10</th>
+                  <td>WBC COUNT</td>
+                  <td><?php echo $record['wbc_count']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">11</th>
+                  <td>RBC COUNT</td>
+                  <td><?php echo $record['rbc_count']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">12</th>
+                  <td>HCT /HAEMATOCRIT/PCV</td>
+                  <td><?php echo $record['pvc']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">13</th>
+                  <td>LYMPHOCYTE COUNT</td>
+                  <td><?php echo $record['lymphocyte_count']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">14</th>
+                  <td>BAND CELLS</td>
+                  <td><?php echo $record['band_cell']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">15</th>
+                  <td>ESR</td>
+                  <td><?php echo $record['esr']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">16</th>
+                  <td>CRP VALUE</td>
+                  <td><?php echo $record['crp_value']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">17</th>
+                  <td>BSL RANDOM</td>
+                  <td><?php echo $record['bsl_random']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">18</th>
+                  <td>SGPT</td>
+                  <td><?php echo $record['sgpt']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">19</th>
+                  <td>SGOT</td>
+                  <td><?php echo $record['sgot']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">20</th>
+                  <td>URIC ACID level</td>
+                  <td><?php echo $record['uric_acid_level']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">21</th>
+                  <td>BLOOD UREA LEVEL </td>
+                  <td><?php echo $record['blood_urea_level']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">22</th>
+                  <td>SR CREATININE</td>
+                  <td><?php echo$record['SR_CREATININE']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">23</th>
+                  <td>24 hr urine output in ml</td>
+                  <td><?php echo $record['urin_output']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">24</th>
+                  <td>LEVEL OF CONSCIOUSNESS</td>
+                  <td><?php echo $record['level_consciousness']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">25</th>
+                  <td>SWELLING ON FEET</td>
+                  <td><?php echo $record['swelling_feet']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">26</th>
+                  <td>SWELLING UNDER EYES/FACE</td>
+                  <td><?php echo $record['swelling_eyes']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">27</th>
+                  <td>Electrolyte level - Sodium</td>
+                  <td><?php echo $record['electrolyte_sodium']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">28</th>
+                  <td>Electrolyte level - Potassium</td>
+                  <td><?php echo $record['electrolyte_potassium']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">29</th>
+                  <td>Electrolyte level - Chloride</td>
+                  <td><?php echo $record['electrolyte_chloride']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">30</th>
+                  <td>Lipid profile- Triglycerides</td>
+                  <td><?php echo $record['lipid_triglyceride']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">31</th>
+                  <td>Lipid profile - cholesterol</td>
+                  <td><?php echo $record['lipid_cholesterol']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">32</th>
+                  <td>Lipid profile- HDL</td>
+                  <td><?php echo $record['lipid_hdl']; ?></td>
+                </tr>
+                <tr>
+                  <th scope="row">33</th>
+                  <td>Any other complaints ?</td>
+                  <td><?php echo $record['other_complaint']; ?></td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn btn-primary">Start Treatment</button>
           </div>
+          <!-- CREATE TABLE OF test details  -->
+
+          <!-- treatment section -->
+
+          <!-- treatment section -->
+
+
+
 
         </div>
         <!-- /.container-fluid -->
@@ -481,6 +547,7 @@
 </body>
 
 </html>
+
 
 
 

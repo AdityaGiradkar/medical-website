@@ -73,7 +73,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-      Consultation
+        Consultation
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -81,20 +81,21 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
-          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
+          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle"
+                style="font-size: .75em !important;"></i></sup><?php } ?></span>
         </a>
         <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
             <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
-            <a class="collapse-item" href="#">New Treatment</a>
+            <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
           </div>
         </div>
       </li>
 
-      <li class="nav-item  active">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-clock"></i>
           <span>Timing</span>
@@ -116,26 +117,10 @@
         Hospital
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-newspaper"></i>
-          <span>Quiz</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Quiz Section:</h6>
-            <a class="collapse-item" href="all_questions.php">All Questions</a>
-            <a class="collapse-item" href="add_question.php">Add Question</a>
-          </div>
-        </div>
-      </li>
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
           aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-pills"></i>
+          <i class="fas fa-fw fa-pills"></i>
           <span>Medicines</span>
         </a>
         <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -143,6 +128,21 @@
             <h6 class="collapse-header">Medicine Section:</h6>
             <a class="collapse-item" href="all_medicines.php">All Medicines</a>
             <a class="collapse-item" href="add_medicine.php">Add Medicine</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-pills"></i>
+          <span>Blogs</span>
+        </a>
+        <div id="collapseBlogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Blogs Section:</h6>
+            <a class="collapse-item" href="blogs_table.php">All Blogs</a>
+            <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
           </div>
         </div>
       </li>
@@ -220,7 +220,7 @@
 
           <form method="post" class="mt-5" action="">
             <div class="form-group col-md-3">
-            <label for="exampleInputEmail1">Select Date</label>
+              <label for="exampleInputEmail1">Select Date</label>
               <input type="date" class="form-control" name="date" min="<?php echo date("Y-m-d"); ?>">
             </div>
             <table class="table table-bordered table-striped">
@@ -230,7 +230,7 @@
                   <th scope="col">Remove</th>
                 </tr>
               </thead>
-              <tbody  id="time">
+              <tbody id="time">
                 <!-- Medicine rows are added Dynamically through javascript -->
               </tbody>
 
@@ -238,9 +238,9 @@
             <button type="button" onClick="addTimeSlot()" class="btn btn-primary">Add Slots</button>
             <button type="submit" name="submit" class="btn btn-success float-right">Submit Time Slots</button>
           </form>
-            
 
-          
+
+
         </div>
         <!-- /.container-fluid -->
 

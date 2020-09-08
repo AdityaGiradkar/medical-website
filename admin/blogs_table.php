@@ -80,7 +80,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Treatment
+        Consultation
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -94,8 +94,23 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
             <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
-            <a class="collapse-item" href="#">New Treatment</a>
+            <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-clock"></i>
+          <span>Timing</span>
+        </a>
+        <div id="timing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Time Slots:</h6>
+            <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
+            <a class="collapse-item" href="available_slots.php">Available Slots</a>
           </div>
         </div>
       </li>
@@ -107,22 +122,6 @@
       <div class="sidebar-heading">
         Hospital
       </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-newspaper"></i>
-          <span>Quiz</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Quiz Section:</h6>
-            <a class="collapse-item" href="all_questions.php">All Questions</a>
-            <a class="collapse-item" href="add_question.php">Add Question</a>
-          </div>
-        </div>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
@@ -140,8 +139,8 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBlogs"
-          aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
+          aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
           <span>Blogs</span>
         </a>
@@ -160,7 +159,7 @@
           <span>Users</span></a>
       </li>
 
-      
+
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -226,7 +225,7 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tables</h1>
           <p>All are patients.</p>
-          
+
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -248,7 +247,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      <?php 
+                    <?php 
                       $count = 1;
                       while($record = mysqli_fetch_assoc($all_blogs_run)){
                           
@@ -257,20 +256,23 @@
                       <th><?php echo $count; ?></th>
                       <td><?php echo $record['blog_name']; ?></td>
                       <td><a href="<?php echo $record['blog_link']; ?>"><?php echo $record['blog_link']; ?></a></td>
-                      <td><img src="img/blog_images/<?php echo $record['cover_img']; ?>" width="100" alt="blog cover photo" /></td>
+                      <td><img src="img/blog_images/<?php echo $record['cover_img']; ?>" width="100"
+                          alt="blog cover photo" /></td>
                       <td><?php echo $record['small_description']; ?></td>
-                      
+
                       <!-- <td><?php //echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td> -->
-                      
+
                       <td><a href="edit_blog.php?bid=<?php echo $record['blog_id']; ?>">Edit</a></td>
-                      <td><a onClick="javascript: return confirm('Do you want to remove <?php echo $record['blog_name']; ?>?');" href="delete_blog.php?id=<?php echo $record['blog_id']; ?>" style="color:red;">Delete</a></td>
+                      <td><a
+                          onClick="javascript: return confirm('Do you want to remove <?php echo $record['blog_name']; ?>?');"
+                          href="small_scripts/delete_blog.php?id=<?php echo $record['blog_id']; ?>" style="color:red;">Delete</a></td>
                     </tr>
                     <?php 
                         $count++;
                           
                       }
                     ?>
-                    
+
                   </tbody>
                 </table>
               </div>

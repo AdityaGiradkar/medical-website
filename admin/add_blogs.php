@@ -27,7 +27,9 @@
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -68,7 +70,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Treatment
+        Consultation
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -81,8 +83,24 @@
         <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New Patient (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
+            <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
             <a class="collapse-item" href="all_patients.php">All Patient</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-clock"></i>
+          <span>Timing</span>
+        </a>
+        <div id="timing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Time Slots:</h6>
+            <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
+            <a class="collapse-item" href="available_slots.php">Available Slots</a>
           </div>
         </div>
       </li>
@@ -94,22 +112,6 @@
       <div class="sidebar-heading">
         Hospital
       </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-newspaper"></i>
-          <span>Quiz</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Quiz Section:</h6>
-            <a class="collapse-item" href="all_questions.php">All Questions</a>
-            <a class="collapse-item" href="add_question.php">Add Question</a>
-          </div>
-        </div>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
@@ -127,8 +129,8 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBlogs"
-          aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
+          aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
           <span>Blogs</span>
         </a>
@@ -149,11 +151,6 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <!-- <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" onClick="sidebarTog()" id="sidebarToggle"></button>
-      </div> -->
 
     </ul>
     <!-- End of Sidebar -->
@@ -209,36 +206,37 @@
         <!-- Begin Page Content -->
         <div class="container-fluid main-top main-left">
 
-            <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
 
-            
-            <form method="post" enctype="multipart/form-data">
+
+          <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="blog_name">Blog Name</label>
+              <input type="text" class="form-control" id="blog_name" name="blog_name" aria-describedby="emailHelp"
+                required>
+            </div>
+            <div class="row pt-3">
+              <div class="col-md-6">
                 <div class="form-group">
-                    <label for="blog_name">Blog Name</label>
-                    <input type="text" class="form-control" id="blog_name" name="blog_name" aria-describedby="emailHelp" required>
+                  <label for="blog_link">Blog Link</label>
+                  <textarea class="form-control" id="blog_link" name="blog_link" rows="3"></textarea>
                 </div>
-                <div class="row pt-3">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="blog_link">Blog Link</label>
-                            <textarea class="form-control" id="blog_link" name="blog_link" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="discription">Small Discription</label>
-                            <textarea class="form-control" id="discription" name="discription" rows="3"></textarea>
-                        </div>
-                    </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="discription">Small Discription</label>
+                  <textarea class="form-control" id="discription" name="discription" rows="3"></textarea>
                 </div>
-                <div class="form-group mt-3">
-                    <label for="cover_image">Select Best Cover Image</label>
-                    <input type="file" class="form-control-file" id="cover_image" name="cover_image">
-                </div>
-                <button type="submit" name="add_blog" class="btn btn-primary mt-3">Add Blog</button>
-            </form>
-            
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="cover_image">Select Best Cover Image</label>
+              <input type="file" class="form-control-file" id="cover_image" name="cover_image">
+            </div>
+            <button type="submit" name="add_blog" class="btn btn-primary mt-3">Add Blog</button>
+          </form>
+
         </div>
         <!-- /.container-fluid -->
 
@@ -267,7 +265,8 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

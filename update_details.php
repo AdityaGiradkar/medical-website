@@ -472,6 +472,22 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label for="releif"><strong>Are you looking for permanent relief or temporary control? </strong></label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="releif" id="releif1" value="Permanent relief">
+                <label class="form-check-label" for="releif1">Permanent relief</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="releif" id="releif2" value="Temporary control">
+                <label class="form-check-label" for="releif2">Temporary control</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="releif" id="releif3" value="Other">
+                <label class="form-check-label" for="releif3">Other</label>
+              </div>
+            </div>
+
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputState"><strong>date of first illness detected </strong></label>
@@ -481,6 +497,7 @@
                 <label for="inputState"><strong>Diagnosis made by doctors.</strong></label>
                 <input class="form-control" type="text" name="pre_doctor" placeholder="if not then mention 'NO'" />
               </div>
+              
             </div>
 
             <button type="submit" name="update" class="btn btn-primary">Update Details</button>
@@ -560,6 +577,7 @@
     $treatment_tried  = $_POST['treatment_tried'];
     $side_effect      = mysqli_real_escape_string($con, $_POST['side_effect']);
     $health_session   = mysqli_real_escape_string($con, $_POST['health_session']);
+    $releif           = mysqli_real_escape_string($con, $_POST['releif']);
     $date_illness     = mysqli_real_escape_string($con, $_POST['date_illness']);
     $pre_doctor       = mysqli_real_escape_string($con, $_POST['pre_doctor']); 
 
@@ -589,7 +607,7 @@
 
     $flag2 = 0;
     $update_medical_history = "UPDATE `medical_history` 
-                                SET `problems`='$problem_string',`teratment_tried`='$treatment_tried_string',`side_effect`='$side_effect',`health_session`='$health_session',`date_first_illness`='$date_illness',`prev_doctor`='$pre_doctor'
+                                SET `problems`='$problem_string',`teratment_tried`='$treatment_tried_string',`side_effect`='$side_effect',`health_session`='$health_session',`relief`='$releif',`date_first_illness`='$date_illness',`prev_doctor`='$pre_doctor'
                                 WHERE `user_id`='$user_id'";
     $update_medical_history_run = mysqli_query($con, $update_medical_history);
     if(mysqli_affected_rows($con)){

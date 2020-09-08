@@ -46,9 +46,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="../index.php">
+        <a class="nav-link" href="user_page.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Profile</span></a>
       </li>
 
       <!-- Divider -->
@@ -61,34 +61,20 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-newspaper"></i>
-          <span>History</span>
-        </a>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Treatment History:</h6>
-            <a class="collapse-item" href="all_consultations.php">All Consultations</a>
-            <a class="collapse-item active" href="add_question.php">Add Question</a>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
-          aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-pills"></i>
-          <span>Medicines</span>
-        </a>
-        <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Medicine Section:</h6>
-            <a class="collapse-item" href="all_medicines.php">All Medicines</a>
-            <a class="collapse-item" href="add_medicine.php">Add Medicine</a>
-          </div>
-        </div>
-      </li>
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-newspaper"></i>
+                    <span>Treatment History</span>
+                </a>
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Treatment History:</h6>
+                        <a class="collapse-item" href="all_consultations.php">All Consultations</a>
+                        <a class="collapse-item active" href="add_question.php">Add Question</a>
+                    </div>
+                </div>
+            </li>
 
       <li class="nav-item">
         <a class="nav-link" href="history.php">
