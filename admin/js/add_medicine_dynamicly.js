@@ -1,8 +1,4 @@
-function startTreatment() {
-    var treat = document.querySelector(".treat-panel");
-    treat.classList.remove("d-none");
-}
-
+console.log(medicineArray);
 
 //adding dyanamic medicine fields on button click
 function addElement(parentId, elementTag, elementId, html) {
@@ -25,6 +21,7 @@ var options = "";
 medicineArray.forEach(medicine => {
     options = options + '<option>' + medicine + '</option><br>';
 });
+
 
 var noMedicine = 0; // used by the addFile() function to keep track of IDs
 function addMedicine() {

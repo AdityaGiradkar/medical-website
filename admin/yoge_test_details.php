@@ -474,12 +474,92 @@
                 </tr>
               </tbody>
             </table>
-            <button class="btn btn-primary">Start Treatment</button>
+            <button class="btn btn-primary" onClick="startTreatment()">Start Treatment</button>
           </div>
           <!-- CREATE TABLE OF test details  -->
 
           <!-- treatment section -->
+          <?php 
+              $all_medicines = "SELECT * FROM `medicines`";
+              $all_medicines_run = mysqli_query($con, $all_medicines);
+              $count = 0;
+              $medicines = array();
+              while($medi = mysqli_fetch_assoc($all_medicines_run)){
+                  $medicines[$count] = $medi['Name'];
+                  $count++; 
+              }
 
+              $all_instruments = "SELECT * FROM `sessions`";
+              $all_instruments_run = mysqli_query($con, $all_instruments);
+              $count_instru = 0;
+              $instruments = array();
+              while($instru = mysqli_fetch_assoc($all_instruments_run)){
+                  $instruments[$count_instru] = $instru['session_name'];
+                  $count_instru++; 
+              }
+          ?>
+          <!-- Passing medicine array in the js file  -->
+          <script type="text/javascript">
+            var medicineArray = <?php echo json_encode($medicines); ?>;
+            var instrumentArray = <?php echo json_encode($instruments); ?>;
+          </script>
+        <!-- Passing medicine array in the js file  -->
+          <div class="border border-primary rounded-lg p-3 mt-4 d-none treat-panel">
+            <h5 class="modal-title text-center" id="exampleModalLongTitle">Start YogE @ HOME Test Treatment</h5>
+            <form method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                  <label for="exampleFormControlFile1">Report of test</label>
+                  <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1">
+              </div>
+              <div class="form-group">
+                  <label for="">Medicines</label><br>
+                  <table class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                        <th scope="col">Medicine Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Dose</th>
+                        <th scope="col">Remove</th>
+                        </tr>
+                  </thead>
+                  <tbody  id="medicine">
+                      <!-- Medicine rows are added Dynamically through javascript -->
+                  </tbody>
+                  </table>  
+                  <button type="button" onClick="addMedicine()" class="btn btn-primary">Add Medicines</button>
+                </div>
+
+                <div class="form-group">
+                  <label for="">Sessions</label><br>
+                  <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                          <th scope="col">Session Name</th>
+                          <th scope="col">times per month</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody  id="instrument">
+                        <!-- instruments rows are added Dynamically through javascript -->
+                    </tbody>
+                  </table>
+                    
+                  <button type="button" onClick="addInstrument()" class="btn btn-primary">Add Instrument</button>
+                </div>
+
+                <div class="form-group">
+                  <label for="diet">Diet Plan</label>
+                  <input type="file" name="diet" class="form-control-file" id="diet">
+                </div>
+
+                <div class="form-group">
+                  <label for="note">Extra Note</label>
+                  <textarea class="form-control" placeholder="If nothing type 'NA'" id="note" name="note" rows="3" required></textarea>
+                </div>
+
+                <button type="submit" name="start_test" class="btn btn-primary">start Test</button>
+            </form>
+          </div>
           <!-- treatment section -->
 
 
@@ -544,11 +624,24 @@
 
   <!-- custom js file for opening details -->
   <script src="js/patient_history.js"></script>
+
+  <!-- adding medicine column dynamicly -->
+  <script src="js/add_medicine_dynamicly.js"></script>
+
+  <!-- adding Instruments column dynamicly -->
+  <script src="js/add_instruments_dynamicly.js"></script>
 </body>
 
 </html>
 
+<script>
+  function startTreatment() {
+    var treat = document.querySelector(".treat-panel");
+    treat.classList.remove("d-none");
+  }
 
+
+</script>
 
 
 <?php 

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Blank</title>
+  <title>Change password</title>
 
   <!-- Custom fonts for this template-->
   <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -97,7 +97,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="change_pass.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Change Password</span></a>
       </li>

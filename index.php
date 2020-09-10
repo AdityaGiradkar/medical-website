@@ -702,7 +702,7 @@
                         <div class="form-check pt-3 pb-3">
                             <input class="form-check-input" type="radio" name="test_type" id="test_type1"
                                 value="1">
-                            <label class="form-check-label" for="test_type1">Test A</label>
+                            <label class="form-check-label" for="test_type1">YodhaE TEST</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="General Consultation" data-content="Some nice text hereknjfsdb"><i
                                     class="fas fa-info-circle"></i></a>
@@ -710,7 +710,7 @@
                         <div class="form-check pb-3">
                             <input class="form-check-input" type="radio" name="test_type" id="test_type2"
                                 value="2">
-                            <label class="form-check-label" for="test_type2">YogE @ HOME</label>
+                            <label class="form-check-label" for="test_type2">YogE@HOME</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="YogE @ HOME" data-content="Vital parameters and measurements give an instant insight in to the condition of the patient. Our application helps to manage the simple ,moderate and critical cases at home or under domicillary hospitalization or in hospitals. It is a helping hand of a doctor 24hr round the clock.  it helps in disease staging . disease prognosis, disease diagnosis, treatment response, detecting alarm signs etc."><i
                                     class="fas fa-info-circle"></i></a>
@@ -718,7 +718,7 @@
                         <div class="form-check pb-3">
                             <input class="form-check-input" type="radio" name="test_type" id="test_type3"
                                 value="3">
-                            <label class="form-check-label" for="test_type3">Test C</label>
+                            <label class="form-check-label" for="test_type3">YogE@SUPERFIT</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
                                     class="fas fa-info-circle"></i></a>

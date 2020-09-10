@@ -319,7 +319,7 @@
         $discription = mysqli_real_escape_string($con, $_POST['discription']);
         $file = $_FILES['cover_image'];
 
-        print_r($file);
+        //print_r($file);
 
         if($file != ""){
             $file_original = $_FILES['cover_image']['name'];
@@ -333,7 +333,7 @@
             $file_ext = strtolower(end($file_ext_seprate));
 
             //echo $file_ext;
-            echo "<script>alert('$file_error');</script>";
+            //echo "<script>alert('$file_error');</script>";
             $valid_ext = array('jpg', 'jpeg', 'png');
 
             if(in_array($file_ext, $valid_ext)){
