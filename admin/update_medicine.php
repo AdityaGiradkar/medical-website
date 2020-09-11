@@ -216,20 +216,33 @@
         <!-- Begin Page Content -->
         <div class="container-fluid main-top main-left">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-
 
           <form method="post">
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">medicine : </label>
+              <label for="exampleFormControlTextarea1">medicine Name: </label>
               <textarea class="form-control" id="exampleFormControlTextarea1" name="name"
                 rows="3"><?php echo $result['Name']; ?></textarea>
             </div>
+            
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Dose : </label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" name="dose"
-                rows="3"><?php echo $result['dose']; ?></textarea>
+              <label for="exampleFormControlInput1">Type</label>
+              <input type="text" class="form-control" name="type" id="exampleFormControlInput1" value=<?php echo $result['type']; ?>>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Quantity</label>
+              <input type="text" class="form-control" name="quantity" id="exampleFormControlInput1" value=<?php echo $result['quantity']; ?>>
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Rs.</span>
+                </div>
+                <input type="number" class="form-control" name="price" id="price" value=<?php echo $result['price']; ?>>
+                <div class="input-group-append">
+                  <span class="input-group-text">.00</span>
+                </div>
+              </div>
             </div>
 
             <button type="submit" name="update" class="btn btn-primary">Update</button>
@@ -300,9 +313,11 @@
 <?php
     if(isset($_POST['update'])){
         $name = $_POST['name'];
-        $dose = $_POST['dose'];
+        $type = $_POST['type'];
+        $quantity = $_POST['quantity'];
+        $price = $_POST['price'];
 
-        $update = "UPDATE `medicines` SET `Name`='$name',`dose`='$dose' WHERE `medicine_id`='$id'";
+        $update = "UPDATE `medicines` SET `Name`='$name',`type`='$type',`quantity`='$quantity',`price`='$price' WHERE `medicine_id`='$id'";
         if($update_run = mysqli_query($con, $update)) {
             echo "<script>
                         alert('update Sucessfull');

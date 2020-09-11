@@ -234,7 +234,9 @@
                                         <tr>
                                             <th>Sr. No.</th>
                                             <th>Medicine Name</th>
-                                            <th>Dose</th>
+                                            <th>Type</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
 
@@ -248,7 +250,9 @@
                                         <tr>
                                             <th><?php echo $count; ?></th>
                                             <td><?php echo $record['Name']; ?></td>
-                                            <td><?php echo $record['dose']; ?></td>
+                                            <td><?php echo $record['type']; ?></td>
+                                            <td><?php echo $record['quantity']; ?></td>
+                                            <td><?php echo $record['price']; ?></td>
                                             <td><a
                                                     href="update_medicine.php?id=<?php echo $record['medicine_id']; ?>">Edit</a>
                                             </td>
