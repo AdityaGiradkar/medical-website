@@ -57,13 +57,13 @@
                         <a href="" class="li-header">BOOK AN APOINTMENT</a>
                     </li>
                     <?php if(!isset($_SESSION['user_id'])){ ?>
-                        <li class="d-inline red-dot">
-                            <a href="login.php" class="li-header">LOGIN</a>
-                        </li>
+                    <li class="d-inline red-dot">
+                        <a href="login.php" class="li-header">LOGIN</a>
+                    </li>
                     <?php }else{ ?>
-                        <li class="d-inline red-dot">
-                            <a href="user_page.php" class="li-header"><?php echo $_SESSION['name']; ?></a>
-                        </li>
+                    <li class="d-inline red-dot">
+                        <a href="user_page.php" class="li-header"><?php echo $_SESSION['name']; ?></a>
+                    </li>
                     <?php } ?>
                 </ul>
             </div>
@@ -181,14 +181,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#disease1" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">PURNA DIABETES CHIKITSA</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -198,14 +198,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#disease2" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">HRUDAYASPARSH - CARDIAC CARE PROGRAMME</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -215,14 +215,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#disease3" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">HORMONE CORRECTION PROGRAMME</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -232,14 +232,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#disease4" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">JOINT HEALING PROGRAMME</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -249,14 +249,167 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#disease5" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">SPINE STRENGHTENING PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease6" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">STRI ROG CHIKITSA</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease7" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">LIV STRONG</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease8" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">STOMACH-HEAL THE FIRE</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease9" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">COLON</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease10" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">BREATHE NORMAL PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease11" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">BLOOD DISORDER TREATMENT</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease12" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">CANCER THERPAY - THERAPEUTIC OR SUPPORTIVE</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease13" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">COVID 19 MANAGEMENT PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#disease14" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h6 class="h6 post-title text-center">CHRONIC DISEASE MANAGEMENT PROGRAME</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -281,14 +434,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#diet1" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">WEIGHT LOSS PROGRAMME</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -298,14 +451,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#diet2" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">ANTI AGING PROGRAMME</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -315,14 +468,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#diet3" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">STRESS MANAGEMENT PROGRAMME</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -332,14 +485,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#diet4" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">WEIGHT GAIN PROGRAMME</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -349,14 +502,150 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#diet5" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">ANTI TANNING PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#diet6" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">RELAXATION PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#diet7" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">MUSCLE GAIN PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#diet8" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">FAIR ANND GLOW PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#diet9" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">SUPER FITNESS PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#diet10" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">FIGURE MANAGEMENT PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#diet11" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">PERSONALITY DEVELOPMENT PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#diet12" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">DIET MANAGEMENT PROGRAMME</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#diet13" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">SHAPE UP CURVES</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -387,14 +676,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#yoga1" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">Basic yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -404,14 +693,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#yoga2" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">Fitness yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -421,14 +710,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#yoga3" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">Relaxation yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -438,14 +727,14 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#yoga4" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">Combo yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -455,14 +744,82 @@
                                                 <img src="images/Rectangle 19 copy.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
-                                                    <a data-target="#exampleModalCenter" data-toggle="modal"
+                                                    <a data-target="#yoga5" data-toggle="modal"
                                                         class="explore" title="User Profile">
                                                         Explore
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="post-title text-center">Card title</h5>
+                                                <h5 class="h6 post-title text-center">Atmanubuti yog</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#yoga6" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">Sparsha yog</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#yoga7" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">Ashtang yog</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#yoga8" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">Hath yog</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-slide">
+                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                            <div class="contain">
+                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                    alt="...">
+                                                <div class="overlay-img">
+                                                    <a data-target="#yoga9" data-toggle="modal"
+                                                        class="explore" title="User Profile">
+                                                        Explore
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="h6 post-title text-center">Power yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -589,12 +946,13 @@
                             <div class="post-slide">
                                 <div class="card mx-auto" style="width: 15rem; border-radius: 12px;">
                                     <div class="contain">
-                                        <img src="admin/img/blog_images/<?php echo $all_blogs_res['cover_img']; ?>"  height="300" class="card-img-top image"
-                                            alt="...">
+                                        <img src="admin/img/blog_images/<?php echo $all_blogs_res['cover_img']; ?>"
+                                            height="300" class="card-img-top image" alt="...">
                                     </div>
                                     <div class="card-body">
                                         <h5 class="post-title text-center">
-                                            <a href="<?php echo $all_blogs_res['blog_link']; ?>" target="_blank" title="User Profile">
+                                            <a href="<?php echo $all_blogs_res['blog_link']; ?>" target="_blank"
+                                                title="User Profile">
                                                 <?php echo $all_blogs_res['blog_name']; ?>
                                             </a>
                                         </h5>
@@ -668,8 +1026,9 @@
                         </div>
                         <div class="form-group mt-5 mb-4">
                             <!-- <label for="exampleInputEmail1">Username</label> -->
-                            <input type="date" class="form-control input-box" name="consult_date" onchange="availableSlots(this.value)"
-                                id="datepicker" min="<?php echo date("Y-m-d"); ?>" max="<?php echo $maxDate['maxDate']; ?>">
+                            <input type="date" class="form-control input-box" name="consult_date"
+                                onchange="availableSlots(this.value)" id="datepicker" min="<?php echo date("Y-m-d"); ?>"
+                                max="<?php echo $maxDate['maxDate']; ?>">
                         </div>
                         <div class="form-group">
                             <select class="form-control input-box" id="time_slots" name="time_slots">
@@ -685,6 +1044,7 @@
             </div>
         </div>
     </div>
+    <!-- Modal for appointment -->
 
     <!-- modal for test selection -->
     <div class="modal fade" id="select_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -700,24 +1060,22 @@
                     <p class="card-title mx-auto brand-name">SELECT TEST</p>
                     <form method="post" action="">
                         <div class="form-check pt-3 pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type1"
-                                value="1">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type1" value="1">
                             <label class="form-check-label" for="test_type1">YodhaE TEST</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="General Consultation" data-content="Some nice text hereknjfsdb"><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type2"
-                                value="2">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type2" value="2">
                             <label class="form-check-label" for="test_type2">YogE@HOME</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="YogE @ HOME" data-content="Vital parameters and measurements give an instant insight in to the condition of the patient. Our application helps to manage the simple ,moderate and critical cases at home or under domicillary hospitalization or in hospitals. It is a helping hand of a doctor 24hr round the clock.  it helps in disease staging . disease prognosis, disease diagnosis, treatment response, detecting alarm signs etc."><i
+                                title="YogE @ HOME"
+                                data-content="Vital parameters and measurements give an instant insight in to the condition of the patient. Our application helps to manage the simple ,moderate and critical cases at home or under domicillary hospitalization or in hospitals. It is a helping hand of a doctor 24hr round the clock.  it helps in disease staging . disease prognosis, disease diagnosis, treatment response, detecting alarm signs etc."><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type3"
-                                value="3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type3" value="3">
                             <label class="form-check-label" for="test_type3">YogE@SUPERFIT</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
@@ -730,6 +1088,7 @@
             </div>
         </div>
     </div>
+    <!-- modal for test selection -->
 
     <!-- Include all modal html -->
     <?php include("modal.php"); ?>
@@ -865,22 +1224,23 @@
 
     function availableSlots(date) {
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
+        xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var slots_array = JSON.parse(this.responseText);
                 var htmlSlotsOption = "<option selected='true' disabled='disabled' hidden>Select Time</option>";
-                
+
                 slots_array.forEach(add);
-                function add(item, index){
-                    htmlSlotsOption = htmlSlotsOption + "<option value='"+ item.time_range +"'>" + item.time_range + "</option>";
+
+                function add(item, index) {
+                    htmlSlotsOption = htmlSlotsOption + "<option value='" + item.time_range + "'>" + item
+                        .time_range + "</option>";
                 }
                 document.getElementById("time_slots").innerHTML = htmlSlotsOption;
-                
+
                 // console.log(slots_array);
             }
         };
-        xmlhttp.open("GET","getSlots.php?date="+date,true);
+        xmlhttp.open("GET", "getSlots.php?date=" + date, true);
         xmlhttp.send();
     }
-    
 </script>
