@@ -17,7 +17,12 @@ function removeElement(elementId) {
 //making option of medicine
 var instru_options = "";
 instrumentArray.forEach(instrument => {
-    instru_options = instru_options + '<option>' + instrument + '</option><br>';
+    var price = instrument.price;
+    var quantity = instrument.quantity;
+    var name = instrument.session_name;
+    var instruID = instrument.session_id;
+    var valueInstru = instruID + "," + price;
+    instru_options = instru_options + '<option value="' + valueInstru + '">' + name + ' - (Rs. ' + price + ' / ' + quantity + ')</option><br>';
 });
 
 var noInstrument = 0; // used by the addFile() function to keep track of IDs
@@ -25,11 +30,11 @@ function addInstrument() {
     noInstrument++; // increment fileId to get a unique ID for the new element
     var instru_html = '<td>' +
         '<select id="inputState" name="instrument_name[' + noInstrument + ']" class="form-control">' +
-        '<option selected>Choose...</option>' +
+        '<option value="0" disabled selected>Choose...</option>' +
         instru_options +
         '</select>' +
         '</td>' +
-        '<td><input type="text" name="note[' + noInstrument + ']" class="form-control" /></td>' +
+        '<td><input type="text" value = "1" name="quantityInstru[' + noInstrument + ']" class="form-control" /></td>' +
         '<td><a href="" onclick="javascript:removeElement(\'instrument-' + noInstrument + '\'); return false;">Remove</a></td>';
 
     addElement('instrument', 'tr', 'instrument-' + noInstrument, instru_html);

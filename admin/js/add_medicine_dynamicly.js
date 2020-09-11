@@ -1,5 +1,3 @@
-console.log(medicineArray);
-
 //adding dyanamic medicine fields on button click
 function addElement(parentId, elementTag, elementId, html) {
 
@@ -15,11 +13,16 @@ function removeElement(elementId) {
     var element = document.getElementById(elementId);
     element.parentNode.removeChild(element);
 }
-
+console.log(medicineArray);
 //making option of medicine
 var options = "";
 medicineArray.forEach(medicine => {
-    options = options + '<option>' + medicine + '</option><br>';
+    var mediID = medicine.medicine_id;
+    var price = medicine.price;
+    var quantity = medicine.quantity;
+    var name = medicine.Name;
+    var value = mediID + "," + price;
+    options = options + '<option value="' + value + '">' + name + ' - (Rs. ' + price + ' / ' + quantity + ') </option><br>';
 });
 
 
@@ -28,12 +31,11 @@ function addMedicine() {
     noMedicine++; // increment fileId to get a unique ID for the new element
     var html = '<td>' +
         '<select id="inputState" name="medicine_name[' + noMedicine + ']" class="form-control">' +
-        '<option selected>Choose...</option>' +
+        '<option value="0" selected disabled>Choose...</option>' +
         options +
         '</select>' +
         '</td>' +
-        '<td><input type="text" name="quentity[' + noMedicine + ']" class="form-control" /></td>' +
-        '<td><input type="text" name="dose[' + noMedicine + ']" class="form-control" /></td>' +
+        '<td><input type="text" value = "1" name="quantityMed[' + noMedicine + ']" class="form-control" /></td>' +
         '<td><a href="" onclick="javascript:removeElement(\'medicine-' + noMedicine + '\'); return false;">Remove</a></td>';
 
     addElement('medicine', 'tr', 'medicine-' + noMedicine, html);

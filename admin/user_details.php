@@ -466,25 +466,28 @@
         $all_medicines = "SELECT * FROM `medicines`";
         $all_medicines_run = mysqli_query($con, $all_medicines);
         $count = 0;
+        $medicines = array();
         while($medi = mysqli_fetch_assoc($all_medicines_run)){
-            $medicines[$count] = $medi['Name'];
+        $medicines[$count] = $medi;
             $count++; 
         }
 
-        $all_instruments = "SELECT * FROM `instruments`";
+        $all_instruments = "SELECT * FROM `sessions`";
         $all_instruments_run = mysqli_query($con, $all_instruments);
         $count_instru = 0;
+        $instruments = array();
         while($instru = mysqli_fetch_assoc($all_instruments_run)){
-            $instruments[$count_instru] = $instru['instrument_name'];
+            $instruments[$count_instru] = $instru;
             $count_instru++; 
         }
     ?>
-        <!-- Passing medicine array in the js file  -->
-        <script>
-        var medicineArray = <?php echo json_encode($medicines); ?> 
-        var instrumentArray = <?php echo json_encode($instruments); ?>
-        </script>
-        <!-- Passing medicine array in the js file  -->
+    <!-- Passing medicine array in the js file  -->
+    <script type="text/javascript">  
+        var medicineArray = <?php echo json_encode($medicines); ?>;
+        var instrumentArray = <?php echo json_encode($instruments); ?>;
+    </script>
+    <!-- Passing medicine array in the js file  -->
+
     <div class="modal fade  bd-example-modal-lg" id="start_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
