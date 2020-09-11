@@ -89,7 +89,7 @@
             <h6 class="collapse-header">Patients : </h6>
             <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
             <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
-            <a class="collapse-item" href="all_patients.php">All Patient</a>
+            <a class="collapse-item" href="all_treatments.php">All Treatments</a>
           </div>
         </div>
       </li>
