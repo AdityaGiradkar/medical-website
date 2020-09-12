@@ -10,7 +10,7 @@
         $all_medicines_run = mysqli_query($con, $all_medicines);
 
         //finding total number of new patient
-        $new_patient_count = "SELECT count(*) as total FROM `user-answer` WHERE `status`='new'";
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
         $new_patient_count_run = mysqli_query($con, $new_patient_count);
         $data=mysqli_fetch_assoc($new_patient_count_run);
         //finding total number of new patient
@@ -132,6 +132,22 @@
                         <h6 class="collapse-header">Medicine Section:</h6>
                         <a class="collapse-item active" href="all_medicines.php">All Medicines</a>
                         <a class="collapse-item" href="add_medicine.php">Add Medicine</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-pills"></i>
+                    <span>Sessions</span>
+                </a>
+                <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Sessions:</h6>
+                        <a class="collapse-item" href="all_medicines.php">All Sessions</a>
+                        <a class="collapse-item" href="add_medicine.php">Add Session</a>
                     </div>
                 </div>
             </li>

@@ -129,6 +129,22 @@
       </li>
 
       <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine" aria-expanded="true"
+              aria-controls="collapseTwo">
+              <i class="fas fa-fw fa-pills"></i>
+              <span>Sessions</span>
+          </a>
+          <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo"
+              data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                  <h6 class="collapse-header">Sssions:</h6>
+                  <a class="collapse-item" href="all_medicines.php">All Sessions</a>
+                  <a class="collapse-item" href="add_medicine.php">Add Session</a>
+              </div>
+          </div>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
@@ -216,17 +232,33 @@
 
           <form method="post">
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">medicine : </label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Add medicine Name"
-                name="name" rows="3"></textarea>
+              <label for="exampleFormControlTextarea1">medicine Name: </label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" name="name"
+                rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Type</label>
+              <input type="text" class="form-control" name="type" id="exampleFormControlInput1">
             </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Dose : </label>
-              <textarea class="form-control" id="exampleFormControlTextarea1"
-                placeholder="Add standarad dose for above medicine." name="dose" rows="3"></textarea>
+              <label for="exampleFormControlInput1">Quantity</label>
+              <input type="text" class="form-control" name="quantity" id="exampleFormControlInput1">
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Rs.</span>
+                </div>
+                <input type="number" class="form-control" name="price" id="price">
+                <div class="input-group-append">
+                  <span class="input-group-text">.00</span>
+                </div>
+              </div>
             </div>
 
-            <button type="submit" name="add" class="btn btn-primary">Add</button>
+            <button type="submit" name="add" class="btn btn-primary">Add Medicine</button>
           </form>
 
         </div>
@@ -293,13 +325,15 @@
 
 <?php
     if(isset($_POST['add'])){
-        $name = $_POST['name'];
-        $dose = $_POST['dose'];
+      $name = $_POST['name'];
+      $type = $_POST['type'];
+      $quantity = $_POST['quantity'];
+      $price = $_POST['price'];
 
-        $update = "INSERT INTO `medicines`(`Name`, `dose`) VALUES ('$name','$dose')";
-        if($update_run = mysqli_query($con, $update)) {
+        $add_medicine = "INSERT INTO `medicines`(`Name`, `type`, `quantity`, `price`) VALUES ('$name','$type','$quantity','$price')";
+        if($add_medicine_run = mysqli_query($con, $add_medicine)) {
             echo "<script>
-                        alert('Inserted Sucessfull');
+                        alert('New Medicine added Sucessfull');
                         window.location.href='add_medicine.php';
                     </script>";
         }
