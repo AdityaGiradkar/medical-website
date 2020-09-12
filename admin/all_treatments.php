@@ -342,7 +342,7 @@
                                                     <td><?php echo $yoge_home_res['email_id']; ?></td>
                                                     <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
                                                     <td><a
-                                                            href="yoge_test_details.php?testID=<?php echo $yoge_home_res['test_id']; ?>">view</a>
+                                                            href="user_treatment_details.php?testID=<?php echo $yoge_home_res['test_id']; ?>">view</a>
                                                     </td>
                                                 </tr>
 
