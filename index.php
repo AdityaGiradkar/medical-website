@@ -32,9 +32,49 @@
 </head>
 
 <body>
+
     <div class="main">
 
-        <div class="container-fluid p-0 sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
+    <a class="navbar-brand ml-5" style="font-size:1.8rem" href="#">
+        <img src="images/brand.png" width="250"  class="d-inline-block align-top" alt="" loading="lazy">
+    </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a href="#about" class="li-header nav-link mr-4">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#consult" class="li-header nav-link mr-4">COUNSELLING</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="li-header nav-link mr-4">SHOP</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class=" nav-link li-header mr-4">BLOG</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="li-header nav-link mr-4">BOOK AN APOINTMENT</a>
+                </li>
+                <?php if(!isset($_SESSION['user_id'])){ ?>
+                <li class="nav-item">
+                    <a href="login.php" class="li-header nav-link mr-4">LOGIN</a>
+                </li>
+                <?php }else{ ?>
+                <li class="nav-item">
+                    <a href="<?php if($_SESSION['role'] == 'doctor'){?> admin/index.php <?php }else{ ?> user_page.php <?php } ?>" class="li-header nav-link mr-4">USER</a>
+                </li>
+                <?php } ?>
+            </ul>
+            
+        </div>
+    </nav>
+
+        <!-- <div class="container-fluid p-0 sticky-top">
             <img src="images/hedder.png" class="img-fluid" />
             <div class="container p-absolute" style="margin-top: -110px;">
                 <ul class="d-inline">
@@ -67,7 +107,7 @@
                     <?php } ?>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
         <div class="intro pt-5">
             <div class="container">
@@ -108,7 +148,7 @@
             </div>
         </div>
 
-        <div class="pilars marginTop ">
+        <div class="pilars marginTop">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
@@ -1220,6 +1260,13 @@
 
     // for popover
     $('[data-toggle="popover"]').popover();
+
+    // for switching modal
+ 
+    $('body').on('click', '.info-modal-btn', function() {
+        $('.info-modal').modal('hide');
+        $('#Appointment').modal('show');
+    });
 
 
     function availableSlots(date) {

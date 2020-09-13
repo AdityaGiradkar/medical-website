@@ -1,8 +1,8 @@
 <!-- Mmedical Treatment -->
 <!-- desease 1 -->
-<div class="modal fade bd-example-modal-lg " id="disease1" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease1" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -37,12 +37,14 @@
                     <li>Diabetes prevention programme</li>
                 </ol>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 2 -->
-<div class="modal fade bd-example-modal-lg " id="disease2" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease2" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -76,12 +78,14 @@
                     in
                     end stage patients with heart diseases.</p>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 3 -->
-<div class="modal fade bd-example-modal-lg " id="disease3" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease3" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -94,13 +98,30 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>Less is spoken about this. A topid we think is untouched and unadressed. But sex is one of the
+                    innermost desire. sexual desires reflect the wellbeing of an individual. It reflects the:</p>
+                <ul>
+                    <li>Hormonal normalcy</li>
+                    <li>Organ health</li>
+                    <li>Functional efficiency</li>
+                    <li>Psychological release.</li>
+                </ul>
+
+                <p>Our holistic programme will help this to get the loss of libido corrected, get your vibe back and
+                    feel feminine.</p>
+
+                <p>Nothing wrong to feel feminine , age is never a barrier.
+                    <br>
+                    Feel love , feel happiness.</p>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 4 -->
-<div class="modal fade bd-example-modal-lg " id="disease4" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease4" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -140,12 +161,14 @@
                 - Complete restoration of knee strength.<br>
                 - Resolve your knee issues without operations
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 5 -->
-<div class="modal fade bd-example-modal-lg " id="disease5" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease5" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -159,12 +182,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 6 -->
-<div class="modal fade bd-example-modal-lg " id="disease6" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease6" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -197,12 +222,14 @@
                     <li>Infertility</li>
                 </ul>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 7 -->
-<div class="modal fade bd-example-modal-lg " id="disease7" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease7" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -229,12 +256,14 @@
                 </ul>
                 <p>join us early , and recover your liver fully.</p>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 8 -->
-<div class="modal fade bd-example-modal-lg " id="disease8" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease8" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -257,12 +286,14 @@
                     <li>achalasia cardia</li>
                 </ul>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 9 -->
-<div class="modal fade bd-example-modal-lg " id="disease9" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease9" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -282,12 +313,14 @@
                     <li>rectal haemorrhoids</li>
                 </ul>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 10 -->
-<div class="modal fade bd-example-modal-lg " id="disease10" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease10" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -309,12 +342,14 @@
                     <li>drug resistant tuberculosis</li>
                 </ul>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 11 -->
-<div class="modal fade bd-example-modal-lg " id="disease11" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease11" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -328,12 +363,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 12 -->
-<div class="modal fade bd-example-modal-lg " id="disease12" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease12" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -347,12 +384,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 13 -->
-<div class="modal fade bd-example-modal-lg " id="disease13" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease13" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -366,14 +405,16 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- desease 14 -->
-<div class="modal fade bd-example-modal-lg " id="disease14" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="disease14" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -384,7 +425,70 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>At our clinic there is no limitation in management of any disease. Even the most serious and
+                    incurable diseases and health conditions are treated effectively.</p>
+                Our management is based on understanding from study and research of ,
+                <ol>
+                    <li>Medical knowledge</li>
+                    <li>Knowledge from veda’s. unishads</li>
+                    <li>Panchakoshatmayog experience</li>
+                    <li>Knowledge and experience of chakra vigyan</li>
+                    <li>Knowledge and experience of shadripu’s</li>
+                    <li>Experience of Hathyog</li>
+                    <li>Knowledge and Experience of Yog chikitsa</li>
+                    <li>Experience and knowledge of Homoeopahty and natures doctrine of signature</li>
+                    <li>Knowledge and experience of principle similia similibus curenter.</li>
+                    <li>Knowledge of hering’s law of cure.</li>
+                    <li>Experience of Sparsha yog and kaya yog technique</li>
+                </ol>
+                Our body's health & organ system function is all related to :
+                <ul>
+                    <li>7 chakra's.</li>
+                    <li>3 guna's</li>
+                    <li>Panchakosha’s</li>
+                    <li>Antarkosha swasthya</li>
+                    <li>Psychosomatic hormony</li>
+                </ul>
+                <p>Our whole body represents the effects of this . with the knowledge of Chakra's, guna , yoga, veda’s
+                    taught from our masters and the medical knowledge learnt we visualize the unseen aspect of diseases
+                    and then eradicate it.<br>
+                    Dr. sadanand Rasal offers you a complete safe and long lasting management of your chronic diseases,
+                    which takes care of,</p>
+                <ol>
+                    <li>Removal of root cause</li>
+                    <li>Stopping of disease progression</li>
+                    <li>Reversal of cellular damage caused by disease</li>
+                    <li>Restoration of functional health</li>
+                </ol>
+                <p>
+                    People around the globe spend lots of their hard earned money to be relieved of their diseases of
+                    long standing or chronic diseases. most of the medicine around the world focuses on symptom
+                    management and therefore offer only temporary relief without stopping the disease process. Most of
+                    these chronic diseases are of autoimmune in nature or because of altered functions due to idiopathic
+                    causes or are due to aggravated cell injury and aging process. Most of the medication available do
+                    not arrest the disease process just suppress it and partially control the symptoms . at times
+                    causing adverse effect on other organ and systems of the body. Be it a case of lung diseases ,
+                    hormonal disorders, heart , diabetes , kidney illness ,arthritis , psychiatric illness, infertility,
+                    blood diseases ,Obesity etc. they do not have any solution to eradicate it.
+                </p>
+                <p>
+                    That is because they can understand the effect but not the root cause of the disease . so their
+                    therapy focuses only on symptom management with no permanent cure as a solution.
+                </p>
+                Dr sadanand offers you the best solution is the world , only one of its kind to solve these issues and
+                gain,
+                <ul>
+                    <li>Disease control</li>
+                    <li> Disease cure</li>
+                    <li>Health</li>
+                    <li>Fitness</li>
+                    <li>Persona</li>
+                    <li>Age reversal</li>
+                </ul>
+                <b>All in one treatment module.</b>
             </div>
+            <button type="submit" class="login-btn mt-4 p-2 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
@@ -393,9 +497,9 @@
 
 <!-- Diet and wellbeing -->
 <!-- diet1 -->
-<div class="modal fade bd-example-modal-lg " id="diet1" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet1" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -406,13 +510,60 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>People all around the world are getting conscious about Weight. The bereason being increase
+                    conciousness of their health and fitness levels. Every street nowadays has a gym or zumba or
+                    aerobics centre. Also the market is flooded with weight loss centres and weight loss dieticians.
+                </p>
+                <p>The focus everywhere is just the weight scale . i.e. to reduce the weight, but thats a wrong choice.
+                    As no one has analyzed the, - cause of weight gain , - the effect of their weight loss programme and
+                    - the after effects of weight loss on body and organs. one has to be sure how is the weight loss
+                    happening , it is because of the loss of water content in the body , or loss of muscle mass or bone
+                    density or is it because of loss of body fat. Healthy weight loss should only reduce the body fat .
+                </p>
+                At Dr sadanand's clinic we,
+                <ol>
+                    <li>
+                        Analyse the cause of weight gain . as it is a surprising faqt that only 10-15% of obese people
+                        overeat. so there are causes of obesity other than those "calories concept".
+                    </li>
+                    <li>We design a weight loss programme focused at removing the cause of obesity.</li>
+                    <li>We cause selective fat loss and focus on removal of unhealthy fat folds . We do not make size
+                        Zero figures.
+                    </li>
+                    <li>
+                        we do not cause weight loss by -
+                        <ul>
+                            <li>decreasing the water proportion of the body</li>
+                            <li>decreasing the healthy muscle mass</li>
+                            <li>decreasing the bone density</li>
+                            <li>derranging the hormone axis</li>
+                            <li>decreasing the charm</li>
+                        </ul>
+                    </li>
+                    <li>
+                        dr sadanand's weight loss programmes give,
+                        <ul>
+                            <li>antiaging effect</li>
+                            <li>improve skin tone</li>
+                            <li>cause selective fat loss</li>
+                            <li>improve body proportiion and body figure</li>
+                            <li>muscles , bone and organ healthy</li>
+                            <li>improve hormone axis</li>
+                            <li>weight loss without supplement or powders or medicines or tablets</li>
+                        </ul>
+                    </li>
+                </ol>
+                Its been 100% success stories.
+                <b>"we dont just reduce obesity, we treat it and heal it."</b>
             </div>
+            <button type="submit" class="login-btn mt-4 p-2 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet2 -->
-<div class="modal fade bd-example-modal-lg " id="diet2" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet2" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -425,13 +576,16 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>these are specialized treatment plans, book a consultation and know more about the plans that will help you.</p>
             </div>
+            <button type="submit" class="login-btn mt-4 p-2 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet3 -->
-<div class="modal fade bd-example-modal-lg " id="diet3" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet3" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -445,12 +599,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet4 -->
-<div class="modal fade bd-example-modal-lg " id="diet4" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet4" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -464,12 +620,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet5 -->
-<div class="modal fade bd-example-modal-lg " id="diet5" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet5" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -483,12 +641,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet6 -->
-<div class="modal fade bd-example-modal-lg " id="diet6" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet6" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -502,12 +662,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet7 -->
-<div class="modal fade bd-example-modal-lg " id="diet7" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet7" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -521,12 +683,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet8 -->
-<div class="modal fade bd-example-modal-lg " id="diet8" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet8" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -540,12 +704,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet9 -->
-<div class="modal fade bd-example-modal-lg " id="diet9" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet9" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -559,12 +725,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet10 -->
-<div class="modal fade bd-example-modal-lg " id="diet10" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet10" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -578,12 +746,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet11 -->
-<div class="modal fade bd-example-modal-lg " id="diet11" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet11" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -597,12 +767,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet12 -->
-<div class="modal fade bd-example-modal-lg " id="diet12" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet12" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -616,12 +788,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- diet13 -->
-<div class="modal fade bd-example-modal-lg " id="diet13" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="diet13" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -639,7 +813,10 @@
                     disproportionate . the figure looks not curvy, not beautiful , not attractive. regain your shape ,
                     curves and body tone with our shape up curves programme.</p>
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
+
     </div>
 </div>
 <!-- Diet and wellbeing -->
@@ -647,7 +824,7 @@
 
 <!-- Yoga and exercises -->
 <!-- yoga1 -->
-<div class="modal fade bd-example-modal-lg " id="yoga1" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga1" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -661,12 +838,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- yoga2 -->
-<div class="modal fade bd-example-modal-lg " id="yoga2" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga2" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -680,12 +859,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- yoga3 -->
-<div class="modal fade bd-example-modal-lg " id="yoga3" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga3" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -699,12 +880,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- yoga4 -->
-<div class="modal fade bd-example-modal-lg " id="yoga4" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga4" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -718,12 +901,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- yoga5 -->
-<div class="modal fade bd-example-modal-lg " id="yoga5" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga5" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -736,13 +921,16 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+
             </div>
+            <button type="submit" class="login-btn mt-5 info-modal-btn" style="color:white;font-size: 18px;"
+                name="start_test">BOOK AN APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- yoga6 -->
-<div class="modal fade bd-example-modal-lg " id="yoga6" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga6" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -756,12 +944,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- yoga7 -->
-<div class="modal fade bd-example-modal-lg " id="yoga7" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga7" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -775,12 +965,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- yoga8 -->
-<div class="modal fade bd-example-modal-lg " id="yoga8" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga8" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -794,12 +986,14 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
 
 <!-- yoga9 -->
-<div class="modal fade bd-example-modal-lg " id="yoga9" tabindex="-1" role="dialog"
+<div class="modal fade bd-example-modal-lg info-modal" id="yoga9" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -813,8 +1007,8 @@
             <div class="modal-body">
                 <!-- content here -->
             </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
         </div>
     </div>
 </div>
-
-
