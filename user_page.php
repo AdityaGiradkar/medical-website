@@ -34,7 +34,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon">
           <i class="fas fa-fw fa-home"></i>
         </div>
@@ -45,10 +45,10 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
+      <li class="nav-item  active">
         <a class="nav-link" href="user_page.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Profile</span></a>
+          <span>Profile Page</span></a>
       </li>
 
       <!-- Divider -->
@@ -60,26 +60,20 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-newspaper"></i>
-                    <span>Treatment History</span>
-                </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Treatment History:</h6>
-                        <a class="collapse-item" href="all_consultations.php">All Consultations</a>
-                        <a class="collapse-item active" href="add_question.php">Add Question</a>
-                    </div>
-                </div>
-            </li>
-
       <li class="nav-item">
-        <a class="nav-link" href="history.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Treatment History</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>Treatment History</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Treatment History:</h6>
+            <a class="collapse-item" href="all_consultations.php">All Consultations</a>
+            <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
+            <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->

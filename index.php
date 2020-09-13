@@ -62,7 +62,7 @@
                     </li>
                     <?php }else{ ?>
                     <li class="d-inline red-dot">
-                        <a href="user_page.php" class="li-header"><?php echo $_SESSION['name']; ?></a>
+                        <a href="<?php if($_SESSION['role'] == 'doctor'){?> admin/index.php <?php }else{ ?> user_page.php <?php } ?>" class="li-header">User</a>
                     </li>
                     <?php } ?>
                 </ul>
@@ -1091,7 +1091,7 @@
     <!-- modal for test selection -->
 
     <!-- Include all modal html -->
-    <?php include("modal.php"); ?>
+    <?php include("includes/modal.php"); ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -1240,7 +1240,7 @@
                 // console.log(slots_array);
             }
         };
-        xmlhttp.open("GET", "getSlots.php?date=" + date, true);
+        xmlhttp.open("GET", "includes/getSlots.php?date=" + date, true);
         xmlhttp.send();
     }
 </script>

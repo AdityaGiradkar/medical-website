@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>All Medicines</title>
+    <title>All Consultations</title>
 
     <!-- Custom fonts for this template -->
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -58,6 +58,13 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="user_page.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Profile Page</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -68,25 +75,19 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                    aria-controls="collapseTwo">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-newspaper"></i>
                     <span>Treatment History</span>
                 </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Treatment History:</h6>
-                        <a class="collapse-item" href="all_consultations.php">All Consultations</a>
-                        <a class="collapse-item active" href="add_question.php">Add Question</a>
+                        <a class="collapse-item active" href="all_consultations.php">All Consultations</a>
+                        <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
+                        <a class="collapse-item" href="">Past Treatments</a>
                     </div>
                 </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="payment_history.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Payment History</span></a>
             </li>
 
             <!-- Divider -->
@@ -98,7 +99,7 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="update_details.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Update Details</span></a>
             </li>
@@ -186,6 +187,7 @@
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Consultation Type</th>
+                                            <th>Charges</th>
                                             <th>Status</th>
 
                                         </tr>
@@ -200,6 +202,7 @@
                                             <td><?php echo date("d-m-Y", strtotime($record['date'])); ?></td>
                                             <td><?php echo $record['time_range']; ?></td>
                                             <td><?php echo $record['consult_type']; ?></td>
+                                            <td><?php echo $record['consult_fees']; ?></td>
                                             <td><?php echo $record['status'] == 'assigned'?"Pending":"Checked"; ?></td>
                                         </tr>
                                         <?php 

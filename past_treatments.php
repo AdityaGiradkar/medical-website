@@ -1,5 +1,5 @@
 <?php 
-    include("../includes/db.php");
+    include("includes/db.php");
     session_start();
 
     //checking if user logged in 
@@ -8,7 +8,7 @@
 
         $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
                     ON u.`user_id`=y.`user_id`
-                    WHERE y.`status`='started' ORDER BY y.`date_time` DESC";
+                    WHERE y.`status`='closed' ORDER BY y.`date_time` DESC";
         $yoge_home_run = mysqli_query($con, $yoge_home);
         $yoge_home_rows = mysqli_num_rows($yoge_home_run);
         
@@ -34,19 +34,19 @@
     <title>New Patient List</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- custom style sheet for sidebar and navigation bar -->
-    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="admin/css/sidebar.css">
 </head>
 
 <body id="page-top">
@@ -58,7 +58,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-fw fa-home"></i>
                 </div>
@@ -70,52 +70,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="user_page.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Consultation
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePatient" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <i class="fas fa-user-injured"></i>
-                    <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle"
-                                style="font-size: .75em !important;"></i></sup><?php } ?></span>
-                </a>
-                <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Patients : </h6>
-                        <a class="collapse-item" href="new_patient.php">New consultation
-                            (<?php echo $data['total']; ?>)</a>
-                        <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
-                        <a class="collapse-item active" href="all_treatments.php">All Treatments</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-clock"></i>
-                    <span>Timing</span>
-                </a>
-                <div id="timing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Time Slots:</h6>
-                        <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
-                        <a class="collapse-item" href="available_slots.php">Available Slots</a>
-                    </div>
-                </div>
+                    <span>Profile Page</span></a>
             </li>
 
             <!-- Divider -->
@@ -126,61 +83,48 @@
                 Hospital
             </div>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-pills"></i>
-                    <span>Medicines</span>
+                    <i class="fas fa-fw fa-newspaper"></i>
+                    <span>Treatment History</span>
                 </a>
-                <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Medicine Section:</h6>
-                        <a class="collapse-item" href="all_medicines.php">All Medicines</a>
-                        <a class="collapse-item" href="add_medicine.php">Add Medicine</a>
+                        <h6 class="collapse-header">Treatment History:</h6>
+                        <a class="collapse-item" href="all_consultations.php">All Consultations</a>
+                        <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
+                        <a class="collapse-item active" href="past_treatments.php">Past Treatments</a>
                     </div>
                 </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-pills"></i>
-                    <span>Sessions</span>
-                </a>
-                <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Sssions:</h6>
-                        <a class="collapse-item" href="all_medicines.php">All Sessions</a>
-                        <a class="collapse-item" href="add_medicine.php">Add Session</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-pills"></i>
-                    <span>Blogs</span>
-                </a>
-                <div id="collapseBlogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Blogs Section:</h6>
-                        <a class="collapse-item" href="blogs_table.php">All Blogs</a>
-                        <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="users.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Users</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Personal
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="update_details.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Update Details</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="change_pass.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Change Password</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Logout</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->
@@ -320,10 +264,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
-                                                    <th>Date</th>
+                                                    <th>Start Date</th>
                                                     <th>Name</th>
-                                                    <th>Contact No.</th>
-                                                    <th>Email ID</th>
+                                                    <th>Status</th>
                                                     <th>Details</th>
                                                 </tr>
                                             </thead>
@@ -338,12 +281,8 @@
                                                     <td><?php echo date("d-m-Y", strtotime($yoge_home_res['date_time'])); ?>
                                                     </td>
                                                     <td><?php echo $yoge_home_res['name']; ?></td>
-                                                    <td><?php echo $yoge_home_res['contact_no'];?></td>
-                                                    <td><?php echo $yoge_home_res['email_id']; ?></td>
-                                                    <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
-                                                    <td><a
-                                                            href="yoge_treatment_details.php?testID=<?php echo $yoge_home_res['test_id']; ?>">view</a>
-                                                    </td>
+                                                    <td><?php echo $yoge_home_res['status'];?></td>
+                                                    <td><a href="yoge_test_details.php?testID=<?php echo $yoge_home_res['test_id']; ?>" >view</a></td>
                                                 </tr>
 
                                                 <?php 
@@ -403,28 +342,28 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="../logout.php">Logout</a>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="admin/vendor/jquery/jquery.min.js"></script>
+    <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="admin/js/demo/datatables-demo.js"></script>
 
 </body>
 
@@ -435,7 +374,7 @@
     }else{
       //else part if session is not set
       echo "<script>
-              window.location.href='../error/login_error.html';
+              window.location.href='error/login_error.html';
             </script>";
     }
 

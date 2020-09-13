@@ -1,5 +1,5 @@
 <?php 
-    include("../includes/db.php");
+    include("includes/db.php");
     session_start();
 
     //checking if user logged in 
@@ -45,19 +45,19 @@
   <title>Patient History</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- custome style -->
-  <link rel="stylesheet" href="css/patient_history.css">
+  <link rel="stylesheet" href="admin/css/patient_history.css">
 
   <!-- custom style sheet for sidebar and navigation bar -->
-  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="admin/css/sidebar.css">
 
 </head>
 
@@ -69,113 +69,76 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.php">
-        <div class="sidebar-brand-icon">
-          <i class="fas fa-fw fa-home"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Home site</div>
-      </a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+                <div class="sidebar-brand-icon">
+                    <i class="fas fa-fw fa-home"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Home site</div>
+            </a>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="user_page.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Profile Page</span></a>
+            </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Consultation
-      </div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Hospital
+            </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePatient" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-user-injured"></i>
-          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle"
-                style="font-size: .75em !important;"></i></sup><?php } ?></span>
-        </a>
-        <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Patients : </h6>
-            <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
-            <a class="collapse-item " href="test_submissions.php">New Test Submissions</a>
-            <a class="collapse-item active" href="all_treatments.php">All Treatments</a>
-          </div>
-        </div>
-      </li>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-newspaper"></i>
+                    <span>Treatment History</span>
+                </a>
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Treatment History:</h6>
+                        <a class="collapse-item" href="all_consultations.php">All Consultations</a>
+                        <a class="collapse-item active" href="ongoing_treatments.php">Ongoing Treatments</a>
+                        <a class="collapse-item" href="">Past Treatments</a>
+                    </div>
+                </div>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-clock"></i>
-          <span>Timing</span>
-        </a>
-        <div id="timing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Time Slots:</h6>
-            <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
-            <a class="collapse-item" href="available_slots.php">Available Slots</a>
-          </div>
-        </div>
-      </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Personal
+            </div>
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Hospital
-      </div>
+            <li class="nav-item">
+                <a class="nav-link" href="update_details.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Update Details</span></a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
-          aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-pills"></i>
-          <span>Medicines</span>
-        </a>
-        <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Medicine Section:</h6>
-            <a class="collapse-item" href="all_medicines.php">All Medicines</a>
-            <a class="collapse-item" href="add_medicine.php">Add Medicine</a>
-          </div>
-        </div>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="change_pass.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Change Password</span></a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
-          aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-pills"></i>
-          <span>Blogs</span>
-        </a>
-        <div id="collapseBlogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Blogs Section:</h6>
-            <a class="collapse-item" href="blogs_table.php">All Blogs</a>
-            <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
-          </div>
-        </div>
-      </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Logout</span></a>
+            </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="users.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Users</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-    </ul>
+        </ul>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -231,38 +194,8 @@
           <!-- Person info -->
           <div class="border border-primary rounded-lg p-3"
             style="background-color:#fff; box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.35)">
-            <h1 class="h4 mb-2 text-gray-800">Personal Details</h1>
-            <div class="row">
-              <div class="col-md-4">
-                <b>Name :</b> <?php echo $user_detail['name']; ?>
-              </div>
-              <div class="col-md-4">
-                <b>Father's Name :</b> <?php echo $user_detail['father_name']; ?>
-              </div>
-              <div class="col-md-4">
-                <b>Contact :</b> <?php echo $user_detail['contact_no']; ?>
-              </div>
-              <div class="col-md-4">
-                <b>Email :</b> <?php echo $user_detail['email_id']; ?>
-              </div>
-              <div class="col-md-4">
-                <b>Gender :</b> <?php echo $user_detail['gender']; ?>
-              </div>
-              <div class="col-md-4">
-                <b>DOB :</b> <?php echo date("d-m-Y", strtotime($user_detail['dob'])); ?>
-              </div>
-              <div class="col-md-4">
-                <b>Married :</b> <?php echo $user_detail['married']; ?>
-              </div>
-              <div class="col-md-4">
-                <b>Working :</b> <?php echo $user_detail['working']; ?>
-              </div>
-              <div class="col-md-4">
-                <b>Address :</b> <?php echo $user_detail['address']; ?>
-              </div>
-            </div>
-
-            <h1 class="h4 mt-4 mb-2 text-gray-800">Medical History</h1>
+            
+            <h1 class="h4 mb-3 text-gray-800">Medical History</h1>
             <div class="row">
               <div class="col-md-4 mb-3">
                 <b>What is problem you have ? :</b> <?php echo $medical_history_res['problems']; ?>
@@ -487,7 +420,7 @@
             $previous_treatment_run = mysqli_query($con, $previous_treatment);
           ?>
           <div class="border border-primary rounded-lg p-3 mt-4 treat-panel">
-            <h5 class="modal-title text-center" id="exampleModalLongTitle">Previous YogE @ HOME Test Treatment</h5>
+            <h5 class="modal-title text-center" id="exampleModalLongTitle">YogE @ HOME Test Treatment</h5>
             <?php
               $sr_no = 1;
               while($previous_treatment_res = mysqli_fetch_assoc($previous_treatment_run)){
@@ -518,7 +451,9 @@
                         "name" => $medicine_detail_res['Name'],
                         "type" => $medicine_detail_res['type'],
                         "price" => $medicine_detail_res['price'],
-                        "quantity" => $medi_Id_quantity['quantity'],
+                        "medi_quantity" => $medicine_detail_res['quantity'], //quantity from medicine table
+                        "quantity" => $medi_Id_quantity['quantity'],    //quantity multiple of medicine table
+                        "price" => $medicine_detail_res['price'],
                         "total_price" => $medi_Id_quantity['quantity'] * $medicine_detail_res['price']
                       );
                       $total_price = $total_price + (int)$temp['total_price'];
@@ -552,6 +487,7 @@
                         "name" => $session_detail_res['session_name'],
                         "price" => $session_detail_res['price'],
                         "quantity" => $session_Id_quantity['session_per_month'],
+                        "price" => $session_detail_res['price'],
                         "total_price" => $session_Id_quantity['session_per_month'] * $session_detail_res['price']
                       );
                       $total_price = $total_price + (int)$temp['total_price'];
@@ -569,10 +505,19 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="h6 mb-0 font-weight-bold text-gray-800">
-                      <?php echo date("d/m/Y", strtotime($previous_treatment_res['date'])); ?>
+                      <?php echo $sr_no.") ".date("d/m/Y", strtotime($previous_treatment_res['date'])); ?>
                     </div>
                     <div class="text-xs font-weight-bold text-primary mt-2 mb-1">
-                      Total : Rs. <?php echo $total_price; ?> (<?php echo $previous_treatment_res['fees']=='pending'?"<span style='color:red'>Pending</span>":"<span style='color:blue'>Paid</span>"; ?>)
+                      Total : Rs. 
+                      <?php 
+                        if($previous_treatment_res['fees_status']=='pending'){
+                            echo $total_price. " (<span style='color:red'>Pending</span>)";
+                           
+                        }else{
+                            echo $previous_treatment_res['fees']. " (<span style='color:green'>Paid</span>)";
+                            
+                        }
+                      ?>
                     </div>
                   </div>
                   <div class="col-auto">
@@ -584,10 +529,10 @@
               <div class="card-body pt-2" style="display:none" id="d_<?php echo $sr_no; ?>">
                 <div class="row">
                   <div class="col-md-6">
-                    <strong>Report : </strong> <a target="_blank" href="<?php echo $previous_treatment_res['report']; ?>">view</a>
+                    <strong>Report : </strong> <a target="_blank" href="<?php echo "admin/".$previous_treatment_res['report']; ?>">view</a>
                   </div>
                   <div class="col-md-6">
-                    <strong>Diet Plan : </strong><a target="_blank" href="<?php echo $previous_treatment_res['diet']; ?>">view</a>
+                    <strong>Diet Plan : </strong><a target="_blank" href="<?php echo "admin/".$previous_treatment_res['diet']; ?>">view</a>
                   </div>
                 </div>
                 <br>
@@ -598,8 +543,8 @@
                     <tr>
                       <th scope="col">sr. no.</th>
                       <th scope="col">Medicine Name</th>
-                      <th scope="col">Quantity</th>
                       <th scope="col">Type</th>
+                      <th scope="col">Quantity</th>
                       <th scope="col">Total Price (Rs.)</th>
                     </tr>
                   </thead>
@@ -611,9 +556,9 @@
                     <tr>
                       <th scope="col"><?php echo $medi_count; ?></th>
                       <td><?php echo $single_medi_detail['name']; ?></td>
-                      <td><?php echo $single_medi_detail['quantity']; ?></td>
                       <td><?php echo $single_medi_detail['type']; ?></td>
-                      <td><?php echo $single_medi_detail['total_price']; ?></td>
+                      <td><?php echo $single_medi_detail['medi_quantity']. " * " .$single_medi_detail['quantity']; ?></td>
+                      <td><?php echo $single_medi_detail['price']. " * ". $single_medi_detail['quantity']. " = " .$single_medi_detail['total_price']; ?></td>
                     </tr>
                     <?php 
                         $medi_count++;
@@ -631,7 +576,7 @@
                       <th scope="col">sr. no.</th>
                       <th scope="col">Session Name</th>
                       <th scope="col">Times per month</th>
-                      <th scope="col">Total Price</th>
+                      <th scope="col">Total Price (Rs.)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -643,7 +588,7 @@
                       <th scope="col"><?php echo $session_count; ?></th>
                       <td><?php echo $single_session_detail['name']; ?></td>
                       <td><?php echo $single_session_detail['quantity']; ?></td>
-                      <td><?php echo $single_session_detail['total_price']; ?></td>
+                      <td><?php echo $single_session_detail['price']. " * " .$single_session_detail['quantity']. " = " .$single_session_detail['total_price']; ?></td>
                     </tr>
                     <?php 
                       $session_count++;
@@ -655,9 +600,27 @@
                 <br>
 
                 <p><strong>Extra Note : </strong> <?php echo $previous_treatment_res['extra_note']; ?></p>
+                <?php 
+                    if($previous_treatment_res['fees_status'] == 'pending' && $record['status'] != 'closed'){
+                ?>
                 <div class="Actions">
-                  
+                    <form method="post">
+                        <button type="submit" name="pay_<?php echo $treatment_no; ?>" class="btn btn-primary">Procced to pay</button>
+                    </form>
                 </div>
+                <?php
+                    $pay_name = "pay_".$treatment_no; 
+                    if(isset($_POST[$pay_name])){
+                        $update_fees_and_suatus = "UPDATE `treatment` SET `fees_status`='paid',`fees`=$total_price WHERE `test_id`='$test_id' AND `treat_number`='$treatment_no'";
+                        if($update_fees_and_suatus_run = mysqli_query($con, $update_fees_and_suatus)){
+                            echo "<script>
+                                alert('Treatment is started');
+                                window.location.href = 'yoge_test_details.php?testID=$test_id';
+                            </script>";
+                        }
+                    }
+                    }
+                ?>
 
               </div>
             </div>
@@ -666,229 +629,8 @@
                 $sr_no++;
               }
             ?>
-            <button class="btn btn-primary" onClick="updateTreatment()">Update Treatment</button>
-            
-            <!-- end treatment -->
-            <form method="post" class="d-inline" style="display: table-cell;text-align: right;">
-              <div>
-                <button type="submit" name="end-treat" class="btn btn-danger" onClick="javascript: return confirm('Are you sure you want to end this treatment');">End Treatment</button>
-              </div>
-            </form>
-
-            <?php 
-              if(isset($_POST['end-treat'])){
-                $update_status_close = "UPDATE `yoge_home` SET `status`='closed' WHERE `test_id`='$test_id' AND `user_id`='$user_id'";
-                if($update_status_close_run = mysqli_query($con, $update_status_close)){
-                  echo "<script>
-                    alert('Treatment has been closed');
-                    window.location.href='all_treatments.php';
-                  </script>";
-                }
-              }
-            ?>
-            <!-- end treatment -->
           </div>
           <!-- Previous treatments -->
-
-
-          <!-- treatment section -->
-          <?php 
-              $all_medicines = "SELECT * FROM `medicines`";
-              $all_medicines_run = mysqli_query($con, $all_medicines);
-              $count = 0;
-              $medicines = array();
-              while($medi = mysqli_fetch_assoc($all_medicines_run)){
-                $medicines[$count] = $medi;
-                  $count++; 
-              }
-
-              $all_instruments = "SELECT * FROM `sessions`";
-              $all_instruments_run = mysqli_query($con, $all_instruments);
-              $count_instru = 0;
-              $instruments = array();
-              while($instru = mysqli_fetch_assoc($all_instruments_run)){
-                  $instruments[$count_instru] = $instru;
-                  $count_instru++; 
-              }
-          ?>
-          <!-- Passing medicine array in the js file  -->
-          <script type="text/javascript">
-            var medicineArray = <?php echo json_encode($medicines); ?> ;
-            var instrumentArray = <?php echo json_encode($instruments); ?> ;
-          </script>
-          <!-- Passing medicine array in the js file  -->
-
-          <div class="border border-primary rounded-lg d-none p-3 mt-4" id="treat-panel">
-            <h5 class="modal-title text-center" id="exampleModalLongTitle">Update Treatment</h5>
-            <form method="post" onsubmit="return confirm('Are you sure you want to submit this treatment?');"
-              enctype="multipart/form-data">
-              <div class="form-group">
-                <label for="exampleFormControlFile1">Report of test</label>
-                <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1" required>
-              </div>
-              <div class="form-group">
-                <label for="">Medicines</label><br>
-                <table class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">Medicine Name</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Remove</th>
-                    </tr>
-                  </thead>
-                  <tbody id="medicine">
-                    <!-- Medicine rows are added Dynamically through javascript -->
-                  </tbody>
-                </table>
-                <button type="button" onClick="addMedicine()" class="btn btn-primary">Add Medicines</button>
-              </div>
-
-              <div class="form-group">
-                <label for="">Sessions</label><br>
-                <table class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">Session Name</th>
-                      <th scope="col">quantity (per month)</th>
-                      <th scope="col">Remove</th>
-                    </tr>
-                  </thead>
-                  <tbody id="instrument">
-                    <!-- instruments rows are added Dynamically through javascript -->
-                  </tbody>
-                </table>
-
-                <button type="button" onClick="addInstrument()" class="btn btn-primary">Add Instrument</button>
-              </div>
-
-              <div class="form-group">
-                <label for="diet">Diet Plan</label>
-                <input type="file" name="diet" class="form-control-file" id="diet" required>
-              </div>
-
-              <div class="form-group">
-                <label for="note">Extra Note</label>
-                <textarea class="form-control" placeholder="If nothing type 'NA'" id="note" name="note" rows="3"
-                  required></textarea>
-              </div>
-
-              <button type="submit" name="start_test" class="btn btn-primary">Update</button>
-            </form>
-          </div>
-
-          <?php 
-            if(isset($_POST['start_test'])){
-              $diet = $_FILES['diet'];
-              $report = $_FILES['report'];
-              $extra_note = $_POST['note'];
-
-              $lastest_count = "SELECT max(`treat_number`) AS max_count FROM `treatment` WHERE `test_id`='$test_id'";
-              $lastest_count_run = mysqli_query($con, $lastest_count);
-              $lastest_count_res = mysqli_fetch_assoc($lastest_count_run);
-              $new_treatment_no = $lastest_count_res['max_count'] + 1;
-
-              //firse check if doctor has added medicines or not 
-              //if not then do not run query for insertion of data into database
-              $query_medicine_insert = "";
-              if(isset($_POST['medicine_name'])){
-                $prescribed_medi = $_POST['medicine_name'];
-                $prescribed_medi_quantity = $_POST['quantityMed'];
-
-                foreach($prescribed_medi as $key => $val){
-                  if($val != 0){  //check if something is selected or not
-                    $Idprice = explode(',', $val);
-                    //$total_medi_cost = $total_medi_cost + (float)$Idprice[1] * (float)$prescribed_medi_quantity[$key];
-                    $query_medicine_insert = $query_medicine_insert."('" . $test_id ."',". $new_treatment_no ."," . (int)$Idprice[0] . "," . (int)$prescribed_medi_quantity[$key] . "),";
-                  }
-                }
-                if($query_medicine_insert != ""){ // if doctor just added rows but didn't select any medicine then also do not run query
-                  $query_medicine_insert = substr($query_medicine_insert, 0, -1);
-
-                  $insert_medicines = "INSERT INTO `prescribed_medicine`(`test_id`, `treat_number`, `medicine_id`, `quantity`) 
-                                      VALUES ".$query_medicine_insert;
-                  $insert_medicines_run = mysqli_query($con, $insert_medicines);
-                }
-              }
-
-              $query_instru_insert = "";
-              if(isset($_POST['instrument_name'])){
-                $prescribed_session = $_POST['instrument_name'];
-                $prescribed_session_quantity = $_POST['quantityInstru'];
-
-                foreach($prescribed_session as $key => $val){
-                  if($val != 0){  //check if something is selected or not
-                    $Idprice = explode(',', $val);
-                    //$total_session_cost = $total_session_cost + (float)$Idprice[1] * (float)$prescribed_session_quantity[$key];
-                    $query_instru_insert = $query_instru_insert."('" . $test_id ."',". $new_treatment_no ."," . (int)$Idprice[0] . "," . (int)$prescribed_session_quantity[$key] . "),";
-                  }
-                }
-                if($query_instru_insert != ""){
-                  $query_instru_insert = substr($query_instru_insert, 0, -1);
-
-                  $insert_instru = "INSERT INTO `prescribed_session`(`test_id`, `treat_number`, `session_id`, `session_per_month`) 
-                                    VALUES ". $query_instru_insert;
-                  $insert_instru_run = mysqli_query($con, $insert_instru);
-                  
-                }
-              }
-              
-              //print_r("INSERT INTO `prescribed_medicine`(`test_id`, `treat_number`, `medicine_id`, `quantity`) 
-               //           VALUES ".$query_medicine_insert);
-
-
-              //$total_price = $total_medi_cost + $total_session_cost;
-
-              
-              if($diet != "" && $report != ""){
-                $diet_original = $_FILES['diet']['name'];
-                $diet_tmp_name = $_FILES['diet']['tmp_name'];
-                $diet_error = $_FILES['diet']['error'];
-                $diet_type = $_FILES['diet']['type'];
-    
-                $report_original = $_FILES['report']['name'];
-                $report_tmp_name = $_FILES['report']['tmp_name'];
-                $report_error = $_FILES['report']['error'];
-                $report_type = $_FILES['report']['type'];
-    
-                $diet_ext_seprate = explode('.', $diet_original);
-                $report_ext_seprate = explode('.', $report_original);
-            
-                $diet_ext = strtolower(end($diet_ext_seprate));
-                $report_ext = strtolower(end($report_ext_seprate));
-    
-                if($diet_error === 0 && $report_error === 0){
-                  $diet_new_name = uniqid('', true).".".$diet_ext;
-                  $report_new_name = uniqid('', true).".".$report_ext;
-  
-                  $diet_destination = "files/yoge_test/diet/".$diet_new_name;
-                  move_uploaded_file($diet_tmp_name, $diet_destination);
-  
-                  $report_destination = "files/yoge_test/report/".$report_new_name;
-                  move_uploaded_file($report_tmp_name, $report_destination);
-  
-                  $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
-                                  VALUES ('$test_id','$new_treatment_no','$diet_destination','$report_destination','$extra_note')";          
-
-                  if(mysqli_query($con, $insert_test)) {
-                    $update_test_status = "UPDATE `yoge_home` SET `status`='started' WHERE `test_id`='$test_id'";
-                    if($update_test_status_run = mysqli_query($con, $update_test_status)){
-                      echo "<script>
-                                  alert('test updated sucessfully');
-                                  window.location.href='user_treatment_details.php?testID=$test_id';
-                              </script>";
-                    }
-                  }
-                }else{
-                    echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
-                }
-              }
-            }
-          
-          ?>
-          <!-- treatment section -->
-
-
-
 
         </div>
         <!-- /.container-fluid -->
@@ -931,39 +673,32 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="../logout.php">Logout</a>
+          <a class="btn btn-primary" href="logout.php">Logout</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="admin/vendor/jquery/jquery.min.js"></script>
+  <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="admin/js/sb-admin-2.min.js"></script>
 
   <!-- adding medicine column dynamicly -->
-  <script src="js/add_medicine_dynamicly.js"></script>
+  <script src="admin/js/add_medicine_dynamicly.js"></script>
 
   <!-- adding Instruments column dynamicly -->
-  <script src="js/add_instruments_dynamicly.js"></script>
+  <script src="admin/js/add_instruments_dynamicly.js"></script>
 </body>
 
 </html>
 
 <script>
-  function updateTreatment() {
-    var treat = document.querySelector("#treat-panel");
-    treat.classList.remove("d-none");
-  }
-
-
-
   function showTest() {
     var testBlock = document.getElementById("treatBlock");
     treatBlock.classList.remove("d-none");
