@@ -474,19 +474,199 @@
                 </tr>
               </tbody>
             </table>
-            <form method="post">
-                <button type="submit" name="mark-done" class="btn btn-primary">Mark As Seen</button>
+            <button class="btn btn-primary" onClick="startTreatment()">Start Treatment</button>
+          </div>
+          <!-- CREATE TABLE OF test details  -->
+
+          <!-- treatment section -->
+          <?php 
+              $all_medicines = "SELECT * FROM `medicines`";
+              $all_medicines_run = mysqli_query($con, $all_medicines);
+              $count = 0;
+              $medicines = array();
+              while($medi = mysqli_fetch_assoc($all_medicines_run)){
+                $medicines[$count] = $medi;
+                  $count++; 
+              }
+
+              $all_instruments = "SELECT * FROM `sessions`";
+              $all_instruments_run = mysqli_query($con, $all_instruments);
+              $count_instru = 0;
+              $instruments = array();
+              while($instru = mysqli_fetch_assoc($all_instruments_run)){
+                  $instruments[$count_instru] = $instru;
+                  $count_instru++; 
+              }
+          ?>
+          <!-- Passing medicine array in the js file  -->
+          <script type="text/javascript">  
+            var medicineArray = <?php echo json_encode($medicines); ?>;
+            var instrumentArray = <?php echo json_encode($instruments); ?>;
+          </script>
+          <!-- Passing medicine array in the js file  -->
+          
+          <div class="border border-primary rounded-lg p-3 mt-4 d-none treat-panel">
+            <h5 class="modal-title text-center" id="exampleModalLongTitle">Start YogE @ HOME Test Treatment</h5>
+            <form method="post" onsubmit="return confirm('Are you sure you want to submit this treatment?');" enctype="multipart/form-data">
+              <div class="form-group">
+                  <label for="exampleFormControlFile1">Report of test</label>
+                  <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1" required>
+              </div>
+              <div class="form-group">
+                  <label for="">Medicines</label><br>
+                  <table class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                        <th scope="col">Medicine Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Remove</th>
+                        </tr>
+                  </thead>
+                  <tbody  id="medicine">
+                      <!-- Medicine rows are added Dynamically through javascript -->
+                  </tbody>
+                  </table>  
+                  <button type="button" onClick="addMedicine()" class="btn btn-primary">Add Medicines</button>
+                </div>
+
+                <div class="form-group">
+                  <label for="">Sessions</label><br>
+                  <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                          <th scope="col">Session Name</th>
+                          <th scope="col">quantity (per month)</th>
+                          <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody  id="instrument">
+                        <!-- instruments rows are added Dynamically through javascript -->
+                    </tbody>
+                  </table>
+                    
+                  <button type="button" onClick="addInstrument()" class="btn btn-primary">Add Instrument</button>
+                </div>
+
+                <div class="form-group">
+                  <label for="diet">Diet Plan</label>
+                  <input type="file" name="diet" class="form-control-file" id="diet" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="note">Extra Note</label>
+                  <textarea class="form-control" placeholder="If nothing type 'NA'" id="note" name="note" rows="3" required></textarea>
+                </div>
+
+                <button type="submit" name="start_test" class="btn btn-primary">start Test</button>
             </form>
           </div>
 
           <?php 
-            if(isset($_POST['mark-done'])){
-                    $update_status = "UPDATE `yoge_home` SET `status`='seen' WHERE `user_id`='$user_id' AND `test_id`='$test_id'";
-                    $update_status_run = mysqli_query($con, $update_status);
-                    echo "<script> window.location.href='test_submissions.php'; </script>";
+            if(isset($_POST['start_test'])){
+              $diet = $_FILES['diet'];
+              $report = $_FILES['report'];
+              $extra_note = $_POST['note'];
+
+              //firse check if doctor has added medicines or not 
+              //if not then do not run query for insertion of data into database
+              $query_medicine_insert = "";
+              if(isset($_POST['medicine_name'])){
+                $prescribed_medi = $_POST['medicine_name'];
+                $prescribed_medi_quantity = $_POST['quantityMed'];
+
+                foreach($prescribed_medi as $key => $val){
+                  if($val != 0){  //check if something is selected or not
+                    $Idprice = explode(',', $val);
+                    //$total_medi_cost = $total_medi_cost + (float)$Idprice[1] * (float)$prescribed_medi_quantity[$key];
+                    $query_medicine_insert = $query_medicine_insert."('" . $test_id ."',1," . (int)$Idprice[0] . "," . (int)$prescribed_medi_quantity[$key] . "),";
+                  }
+                }
+                if($query_medicine_insert != ""){ // if doctor just added rows but didn't select any medicine then also do not run query
+                  $query_medicine_insert = substr($query_medicine_insert, 0, -1);
+
+                  $insert_medicines = "INSERT INTO `prescribed_medicine`(`test_id`, `treat_number`, `medicine_id`, `quantity`) 
+                                      VALUES ".$query_medicine_insert;
+                  $insert_medicines_run = mysqli_query($con, $insert_medicines);
+                }
+              }
+
+              $query_instru_insert = "";
+              if(isset($_POST['instrument_name'])){
+                $prescribed_session = $_POST['instrument_name'];
+                $prescribed_session_quantity = $_POST['quantityInstru'];
+
+                foreach($prescribed_session as $key => $val){
+                  if($val != 0){  //check if something is selected or not
+                    $Idprice = explode(',', $val);
+                    //$total_session_cost = $total_session_cost + (float)$Idprice[1] * (float)$prescribed_session_quantity[$key];
+                    $query_instru_insert = $query_instru_insert."('" . $test_id ."',1," . (int)$Idprice[0] . "," . (int)$prescribed_session_quantity[$key] . "),";
+                  }
+                }
+                if($query_instru_insert != ""){
+                  $query_instru_insert = substr($query_instru_insert, 0, -1);
+
+                  $insert_instru = "INSERT INTO `prescribed_session`(`test_id`, `treat_number`, `session_id`, `session_per_month`) 
+                                    VALUES ". $query_instru_insert;
+                  $insert_instru_run = mysqli_query($con, $insert_instru);
+                  
+                }
+              }
+              
+              //print_r("INSERT INTO `prescribed_medicine`(`test_id`, `treat_number`, `medicine_id`, `quantity`) 
+               //           VALUES ".$query_medicine_insert);
+
+
+              //$total_price = $total_medi_cost + $total_session_cost;
+
+              
+              if($diet != "" && $report != ""){
+                $diet_original = $_FILES['diet']['name'];
+                $diet_tmp_name = $_FILES['diet']['tmp_name'];
+                $diet_error = $_FILES['diet']['error'];
+                $diet_type = $_FILES['diet']['type'];
+    
+                $report_original = $_FILES['report']['name'];
+                $report_tmp_name = $_FILES['report']['tmp_name'];
+                $report_error = $_FILES['report']['error'];
+                $report_type = $_FILES['report']['type'];
+    
+                $diet_ext_seprate = explode('.', $diet_original);
+                $report_ext_seprate = explode('.', $report_original);
+            
+                $diet_ext = strtolower(end($diet_ext_seprate));
+                $report_ext = strtolower(end($report_ext_seprate));
+    
+                if($diet_error === 0 && $report_error === 0){
+                  $diet_new_name = uniqid('', true).".".$diet_ext;
+                  $report_new_name = uniqid('', true).".".$report_ext;
+  
+                  $diet_destination = "files/yoge_test/diet/".$diet_new_name;
+                  move_uploaded_file($diet_tmp_name, $diet_destination);
+  
+                  $report_destination = "files/yoge_test/report/".$report_new_name;
+                  move_uploaded_file($report_tmp_name, $report_destination);
+  
+                  $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
+                                  VALUES ('$test_id',1,'$diet_destination','$report_destination','$extra_note')";          
+
+                  if(mysqli_query($con, $insert_test)) {
+                    $update_test_status = "UPDATE `yoge_home` SET `status`='started' WHERE `test_id`='$test_id'";
+                    if($update_test_status_run = mysqli_query($con, $update_test_status)){
+                      echo "<script>
+                                  alert('test started sucessfully');
+                                  window.location.href='test_submissions.php';
+                              </script>";
+                    }
+                  }
+                }else{
+                    echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
+                }
+              }
             }
+          
           ?>
-          <!-- CREATE TABLE OF test details  -->
+          <!-- treatment section -->
+
 
 
 
@@ -547,9 +727,26 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
+  <!-- custom js file for opening details -->
+  <script src="js/patient_history.js"></script>
+
+  <!-- adding medicine column dynamicly -->
+  <script src="js/add_medicine_dynamicly.js"></script>
+
+  <!-- adding Instruments column dynamicly -->
+  <script src="js/add_instruments_dynamicly.js"></script>
 </body>
 
 </html>
+
+<script>
+  function startTreatment() {
+    var treat = document.querySelector(".treat-panel");
+    treat.classList.remove("d-none");
+  }
+
+
+</script>
 
 
 <?php 

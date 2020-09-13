@@ -8,9 +8,13 @@
 
         $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
                     ON u.`user_id`=y.`user_id`
-                    WHERE y.`status`='new' ORDER BY y.`date_time` DESC";
+                    ORDER BY y.`status`, y.`date_time` DESC";
         $yoge_home_run = mysqli_query($con, $yoge_home);
-        $yoge_home_rows = mysqli_num_rows($yoge_home_run);
+
+        $new_yoge = "SELECT count(*) as cout FROM `yoge_home` WHERE `status`='new'"; 
+        $new_yoge_run = mysqli_query($con, $new_yoge);
+        $new_yoge_res= mysqli_fetch_assoc($new_yoge_run);
+        $new_yoge_submissions = $new_yoge_res['cout'];
         
 
       //finding total number of new patient
@@ -247,7 +251,7 @@
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                                 aria-controls="profile" aria-selected="false">YogE @ HOME Test
-                                (<?php echo $yoge_home_rows; ?>)</a>
+                                (<?php echo $new_yoge_submissions; ?>)</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
@@ -256,57 +260,7 @@
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                            <!-- DataTales Example -->
-                            <div class="card shadow mt-4 mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="yoge_table" width="100%"
-                                            cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No.</th>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th>Name</th>
-                                                    <th>Contact No.</th>
-                                                    <th>consultation Type</th>
-                                                    <th>check</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                $count = 1;
-                                                while($record = mysqli_fetch_assoc($all_user_run)){
-                                                    
-                                                ?>
-                                                <tr>
-                                                    <th><?php echo $count; ?></th>
-                                                    <td><?php echo $record['date']; ?></td>
-                                                    <td><?php echo $record['time_range']; ?></td>
-                                                    <td><?php echo $record['name'];?></td>
-                                                    <td><?php echo $record['contact_no']; ?></td>
-                                                    <!-- <td><?php //echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td> -->
-                                                    <td><?php echo $record['consult_type']; ?></td>
-                                                    <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
-                                                    <td><a href="mark_done.php?date=<?php echo $record['date']; ?>&time=<?php echo $record['time_range']; ?>"
-                                                            onClick="javascript: return confirm('you want to mark done to user <?php echo $record['name']; ?>?');">done</a>
-                                                    </td>
-                                                </tr>
-
-                                                <?php 
-                                                $count++;
-                                                //end of while loop
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- test1 panel -->...
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <!-- DataTales Example -->
@@ -333,18 +287,19 @@
                                                 while($yoge_home_res = mysqli_fetch_assoc($yoge_home_run)){
                                                     
                                                 ?>
-                                                <tr>
-                                                    <th><?php echo $count; ?></th>
+                                                
+                                                <tr style="font-weight:<?php echo $yoge_home_res['status'] == 'new'?'bold': ''; ?>">
+                                                    <td><?php echo $count; ?></td>
                                                     <td><?php echo date("d-m-Y", strtotime($yoge_home_res['date_time'])); ?>
                                                     </td>
                                                     <td><?php echo $yoge_home_res['name']; ?></td>
                                                     <td><?php echo $yoge_home_res['contact_no'];?></td>
                                                     <td><?php echo $yoge_home_res['email_id']; ?></td>
-                                                    <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
                                                     <td><a
                                                             href="yoge_test_details.php?testID=<?php echo $yoge_home_res['test_id']; ?>">view</a>
                                                     </td>
                                                 </tr>
+                                                
 
                                                 <?php 
                                                 $count++;
