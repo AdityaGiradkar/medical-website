@@ -1075,7 +1075,7 @@
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type3" value="3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type3" value="3" disabled>
                             <label class="form-check-label" for="test_type3">YogE@SUPERFIT</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
@@ -1145,11 +1145,11 @@
         if(isset($_SESSION['user_id'])){
             $test_type = $_POST['test_type'];
             if($test_type == 1){
-                echo "<script>window.location.href='test1.php'</script>";
+                echo "<script>window.location.href='Yodha_test.php'</script>";
             }else if($test_type == 2){
                 echo "<script>window.location.href='YogE_HOME.php'</script>";
             }else if($test_type == 3){
-                echo "<script>window.location.href='test3.php'</script>";
+                echo "<script>window.location.href='#'</script>";
             } 
         }else{
             echo "<script>
