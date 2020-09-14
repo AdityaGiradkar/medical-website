@@ -36,9 +36,9 @@
     <div class="main">
 
     <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
-    <a class="navbar-brand ml-5" style="font-size:1.8rem" href="#">
-        <img src="images/brand.png" width="250"  class="d-inline-block align-top" alt="" loading="lazy">
-    </a>
+        <a class="navbar-brand ml-5" style="font-size:1.8rem" href="#">
+            <img src="images/brand.png" width="250"  class="d-inline-block align-top" alt="" loading="lazy">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -1036,7 +1036,7 @@
                     <form method="post" action="">
                         <div class="form-check pt-3 pb-3">
                             <input class="form-check-input" type="radio" name="consult_type" id="consult_type1"
-                                value="1">
+                                value="1" required>
                             <label class="form-check-label" for="consult_type1">
                                 General Consultation
                             </label>
@@ -1068,10 +1068,10 @@
                             <!-- <label for="exampleInputEmail1">Username</label> -->
                             <input type="date" class="form-control input-box" name="consult_date"
                                 onchange="availableSlots(this.value)" id="datepicker" min="<?php echo date("Y-m-d"); ?>"
-                                max="<?php echo $maxDate['maxDate']; ?>">
+                                max="<?php echo $maxDate['maxDate']; ?>" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control input-box" id="time_slots" name="time_slots">
+                            <select class="form-control input-box" id="time_slots" name="time_slots" required>
                                 <!-- data will be fetched in real time by using AJAX -->
                             </select>
                         </div>
@@ -1274,8 +1274,8 @@
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var slots_array = JSON.parse(this.responseText);
-                var htmlSlotsOption = "<option selected='true' disabled='disabled' hidden>Select Time</option>";
-
+               // var htmlSlotsOption = "<option selected='selected' disabled='disabled' hidden>Select Time</option>";
+                var htmlSlotsOption ="";
                 slots_array.forEach(add);
 
                 function add(item, index) {

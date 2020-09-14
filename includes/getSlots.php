@@ -1,5 +1,5 @@
 <?php 
-    include("includes/db.php");
+    include("db.php");
     $date = $_GET['date'];
 
     $slots = "SELECT * FROM `consultation_time` WHERE `date`='$date' AND `assigned_user`=0";
