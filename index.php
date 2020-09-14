@@ -216,9 +216,9 @@
                             <div class="col-md-12">
                                 <div id="news-slider" class="owl-carousel">
                                     <div class="post-slide">
-                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                        <div class="card h-100 mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/diabetes.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease1" data-toggle="modal"
@@ -232,10 +232,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="post-slide">
-                                        <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
+                                        <div class="card mx-auto h-100" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/heart.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease2" data-toggle="modal"
@@ -252,7 +253,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/Rectangle 19 copy.png"  class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease3" data-toggle="modal"
@@ -269,7 +270,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/joint.webp" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease4" data-toggle="modal"
@@ -286,7 +287,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/spine.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease5" data-toggle="modal"
@@ -303,7 +304,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/stree.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease6" data-toggle="modal"
@@ -320,7 +321,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/liver.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease7" data-toggle="modal"
@@ -337,7 +338,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/stmoch.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease8" data-toggle="modal"
@@ -354,7 +355,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/colon.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease9" data-toggle="modal"
@@ -371,7 +372,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/breath.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease10" data-toggle="modal"
@@ -388,7 +389,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/blood.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease11" data-toggle="modal"
@@ -405,7 +406,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/cancer.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease12" data-toggle="modal"
@@ -422,7 +423,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/covid.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease13" data-toggle="modal"
@@ -471,7 +472,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/weight_loss.webp" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet1" data-toggle="modal"
@@ -488,7 +489,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/anti-aging.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet2" data-toggle="modal"
@@ -505,7 +506,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/stress.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet3" data-toggle="modal"
@@ -522,7 +523,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/weight-gain.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet4" data-toggle="modal"
@@ -539,7 +540,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/taning.webp" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet5" data-toggle="modal"
@@ -556,7 +557,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/stress.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet6" data-toggle="modal"
@@ -573,7 +574,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/muscle-gain.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet7" data-toggle="modal"
@@ -590,7 +591,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/fair.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet8" data-toggle="modal"
@@ -607,7 +608,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/super-fitness.webp" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet9" data-toggle="modal"
@@ -624,7 +625,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/figure.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet10" data-toggle="modal"
@@ -641,7 +642,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/persnality.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet11" data-toggle="modal"
@@ -675,7 +676,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/curve.webp" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet13" data-toggle="modal"
