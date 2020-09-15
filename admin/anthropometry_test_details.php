@@ -6,7 +6,7 @@
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
       $test_id = $_GET['testID'];
-      $test_details = "SELECT * FROM `yoge_home` WHERE `test_id`='$test_id'";
+      $test_details = "SELECT * FROM `test_anthropometry` WHERE `test_id`='$test_id'";
       $test_details_run = mysqli_query($con, $test_details);
       $record = mysqli_fetch_assoc($test_details_run);
       $user_id = $record['user_id'];
@@ -96,18 +96,18 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePatient" aria-expanded="true"
+      <li class="nav-item">
+        <a class="nav-link collasped" href="#" data-toggle="collapse" data-target="#collapsePatient" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
           <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle"
                 style="font-size: .75em !important;"></i></sup><?php } ?></span>
         </a>
-        <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Patients : </h6>
             <a class="collapse-item" href="new_patient.php">New consultation (<?php echo $data['total']; ?>)</a>
-            <a class="collapse-item active" href="test_submissions.php">New Test Submissions</a>
+            <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
             <a class="collapse-item" href="all_treatments.php">All Treatments</a>
           </div>
         </div>
@@ -166,7 +166,7 @@
         </div>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="users.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Users</span></a>
@@ -295,201 +295,47 @@
           </div>
           <!-- person info ends  -->
 
-          <!-- CREATE TABLE OF test details  -->
+          <!-- OF test details  -->
           <div class="border border-primary rounded-lg mt-4 p-3">
-            <h1 class="h4 mb-2 text-gray-800">Submitted Test</h1>
-            <table class="table table-bordered table-striped table-responsive-md">
-              <thead>
-                <tr>
-                  <th scope="col">sr. no.</th>
-                  <th scope="col">Question</th>
-                  <th scope="col">Answer</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>IF A HOSPITALIZED CASE THEN NAME OF HOSPITAL AND IPD NO.</td>
-                  <td><?php echo $record['hospital_name']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>COVID TESTING DONE</td>
-                  <td><?php echo $record['covid_test']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>COVID19 TEST REPORT</td>
-                  <td><?php echo $record['covid_report']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>DIAGNOSIS as written on hospital /prescription paper</td>
-                  <td><?php echo $record['prescription_paper']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>PULSEOX READING OF SPO2</td>
-                  <td><?php echo $record['SPO2']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td>BLOOD PRESSURE</td>
-                  <td><?php echo $record['blod_pressure']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>PULSE RATE</td>
-                  <td><?php echo $record['pulse_rate']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>RESPIRATION RATE(RESPIRATION PER MINS)</td>
-                  <td><?php echo $record['respiration_rate']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">9</th>
-                  <td>Haemoglobin</td>
-                  <td><?php echo $record['haemoglobin']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">10</th>
-                  <td>WBC COUNT</td>
-                  <td><?php echo $record['wbc_count']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">11</th>
-                  <td>RBC COUNT</td>
-                  <td><?php echo $record['rbc_count']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">12</th>
-                  <td>HCT /HAEMATOCRIT/PCV</td>
-                  <td><?php echo $record['pvc']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">13</th>
-                  <td>LYMPHOCYTE COUNT</td>
-                  <td><?php echo $record['lymphocyte_count']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">14</th>
-                  <td>BAND CELLS</td>
-                  <td><?php echo $record['band_cell']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">15</th>
-                  <td>ESR</td>
-                  <td><?php echo $record['esr']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">16</th>
-                  <td>CRP VALUE</td>
-                  <td><?php echo $record['crp_value']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">17</th>
-                  <td>BSL RANDOM</td>
-                  <td><?php echo $record['bsl_random']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">18</th>
-                  <td>SGPT</td>
-                  <td><?php echo $record['sgpt']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">19</th>
-                  <td>SGOT</td>
-                  <td><?php echo $record['sgot']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">20</th>
-                  <td>URIC ACID level</td>
-                  <td><?php echo $record['uric_acid_level']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">21</th>
-                  <td>BLOOD UREA LEVEL </td>
-                  <td><?php echo $record['blood_urea_level']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">22</th>
-                  <td>SR CREATININE</td>
-                  <td><?php echo$record['SR_CREATININE']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">23</th>
-                  <td>24 hr urine output in ml</td>
-                  <td><?php echo $record['urin_output']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">24</th>
-                  <td>LEVEL OF CONSCIOUSNESS</td>
-                  <td><?php echo $record['level_consciousness']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">25</th>
-                  <td>SWELLING ON FEET</td>
-                  <td><?php echo $record['swelling_feet']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">26</th>
-                  <td>SWELLING UNDER EYES/FACE</td>
-                  <td><?php echo $record['swelling_eyes']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">27</th>
-                  <td>Electrolyte level - Sodium</td>
-                  <td><?php echo $record['electrolyte_sodium']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">28</th>
-                  <td>Electrolyte level - Potassium</td>
-                  <td><?php echo $record['electrolyte_potassium']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">29</th>
-                  <td>Electrolyte level - Chloride</td>
-                  <td><?php echo $record['electrolyte_chloride']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">30</th>
-                  <td>Lipid profile- Triglycerides</td>
-                  <td><?php echo $record['lipid_triglyceride']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">31</th>
-                  <td>Lipid profile - cholesterol</td>
-                  <td><?php echo $record['lipid_cholesterol']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">32</th>
-                  <td>Lipid profile- HDL</td>
-                  <td><?php echo $record['lipid_hdl']; ?></td>
-                </tr>
-                <tr>
-                  <th scope="row">33</th>
-                  <td>Any other complaints ?</td>
-                  <td><?php echo $record['other_complaint']; ?></td>
-                </tr>
-              </tbody>
-            </table>
-            <?php
-            if($record['status'] != 'seen'){
-            ?>
-            <form method="post">
-                <button type="submit" name="mark-done" class="btn btn-primary">Mark As Seen</button>
-            </form>
-            <?php } ?>
-          </div>
-
           <?php 
-            if(isset($_POST['mark-done'])){
-                    $update_status = "UPDATE `yoge_home` SET `status`='seen' WHERE `user_id`='$user_id' AND `test_id`='$test_id'";
-                    $update_status_run = mysqli_query($con, $update_status);
-                    echo "<script> window.location.href='test_submissions.php'; </script>";
-            }
-          ?>
+                $anthropometry_tests = "SELECT * FROM `test_anthropometry` WHERE `user_id`='$user_id' AND `test_id`='$test_id'";
+                if($anthropometry_tests_run = mysqli_query($con, $anthropometry_tests)){
+                    $count = 1;
+                    $anthropometry_tests_res = mysqli_fetch_assoc($anthropometry_tests_run)
+            ?>
+            
+                <div class="card border-left-primary shadow h-100 py-2 mb-3">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="h6 mb-0 font-weight-bold text-gray-800">
+                                    <?php echo date("d/m/Y", strtotime($anthropometry_tests_res['date_time1'])); ?> --> <?php if($anthropometry_tests_res['times'] == 2) {echo date("d/m/Y", strtotime($anthropometry_tests_res['date_time2']));} ?>
+                                </div>
+                                <div class="text-xs font-weight-bold text-primary mt-2 mb-1">
+                                    <?php echo "Status: ".$anthropometry_tests_res['status']; ?>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <a class="up-down-arrow"
+                                    onClick="showDetails('d_<?php echo $count; ?>')"><i
+                                        class="fas arrow fa-angle-right fa-2x"
+                                        id="d_<?php echo $count; ?>_arrow"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pt-2" style="display:none" id="d_<?php echo $count; ?>">
+                        <b>Details : </b><br>
+                            <p>report : <a target="_blank" href="<?php echo $anthropometry_tests_res['test_result']; ?>">View</a><p>
+                            <p>Diet Plan: <a target="_blank" href="<?php echo $anthropometry_tests_res['diet_plan']; ?>">view</a></p>
+                    </div>
+                </div>
+                <?php } ?>  
+                
+                <?php if($anthropometry_tests_res['times'] == 1){ ?>
+                <button type="button" onClick="startTreatment()" class="btn btn-primary"
+                                    data-toggle="modal" data-target="#start_test">Re-test</button>
+                <?php } ?>
+            </div>
           <!-- CREATE TABLE OF test details  -->
 
 
@@ -520,6 +366,35 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+
+
+  <div class="modal fade  bd-example-modal-lg" id="start_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h5 class="modal-title" id="exampleModalLongTitle">STRESS MANAGEMENT PROGRAMME</h5>
+
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Report of test</label>
+                            <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="diet">Diet Plan</label>
+                            <input type="file" name="diet" class="form-control-file" id="diet" required>
+                        </div>
+                        <button type="submit" name="update_test" class="btn btn-primary">Update Test</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -555,6 +430,72 @@
 
 </html>
 
+<script>
+    function showDetails(a) {
+        var x = document.querySelector("#" + a);
+        var arrow = document.querySelector("#" + a + "_arrow");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            arrow.classList.remove("fa-angle-right");
+            arrow.classList.add("fa-angle-down");
+        } else {
+            x.style.display = "none";
+            arrow.classList.remove("fa-angle-down");
+            arrow.classList.add("fa-angle-right");
+        }
+
+    }
+</script>
+
+<?php 
+    if(isset($_POST['update_test'])){
+        $diet = $_FILES['diet'];
+        $report = $_FILES['report'];
+
+        if($diet != "" && $report != ""){
+            $diet_original = $_FILES['diet']['name'];
+            $diet_tmp_name = $_FILES['diet']['tmp_name'];
+            $diet_error = $_FILES['diet']['error'];
+            $diet_type = $_FILES['diet']['type'];
+
+            $report_original = $_FILES['report']['name'];
+            $report_tmp_name = $_FILES['report']['tmp_name'];
+            $report_error = $_FILES['report']['error'];
+            $report_type = $_FILES['report']['type'];
+
+            $diet_ext_seprate = explode('.', $diet_original);
+            $report_ext_seprate = explode('.', $report_original);
+        
+            $diet_ext = strtolower(end($diet_ext_seprate));
+            $report_ext = strtolower(end($report_ext_seprate));
+
+            if($diet_error === 0 && $report_error === 0){
+                $diet_new_name = uniqid('', true).".".$diet_ext;
+                $report_new_name = uniqid('', true).".".$report_ext;
+
+                $diet_destination = "files/anthropometry/diet/".$diet_new_name;
+                move_uploaded_file($diet_tmp_name, $diet_destination);
+
+                $report_destination = "files/anthropometry/report/".$report_new_name;
+                move_uploaded_file($report_tmp_name, $report_destination);
+
+                $update_test = "UPDATE `test_anthropometry` SET `test_result`='$report_destination',`times`=2,`status`='closed',`diet_plan`='$diet_destination' WHERE `test_id`='$test_id'";
+                //$insert_test = "INSERT INTO `test_anthropometry`(`test_id`, `user_id`, `test_result`, `times`, `status`, `diet_plan`) 
+                               // VALUES ('$test_id','$user_id','$report_destination',2,'start','$diet_destination')";
+                if($update_test_run = mysqli_query($con, $update_test)) {
+                    echo "<script>
+                                alert('test started sucessfully');
+                                window.location.href='user_details.php?uid=$user_id';
+                            </script>";
+                }
+            }else{
+                echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
+            }
+
+        }
+    }
+
+?>
 
 <?php 
       }else{

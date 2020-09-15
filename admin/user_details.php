@@ -13,10 +13,17 @@
       $medical_history = "SELECT * FROM `medical_history` WHERE `user_id`='$user_id'";
       $medical_history_run = mysqli_query($con, $medical_history);
       $medical_history_res = mysqli_fetch_assoc($medical_history_run);
+
+      // previous treatment number
+      $previous_treat_number = "SELECT max(`treat_number`) as pre_treat_number FROM `treatment` WHERE `user_id`='$user_id'";
+      $previous_treat_number_run = mysqli_query($con, $previous_treat_number);
+      $previous_treat_number_res = mysqli_fetch_assoc($previous_treat_number_run);
+      $current_treat_no = $previous_treat_number_res['pre_treat_number'] + 1;
+
       //checking if user present for perticular
       //if not then redirect to user page
       if($record){
-        
+        $name = $record['name'];
         //fetching all consultations by the user till today date
         $all_consultations = "SELECT * FROM `consultation_time` WHERE `assigned_user`='$user_id' ORDER BY `date` DESC, `time_range` DESC";
         $all_consultations_run = mysqli_query($con, $all_consultations);
@@ -152,8 +159,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine" aria-expanded="true"
-                    aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-pills"></i>
                     <span>Sessions</span>
                 </a>
@@ -318,7 +325,14 @@
                     </div>
                     <!-- person info ends  -->
 
-                    <!-- User Details all its treatment history as weel as his consultation hostory -->
+                    <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                        data-target="#start_test">Start NEW Yog-E
+                        Anthropometry</button>
+
+                    <button type="button" class="btn btn-success mt-3" data-toggle="modal"
+                        data-target="#start_treatatment">Start NEW Treatment</button>
+
+                    <!-- User Details all its test history as weel as his consultation hostory -->
                     <div class="border border-primary rounded-lg p-3 mt-4">
                         <!-- List of tabs  -->
                         <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -328,7 +342,7 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" id="test2-tab" data-toggle="tab" href="#test2" role="tab"
-                                    aria-controls="test2" aria-selected="false">Test 1</a>
+                                    aria-controls="test2" aria-selected="false">Test Details</a>
                             </li>
                         </ul>
                         <!-- List of tabs  -->
@@ -338,6 +352,7 @@
                             <!-- test1 tab data -->
                             <div class="tab-pane fade show active" id="test1" role="tabpanel"
                                 aria-labelledby="test1-tab">
+
                                 <!-- DataTales Example -->
                                 <div class="card shadow mt-4 mb-4">
                                     <div class="card-header py-3">
@@ -363,7 +378,8 @@
                                                         $count = 1;
                                                         while($record = mysqli_fetch_assoc($all_consultations_run)) {
                                                     ?>
-                                                    <tr>
+                                                    <tr
+                                                        style="font-weight:<?php echo $record['status'] == 'assigned'?'bold': ''; ?>">
                                                         <th><?php echo $count; ?></th>
                                                         <td><?php echo date("d-m-Y", strtotime($record['date'])); ?>
                                                         </td>
@@ -388,67 +404,92 @@
                             <!-- test1 tab data -->
 
                             <!-- test2 tab data -->
-                            <div class="tab-pane fade p-3" id="test2" role="tabpanel" aria-labelledby="test2-tab">
-                                <?php 
-                                    $anthropometry_tests = "SELECT * FROM `test_anthropometry` WHERE `user_id`='$user_id' ORDER BY `date_time1` DESC";
-                                    if($anthropometry_tests_run = mysqli_query($con, $anthropometry_tests)){
-                                        $count = 1;
-                                        while($anthropometry_tests_res = mysqli_fetch_assoc($anthropometry_tests_run)){
-                                ?>
+                            <?php
+                            // different test submissions by user
+                                $yoge_tests = "SELECT * FROM `yoge_home` WHERE `user_id`='$user_id'";
+                                $yoge_tests_run = mysqli_query($con, $yoge_tests);
 
-                                <div class="card border-left-primary shadow h-100 py-2 mb-3">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="h6 mb-0 font-weight-bold text-gray-800">
-                                                    <?php echo date("d/m/Y", strtotime($anthropometry_tests_res['date_time1'])); ?>
-                                                </div>
-                                                <div class="text-xs font-weight-bold text-primary mt-2 mb-1">
-                                                    <?php echo "Status: ".$anthropometry_tests_res['status']; ?>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <a class="up-down-arrow"
-                                                    onClick="showDetails('d_<?php echo $count; ?>')"><i
-                                                        class="fas arrow fa-angle-right fa-2x"
-                                                        id="d_<?php echo $count; ?>_arrow"></i></a>
-                                            </div>
-                                        </div>
+                                $anthropometry_tests = "SELECT * FROM `test_anthropometry` WHERE `user_id`='$user_id'";
+                                $anthropometry_tests_run = mysqli_query($con, $anthropometry_tests);
+                            ?>
+                            <div class="tab-pane fade p-3" id="test2" role="tabpanel" aria-labelledby="test2-tab">
+                                <!-- DataTales Example -->
+                                <div class="card shadow mt-4 mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary"><?php echo $name; ?>'s
+                                            Test History</h6>
                                     </div>
-                                    <div class="card-body pt-2" style="display:none" id="d_<?php echo $count; ?>">
-                                        <b>Details : </b>
-                                            <a href="<?php echo $anthropometry_tests_res['test_result']; ?>">report</a><br>
-                                            <a href="<?php echo $anthropometry_tests_res['diet_plan']; ?>"><?php echo $anthropometry_tests_res['diet_plan']; ?></a>
-                                        
-                                        
-                                        <div class="Actions">
-                                            <div class="d-inline-block">
-                                                <form method="post" onsubmit="return close_treatment()">
-                                                    <button type="submit" name="close_<?php echo $count; ?>"
-                                                        class="btn btn-success">Close
-                                                        treatment</button>
-                                                </form>
-                                            </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="testTable" width="100%"
+                                                cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sr. No.</th>
+                                                        <th>Date</th>
+                                                        <th>Test Name</th>
+                                                        <th>details</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php 
+                                                        $test_no = 1;
+                                                        while($yoge_tests_res = mysqli_fetch_assoc($yoge_tests_run)){
+                                                    ?>
+                                                    <tr
+                                                        style="font-weight:<?php echo $yoge_tests_res['status'] == 'new'?'bold': ''; ?>">
+                                                        <td><?php echo $test_no; ?></td>
+                                                        <td><?php  echo date("d-m-Y", strtotime($yoge_tests_res['date_time'])); ?>
+                                                        </td>
+                                                        <td>YogE@Home</td>
+                                                        <td><a
+                                                                href="yoge_test_details.php?testID=<?php echo $yoge_tests_res['test_id']; ?>">view</a>
+                                                        </td>
+
+                                                    </tr>
+                                                    <?php
+                                                        $test_no++;
+                                                        }
+                                                        while($anthropometry_tests_res = mysqli_fetch_assoc($anthropometry_tests_run)){
+                                                    ?>
+                                                    <tr
+                                                        style="font-weight:<?php echo $anthropometry_tests_res['status'] != 'closed'?'bold': ''; ?>">
+                                                        <td><?php echo $test_no; ?></td>
+                                                        <td><?php  echo date("d-m-Y", strtotime($anthropometry_tests_res['date_time1'])); ?>
+                                                        </td>
+                                                        <td>Anthropometry Test</td>
+                                                        <td><a
+                                                                href="anthropometry_test_details.php?testID=<?php echo $anthropometry_tests_res['test_id']; ?>">view</a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                        $test_no++;
+                                                        }
+                                                    ?>
+
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
-                                <?php
-                                        }
-                                    }
-                                ?>
-                                <button type="button" onClick="startTreatment()" class="btn btn-primary float-right"
-                                    data-toggle="modal" data-target="#start_test">Start NEW Yog-E
-                                    Anthropometry</button>
-
-
                             </div>
                             <!-- test2 tab data -->
+
                         </div>
                         <!-- Tab DATA -->
 
                     </div>
-                    <!-- User Details all its treatment history as weel as his consultation hostory -->
+                    <!-- User Details all its test history as well as his consultation hostory -->
 
+
+                    <!-- all its treatment history  -->
+                    <?php 
+                        if($previous_treat_number_res['pre_treat_number'] > 0){
+                            include("includes/treatment_history.php");
+                        } 
+                    ?>
+                    <!-- all its treatment history  -->
 
                 </div>
                 <!-- /.container-fluid -->
@@ -498,14 +539,14 @@
         }
     ?>
     <!-- Passing medicine array in the js file  -->
-    <script type="text/javascript">  
-        var medicineArray = <?php echo json_encode($medicines); ?>;
-        var instrumentArray = <?php echo json_encode($instruments); ?>;
+    <script type="text/javascript">
+        var medicineArray = <?php echo json_encode($medicines); ?> ;
+        var instrumentArray = <?php echo json_encode($instruments); ?> ;
     </script>
     <!-- Passing medicine array in the js file  -->
 
-    <div class="modal fade  bd-example-modal-lg" id="start_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
+    <div class="modal fade  bd-example-modal-lg" id="start_treatatment" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="container">
@@ -513,59 +554,98 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                
+                <h5 class="modal-title" id="exampleModalLongTitle"><b>Start New Treatment</b></h5>
                 <div class="modal-body">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Start Yog-E Anthropometry Test</h5>
-                    <!-- <p class="card-title mx-auto brand-name"></p> -->
-                    <form method="post" enctype="multipart/form-data">
+
+                    <form method="post" onsubmit="return confirm('Are you sure you want to submit this treatment?');"
+                        enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Treatment For:</label>
+                            <input type="text" name="short_name" class="form-control-file" id="exampleFormControlFile1"
+                                required>
+                        </div>
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Report of test</label>
-                            <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1">
+                            <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="">Medicines</label><br>
-                            
                             <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                <th scope="col">Medicine Name</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Dose</th>
-                                <th scope="col">Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody  id="medicine">
-                                <!-- Medicine rows are added Dynamically through javascript -->
-                            </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Medicine Name</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="medicine">
+                                    <!-- Medicine rows are added Dynamically through javascript -->
+                                </tbody>
                             </table>
-                            
                             <button type="button" onClick="addMedicine()" class="btn btn-primary">Add Medicines</button>
                         </div>
+
                         <div class="form-group">
-                            <label for="">Instruments</label><br>
-                            
+                            <label for="">Sessions</label><br>
                             <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                <th scope="col">Instruments Name</th>
-                                <th scope="col">Note</th>
-                                <th scope="col">Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody  id="instrument">
-                                <!-- instruments rows are added Dynamically through javascript -->
-                            </tbody>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Session Name</th>
+                                        <th scope="col">quantity (per month)</th>
+                                        <th scope="col">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="instrument">
+                                    <!-- instruments rows are added Dynamically through javascript -->
+                                </tbody>
                             </table>
-                            
-                            <button type="button" onClick="addInstrument()" class="btn btn-primary">Add Instrument</button>
+
+                            <button type="button" onClick="addInstrument()" class="btn btn-primary">Add
+                                Instrument</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="diet">Diet Plan</label>
+                            <input type="file" name="diet" class="form-control-file" id="diet" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="note">Extra Note</label>
+                            <textarea class="form-control" placeholder="If nothing type 'NA'" id="note" name="note"
+                                rows="3" required></textarea>
+                        </div>
+
+                        <button type="submit" name="start_treat" class="btn btn-success">start Treatment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal for test selection -->
+
+    <!-- modal for anthropometry test -->
+    <div class="modal fade  bd-example-modal-lg" id="start_test" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h5 class="modal-title" id="exampleModalLongTitle">STRESS MANAGEMENT PROGRAMME</h5>
+
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Report of test</label>
+                            <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1"
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="diet">Diet Plan</label>
-                            <input type="file" name="diet" class="form-control-file" id="diet">
-                        </div>
-                        <div class="form-group">
-                            <label for="note">Extra Note</label>
-                            <textarea class="form-control" placeholder="If nothing type 'NA'" id="note" name="note" rows="3" required></textarea>
+                            <input type="file" name="diet" class="form-control-file" id="diet" required>
                         </div>
                         <button type="submit" name="start_test" class="btn btn-primary">start Test</button>
                     </form>
@@ -573,7 +653,6 @@
             </div>
         </div>
     </div>
-    <!-- modal for test selection -->
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -616,11 +695,6 @@
 </html>
 
 <script>
-    function startTreatment() {
-        var treat = document.querySelector(".treat-panel");
-        treat.classList.remove("d-none");
-    }
-
     function showDetails(a) {
         var x = document.querySelector("#" + a);
         var arrow = document.querySelector("#" + a + "_arrow");
@@ -683,6 +757,111 @@
                 echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
             }
 
+        }
+    }
+
+?>
+
+<?php 
+    if(isset($_POST['start_treat'])){
+        $diet = $_FILES['diet'];
+        $report = $_FILES['report'];
+        $extra_note = $_POST['note'];
+        $short_name = $_POST['short_name'];
+
+        //firse check if doctor has added medicines or not 
+        //if not then do not run query for insertion of data into database
+        $query_medicine_insert = "";
+        if(isset($_POST['medicine_name'])){
+            $prescribed_medi = $_POST['medicine_name'];
+            $prescribed_medi_quantity = $_POST['quantityMed'];
+
+            foreach($prescribed_medi as $key => $val){
+                if($val != 0){  //check if something is selected or not
+                $Idprice = explode(',', $val);
+                //$total_medi_cost = $total_medi_cost + (float)$Idprice[1] * (float)$prescribed_medi_quantity[$key];
+                $query_medicine_insert = $query_medicine_insert."('" . $user_id ."','". $current_treat_no ."',1," . (int)$Idprice[0] . "," . (int)$prescribed_medi_quantity[$key] . "),";
+                }
+            }
+            if($query_medicine_insert != ""){ // if doctor just added rows but didn't select any medicine then also do not run query
+                $query_medicine_insert = substr($query_medicine_insert, 0, -1);
+
+                $insert_medicines = "INSERT INTO `prescribed_medicine`(`user_id`, `treat_number`, `sub_treat_number`, `medicine_id`, `quantity`) 
+                                    VALUES ".$query_medicine_insert;
+                $insert_medicines_run = mysqli_query($con, $insert_medicines);
+            }
+        }
+
+        $query_instru_insert = "";
+        if(isset($_POST['instrument_name'])){
+            $prescribed_session = $_POST['instrument_name'];
+            $prescribed_session_quantity = $_POST['quantityInstru'];
+
+            foreach($prescribed_session as $key => $val){
+                if($val != 0){  //check if something is selected or not
+                $Idprice = explode(',', $val);
+                //$total_session_cost = $total_session_cost + (float)$Idprice[1] * (float)$prescribed_session_quantity[$key];
+                $query_instru_insert = $query_instru_insert."('" . $user_id ."','". $current_treat_no ."',1," . (int)$Idprice[0] . "," . (int)$prescribed_session_quantity[$key] . "),";
+                }
+            }
+            if($query_instru_insert != ""){
+                $query_instru_insert = substr($query_instru_insert, 0, -1);
+
+                $insert_instru = "INSERT INTO `prescribed_session`(`user_id`, `treat_number`, `sub_treat_number`, `session_id`, `session_per_month`)
+                                VALUES ". $query_instru_insert;
+                $insert_instru_run = mysqli_query($con, $insert_instru);
+                
+            }
+        }
+        
+        //print_r("INSERT INTO `prescribed_medicine`(`test_id`, `treat_number`, `medicine_id`, `quantity`) 
+        //           VALUES ".$query_medicine_insert);
+
+
+        //$total_price = $total_medi_cost + $total_session_cost;
+
+        
+        if($diet != "" && $report != ""){
+            $diet_original = $_FILES['diet']['name'];
+            $diet_tmp_name = $_FILES['diet']['tmp_name'];
+            $diet_error = $_FILES['diet']['error'];
+            $diet_type = $_FILES['diet']['type'];
+
+            $report_original = $_FILES['report']['name'];
+            $report_tmp_name = $_FILES['report']['tmp_name'];
+            $report_error = $_FILES['report']['error'];
+            $report_type = $_FILES['report']['type'];
+
+            $diet_ext_seprate = explode('.', $diet_original);
+            $report_ext_seprate = explode('.', $report_original);
+
+            $diet_ext = strtolower(end($diet_ext_seprate));
+            $report_ext = strtolower(end($report_ext_seprate));
+
+            if($diet_error === 0 && $report_error === 0){
+                $diet_new_name = uniqid('', true).".".$diet_ext;
+                $report_new_name = uniqid('', true).".".$report_ext;
+
+                $diet_destination = "files/diet/".$diet_new_name;
+                move_uploaded_file($diet_tmp_name, $diet_destination);
+
+                $report_destination = "files/report/".$report_new_name;
+                move_uploaded_file($report_tmp_name, $report_destination);
+
+                $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`) 
+                                VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note')";
+                // $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
+                //                 VALUES ('$test_id',1,'$diet_destination','$report_destination','$extra_note')";          
+
+                if(mysqli_query($con, $insert_test)) {
+                    echo "<script>
+                                alert('Treatment started sucessfully');
+                                window.location.href='user_details.php?uid=$user_id';
+                            </script>";
+                }
+            }else{
+                echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
+            }
         }
     }
 
