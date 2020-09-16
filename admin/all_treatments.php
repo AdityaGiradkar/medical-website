@@ -6,9 +6,10 @@
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
 
-        $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
-                    ON u.`user_id`=y.`user_id`
-                    WHERE y.`status`='started' ORDER BY y.`date_time` DESC";
+        $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `treatment` t
+                    ON u.`user_id`=t.`user_id`
+                    WHERE t.`treat_status`='ongoing' 
+                    GROUP BY u.`user_id` ORDER BY t.`date` DESC";
         $yoge_home_run = mysqli_query($con, $yoge_home);
         $yoge_home_rows = mysqli_num_rows($yoge_home_run);
         
@@ -238,130 +239,53 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid main-top main-left">
 
+                    <!-- DataTales Example -->
+                    <div class="card shadow mt-4 mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. No.</th>
+                                            <th>Date</th>
+                                            <th>Name</th>
+                                            <th>Contact No.</th>
+                                            <th>Email ID</th>
+                                            <th>Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                        $count = 1;
+                                        while($yoge_home_res = mysqli_fetch_assoc($yoge_home_run)){
+                                            
+                                        ?>
+                                        <tr>
+                                            <th><?php echo $count; ?></th>
+                                            <td><?php echo date("d-m-Y", strtotime($yoge_home_res['date'])); ?>
+                                            </td>
+                                            <td><?php echo $yoge_home_res['name']; ?></td>
+                                            <td><?php echo $yoge_home_res['contact_no'];?></td>
+                                            <td><?php echo $yoge_home_res['email_id']; ?></td>
+                                            <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
+                                            <td><a
+                                                    href="user_details.php?uid=<?php echo $yoge_home_res['user_id']; ?>">view</a>
+                                            </td>
+                                        </tr>
 
-                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="true">Test 1</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">YogE @ HOME Test
-                                (<?php echo $yoge_home_rows; ?>)</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                aria-controls="contact" aria-selected="false">Test 3</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                            <!-- DataTales Example -->
-                            <div class="card shadow mt-4 mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="yoge_table" width="100%"
-                                            cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No.</th>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th>Name</th>
-                                                    <th>Contact No.</th>
-                                                    <th>consultation Type</th>
-                                                    <th>check</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                $count = 1;
-                                                while($record = mysqli_fetch_assoc($all_user_run)){
-                                                    
-                                                ?>
-                                                <tr>
-                                                    <th><?php echo $count; ?></th>
-                                                    <td><?php echo $record['date']; ?></td>
-                                                    <td><?php echo $record['time_range']; ?></td>
-                                                    <td><?php echo $record['name'];?></td>
-                                                    <td><?php echo $record['contact_no']; ?></td>
-                                                    <!-- <td><?php //echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td> -->
-                                                    <td><?php echo $record['consult_type']; ?></td>
-                                                    <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
-                                                    <td><a href="mark_done.php?date=<?php echo $record['date']; ?>&time=<?php echo $record['time_range']; ?>"
-                                                            onClick="javascript: return confirm('you want to mark done to user <?php echo $record['name']; ?>?');">done</a>
-                                                    </td>
-                                                </tr>
-
-                                                <?php 
-                                                $count++;
-                                                //end of while loop
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                        <?php 
+                                        $count++;
+                                        //end of while loop
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <!-- DataTales Example -->
-                            <div class="card shadow mt-4 mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No.</th>
-                                                    <th>Date</th>
-                                                    <th>Name</th>
-                                                    <th>Contact No.</th>
-                                                    <th>Email ID</th>
-                                                    <th>Details</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                $count = 1;
-                                                while($yoge_home_res = mysqli_fetch_assoc($yoge_home_run)){
-                                                    
-                                                ?>
-                                                <tr>
-                                                    <th><?php echo $count; ?></th>
-                                                    <td><?php echo date("d-m-Y", strtotime($yoge_home_res['date_time'])); ?>
-                                                    </td>
-                                                    <td><?php echo $yoge_home_res['name']; ?></td>
-                                                    <td><?php echo $yoge_home_res['contact_no'];?></td>
-                                                    <td><?php echo $yoge_home_res['email_id']; ?></td>
-                                                    <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
-                                                    <td><a
-                                                            href="yoge_treatment_details.php?testID=<?php echo $yoge_home_res['test_id']; ?>">view</a>
-                                                    </td>
-                                                </tr>
-
-                                                <?php 
-                                                $count++;
-                                                //end of while loop
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-
                     </div>
-
-
                 </div>
                 <!-- /.container-fluid -->
 

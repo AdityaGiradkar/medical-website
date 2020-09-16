@@ -5,19 +5,17 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
+      $user_id = $_SESSION['user_id'];
+      $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
+      $user_info_run = mysqli_query($con, $user_info);
+      $record = mysqli_fetch_assoc($user_info_run);
 
-        $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
-                    ON u.`user_id`=y.`user_id`
-                    WHERE y.`status`='new' OR y.`status`='started' ORDER BY y.`date_time` DESC";
-        $yoge_home_run = mysqli_query($con, $yoge_home);
-        $yoge_home_rows = mysqli_num_rows($yoge_home_run);
-        
 
-      //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-      $new_patient_count_run = mysqli_query($con, $new_patient_count);
-      $data=mysqli_fetch_assoc($new_patient_count_run);
-      //finding total number of new patient
+      //checking if user present for perticular
+      //if not then redirect to user page
+      if($record){
+       
+
 ?>
 
 <!DOCTYPE html>
@@ -31,22 +29,23 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>New Patient List</title>
+    <title>Patient History</title>
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts for this template-->
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- custome style -->
+    <link rel="stylesheet" href="admin/css/patient_history.css">
 
     <!-- custom style sheet for sidebar and navigation bar -->
     <link rel="stylesheet" href="admin/css/sidebar.css">
+
 </head>
 
 <body id="page-top">
@@ -182,124 +181,107 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid main-top main-left">
 
-
-                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="true">Test 1</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">YogE @ HOME Test
-                                (<?php echo $yoge_home_rows; ?>)</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                aria-controls="contact" aria-selected="false">Test 3</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-                            <!-- DataTales Example -->
-                            <div class="card shadow mt-4 mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="yoge_table" width="100%"
-                                            cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No.</th>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th>Name</th>
-                                                    <th>Contact No.</th>
-                                                    <th>consultation Type</th>
-                                                    <th>check</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                $count = 1;
-                                                while($record = mysqli_fetch_assoc($all_user_run)){
-                                                    
-                                                ?>
-                                                <tr>
-                                                    <th><?php echo $count; ?></th>
-                                                    <td><?php echo $record['date']; ?></td>
-                                                    <td><?php echo $record['time_range']; ?></td>
-                                                    <td><?php echo $record['name'];?></td>
-                                                    <td><?php echo $record['contact_no']; ?></td>
-                                                    <!-- <td><?php //echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td> -->
-                                                    <td><?php echo $record['consult_type']; ?></td>
-                                                    <!-- <td><a href="submission_details.php?subid=<?php //echo $record['submission_id']; ?>">done</a></td> -->
-                                                    <td><a href="mark_done.php?date=<?php echo $record['date']; ?>&time=<?php echo $record['time_range']; ?>"
-                                                            onClick="javascript: return confirm('you want to mark done to user <?php echo $record['name']; ?>?');">done</a>
-                                                    </td>
-                                                </tr>
-
-                                                <?php 
-                                                $count++;
-                                                //end of while loop
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                    <!-- Person info -->
+                    <div class="border border-primary rounded-lg p-3"
+                        style="background-color:#fff; box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.35)">
+                        <h1 class="h4 mb-2 text-gray-800">Personal Details</h1>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <b>Name :</b> <?php echo $record['name']; ?>
+                            </div>
+                            <div class="col-md-4">
+                                <b>Father's Name :</b> <?php echo $record['father_name']; ?>
+                            </div>
+                            <div class="col-md-4">
+                                <b>Contact :</b> <?php echo $record['contact_no']; ?>
+                            </div>
+                            <div class="col-md-4">
+                                <b>Email :</b> <?php echo $record['email_id']; ?>
+                            </div>
+                            <div class="col-md-4">
+                                <b>Gender :</b> <?php echo $record['gender']; ?>
+                            </div>
+                            <div class="col-md-4">
+                                <b>DOB :</b> <?php echo date("d-m-Y", strtotime($record['dob'])); ?>
+                            </div>
+                            <div class="col-md-4">
+                                <b>Married :</b> <?php echo $record['married']; ?>
+                            </div>
+                            <div class="col-md-4">
+                                <b>Working :</b> <?php echo $record['working']; ?>
+                            </div>
+                            <div class="col-md-4">
+                                <b>Address :</b> <?php echo $record['address']; ?>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <!-- DataTales Example -->
-                            <div class="card shadow mt-4 mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No.</th>
-                                                    <th>Start Date</th>
-                                                    <th>Name</th>
-                                                    <th>Status</th>
-                                                    <th>Details</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                $count = 1;
-                                                while($yoge_home_res = mysqli_fetch_assoc($yoge_home_run)){
-                                                    
-                                                ?>
-                                                <tr>
-                                                    <th><?php echo $count; ?></th>
-                                                    <td><?php echo date("d-m-Y", strtotime($yoge_home_res['date_time'])); ?>
-                                                    </td>
-                                                    <td><?php echo $yoge_home_res['name']; ?></td>
-                                                    <td><?php echo $yoge_home_res['status'];?></td>
-                                                <td><a <?php if($yoge_home_res['status'] == 'started'){ ?>href="yoge_test_details.php?testID=<?php echo $yoge_home_res['test_id']; ?>" <?php }else{ ?> disabled <?php } ?>>view</a></td>
-                                                </tr>
-
-                                                <?php 
-                                                $count++;
-                                                //end of while loop
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
 
                     </div>
+                    <!-- person info ends  -->
 
+
+                    <!-- User Details all its test history as weel as his consultation hostory -->
+                    <div class="border border-primary rounded-lg p-3 mt-4">
+                        <!-- test2 tab data -->
+                        <?php
+                            $anthropometry_tests = "SELECT * FROM `test_anthropometry` WHERE `user_id`='$user_id' AND `status`='start'";
+                            $anthropometry_tests_run = mysqli_query($con, $anthropometry_tests);
+                        ?>
+                           
+                        <!-- DataTales Example -->
+                        <div class="card shadow mt-4 mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary"><?php echo $_SESSION['name']; ?>'s
+                                    Test History</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="testTable" width="100%"
+                                        cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr. No.</th>
+                                                <th>Date</th>
+                                                <th>Test Name</th>
+                                                <th>details</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                $test_no = 1;
+                                                while($anthropometry_tests_res = mysqli_fetch_assoc($anthropometry_tests_run)){
+                                            ?>
+                                            <tr
+                                                style="font-weight:<?php echo $anthropometry_tests_res['status'] != 'closed'?'bold': ''; ?>">
+                                                <td><?php echo $test_no; ?></td>
+                                                <td><?php  echo date("d-m-Y", strtotime($anthropometry_tests_res['date_time1'])); ?>
+                                                </td>
+                                                <td>Anthropometry Test</td>
+                                                <td><a
+                                                        href="anthropometry_test_details.php?testID=<?php echo $anthropometry_tests_res['test_id']; ?>">view</a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                                $test_no++;
+                                                }
+                                            ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- User Details all its test history as well as his consultation hostory -->
+
+
+                    <!-- all its treatment history  -->
+                    <?php 
+                        
+                            include("includes/treatment_history.php");
+    
+                    ?>
+                    <!-- all its treatment history  -->
 
                 </div>
                 <!-- /.container-fluid -->
@@ -328,6 +310,33 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <!-- modal for test selection -->
+    <?php 
+        $all_medicines = "SELECT * FROM `medicines`";
+        $all_medicines_run = mysqli_query($con, $all_medicines);
+        $count = 0;
+        $medicines = array();
+        while($medi = mysqli_fetch_assoc($all_medicines_run)){
+        $medicines[$count] = $medi;
+            $count++; 
+        }
+
+        $all_instruments = "SELECT * FROM `sessions`";
+        $all_instruments_run = mysqli_query($con, $all_instruments);
+        $count_instru = 0;
+        $instruments = array();
+        while($instru = mysqli_fetch_assoc($all_instruments_run)){
+            $instruments[$count_instru] = $instru;
+            $count_instru++; 
+        }
+    ?>
+    <!-- Passing medicine array in the js file  -->
+    <script type="text/javascript">
+        var medicineArray = <?php echo json_encode($medicines); ?> ;
+        var instrumentArray = <?php echo json_encode($instruments); ?> ;
+    </script>
+    <!-- Passing medicine array in the js file  -->
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -342,7 +351,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout.php">Logout</a>
+                    <a class="btn btn-primary" href="../logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -358,24 +367,43 @@
     <!-- Custom scripts for all pages-->
     <script src="admin/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="admin/js/demo/datatables-demo.js"></script>
-
 </body>
 
 </html>
 
+<script>
+    function showDetails(a) {
+        var x = document.querySelector("#" + a);
+        var arrow = document.querySelector("#" + a + "_arrow");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            arrow.classList.remove("fa-angle-right");
+            arrow.classList.add("fa-angle-down");
+        } else {
+            x.style.display = "none";
+            arrow.classList.remove("fa-angle-down");
+            arrow.classList.add("fa-angle-right");
+        }
 
-<?php
+    }
+</script>
+
+
+<?php 
+      }else{
+        //else part if
+          echo "<script>
+              alert('No record found');
+              window.location.href='all_patients.php';
+          </script>";
+      }
+
     }else{
       //else part if session is not set
       echo "<script>
-              window.location.href='error/login_error.html';
+              window.location.href='../error/login_error.html';
             </script>";
     }
+
 
 ?>

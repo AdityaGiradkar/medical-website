@@ -325,12 +325,14 @@
                     </div>
                     <!-- person info ends  -->
 
+                    <button type="button" class="btn btn-success mt-3" data-toggle="modal"
+                        data-target="#start_treatatment">Start NEW Treatment</button>
+                        
                     <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
                         data-target="#start_test">Start NEW Yog-E
                         Anthropometry</button>
 
-                    <button type="button" class="btn btn-success mt-3" data-toggle="modal"
-                        data-target="#start_treatatment">Start NEW Treatment</button>
+                    
 
                     <!-- User Details all its test history as weel as his consultation hostory -->
                     <div class="border border-primary rounded-lg p-3 mt-4">

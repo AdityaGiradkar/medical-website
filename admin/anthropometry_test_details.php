@@ -331,7 +331,7 @@
                 </div>
                 <?php } ?>  
                 
-                <?php if($anthropometry_tests_res['times'] == 1){ ?>
+                <?php if($anthropometry_tests_res['times'] == 1 && $_SESSION['role']=='doctor'){ ?>
                 <button type="button" onClick="startTreatment()" class="btn btn-primary"
                                     data-toggle="modal" data-target="#start_test">Re-test</button>
                 <?php } ?>
@@ -377,7 +377,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <h5 class="modal-title" id="exampleModalLongTitle">STRESS MANAGEMENT PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Yog-E Anthropometry</h5>
 
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data">
