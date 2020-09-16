@@ -47,7 +47,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item  active">
         <a class="nav-link" href="user_page.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-user-circle"></i>
           <span>Profile Page</span></a>
       </li>
 
@@ -86,19 +86,19 @@
 
       <li class="nav-item">
         <a class="nav-link" href="update_details.php">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-user"></i>
           <span>Update Details</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="change_pass.php">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-lock"></i>
           <span>Change Password</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="logout.php">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span></a>
       </li>
 
@@ -130,20 +130,17 @@
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="user_page.php">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Profile
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Logout
+                  </a>
               </div>
             </li>
 
@@ -168,7 +165,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>© 2020 by AtmaVeda Yog Pvt. Ltd.</span>
           </div>
         </div>
       </footer>

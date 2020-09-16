@@ -58,7 +58,7 @@
                     <a href="" class=" nav-link li-header mr-4">BLOG</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="li-header nav-link mr-4">BOOK AN APOINTMENT</a>
+                    <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-4">BOOK AN APOINTMENT</a>
                 </li>
                 <?php if(!isset($_SESSION['user_id'])){ ?>
                 <li class="nav-item">
@@ -112,8 +112,10 @@
         <div class="intro pt-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-7">
+                    <div class="col-7 d-flex align-items-center justify-content-center">
+                        <h3>Atmavedayog a new defination for holistic medicine<br><br>
 
+                        _We cure we heal when no one can</h3>
                     </div>
                     <div class="col-5">
                         <img src="images/doctor.png" width="350" class="img-fluid d-block mx-auto" />
@@ -253,7 +255,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png"  class="card-img-top image"
+                                                <img src="images/medical_treatment/stree.jpg"  class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease3" data-toggle="modal"
@@ -440,7 +442,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/medical_treatment/chronic.png" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#disease14" data-toggle="modal"
@@ -714,7 +716,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/b1.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga1" data-toggle="modal"
@@ -731,7 +733,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/b2.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga2" data-toggle="modal"
@@ -748,7 +750,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/b3.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga3" data-toggle="modal"
@@ -765,7 +767,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/b4.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga4" data-toggle="modal"
@@ -782,7 +784,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/a1.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga5" data-toggle="modal"
@@ -799,7 +801,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/a2.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga6" data-toggle="modal"
@@ -816,7 +818,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/a3.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga7" data-toggle="modal"
@@ -833,7 +835,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/a4.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga8" data-toggle="modal"
@@ -850,7 +852,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/yoga/a5.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#yoga9" data-toggle="modal"
@@ -1042,7 +1044,7 @@
                                 General Consultation
                             </label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="General Consultation" data-content="Some nice text hereknjfsdb"><i
+                                title="General Consultation" data-content="consult online and seek advice treatment for general issues. 25 years experience of general practise as family physician and general practitioner."><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check pb-3">
@@ -1052,7 +1054,7 @@
                                 Holistic Pre-program Counselling
                             </label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="Holistic Pre-program Counselling" data-content="Some nice text hereknjfsdb"><i
+                                title="Holistic Pre-program Counselling" data-content="want to know about our treatment? , want to know your decision to choose is right?. want to discuss your health programme with us? want to show your reports? want to seek holistic perspective?  take our counselling pre programme session."><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check">
@@ -1062,7 +1064,7 @@
                                 Advanced Holistic Consultation
                             </label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
+                                title="Advanced Holistic Consultation" data-content="Specialized personal consultation includes advice and prescription of, 1. medical consultation and prescription, 2. yogic consultation and advice, 3. holsitic diet prescription and reciepe, 4. atma veda yog session"><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-group mt-5 mb-4">

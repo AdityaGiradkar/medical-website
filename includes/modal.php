@@ -181,6 +181,27 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+
+                <h6>RECOVER SPINE STRENGHTEN SPINE</h6>
+                <h6>MAKE SPINE YOUR AXIS OF STRENGTH</h6>
+                <ul>
+                    <li>get no steroid</li>
+                    <li>ger no pain killer</li>
+                    <li>get no NSAID</li>
+                    <li>get no surgery</li>
+                    <li>get no immunosuppresant</li>
+                    <li>get no adverse effects</li>
+                </ul>
+                <p>heal by HOLSITIC TREATMENT PLAN OF DR SADANAND. Assured results in cervical spondylitis, 
+                    lumbar or lumbo sacral spondylitis, radiculopahty, disc compression, akylosing spondylitis, 
+                    severe diseases of spine</p>
+                <p>
+                    spine is not just a set of bones places on each other to carry the weight. But it is a centre for ,
+                    control, flexibility, extension, mobility, proprioception, strength, stability, firmness.
+                </p>
+                <p>
+                dr sadnand 's spine disorder healing porgramme brings all the above changes in each and every case he treats. find definite solution for any condition of spine.
+                </p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -362,6 +383,16 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>These are specialized treatment plans , book a consultation  and know more about the plans that will help you </p>
+                <p>
+                    Treatment includes:
+                <ul>
+                    <li>Chronic anemia</li>
+                    <li>Aplastic anemia</li>
+                    <li>Thalassemia</li>
+                    <li>Blood cancer</li>
+                </ul>
+                </p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -383,6 +414,7 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>These are specialized treatment plans, book a consultation  and know more about the plans that will help you. </p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -640,6 +672,7 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>These are specialized treatment plans, book a consultation  and know more about the plans that will help you </p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -703,6 +736,7 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>These are specialized treatment plans, book a consultation  and know more about the plans that will help you </p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -832,11 +866,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Basic yoga</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Basic yoga (BASIC)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                <p>learn basics of yoga , basic of body and mind understanding , 21 asana.</p>
+                <h6>Duration - 1 month</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -853,11 +892,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Fitness yoga</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Fitness yoga (BASIC)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                <p>strengthen yourself , train your body to be prepared to learn yoga. learn yoga according to your body type. master the 21 asanas and its effect.</p>
+                <h6>Duration - 6 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -874,11 +918,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Relaxation yoga</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Relaxation yoga (BASIC)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                <p>learn the art of doing nothing by relaxation yoga based on atmaved yog. experience the difference.</p>
+                <h6>Duration- 1 month</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -895,11 +944,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Combo yoga</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Combo yoga (BASIC)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                <p>train yourself in a combination of plyometry, pilates, strength training  and then learn modified yoga that will be youthful and full of exuberance.</p>
+                <h6>Duration -6 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -916,12 +970,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Atmanubuti yog</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Atmanubuti yog (ADVANCED)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                <p>traditional yoga with classical approach based on bakti, mantra , tantra and kriya anubhuti yog. kundalini shashtra and kundalini jagruti.</p>
+                <h6>Duration:- 9 months</h6>
             </div>
             <button type="submit" class="login-btn mt-5 info-modal-btn" style="color:white;font-size: 18px;"
                 name="start_test">BOOK AN APPOINTMNET</button>
@@ -938,11 +996,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Sparsha yog</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Sparsha yog (ADVANCED)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                <p>traditional yoga incorporating the teaching of indriya daman and indriya shakti niyantran. undersstanding shakti and shakti yoga from sparsh or physical and spiritual touch.</p>
+                <h6>Duration :- 9 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -959,11 +1022,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Ashtang yog</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Ashtang yog (ADVANCED)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                <p>A strict disciplined type of yoga based on guru shishya parampara. starting with self regulation and taking to course to samadhanastha sthiti , samadhi.</p>
+                <h6>Duration :- 12 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -980,11 +1048,27 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Hath yog</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Hath yog (ADVANCED)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+
+                <p>only for those who have learnt ashtang yog from us. A strict disciplined type of yoga based 
+                    on guru shishya parampara. starting with self regulation and taking to course to samadhanastha sthiti,
+                    samadhi.
+                </p>
+                <p>
+                    once this asthang yog is done. the student will be taught the most tough yoga which involves two disiplines
+                    <ol type="a">
+                        <li>physical hath yoga</li>
+                        <li>manomaya hath hoga</li>
+                    </ol>
+                </p>
+                <h6>Duration:- 15 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -1001,11 +1085,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">Power yoga</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Power yoga (ADVANCED)</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
+                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
+                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                
+                <p>A yog advanced course who have learnt bsic yoga or asthaang yoga were the practice is given 
+                    to understand and control the system within and increase the power of systemic health. 
+                    it involves rapid burst yog training which prepares for the power within. short time sessions and 
+                    high energy burst yoga. best suited for those who have paucity of time in life.</p>
+                <h6>Duration:-9 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>

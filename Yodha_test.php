@@ -50,76 +50,76 @@
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <div class="sidebar-brand-icon">
-                    <i class="fas fa-fw fa-home"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Home site</div>
-            </a>
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+        <div class="sidebar-brand-icon">
+          <i class="fas fa-fw fa-home"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Home site</div>
+      </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="user_page.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Profile Page</span></a>
-            </li>
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="user_page.php">
+          <i class="fas fa-user-circle"></i>
+          <span>Profile Page</span></a>
+      </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+      <!-- Divider -->
+      <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Hospital
-            </div>
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Hospital
+      </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-newspaper"></i>
-                    <span>Treatment History</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Treatment History:</h6>
-                        <a class="collapse-item" href="all_consultations.php">All Consultations</a>
-                        <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
-                        <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
-                    </div>
-                </div>
-            </li>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>Treatment History</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Treatment History:</h6>
+            <a class="collapse-item" href="all_consultations.php">All Consultations</a>
+            <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
+            <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
+          </div>
+        </div>
+      </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Personal
-            </div>
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Personal
+      </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="update_details.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Update Details</span></a>
-            </li>
+      <li class="nav-item">
+        <a class="nav-link" href="update_details.php">
+          <i class="fas fa-user"></i>
+          <span>Update Details</span></a>
+      </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="change_pass.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Change Password</span></a>
-            </li>
+      <li class="nav-item">
+        <a class="nav-link" href="change_pass.php">
+          <i class="fas fa-lock"></i>
+          <span>Change Password</span></a>
+      </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="logout.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Logout</span></a>
-            </li>
+      <li class="nav-item">
+        <a class="nav-link" href="logout.php">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span></a>
+      </li>
 
-        </ul>
+    </ul>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -147,25 +147,18 @@
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="user_page.php">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+                </div>
             </li>
 
           </ul>
@@ -884,7 +877,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>© 2020 by AtmaVeda Yog Pvt. Ltd.</span>
           </div>
         </div>
       </footer>

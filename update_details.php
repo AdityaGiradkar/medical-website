@@ -44,7 +44,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion fixed-top" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon">
           <i class="fas fa-fw fa-home"></i>
         </div>
@@ -56,9 +56,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="../index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+        <a class="nav-link" href="user_page.php">
+          <i class="fas fa-user-circle"></i>
+          <span>Profile Page</span></a>
       </li>
 
       <!-- Divider -->
@@ -70,25 +70,20 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-newspaper"></i>
-          <span>History</span>
+          <span>Treatment History</span>
         </a>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Treatment History:</h6>
             <a class="collapse-item" href="all_consultations.php">All Consultations</a>
-            <a class="collapse-item active" href="add_question.php">Add Question</a>
+            <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
+            <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
           </div>
         </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="history.php">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Treatment History</span></a>
       </li>
 
       <!-- Divider -->
@@ -99,21 +94,21 @@
         Personal
       </div>
 
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="update_details.php">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-user"></i>
           <span>Update Details</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-table"></i>
+        <a class="nav-link" href="change_pass.php">
+          <i class="fas fa-lock"></i>
           <span>Change Password</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="logout.php">
-          <i class="fas fa-fw fa-table"></i>
+          <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span></a>
       </li>
 
@@ -145,24 +140,17 @@
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="user_page.php">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Profile
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Logout
+                  </a>
               </div>
             </li>
 
@@ -512,7 +500,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>© 2020 by AtmaVeda Yog Pvt. Ltd.</span>
           </div>
         </div>
       </footer>
