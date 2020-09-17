@@ -1,3 +1,17 @@
+<?php 
+  session_start();
+  include('includes/db.php');
+
+  if(isset($_SESSION['user_id'])){
+    $user_id = $_SESSION['user_id']; 
+    $user_details = "SELECT *, TIMESTAMPDIFF(YEAR, '1970-02-01', CURDATE()) AS age FROM `user` WHERE `user_id`='$user_id'";
+    $user_details_run = mysqli_query($con, $user_details);
+    $user_details_res = mysqli_fetch_assoc($user_details_run);
+
+    //$age = date_diff(date_create('1970-02-01'), date_create('today'))
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +36,19 @@
 
   <!-- custom style sheet for sidebar and navigation bar -->
   <link rel="stylesheet" href="admin/css/sidebar.css">
+
+  <style>
+    .edit {
+        border-radius: 12px;
+        background-image: -moz-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+        background-image: -webkit-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+        background-image: -ms-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+        width: 100%;
+        height: 30px;
+        border: 0;
+    }
+
+  </style>
 
 </head>
 
@@ -70,6 +97,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Treatment History:</h6>
             <a class="collapse-item" href="all_consultations.php">All Consultations</a>
+            <a class="collapse-item" href="all_test.php">All Tests</a>
             <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
             <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
           </div>
@@ -126,7 +154,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">user</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['name']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -153,7 +181,48 @@
         <div class="container-fluid main-top main-left">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="img-fluid d-block mx-auto rounded-circle" src="images/dummy_profile.png">
+                <a href="update_details.php" class="mt-5 text-center d-block" ><b>UPDATE INFO</b></a>
+              </div>
+              <div class="col-md-8 pl-5 pr-5">
+                <h4 class="text-center pb-3"><b>Personal Details</b></h4>
+                <div class="form-group">
+                  <label for="exampleCheck1"><b>Name : </b></label>
+                  <input type="text" class="form-control" value="<?php echo $_SESSION['name']; ?>" id="exampleCheck1" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="exampleCheck1"><b>Email : </b></label>
+                  <input type="text" class="form-control" value="<?php echo $user_details_res['email_id']; ?>" id="exampleCheck1" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="exampleCheck1"><b>Contact Number : </b></label>
+                  <input type="text" class="form-control" value="<?php echo $user_details_res['contact_no']; ?>" id="exampleCheck1" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="exampleCheck1"><b>Age : </b></label>
+                  <input type="text" class="form-control" value="<?php echo $user_details_res['age']; ?>" id="exampleCheck1" disabled>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><b>Married : </b></label>
+                      <input type="text" class="form-control" value="<?php echo $user_details_res['married']; ?>" id="name" disabled>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1"><b>Working : </b></label>
+                      <input type="text" class="form-control" value="<?php echo $user_details_res['working']; ?>" id="name" disabled>
+                    </div>
+                  </div>
+                </div>               
+              </div>
+            </div>
+            
+          </div>
 
         </div>
         <!-- /.container-fluid -->
@@ -215,3 +284,12 @@
 </body>
 
 </html>
+
+<?php 
+  }else{
+    echo "<script>
+          window.location.href='error/login_error.html';
+    </script>";
+  }
+
+?>

@@ -84,6 +84,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Treatment History:</h6>
             <a class="collapse-item active" href="all_consultations.php">All Consultations</a>
+            <a class="collapse-item" href="all_test.php">All Tests</a>
             <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
             <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
           </div>

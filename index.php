@@ -144,7 +144,7 @@
                             It works for, Social sector, Corporate sector And is also open to work for governments
                             around the world in field of medicine, community screening, yoga therapies and education.
                         </p>
-                        <a href="#" class="Explore-box">Explore</a>
+                        <a href="about.html" class="Explore-box">Explore</a>
                     </div>
                 </div>
             </div>

@@ -96,16 +96,17 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-newspaper"></i>
           <span>Treatment History</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Treatment History:</h6>
             <a class="collapse-item" href="all_consultations.php">All Consultations</a>
+            <a class="collapse-item active" href="all_test.php">All Tests</a>
             <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
             <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
           </div>
@@ -226,9 +227,10 @@
 
           <!-- CREATE TABLE OF test details  -->
           <div class="border border-primary  rounded-lg mt-4 p-3">
-            <h1 class="h4 mb-2 text-gray-800">Submitted Test</h1>
-            <button type="button" onClick="showTest()" id="show-btn" class="btn btn-success">Show Test result</button>
-            <table class="table table-bordered table-striped  d-none table-responsive-md" id="treatBlock">
+            <h1 class="h4 mb-2 text-gray-800">Submitted YogE@Home Test</h1>
+            <p>submitted on: <?php echo date("d-m-Y", strtotime($record['date_time'])); ?></p>
+            
+            <table class="table table-bordered table-striped table-responsive-md" id="treatBlock">
               <thead>
                 <tr>
                   <th scope="col">sr. no.</th>
@@ -404,231 +406,13 @@
                 </tr>
               </tbody>
             </table>
-            <!-- <button class="btn btn-primary" onClick="startTreatment()">Start Treatment</button> -->
-            <button class="btn btn-primary d-none" id="close-btn" onClick="closeTestRes()">Close Section</button>
+            
           </div>
           <!-- CREATE TABLE OF test details  -->
 
           
 
-          <!-- Previous treatments -->
-          <?php 
-            $previous_treatment = "SELECT * FROM `treatment` WHERE `test_id`='$test_id' ORDER BY `date`";
-            $previous_treatment_run = mysqli_query($con, $previous_treatment);
-          ?>
-          <div class="border border-primary rounded-lg p-3 mt-4 treat-panel">
-            <h5 class="modal-title text-center" id="exampleModalLongTitle">YogE @ HOME Test Treatment</h5>
-            <?php
-              $sr_no = 1;
-              while($previous_treatment_res = mysqli_fetch_assoc($previous_treatment_run)){
-                $treatment_no = $previous_treatment_res['treat_number'];
-
-                $prescribed_medi_details = array();
-                $prescribed_session_details = array();
-                $total_price = 0;
-
-                $all_prescribed_medi = "SELECT `medicine_id`, `quantity` FROM `prescribed_medicine` WHERE `test_id`='$test_id' AND `treat_number`='$treatment_no'";
-                if($all_prescribed_medi_run = mysqli_query($con, $all_prescribed_medi)){
-                  $all_prescribed_medi_row = mysqli_num_rows($all_prescribed_medi_run);
-                  if($all_prescribed_medi_row > 0){
-                    $prescribed_medi_idQuantity_array = array();
-                    $medi_count =0;
-                    while ($prescribed_medi_idQuantity = mysqli_fetch_assoc($all_prescribed_medi_run)){
-                      $prescribed_medi_idQuantity_array[$medi_count] = $prescribed_medi_idQuantity;
-                      $medi_count++;
-                    }
-                    $medi_count =0;
-                    
-                    foreach($prescribed_medi_idQuantity_array as $medi_Id_quantity){
-                      $tempid = $medi_Id_quantity['medicine_id'];
-                      $medicine_detail = "SELECT * FROM `medicines` WHERE `medicine_id`='$tempid'";
-                      $medicine_detail_run = mysqli_query($con, $medicine_detail);
-                      $medicine_detail_res = mysqli_fetch_assoc($medicine_detail_run);
-                      $temp = array(
-                        "name" => $medicine_detail_res['Name'],
-                        "type" => $medicine_detail_res['type'],
-                        "price" => $medicine_detail_res['price'],
-                        "medi_quantity" => $medicine_detail_res['quantity'], //quantity from medicine table
-                        "quantity" => $medi_Id_quantity['quantity'],    //quantity multiple of medicine table
-                        "price" => $medicine_detail_res['price'],
-                        "total_price" => $medi_Id_quantity['quantity'] * $medicine_detail_res['price']
-                      );
-                      $total_price = $total_price + (int)$temp['total_price'];
-                      $prescribed_medi_details[$medi_count] = $temp;
-                      $medi_count++;
-                    }
-                    //print_r($prescribed_medi_details);
-                    //print_r($total_price);
-                  }
-                }
-
-
-                $all_prescribed_session = "SELECT * FROM `prescribed_session` WHERE `test_id`='$test_id' AND `treat_number`='$treatment_no'";
-                if($all_prescribed_session_run = mysqli_query($con, $all_prescribed_session)){
-                  $all_prescribed_session_row = mysqli_num_rows($all_prescribed_session_run);
-                  if($all_prescribed_session_row > 0){
-                    $prescribed_session_idQuantity_array = array();
-                    $session_count =0;
-                    while ($prescribed_session_idQuantity = mysqli_fetch_assoc($all_prescribed_session_run)){
-                      $prescribed_session_idQuantity_array[$session_count] = $prescribed_session_idQuantity;
-                      $session_count++;
-                    }
-                    $session_count =0;
-                    
-                    foreach($prescribed_session_idQuantity_array as $session_Id_quantity){
-                      $tempid = $session_Id_quantity['session_id'];
-                      $session_detail = "SELECT * FROM `sessions` WHERE `session_id`='$tempid'";
-                      $session_detail_run = mysqli_query($con, $session_detail);
-                      $session_detail_res = mysqli_fetch_assoc($session_detail_run);
-                      $temp = array(
-                        "name" => $session_detail_res['session_name'],
-                        "price" => $session_detail_res['price'],
-                        "quantity" => $session_Id_quantity['session_per_month'],
-                        "price" => $session_detail_res['price'],
-                        "total_price" => $session_Id_quantity['session_per_month'] * $session_detail_res['price']
-                      );
-                      $total_price = $total_price + (int)$temp['total_price'];
-                      $prescribed_session_details[$session_count] = $temp;
-                      $session_count++;
-                    }
-                    //print_r($prescribed_session_details);
-                    //print_r($total_price);
-                  }
-                }
-                              
-            ?>
-            <div class="card border-left-primary shadow h-100 py-2 mb-3">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
-                    <div class="h6 mb-0 font-weight-bold text-gray-800">
-                      <?php echo $sr_no.") ".date("d/m/Y", strtotime($previous_treatment_res['date'])); ?>
-                    </div>
-                    <div class="text-xs font-weight-bold text-primary mt-2 mb-1">
-                      Total : Rs. 
-                      <?php 
-                        if($previous_treatment_res['fees_status']=='pending'){
-                            echo $total_price. " (<span style='color:red'>Pending</span>)";
-                           
-                        }else{
-                            echo $previous_treatment_res['fees']. " (<span style='color:green'>Paid</span>)";
-                            
-                        }
-                      ?>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <a class="up-down-arrow" onClick="showDetails('d_<?php echo $sr_no; ?>')"><i
-                        class="fas arrow fa-angle-right fa-2x" id="d_<?php echo $sr_no; ?>_arrow"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body pt-2" style="display:none" id="d_<?php echo $sr_no; ?>">
-                <div class="row">
-                  <div class="col-md-6">
-                    <strong>Report : </strong> <a target="_blank" href="<?php echo "admin/".$previous_treatment_res['report']; ?>">view</a>
-                  </div>
-                  <div class="col-md-6">
-                    <strong>Diet Plan : </strong><a target="_blank" href="<?php echo "admin/".$previous_treatment_res['diet']; ?>">view</a>
-                  </div>
-                </div>
-                <br>
-
-                <label for=""><strong>Prescribed Medicines:</strong></label><br>
-                <table class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">sr. no.</th>
-                      <th scope="col">Medicine Name</th>
-                      <th scope="col">Type</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Total Price (Rs.)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $medi_count = 1;
-                      foreach($prescribed_medi_details as $single_medi_detail){
-                    ?>
-                    <tr>
-                      <th scope="col"><?php echo $medi_count; ?></th>
-                      <td><?php echo $single_medi_detail['name']; ?></td>
-                      <td><?php echo $single_medi_detail['type']; ?></td>
-                      <td><?php echo $single_medi_detail['medi_quantity']. " * " .$single_medi_detail['quantity']; ?></td>
-                      <td><?php echo $single_medi_detail['price']. " * ". $single_medi_detail['quantity']. " = " .$single_medi_detail['total_price']; ?></td>
-                    </tr>
-                    <?php 
-                        $medi_count++;
-                      }
-                    ?>
-                    
-                  </tbody>
-                </table>
-                <br>
-
-                <label for=""><strong>Prescribed Sessions:</strong></label><br>
-                <table class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">sr. no.</th>
-                      <th scope="col">Session Name</th>
-                      <th scope="col">Times per month</th>
-                      <th scope="col">Total Price (Rs.)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $session_count = 1;
-                      foreach($prescribed_session_details as $single_session_detail){
-                    ?>
-                    <tr>
-                      <th scope="col"><?php echo $session_count; ?></th>
-                      <td><?php echo $single_session_detail['name']; ?></td>
-                      <td><?php echo $single_session_detail['quantity']; ?></td>
-                      <td><?php echo $single_session_detail['price']. " * " .$single_session_detail['quantity']. " = " .$single_session_detail['total_price']; ?></td>
-                    </tr>
-                    <?php 
-                      $session_count++;
-                    }
-                    
-                    ?>
-                  </tbody>
-                </table>
-                <br>
-
-                <p><strong>Extra Note : </strong> <?php echo $previous_treatment_res['extra_note']; ?></p>
-                <?php 
-                    if($previous_treatment_res['fees_status'] == 'pending' && $record['status'] != 'closed'){
-                ?>
-                <div class="Actions">
-                    <form method="post">
-                        <button type="submit" name="pay_<?php echo $treatment_no; ?>" class="btn btn-primary">Procced to pay</button>
-                    </form>
-                </div>
-                <?php
-                    $pay_name = "pay_".$treatment_no; 
-                    if(isset($_POST[$pay_name])){
-                        $update_fees_and_suatus = "UPDATE `treatment` SET `fees_status`='paid',`fees`=$total_price WHERE `test_id`='$test_id' AND `treat_number`='$treatment_no'";
-                        if($update_fees_and_suatus_run = mysqli_query($con, $update_fees_and_suatus)){
-                            echo "<script>
-                                alert('Treatment is started');
-                                window.location.href = 'yoge_test_details.php?testID=$test_id';
-                            </script>";
-                        }
-                    }
-                    }
-                ?>
-
-              </div>
-            </div>
-            <?php
-              //end of while loop
-                $sr_no++;
-              }
-            ?>
-          </div>
-          <!-- Previous treatments -->
-
+          
         </div>
         <!-- /.container-fluid -->
 
@@ -711,29 +495,6 @@
     document.getElementById("close-btn").classList.add("d-none");
   }
 
-//up doun arraw with field display
-  function showDetails(a) {
-    var x = document.querySelector("#" + a);
-    var arrow = document.querySelector("#" + a + "_arrow");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-        arrow.classList.remove("fa-angle-right");
-        arrow.classList.add("fa-angle-down");
-    } else {
-        x.style.display = "none";
-        arrow.classList.remove("fa-angle-down");
-        arrow.classList.add("fa-angle-right");
-    }
-
-  }
-
-  function close_treatment() {
-    if (confirm("do you want to close this treatment?")) {
-        return true;
-    }
-    return false;
-  }
-//up doun arraw with field display
 </script>
 
 

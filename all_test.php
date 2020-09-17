@@ -1,23 +1,15 @@
 <?php 
     include("includes/db.php");
     session_start();
-
+    
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
-      $user_id = $_SESSION['user_id'];
-      $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
-      $user_info_run = mysqli_query($con, $user_info);
-      $record = mysqli_fetch_assoc($user_info_run);
+        $user_id = $_SESSION['user_id'];
 
-
-      //checking if user present for perticular
-      //if not then redirect to user page
-      if($record){
-       
-
+        $yoge_test = "SELECT * FROM `yoge_home` WHERE `user_id`='$user_id' ORDER BY `date_time` DESC";
+        $yoge_test_run = mysqli_query($con, $yoge_test);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,23 +21,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Past History</title>
+    <title>All Tests</title>
 
-    <!-- Custom fonts for this template-->
+    <!-- Custom fonts for this template -->
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <!-- Custom styles for this template -->
     <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- custome style -->
-    <link rel="stylesheet" href="admin/css/patient_history.css">
+    <!-- Custom styles for this page -->
+    <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- custom style sheet for sidebar and navigation bar -->
     <link rel="stylesheet" href="admin/css/sidebar.css">
-
 </head>
 
 <body id="page-top">
@@ -93,9 +84,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Treatment History:</h6>
             <a class="collapse-item" href="all_consultations.php">All Consultations</a>
-            <a class="collapse-item" href="all_test.php">All Tests</a>
+            <a class="collapse-item active" href="all_test.php">All Tests</a>
             <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
-            <a class="collapse-item active" href="past_treatments.php">Past Treatments</a>
+            <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
           </div>
         </div>
       </li>
@@ -172,115 +163,56 @@
 
                     </ul>
 
+
                 </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid main-top main-left">
 
-                    <!-- Person info -->
-                    <div class="border border-primary rounded-lg p-3"
-                        style="background-color:#fff; box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.35)">
-                        <h1 class="h4 mb-2 text-gray-800">Personal Details</h1>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <b>Name :</b> <?php echo $record['name']; ?>
-                            </div>
-                            <div class="col-md-4">
-                                <b>Father's Name :</b> <?php echo $record['father_name']; ?>
-                            </div>
-                            <div class="col-md-4">
-                                <b>Contact :</b> <?php echo $record['contact_no']; ?>
-                            </div>
-                            <div class="col-md-4">
-                                <b>Email :</b> <?php echo $record['email_id']; ?>
-                            </div>
-                            <div class="col-md-4">
-                                <b>Gender :</b> <?php echo $record['gender']; ?>
-                            </div>
-                            <div class="col-md-4">
-                                <b>DOB :</b> <?php echo date("d-m-Y", strtotime($record['dob'])); ?>
-                            </div>
-                            <div class="col-md-4">
-                                <b>Married :</b> <?php echo $record['married']; ?>
-                            </div>
-                            <div class="col-md-4">
-                                <b>Working :</b> <?php echo $record['working']; ?>
-                            </div>
-                            <div class="col-md-4">
-                                <b>Address :</b> <?php echo $record['address']; ?>
-                            </div>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">All Questions in Database</h6>
                         </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. No.</th>
+                                            <th>Date</th>
+                                            <th>Test Type</th>
+                                            <th>Charges</th>
+                                            <th>Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $count = 1;
+                                            while($record = mysqli_fetch_assoc($yoge_test_run)) {
+                                                $test_id = $record['test_id'];
+                                                $charge_paid = "SELECT * FROM `test_payments` WHERE `test_id`='$test_id'";
+                                                $charge_paid_run = mysqli_query($con, $charge_paid);
+                                                $charge_paid_res = mysqli_fetch_assoc($charge_paid_run);
+                                        ?>
+                                        <tr>
+                                            <th><?php echo $count; ?></th>
+                                            <td><?php echo date("d-m-Y", strtotime($record['date_time'])); ?></td>
+                                            <td>YogE@Home</td>
+                                            <td><?php echo $charge_paid_res['charges']; ?></td>
+                                            <td><a href="yoge_test_details.php?testID=<?php echo $record['test_id']; ?>">view</a></td>
+                                        </tr>
+                                        <?php 
+                                                $count++;
+                                            }
+                                        ?>
 
-                    </div>
-                    <!-- person info ends  -->
-
-
-                    <!-- User Details all its test history as weel as his consultation hostory -->
-                    <div class="border border-primary rounded-lg p-3 mt-4">
-                        <!-- test2 tab data -->
-                        <?php
-                            $anthropometry_tests = "SELECT * FROM `test_anthropometry` WHERE `user_id`='$user_id' AND `status`='closed'";
-                            $anthropometry_tests_run = mysqli_query($con, $anthropometry_tests);
-                        ?>
-                           
-                        <!-- DataTales Example -->
-                        <div class="card shadow mt-4 mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary"><?php echo $_SESSION['name']; ?>'s
-                                    Test History</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="testTable" width="100%"
-                                        cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Sr. No.</th>
-                                                <th>Date</th>
-                                                <th>Test Name</th>
-                                                <th>Status</th>
-                                                <th>details</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php 
-                                                $test_no = 1;
-                                                while($anthropometry_tests_res = mysqli_fetch_assoc($anthropometry_tests_run)){
-                                            ?>
-                                            <tr
-                                                style="font-weight:<?php echo $anthropometry_tests_res['status'] != 'closed'?'bold': ''; ?>">
-                                                <td><?php echo $test_no; ?></td>
-                                                <td><?php  echo date("d-m-Y", strtotime($anthropometry_tests_res['date_time1'])); ?>
-                                                </td>
-                                                <td>Anthropometry Test</td>
-                                                <td>Ended</td>
-                                                <td><a
-                                                        href="admin/anthropometry_test_details.php?testID=<?php echo $anthropometry_tests_res['test_id']; ?>">view</a>
-                                                </td>
-                                            </tr>
-                                            <?php
-                                                $test_no++;
-                                                }
-                                            ?>
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!-- User Details all its test history as well as his consultation hostory -->
-
-
-                    <!-- all its treatment history  -->
-                    <?php 
-                        
-                            include("includes/past_treatment_history.php");
-    
-                    ?>
-                    <!-- all its treatment history  -->
 
                 </div>
                 <!-- /.container-fluid -->
@@ -308,33 +240,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- modal for test selection -->
-    <?php 
-        $all_medicines = "SELECT * FROM `medicines`";
-        $all_medicines_run = mysqli_query($con, $all_medicines);
-        $count = 0;
-        $medicines = array();
-        while($medi = mysqli_fetch_assoc($all_medicines_run)){
-        $medicines[$count] = $medi;
-            $count++; 
-        }
-
-        $all_instruments = "SELECT * FROM `sessions`";
-        $all_instruments_run = mysqli_query($con, $all_instruments);
-        $count_instru = 0;
-        $instruments = array();
-        while($instru = mysqli_fetch_assoc($all_instruments_run)){
-            $instruments[$count_instru] = $instru;
-            $count_instru++; 
-        }
-    ?>
-    <!-- Passing medicine array in the js file  -->
-    <script type="text/javascript">
-        var medicineArray = <?php echo json_encode($medicines); ?> ;
-        var instrumentArray = <?php echo json_encode($instruments); ?> ;
-    </script>
-    <!-- Passing medicine array in the js file  -->
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -366,43 +271,23 @@
     <!-- Custom scripts for all pages-->
     <script src="admin/js/sb-admin-2.min.js"></script>
 
+    <!-- Page level plugins -->
+    <script src="admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="admin/js/demo/datatables-demo.js"></script>
+
 </body>
 
 </html>
 
-<script>
-    function showDetails(a) {
-        var x = document.querySelector("#" + a);
-        var arrow = document.querySelector("#" + a + "_arrow");
-        if (x.style.display === "none") {
-            x.style.display = "block";
-            arrow.classList.remove("fa-angle-right");
-            arrow.classList.add("fa-angle-down");
-        } else {
-            x.style.display = "none";
-            arrow.classList.remove("fa-angle-down");
-            arrow.classList.add("fa-angle-right");
-        }
 
-    }
-</script>
-
-
-<?php 
-      }else{
-        //else part if
-          echo "<script>
-              alert('No record found');
-              window.location.href='all_patients.php';
-          </script>";
-      }
-
+<?php
     }else{
-      //else part if session is not set
       echo "<script>
               window.location.href='../error/login_error.html';
             </script>";
     }
-
 
 ?>
