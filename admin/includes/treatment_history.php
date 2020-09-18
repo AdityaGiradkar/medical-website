@@ -244,7 +244,7 @@
         if($pre_treatments_res['treat_status'] == 'ongoing'){
       ?>
         <button type="button" class="btn btn-success mt-3" data-toggle="modal"
-                          data-target="#update_treatatment">Update Treatment</button>
+                          data-target="#update_treatatment_<?php echo $treatment_number; ?>">Update Treatment</button>
         <form method="post" onsubmit="javascript:return confirm('Are you sure you want to close treatment?');" class="">
           <button type="submit" name="close_treat_<?php echo $treatment_number; ?>" class="btn btn-danger mt-3">Close Treatment</button>
         </form>
@@ -259,7 +259,7 @@
         }
       ?>
       <!-- Section for update treatment -->
-      <div class="modal fade  bd-example-modal-lg" id="update_treatatment" tabindex="-1" role="dialog"
+      <div class="modal fade  bd-example-modal-lg" id="update_treatatment_<?php echo $treatment_number; ?>" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -293,11 +293,11 @@
                                         <th scope="col">Remove</th>
                                     </tr>
                                 </thead>
-                                <tbody id="medicine">
+                                <tbody id="medicine_<?php echo $treat_no; ?>">
                                     <!-- Medicine rows are added Dynamically through javascript -->
                                 </tbody>
                             </table>
-                            <button type="button" onClick="addMedicine()" class="btn btn-primary">Add Medicines</button>
+                            <button type="button" onClick="addMedicine(<?php echo $treat_no; ?>)" class="btn btn-primary">Add Medicines</button>
                         </div>
 
                         <div class="form-group">
@@ -310,12 +310,12 @@
                                         <th scope="col">Remove</th>
                                     </tr>
                                 </thead>
-                                <tbody id="instrument">
+                                <tbody id="instrument_<?php echo $treat_no; ?>">
                                     <!-- instruments rows are added Dynamically through javascript -->
                                 </tbody>
                             </table>
 
-                            <button type="button" onClick="addInstrument()" class="btn btn-primary">Add
+                            <button type="button" onClick="addInstrument(<?php echo $treat_no; ?>)" class="btn btn-primary">Add
                                 Instrument</button>
                         </div>
 

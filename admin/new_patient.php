@@ -269,7 +269,7 @@
                       ?>
                     <tr>
                       <th><?php echo $count; ?></th>
-                      <td><?php echo $record['date']; ?></td>
+                      <td><?php echo date("d-m-Y", strtotime($record['date'])); ?></td>
                       <td><?php echo $record['time_range']; ?></td>
                       <td><?php echo $record['name'];?></td>
                       <td><?php echo $record['contact_no']; ?></td>

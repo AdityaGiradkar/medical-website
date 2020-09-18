@@ -194,7 +194,7 @@
                                             $count = 1;
                                             while($record = mysqli_fetch_assoc($all_consultations_run)) {
                                         ?>
-                                        <tr>
+                                        <tr <?php if($record['status']=='assigned'){ ?> style="font-weight:bold;"<?php }?>>
                                             <th><?php echo $count; ?></th>
                                             <td><?php echo date("d-m-Y", strtotime($record['date'])); ?></td>
                                             <td><?php echo $record['time_range']; ?></td>

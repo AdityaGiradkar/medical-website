@@ -26,7 +26,7 @@ instrumentArray.forEach(instrument => {
 });
 
 var noInstrument = 0; // used by the addFile() function to keep track of IDs
-function addInstrument() {
+function addInstrument(treat_no) {
     noInstrument++; // increment fileId to get a unique ID for the new element
     var instru_html = '<td>' +
         '<select id="inputState" name="instrument_name[' + noInstrument + ']" class="form-control">' +
@@ -37,7 +37,7 @@ function addInstrument() {
         '<td><input type="text" value = "1" name="quantityInstru[' + noInstrument + ']" class="form-control" /></td>' +
         '<td><a href="" onclick="javascript:removeElement(\'instrument-' + noInstrument + '\'); return false;">Remove</a></td>';
 
-    addElement('instrument', 'tr', 'instrument-' + noInstrument, instru_html);
+    addElement('instrument_' + treat_no, 'tr', 'instrument-' + noInstrument, instru_html);
 }
 
 

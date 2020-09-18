@@ -493,6 +493,7 @@
                     ?>
                     <!-- all its treatment history  -->
 
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -581,11 +582,11 @@
                                         <th scope="col">Remove</th>
                                     </tr>
                                 </thead>
-                                <tbody id="medicine">
+                                <tbody id="medicine_0">
                                     <!-- Medicine rows are added Dynamically through javascript -->
                                 </tbody>
                             </table>
-                            <button type="button" onClick="addMedicine()" class="btn btn-primary">Add Medicines</button>
+                            <button type="button" onClick="addMedicine(0)" class="btn btn-primary">Add Medicines</button>
                         </div>
 
                         <div class="form-group">
@@ -598,12 +599,12 @@
                                         <th scope="col">Remove</th>
                                     </tr>
                                 </thead>
-                                <tbody id="instrument">
+                                <tbody id="instrument_0">
                                     <!-- instruments rows are added Dynamically through javascript -->
                                 </tbody>
                             </table>
 
-                            <button type="button" onClick="addInstrument()" class="btn btn-primary">Add
+                            <button type="button" onClick="addInstrument(0)" class="btn btn-primary">Add
                                 Instrument</button>
                         </div>
 

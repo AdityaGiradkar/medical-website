@@ -144,7 +144,7 @@
                             It works for, Social sector, Corporate sector And is also open to work for governments
                             around the world in field of medicine, community screening, yoga therapies and education.
                         </p>
-                        <a href="about.html" class="Explore-box">Explore</a>
+                        <a href="about.php" class="Explore-box">Explore</a>
                     </div>
                 </div>
             </div>
@@ -1103,14 +1103,14 @@
                     <p class="card-title mx-auto brand-name">SELECT TEST</p>
                     <form method="post" action="">
                         <div class="form-check pt-3 pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type1" value="1">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type1" value="1" disabled>
                             <label class="form-check-label" for="test_type1">YodhaE TEST</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="General Consultation" data-content="Some nice text hereknjfsdb"><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type2" value="2">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type2" value="2" required>
                             <label class="form-check-label" for="test_type2">YogE@HOME</label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="YogE @ HOME"

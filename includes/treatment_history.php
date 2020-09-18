@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="col-auto">
-          <a class="up-down-arrow" onClick="showDetails('d_<?php echo $treat_no; ?>')"><i
+          <a class="up-down-arrow p-4" onClick="showDetails('d_<?php echo $treat_no; ?>')"><i
               class="fas arrow fa-angle-right fa-2x" id="d_<?php echo $treat_no; ?>_arrow"></i></a>
         </div>
       </div>
@@ -131,17 +131,22 @@
       <!-- modal for each Subtreatments -->
       <div class="modal fade bd-example-modal-lg" id="t_<?php echo $treatment_number; ?>_d_<?php echo $all_subtreatment_res['sub_treat_number']; ?>"
         tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <div class="modal-content">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+          <div class="modal-content pt-3">
             <div class="container">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h5 class="modal-title" id="exampleModalLongTitle">
-                <b><?php echo $pre_treatments_res['treatment_for']; ?></b>
-                <span class="text-right">start Date :
-                  <?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?>
-                </span>
+              <h5 class="modal-title pb-3" id="exampleModalLongTitle">
+                <div class="row">
+                  <div class="col-md-8">
+                  <b class="text-left">Treatment For : <?php echo $pre_treatments_res['treatment_for']; ?></b>
+                  </div>
+                  <div class="col-md-4 h6">
+                    start Date :
+                    <?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?>
+                  </div>
+                </div>
               </h5>
 
             </div>

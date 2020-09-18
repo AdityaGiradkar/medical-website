@@ -170,10 +170,31 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid main-top main-left">
 
+                    <div class="border border-primary rounded-lg p-3 mt-4 mb-3">
+                        <h5 class="mb-4">Take New Test</h5>
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <select name="test_type" class="form-control" id="exampleFormControlSelect1">
+                                            <!-- <option disabled selected hidden value="0">Select new Test</option> -->
+                                            <option value="1" disabled>YodhaE TEST</option>
+                                            <option value="2">YogE@HOME</option>
+                                            <option value="3" disabled>YogE@SUPERFIT</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <button type="submit" name="select_test" class="btn btn-primary">Start Test</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">All Questions in Database</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">All Taken Tests</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -282,6 +303,25 @@
 
 </html>
 
+<?php
+    if(isset($_POST['select_test'])){
+        if(isset($_SESSION['user_id'])){
+            $test_type = $_POST['test_type'];
+            if($test_type == 1){
+                echo "<script>window.location.href='#'</script>";
+            }else if($test_type == 2){
+                echo "<script>window.location.href='YogE_HOME.php'</script>";
+            }else if($test_type == 3){
+                echo "<script>window.location.href='#'</script>";
+            } 
+        }else{
+            echo "<script>
+                alert('Please login first.');
+                window.location.href='login.php';
+            </script>";
+        }
+    }
+?>
 
 <?php
     }else{

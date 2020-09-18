@@ -27,7 +27,7 @@ medicineArray.forEach(medicine => {
 
 
 var noMedicine = 0; // used by the addFile() function to keep track of IDs
-function addMedicine() {
+function addMedicine(treat_no) {
     noMedicine++; // increment fileId to get a unique ID for the new element
     var html = '<td>' +
         '<select id="inputState" name="medicine_name[' + noMedicine + ']" class="form-control">' +
@@ -38,7 +38,7 @@ function addMedicine() {
         '<td><input type="text" value = "1" name="quantityMed[' + noMedicine + ']" class="form-control" /></td>' +
         '<td><a href="" onclick="javascript:removeElement(\'medicine-' + noMedicine + '\'); return false;">Remove</a></td>';
 
-    addElement('medicine', 'tr', 'medicine-' + noMedicine, html);
+    addElement('medicine_' + treat_no, 'tr', 'medicine-' + noMedicine, html);
 }
 
 

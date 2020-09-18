@@ -14,6 +14,9 @@
         $report = $_FILES['report'];
         $extra_note = $_POST['note'];
 
+        print_r($diet);
+        print_r($report);
+
         //firse check if doctor has added medicines or not 
         //if not then do not run query for insertion of data into database
         $query_medicine_insert = "";
@@ -87,14 +90,16 @@
                 $diet_new_name = uniqid('', true).".".$diet_ext;
                 $report_new_name = uniqid('', true).".".$report_ext;
 
-                $diet_destination = "files/diet/".$diet_new_name;
+                $diet_destination = "../files/diet/".$diet_new_name;
+                $database_name_diet = "files/diet/".$diet_new_name;
                 move_uploaded_file($diet_tmp_name, $diet_destination);
 
-                $report_destination = "files/report/".$report_new_name;
+                $report_destination = "../files/report/".$report_new_name;
+                $database_name_report = "files/report/".$report_new_name;
                 move_uploaded_file($report_tmp_name, $report_destination);
 
                 $insert_test ="INSERT INTO `treatment`(`user_id`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`) 
-                                VALUES ('$user_id','$treat_id','$sub_treat_id','$diet_destination','$report_destination','$extra_note')";
+                                VALUES ('$user_id','$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note')";
                 // $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
                 //                 VALUES ('$test_id',1,'$diet_destination','$report_destination','$extra_note')";          
 

@@ -342,7 +342,7 @@
         $value = $value."('".$date."', '".$slot."'),";
       }
       $value = substr($value, 0, -1);
-      echo $value;
+      //echo $value;
 
       $insert_slots = "INSERT INTO `consultation_time`(`date`, `time_range`) VALUES ".$value.";";
       if(mysqli_query($con, $insert_slots)){

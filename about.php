@@ -90,11 +90,8 @@ include('includes/db.php');
                 <p>Mission is use yoga as a diagnostic and therapeutic tool to heal . Heal the incurable diseases of
                     mankind which do not have and definite answers in other systems of medicines</p>
 
-            </div>
-        </div>
-    </div>
-    <div class="container mt-5">
-        <p>
+
+                    <p>
             AtmaVeda Yog Pvt limited has innovative activities, one of its kind around the globe which.</p>
         <ul>
             <li>Invents diagnostic tools based on yoga.</li>
@@ -103,6 +100,8 @@ include('includes/db.php');
                 and students in AtmaVeda Yog.</li>
 
         </ul>
+            </div>
+        </div>
     </div>
 
 

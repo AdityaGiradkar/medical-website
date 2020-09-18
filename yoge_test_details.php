@@ -81,7 +81,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item  active">
+      <li class="nav-item">
         <a class="nav-link" href="user_page.php">
           <i class="fas fa-user-circle"></i>
           <span>Profile Page</span></a>
