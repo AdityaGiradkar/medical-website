@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include("../includes/db.php");
+    include("../../includes/db.php");
     $date = $_GET['date'];
     $time = $_GET['time'];
 
@@ -8,7 +8,7 @@
     if($checked_run = mysqli_query($con, $checked)){
         echo "<script> 
                 alert('User consultation is over.');
-                window.location.href='new_patient.php';
+                window.location.href='../new_patient.php';
             </script>";
     }
 

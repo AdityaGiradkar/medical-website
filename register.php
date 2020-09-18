@@ -97,7 +97,7 @@
                     <button type="submit" class="login-btn mt-5 " name="submit">REGISTER</button>
                 </form>
                 <small class="form-text text-center mt-3"><em>Already Registered ?</em> <a
-                        href="login.html">Login</a></small>
+                        href="login.php">Login</a></small>
             </div>
         </div>
     </div>

@@ -55,7 +55,7 @@
                     <a href="#" class="li-header nav-link mr-4">SHOP</a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class=" nav-link li-header mr-4">BLOG</a>
+                    <a href="#blogs" class=" nav-link li-header mr-4">BLOG</a>
                 </li>
                 <li class="nav-item">
                     <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-4">BOOK AN APOINTMENT</a>
@@ -877,7 +877,7 @@
         <div class="pb-3 pt-3" id="test">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9" style="color: white;">
+                    <div class="col-md-9 pt-4" style="color: white;">
                         <h3>Diagnose at your home with <b>Yodha's Nidaan</b></h3>
                         <p><span>Sed ut perspiciatis</span> unde
                             omnis iste natus error sit voluptatem
@@ -977,7 +977,7 @@
             $all_blogs_run = mysqli_query($con, $all_blogs);
              
         ?>
-        <div class="blogs paddingTobBottom" style="margin-top: 405px;  background-color: rgb(249, 250, 255);">
+        <div class="blogs paddingTobBottom" id="blogs" style="margin-top: 405px;  background-color: rgb(249, 250, 255);">
             <div class="container">
                 <h2 class="text-center">Blogs</h2>
                 <div class="row mt-5">
@@ -1013,7 +1013,7 @@
         </div>
 
         <div class="bg-dark" style="padding:1%; color:white;">
-            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd.</h6>
+            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="blank" href="images/Privacy Polic1.pdf">policies</a></h6>
         </div>
     </div>
 
