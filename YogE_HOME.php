@@ -1,18 +1,39 @@
 <?php 
     session_start();
     include("includes/db.php");
-    $user_id = $_SESSION['user_id'];
 
-    $user_details = "SELECT * FROM `user` u, `medical_history` m where u.`user_id` = m.`user_id` AND u.`user_id`='$user_id'";
-    $user_details_run = mysqli_query($con, $user_details);
-    $user_details_res = mysqli_fetch_assoc($user_details_run);
+    if(isset($_SESSION['user_id'])){
+      $user_id = $_SESSION['user_id'];
 
-    if($user_details_res['problems'] == ""){
-        echo "<script>
-                alert('Please first Fill the details.');
-                window.location.href='update_details.php';
-            </script>";
-    }
+      if(isset($_GET['orderId'])){
+        $order_id=$_GET['orderId'];
+
+        $check_availability_of_test = "SELECT `pay_id` FROM `test_payments` WHERE `order_id`='$order_id' AND `test_id` IS NULL";
+        $check_availability_of_test_run = mysqli_query($con, $check_availability_of_test);
+        $check_availability_of_test_rows = mysqli_num_rows($check_availability_of_test_run);
+        //check for payment is done and test is not given
+        if($check_availability_of_test_rows > 0){
+
+          $user_details = "SELECT * FROM `user` u, `medical_history` m where u.`user_id` = m.`user_id` AND u.`user_id`='$user_id'";
+          $user_details_run = mysqli_query($con, $user_details);
+          $user_details_res = mysqli_fetch_assoc($user_details_run);
+
+          // Check for remaining tests
+          $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
+          $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
+          $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
+          $tests = array(0,0,0,0,0);
+          while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
+            $index = $check_remaining_tests_res['test_type'];
+            $tests[$index] = $check_remaining_tests_res['order_id'];
+          }
+
+          if($user_details_res['problems'] == ""){
+              echo "<script>
+                      alert('Please first Fill the details.');
+                      window.location.href='update_details.php';
+                  </script>";
+          }
 ?>
 
 <!DOCTYPE html>
@@ -93,6 +114,29 @@
           </div>
         </div>
       </li>
+
+      <!-- Tests  --> 
+      <?php
+        if($check_remaining_tests_rows > 0){
+      ?>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#incompleteTest" aria-expanded="true"
+          aria-controls="incompleteTest">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>Incomplete Tests</span>
+        </a>
+        <div id="incompleteTest" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Incomplete Tests:</h6>
+            <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="all_consultations.php">All Consultations</a><?php } ?>
+            <?php if($tests[2] !== 0) { ?><a class="collapse-item active" href="YogE_HOME.php?orderId=<?php echo $tests[2]; ?>">YogE@Home Test</a><?php } ?>
+            <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a><?php } ?>
+          </div>
+        </div>
+      </li>
+      <?php
+        }
+      ?>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -243,13 +287,13 @@
         
             <div class="form-group">
                 <label for="hospital_name">IF A HOSPITALIZED CASE THEN NAME OF HOSPITAL AND IPD NO. </label>
-                <input type="text" class="form-control" name="hospital_name" id="hospital_name">
+                <input type="text" class="form-control" name="hospital_name" id="hospital_name" required>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="covid_test">COVID TESTING DONE</label>
-                <select id="covid_test" name="covid_test" class="form-control">
+                <select id="covid_test" name="covid_test" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="YES">YES</option>
                   <option value="NO">NO</option>
@@ -258,7 +302,7 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="covid_report">COVID19 TEST REPORT</label>
-                <select id="covid_report" name="covid_report" class="form-control">
+                <select id="covid_report" name="covid_report" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="COVID NASAL SWAB TEST POSTIVE">COVID NASAL SWAB TEST POSTIVE</option>
                   <option value="COVID NASAL SWAB TEST NEGATIVE">COVID NASAL SWAB TEST NEGATIVE</option>
@@ -271,89 +315,89 @@
 
             <div class="form-group">
                 <label for="prescription_paper">DIAGNOSIS as written on hospital/prescription paper</label>
-                <input type="text" class="form-control" name="prescription_paper" id="prescription_paper">
+                <input type="text" class="form-control" name="prescription_paper" id="prescription_paper" required>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-3">
                 <label for="SPO2">PULSEOX READING OF SPO2</label>
-                <input type="text" class="form-control" name="SPO2" id="SPO2">
+                <input type="text" class="form-control" name="SPO2" id="SPO2" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="blod_pressure">BLOOD PRESSURE</label>
-                <input type="text" class="form-control" name="blod_pressure" id="blod_pressure">
+                <input type="text" class="form-control" name="blod_pressure" id="blod_pressure" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="pulse_rate">PULSE RATE </label>
-                <input type="text" class="form-control" name="pulse_rate" id="pulse_rate">
+                <input type="text" class="form-control" name="pulse_rate" id="pulse_rate" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="respiration_rate">RESPIRATION RATE(PER MINS)</label>
-                <input type="text" class="form-control" name="respiration_rate" id="respiration_rate">
+                <input type="text" class="form-control" name="respiration_rate" id="respiration_rate" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="haemoglobin">Haemoglobin </label>
-                <input type="text" class="form-control" name="haemoglobin" id="haemoglobin">
+                <input type="text" class="form-control" name="haemoglobin" id="haemoglobin" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="wbc_count">WBC COUNT</label>
-                <input type="text" class="form-control" name="wbc_count" id="wbc_count">
+                <input type="text" class="form-control" name="wbc_count" id="wbc_count" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="rbc_count">RBC COUNT</label>
-                <input type="text" class="form-control" name="rbc_count" id="rbc_count">
+                <input type="text" class="form-control" name="rbc_count" id="rbc_count" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="pvc">HCT /HAEMATOCRIT/PCV</label>
-                <input type="text" class="form-control"name="pvc" id="pvc">
+                <input type="text" class="form-control"name="pvc" id="pvc" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="lymphocyte_count">LYMPHOCYTE COUNT</label>
-                <input type="text" class="form-control" name="lymphocyte_count" id="lymphocyte_count">
+                <input type="text" class="form-control" name="lymphocyte_count" id="lymphocyte_count" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="band_cell">BAND CELLS</label>
-                <input type="text" class="form-control" name="band_cell" id="band_cell">
+                <input type="text" class="form-control" name="band_cell" id="band_cell" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="esr">ESR</label>
-                <input type="text" class="form-control" name="esr" id="esr">
+                <input type="text" class="form-control" name="esr" id="esr" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="crp_value">CRP VALUE</label>
-                <input type="text" class="form-control" name="crp_value" id="crp_value">
+                <input type="text" class="form-control" name="crp_value" id="crp_value" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="bsl_random">BSL RANDOM</label>
-                <input type="text" class="form-control" name="bsl_random" id="bsl_random">
+                <input type="text" class="form-control" name="bsl_random" id="bsl_random" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="sgpt">SGPT</label>
-                <input type="text" class="form-control" name="sgpt" id="sgpt">
+                <input type="text" class="form-control" name="sgpt" id="sgpt" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="sgot">SGOT</label> 
-                <input type="text" class="form-control" name="sgot" id="sgot">
+                <input type="text" class="form-control" name="sgot" id="sgot" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="uric_acid_level">URIC ACID level </label>
-                <input type="text" class="form-control" name="uric_acid_level" id="uric_acid_level">
+                <input type="text" class="form-control" name="uric_acid_level" id="uric_acid_level" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="blood_urea_level">BLOOD UREA LEVEL</label>
-                <input type="text" class="form-control" name="blood_urea_level" id="blood_urea_level">
+                <input type="text" class="form-control" name="blood_urea_level" id="blood_urea_level" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="SR_CREATININE">SR CREATININE</label>
-                <input type="text" class="form-control" name="SR_CREATININE" id="SR_CREATININE">
+                <input type="text" class="form-control" name="SR_CREATININE" id="SR_CREATININE" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="urin_output">24 hr urine output in ml</label>
-                <input type="text" class="form-control" name="urin_output" id="urin_output">
+                <input type="text" class="form-control" name="urin_output" id="urin_output" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="level_consciousness">LEVEL OF CONSCIOUSNESS</label>
-                <select id="level_consciousness" name="level_consciousness" class="form-control">
+                <select id="level_consciousness" name="level_consciousness" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Can recollect past and present">Can recollect past and present</option>
                   <option value="Memory affected/ cannot recollect">Memory affected/ cannot recollect</option>
@@ -364,35 +408,35 @@
               </div>
               <div class="form-group col-md-3">
                 <label for="swelling_feet">SWELLING ON FEET</label>
-                <input type="text" class="form-control" name="swelling_feet" id="swelling_feet">
+                <input type="text" class="form-control" name="swelling_feet" id="swelling_feet" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="swelling_eyes">SWELLING UNDER EYES/FACE</label>
-                <input type="text" class="form-control" name="swelling_eyes" id="swelling_eyes">
+                <input type="text" class="form-control" name="swelling_eyes" id="swelling_eyes" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="electrolyte_sodium">Electrolyte level - Sodium</label>
-                <input type="text" class="form-control" name="electrolyte_sodium" id="electrolyte_sodium">
+                <input type="text" class="form-control" name="electrolyte_sodium" id="electrolyte_sodium" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="electrolyte_potassium">Electrolyte level - Potassium</label>
-                <input type="text" class="form-control" name="electrolyte_potassium" id="electrolyte_potassium">
+                <input type="text" class="form-control" name="electrolyte_potassium" id="electrolyte_potassium" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="electrolyte_chloride">Electrolyte level - Chloride</label>
-                <input type="text" class="form-control" name="electrolyte_chloride" id="electrolyte_chloride">
+                <input type="text" class="form-control" name="electrolyte_chloride" id="electrolyte_chloride" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="lipid_triglyceride">Lipid profile- Triglycerides</label>
-                <input type="text" class="form-control" name="lipid_triglyceride" id="lipid_triglyceride">
+                <input type="text" class="form-control" name="lipid_triglyceride" id="lipid_triglyceride" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="lipid_cholesterol">Lipid profile - cholesterol</label>
-                <input type="text" class="form-control" name="lipid_cholesterol" id="lipid_cholesterol">
+                <input type="text" class="form-control" name="lipid_cholesterol" id="lipid_cholesterol" required>
               </div>
               <div class="form-group col-md-3">
                 <label for="lipid_hdl">Lipid profile- HDL </label>
-                <input type="text" class="form-control" name="lipid_hdl" id="lipid_hdl">
+                <input type="text" class="form-control" name="lipid_hdl" id="lipid_hdl" required>
               </div>
             </div>
 
@@ -507,14 +551,36 @@
                         VALUES ('$user_id','$test_id','$hospital_name','$covid_test','$covid_report','$prescription_paper','$SPO2','$blod_pressure','$pulse_rate','$respiration_rate','$haemoglobin','$wbc_count','$rbc_count','$pvc','$lymphocyte_count','$band_cell','$esr','$crp_value','$bsl_random','$sgpt','$sgot','$uric_acid_level','$blood_urea_level','$SR_CREATININE','$urin_output','$level_consciousness','$swelling_feet','$swelling_eyes','$electrolyte_sodium','$electrolyte_potassium','$electrolyte_chloride','$lipid_triglyceride','$lipid_cholesterol','$lipid_hdl','$other_complaint')";
 
         if($insert_value_run = mysqli_query($con, $insert_value)){
+          $update_test_payment = "UPDATE `test_payments` SET `test_id`='$test_id' WHERE `order_id`='$order_id'";
+          if($update_test_payment_run = mysqli_query($con, $update_test_payment))
+
             echo "<script>
-                    alert('your test is submitted sucessfully, DOctor will contact you soon.');
-                    window.location.href='ongoing_treatments.php';
+                    alert('your test is submitted sucessfully, Doctor will contact you soon.');
+                    window.location.href='all_test.php';
                 </script>";
-        }
+          }
 
+    }
 
+?>
 
+<?php 
+}else{        //check for payment is done and test is not given
+  echo "<script>
+        alert('No record Found');
+        window.location.href='user_page.php';
+      </script>";
+}
+  }else{      //else part for invalid access
+    echo "<script>
+            alert('Invalid Token');
+            window.location.href='user_page.php';
+      </script>";
+  }
+    }else{    //else part for session not
+      echo "<script>
+            window.location.href='error/login_error.html';
+      </script>";
     }
 
 ?>

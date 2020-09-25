@@ -6,6 +6,16 @@
   $user_details = "SELECT * FROM `user` u, `medical_history` m where u.`user_id` = m.`user_id` AND u.`user_id`='$user_id'";
   $user_details_run = mysqli_query($con, $user_details);
   $user_details_res = mysqli_fetch_assoc($user_details_run);
+
+  // Check for remaining tests
+  $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
+  $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
+  $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
+  $tests = array(0,0,0,0,0);
+  while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
+    $index = $check_remaining_tests_res['test_type'];
+    $tests[$index] = $check_remaining_tests_res['order_id'];
+  }
 ?>
 
 <!DOCTYPE html>
@@ -86,6 +96,29 @@
           </div>
         </div>
       </li>
+
+      <!-- Tests  --> 
+      <?php
+        if($check_remaining_tests_rows > 0){
+      ?>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#incompleteTest" aria-expanded="true"
+          aria-controls="incompleteTest">
+          <i class="fas fa-fw fa-newspaper"></i>
+          <span>Incomplete Tests</span>
+        </a>
+        <div id="incompleteTest" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Incomplete Tests:</h6>
+            <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="all_consultations.php">All Consultations</a><?php } ?>
+            <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HOME.php?orderId=<?php echo $tests[2]; ?>">YogE@Home Test</a><?php } ?>
+            <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a><?php } ?>
+          </div>
+        </div>
+      </li>
+      <?php
+        }
+      ?>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

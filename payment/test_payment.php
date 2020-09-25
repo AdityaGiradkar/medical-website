@@ -12,18 +12,16 @@
         $api = new Api($keyId, $secretKey);
 
 
-        $consult_type = $_GET['type'];
-        $date = $_GET['date'];
-        $time = $_GET['time'];
+        $test_type = $_GET['type'];
 
-        $get_consult_price = "SELECT * FROM `consult_type` WHERE `id`='$consult_type'";
-        $get_consult_price_run = mysqli_query($con, $get_consult_price);
-        $get_consult_price_res = mysqli_fetch_assoc($get_consult_price_run);
+        $get_test_price = "SELECT * FROM `test_type` WHERE `test_id`='$test_type'";
+        $get_test_price_run = mysqli_query($con, $get_test_price);
+        $get_test_price_res = mysqli_fetch_assoc($get_test_price_run);
 
         $CUSTOMER_NAME = $_SESSION['name'];
         $CUSTOMER_EMAIL = $_SESSION['email'];
         $CUSTOMER_MOBILE = $_SESSION['mobile'];
-        $PAY_AMT = $get_consult_price_res['price'];
+        $PAY_AMT = $get_test_price_res['price'];
         $PAY_AMT = (int)$PAY_AMT * 100;
         
         
@@ -52,7 +50,7 @@
     <!-- Custom External StyleSheet -->
     <link rel="stylesheet" href="../css/login.css">
 
-    <title>Consultation Payment</title>
+    <title>Test Payment</title>
 </head>
 
 <style>
@@ -78,16 +76,16 @@
         <div class="card centered" style="width: 25rem;">
             <div class="card-body">
                 <img src="../images/AtmaVeda Logo.png" class="mx-auto d-block" alt="AtmaVeda Logo" />
-                <p class="card-title mx-auto brand-name">AtmaVeda Yog</p>
-                <form action="consultation_sucess.php?type=<?php echo $consult_type; ?>&date=<?php echo $date; ?>&time=<?php echo $time; ?>" method="POST">
+                <p class="card-title mx-auto brand-name">Test Payment</p>
+                <form action="test_sucess.php?type=<?php echo $test_type; ?>" method="POST">
                     <div class="form-group mt-5 mb-4">
-                        <label for="exampleInputEmail1">Consultation Type : </label>
-                        <input type="text" class="form-control input-box" value="<?php echo $get_consult_price_res['name']; ?>" disabled>
+                        <label for="exampleInputEmail1">Test Name : </label>
+                        <input type="text" class="form-control input-box" value="<?php echo $get_test_price_res['test_name']; ?>" disabled>
                     </div>
 
                     <div class="form-group mt-3 mb-4">
-                        <label for="exampleInputEmail1">Consultation Amount (Rs.) : </label>
-                        <input type="text" class="form-control input-box" value="<?php echo $get_consult_price_res['price']; ?>" disabled>
+                        <label for="exampleInputEmail1">Test Fees (Rs.) : </label>
+                        <input type="text" class="form-control input-box" value="<?php echo $get_test_price_res['price']; ?>" disabled>
                     </div>
                     <a href="../images/Privacy Polic1.pdf" target="_blank"><small class="form-text text-right">policies</small></a>
 
