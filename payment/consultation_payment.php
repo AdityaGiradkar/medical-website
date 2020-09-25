@@ -7,8 +7,6 @@
 
     if(isset($_SESSION['user_id'])){
 
-        
-
         $keyId = "rzp_test_bj6y2rUzCCQsX4";
         $secretKey = "x9PYMbnUlJggKM6cmj7dBOyH";
         $api = new Api($keyId, $secretKey);
@@ -57,6 +55,23 @@
     <title>Consultation Payment</title>
 </head>
 
+<style>
+.razorpay-payment-button{
+    border-radius: 12px;
+    background-image: -moz-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+    background-image: -webkit-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+    background-image: -ms-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+    width: 100%;
+    height: 45px;
+    border: 0;
+    color:white;
+    margin-top:1.5rem;
+}
+.razorpay-payment-button:hover{
+    background-image: -webkit-linear-gradient(179deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+}
+</style>
+
 <body>
 
     <div class="overlay">
@@ -78,16 +93,17 @@
                     <a href="#"><small class="form-text text-muted text-right"><em>Forget Password ?</em></small></a>
                     <button type="submit" class="login-btn mt-5" name="submit">LOGIN</button>
                 </form> -->
-                <form action="sucess.php?type=<?php echo $consult_type; ?>&date=<?php echo $date; ?>&time=<?php echo $time; ?>" method="POST">
+                <form action="consultation_sucess.php?type=<?php echo $consult_type; ?>&date=<?php echo $date; ?>&time=<?php echo $time; ?>" method="POST">
                     <div class="form-group mt-5 mb-4">
-                        <label for="exampleInputEmail1">Consultation Type</label>
+                        <label for="exampleInputEmail1">Consultation Type : </label>
                         <input type="text" class="form-control input-box" value="<?php echo $get_consult_price_res['name']; ?>" disabled>
                     </div>
 
-                    <div class="form-group mt-5 mb-4">
-                        <label for="exampleInputEmail1">Consultation Amount (Rs.)</label>
+                    <div class="form-group mt-3 mb-4">
+                        <label for="exampleInputEmail1">Consultation Amount (Rs.) : </label>
                         <input type="text" class="form-control input-box" value="<?php echo $get_consult_price_res['price']; ?>" disabled>
                     </div>
+                    <a href="../images/Privacy Polic1.pdf" target="_blank"><small class="form-text text-right">policies</small></a>
 
                     <script
                         src="https://checkout.razorpay.com/v1/checkout.js"
@@ -104,11 +120,15 @@
                         data-prefill.contact="<?php echo $CUSTOMER_MOBILE; ?>"
                         data-theme.color="#F37254"
                     ></script>
-                    <input type="hidden" class="login-btn mt-5" custom="Hidden Element" name="hidden">
+                    <input type="hidden" custom="Hidden Element" name="hidden">
                 </form>
+                
             </div>
         </div>
+        
     </div>
+    
+    
 
 
     <!-- Optional JavaScript -->
