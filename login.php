@@ -16,6 +16,7 @@
                     $_SESSION['user_id'] = $record['user_id'];
                     $_SESSION['name'] = $record['name'];
                     $_SESSION['email'] = $record['email_id'];
+                    $_SESSION['mobile'] = $record['contact_no'];
                     $_SESSION['role'] = $record['role'];
                     if($record['role'] == 'patient'){
                         header('location: index.php');

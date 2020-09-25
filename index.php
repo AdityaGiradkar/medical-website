@@ -1160,21 +1160,26 @@
             $date = $_POST['consult_date'];
             $time = $_POST['time_slots'];
 
-            $payment_amount = "SELECT * FROM `consult_type` WHERE `id`='$consult_type'";
-            if($payment_amount_run = mysqli_query($con, $payment_amount)){
-                $payment_amount_res = mysqli_fetch_assoc($payment_amount_run);
-                $price = $payment_amount_res['price'];
-                $consult_name = $payment_amount_res['name'];
-                $datetime= date('Y-m-d H:i:s');
+            echo "<script>
+                    window.location.href='payment/consultation_payment.php?type=$consult_type&date=$date&time=$time';
+            </script>";
 
-                $update_assigned_user = "UPDATE `consultation_time` SET `assigned_user`='$user_id',`consult_type`='$consult_name',`date_submission`='$datetime',`status`='assigned' WHERE `date`='$date' AND `time_range`='$time'";
-                if($update_assigned_user_run = mysqli_query($con, $update_assigned_user)){
-                    echo "<script>
-                            alert('Your appointment is booked you can see it in your profile.');
-                            window.location.href='index.php';
-                    </script>";
-                }
-            }
+
+            // $payment_amount = "SELECT * FROM `consult_type` WHERE `id`='$consult_type'";
+            // if($payment_amount_run = mysqli_query($con, $payment_amount)){
+            //     $payment_amount_res = mysqli_fetch_assoc($payment_amount_run);
+            //     $price = $payment_amount_res['price'];
+            //     $consult_name = $payment_amount_res['name'];
+            //     $datetime= date('Y-m-d H:i:s');
+
+            //     $update_assigned_user = "UPDATE `consultation_time` SET `assigned_user`='$user_id',`consult_type`='$consult_name',`date_submission`='$datetime',`status`='assigned' WHERE `date`='$date' AND `time_range`='$time'";
+            //     if($update_assigned_user_run = mysqli_query($con, $update_assigned_user)){
+            //         echo "<script>
+            //                 alert('Your appointment is booked you can see it in your profile.');
+            //                 window.location.href='index.php';
+            //         </script>";
+            //     }
+            // }
         } else {
             echo "<script>
                 alert('Please login first.');
