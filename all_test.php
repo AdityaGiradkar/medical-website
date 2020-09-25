@@ -340,13 +340,10 @@
     if(isset($_POST['select_test'])){
         if(isset($_SESSION['user_id'])){
             $test_type = $_POST['test_type'];
-            if($test_type == 1){
-                echo "<script>window.location.href='#'</script>";
-            }else if($test_type == 2){
-                echo "<script>window.location.href='YogE_HOME.php'</script>";
-            }else if($test_type == 3){
-                echo "<script>window.location.href='#'</script>";
-            } 
+
+            echo "<script>
+                    window.location.href='payment/test_payment.php?type=$test_type';
+            </script>";
         }else{
             echo "<script>
                 alert('Please login first.');
