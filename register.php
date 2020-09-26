@@ -1,53 +1,56 @@
 <?php 
-    include("includes/db.php"); 
-    if(isset($_POST['submit'])){
-        //sanitize data
-        $name   = mysqli_real_escape_string($con, $_POST['name']);
-        $email  = mysqli_real_escape_string($con,$_POST['email']);
-        $phone  = mysqli_real_escape_string($con,$_POST['phone']);
-        $pass   = mysqli_real_escape_string($con,$_POST['pass']);
+    session_start();
 
-        $check_user = "SELECT * FROM `user` WHERE `email_id`='$email'";
-        $check_user_run = mysqli_query($con, $check_user);
-        $check_user_res = mysqli_num_rows($check_user_run);
+    if(!isset($_SESSION['user_id'])){
+        include("includes/db.php"); 
+        if(isset($_POST['submit'])){
+            //sanitize data
+            $name   = mysqli_real_escape_string($con, $_POST['name']);
+            $email  = mysqli_real_escape_string($con,$_POST['email']);
+            $phone  = mysqli_real_escape_string($con,$_POST['phone']);
+            $pass   = mysqli_real_escape_string($con,$_POST['pass']);
 
-        if($check_user_res == 0){
-            $vkey = md5(time().$name);
-            
-            $insert = "INSERT INTO `user`(`name`, `contact_no`, `email_id`, `password`, `vkey`) 
-                        VALUES ('$name', '$phone', '$email', '$pass', '$vkey')";
-            $insert_run = mysqli_query($con, $insert);
+            $check_user = "SELECT * FROM `user` WHERE `email_id`='$email'";
+            $check_user_run = mysqli_query($con, $check_user);
+            $check_user_res = mysqli_num_rows($check_user_run);
 
-            if($insert_run){
-                $get_user_id = "SELECT `user_id` FROM `user` WHERE `email_id`='$email'";
-                $get_user_id_run = mysqli_query($con, $get_user_id);
-                $get_user_id_res = mysqli_fetch_assoc($get_user_id_run);
-                $user_id = $get_user_id_res['user_id'];
-                $medical_history = "INSERT INTO `medical_history`(`user_id`) VALUES ('$user_id')";
-                mysqli_query($con, $medical_history);
+            if($check_user_res == 0){
+                $vkey = md5(time().$name);
+                
+                $insert = "INSERT INTO `user`(`name`, `contact_no`, `email_id`, `password`, `vkey`) 
+                            VALUES ('$name', '$phone', '$email', '$pass', '$vkey')";
+                $insert_run = mysqli_query($con, $insert);
 
-                //send mail
-                ini_set('display_errors', 1);
-                error_reporting( E_ALL );
-                $to = $email;
-                $from = 'drsadanand@atmavedayog.com';
-                $subject ="Registration Verification";
-                $message = "To verify your account please click on below link <br> <a href='http://atmavedayog.com/verify.php?vkey=$vkey'>click here</a>";
-                $headers = "From:drsadanand@atmavedayog.com \r\n";
-                $headers .= "MIME-Version: 1.0" . "\r\n";
-                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            
-                $sucess = mail($to, $subject, $message, $headers);
-                    
-                header('location:verification_sent.html');
+                if($insert_run){
+                    $get_user_id = "SELECT `user_id` FROM `user` WHERE `email_id`='$email'";
+                    $get_user_id_run = mysqli_query($con, $get_user_id);
+                    $get_user_id_res = mysqli_fetch_assoc($get_user_id_run);
+                    $user_id = $get_user_id_res['user_id'];
+                    $medical_history = "INSERT INTO `medical_history`(`user_id`) VALUES ('$user_id')";
+                    mysqli_query($con, $medical_history);
+
+                    //send mail
+                    ini_set('display_errors', 1);
+                    error_reporting( E_ALL );
+                    $to = $email;
+                    $from = 'drsadanand@atmavedayog.com';
+                    $subject ="Registration Verification";
+                    $message = "To verify your account please click on below link <br> <a href='http://atmavedayog.com/verify.php?vkey=$vkey'>click here</a>";
+                    $headers = "From:drsadanand@atmavedayog.com \r\n";
+                    $headers .= "MIME-Version: 1.0" . "\r\n";
+                    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                
+                    $sucess = mail($to, $subject, $message, $headers);
+                        
+                    header('location:verification_sent.html');
+                }
+            }else{
+                echo "<script>
+                    alert('user already exist with email $email');
+                    window.location.href='register.php'; 
+                </script>";
             }
-        }else{
-            echo "<script>
-                alert('user already exist with email $email');
-                window.location.href='register.php'; 
-            </script>";
         }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -115,3 +118,12 @@
 </body>
 
 </html>
+
+<?php
+    }else{
+        echo "<script>
+                    alert('Already Loged In..');
+                    window.location.href='index.php';
+                </script>";
+    }
+?>
