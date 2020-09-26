@@ -27,13 +27,13 @@
                 mysqli_query($con, $medical_history);
 
                 //send mail
-                // ini_set('display_errors', 1);
-                // error_reporting( E_ALL );
+                ini_set('display_errors', 1);
+                error_reporting( E_ALL );
                 $to = $email;
-                // $from = 'adityagiradkar11@gmail.com';
+                $from = 'drsadanand@atmavedayog.com';
                 $subject ="Registration Verification";
-                $message = "To verify your account please click on below link <br> <a href='http://localhost/medical-website/verify.php?vkey=$vkey'>click here</a>";
-                $headers = "From:adityagiradkar11@gmail.com \r\n";
+                $message = "To verify your account please click on below link <br> <a href='http://atmavedayog.com/verify.php?vkey=$vkey'>click here</a>";
+                $headers = "From:drsadanand@atmavedayog.com \r\n";
                 $headers .= "MIME-Version: 1.0" . "\r\n";
                 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
             

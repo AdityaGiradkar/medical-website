@@ -1,2 +1,6 @@
 database user = sadanand
 database pass = Sadanand@123
+
+
+Server email  = DrSadanand@atmavedayog.com
+mail password = Sadanand@123
