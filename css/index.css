@@ -19,7 +19,6 @@
 .li-header {
     text-decoration: none !important;
     color: rgb(0, 48, 123);
-    font-weight: bold;
 }
 
 /* end Header section */
@@ -51,10 +50,6 @@
 }
 
 .Explore-box {
-    /* background-image: -moz-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
-    background-image: -webkit-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
-    background-image: -ms-linear-gradient(1deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%); */
-
     font-size: 20px;
     color: white;
     background-image: -moz-linear-gradient(180deg, #0265c2 0%, #01195b 100%);
@@ -63,11 +58,16 @@
     padding: 1% 2%;
     text-decoration: none !important;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .Explore-box::after {
     content: '\2192';
     padding-left: 1%;
+}
+
+.Explore-box:hover {
+    color: rgb(190, 186, 186);
 }
 
 /* end About section */
@@ -255,8 +255,9 @@
 }
 
 .take-test {
-    font-size: 20px;
+    font-size: 18px;
     color: black;
+    font-weight: bold;
     background-color: rgb(2, 233, 236);
     padding: 1% 2%;
     text-decoration: none !important;
@@ -372,6 +373,9 @@
 
 .login-btn {
     border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1.5px;
     background-image: -moz-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
     background-image: -webkit-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
     background-image: -ms-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);

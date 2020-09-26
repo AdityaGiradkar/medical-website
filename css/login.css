@@ -46,6 +46,9 @@
 
 .login-btn {
     border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1.5px;
     background-image: -moz-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
     background-image: -webkit-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
     background-image: -ms-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);

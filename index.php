@@ -12,6 +12,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="description" content="AtmaVeda Yog pvt.ltd is a new startup company dedicated and formed on the principles of yoga. It's founder is Dr Sadanand Shivram Rasal . It's partners are Mrs Shital Narendra dhole.">
+    <meta name="author" content="Dr Sadanand">
+    <meta name="keywords" content="Hospital, atmaveda, AtmaVeda, AtmaVedaYog, atmavedayog, dr sadanand">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
@@ -49,27 +52,27 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a href="#about" class="li-header nav-link mr-4">ABOUT US</a>
+                    <a href="#about" class="li-header nav-link mr-4">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#consult" class="li-header nav-link mr-4">COUNSELLING</a>
+                    <a href="#consult" class="li-header nav-link mr-4">Counselling</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="li-header nav-link mr-4" disabled>SHOP</a>
+                    <a href="#" class="li-header nav-link mr-4" disabled>Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#blogs" class=" nav-link li-header mr-4">BLOG</a>
+                    <a href="#blogs" class=" nav-link li-header mr-4">Blogs</a>
                 </li>
                 <li class="nav-item">
-                    <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-4">BOOK AN APOINTMENT</a>
+                    <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-4">Book An Appointment</a>
                 </li>
                 <?php if(!isset($_SESSION['user_id'])){ ?>
                 <li class="nav-item">
-                    <a href="login.php" class="li-header nav-link mr-4">LOGIN</a>
+                    <a href="login.php" class="li-header nav-link mr-4">Login</a>
                 </li>
                 <?php }else{ ?>
                 <li class="nav-item">
-                    <a href="<?php if($_SESSION['role'] == 'doctor'){?> admin/index.php <?php }else{ ?> user_page.php <?php } ?>" class="li-header nav-link mr-4">USER</a>
+                    <a href="<?php if($_SESSION['role'] == 'doctor'){?> admin/index.php <?php }else{ ?> user_page.php <?php } ?>" class="li-header nav-link mr-4">User</a>
                 </li>
                 <?php } ?>
             </ul>
@@ -116,9 +119,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-7 d-flex align-items-center justify-content-center">
-                        <p class="quotes">Atmavedayog a new defination for holistic medicine.<br><br>
+                        <p class="about-heading">Atmavedayog a new defination for holistic medicine.<br><br>
 
-                        We cure we heal when no one can.</p>
+                        <span class="about-heading" style="font-family:monteserrat;">We cure we heal when no one can.</span></p>
                     </div>
                     <div class="col-5">
                         <img src="images/doctor.png" width="350" class="img-fluid d-block mx-auto" />
@@ -195,12 +198,12 @@
                         <em>Consult</em>
                         <h4>Dr. Sadanand</h4>
                         <p class="font-roboto">
-                            ask your questions , doubts queries. know more of your medicine. know treatment options
+                            Ask your questions , doubts queries. know more of your medicine. know treatment options
                             available. know what you need to do in illness. know which is the right pathy or mode of
                             treatment for your disease.
                         </p>
                         <p class="font-roboto">
-                            have a non biased advice. discuss your symptom . disease ,
+                            Have a non biased advice. discuss your symptom . disease ,
                             treatment and medicines.
                         </p>
                         <a data-target="#Appointment" data-toggle="modal" class="Explore-box">Book an
@@ -233,7 +236,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">PURNA DIABETES CHIKITSA</h5>
+                                                <h5 class="h6 post-title text-center">Purna Diabetes Chikitsa</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -251,7 +254,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">HRUDAYASPARSH - CARDIAC CARE PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Hrudayasparsh - Cardiac Care Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +271,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">HORMONE CORRECTION PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Hormone Correction Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +288,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">JOINT HEALING PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Joint Healing Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -302,7 +305,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">SPINE STRENGHTENING PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Spine Strenghtening Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -319,7 +322,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">STRI ROG CHIKITSA</h5>
+                                                <h5 class="h6 post-title text-center">Stri Rog Chikitsa</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -336,7 +339,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">LIV STRONG</h5>
+                                                <h5 class="h6 post-title text-center">Liv Strong</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -353,7 +356,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">STOMACH-HEAL THE FIRE</h5>
+                                                <h5 class="h6 post-title text-center">Stomach - Heal the Fire</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -370,7 +373,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">COLON</h5>
+                                                <h5 class="h6 post-title text-center">Colon</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -387,7 +390,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">BREATHE NORMAL PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Breath Normal Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -404,7 +407,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">BLOOD DISORDER TREATMENT</h5>
+                                                <h5 class="h6 post-title text-center">Blood Disorder Treatment</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -421,7 +424,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">CANCER THERPAY - THERAPEUTIC OR SUPPORTIVE</h5>
+                                                <h5 class="h6 post-title text-center">Cancer Therpay - therapeutic or Supportive</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -438,7 +441,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">COVID 19 MANAGEMENT PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Covid-19 Management Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -455,7 +458,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h6 class="h6 post-title text-center">CHRONIC DISEASE MANAGEMENT PROGRAME</h6>
+                                                <h6 class="h6 post-title text-center">Chronic Disease Management Programme</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -487,7 +490,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">WEIGHT LOSS PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Weight Loss Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -504,7 +507,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">ANTI AGING PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Anti Aging Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -521,7 +524,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">STRESS MANAGEMENT PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Stress Management Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -538,7 +541,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">WEIGHT GAIN PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Weight Gain Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -555,7 +558,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">ANTI TANNING PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Anti Tanning Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -572,7 +575,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">RELAXATION PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center"> Relaxation Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -589,7 +592,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">MUSCLE GAIN PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Muscle Gain Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -606,7 +609,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">FAIR ANND GLOW PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Fair And Glow Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -623,7 +626,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">SUPER FITNESS PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Super Fitness Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -640,7 +643,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">FIGURE MANAGEMENT PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Figure Management Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -657,7 +660,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">PERSONALITY DEVELOPMENT PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Personality Development Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -674,7 +677,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">DIET MANAGEMENT PROGRAMME</h5>
+                                                <h5 class="h6 post-title text-center">Diet Management Programme</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -691,7 +694,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">SHAPE UP CURVES</h5>
+                                                <h5 class="h6 post-title text-center">Shape Up Curves</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -729,7 +732,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Basic yoga</h5>
+                                                <h5 class="h6 post-title text-center">Basic Yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -746,7 +749,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Fitness yoga</h5>
+                                                <h5 class="h6 post-title text-center">Fitness Yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -763,7 +766,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Relaxation yoga</h5>
+                                                <h5 class="h6 post-title text-center">Relaxation Yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -780,7 +783,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Combo yoga</h5>
+                                                <h5 class="h6 post-title text-center">Combo Yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -797,7 +800,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Atmanubuti yog</h5>
+                                                <h5 class="h6 post-title text-center">Atmanubuti Yog</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -814,7 +817,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Sparsha yog</h5>
+                                                <h5 class="h6 post-title text-center">Sparsha Yog</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -831,7 +834,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Ashtang yog</h5>
+                                                <h5 class="h6 post-title text-center">Ashtang Yog</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -848,7 +851,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Hath yog</h5>
+                                                <h5 class="h6 post-title text-center">Hath Yog</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -865,7 +868,7 @@
                                                 </div>
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="h6 post-title text-center">Power yoga</h5>
+                                                <h5 class="h6 post-title text-center">Power Yoga</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -1050,7 +1053,7 @@
         </div>
 
         <div class="bg-dark" style="padding:1%; color:white;">
-            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="blank" href="images/Privacy Policy.pdf">policies</a></h6>
+            <p class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
         </div>
     </div>
 

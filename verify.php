@@ -9,10 +9,13 @@
         if($row == 1){
             $update_verification = "UPDATE `user` SET `verified`=1,`vkey`='0' WHERE `vkey`='$vkey' LIMIT 1";
             if(mysqli_query($con, $update_verification)){
-                echo "Account verified sucessfully";
+                echo "Account verified sucessfully. Go back to home page <a href='index.php'>click here</a>";
             }
         } else {
-            echo "This account is Invalid or already verified";
+            echo "<script> 
+                    alert('This account is Invalid or already verified.');
+                    window.location.href='index.php';
+                </script>";
         }
     }else{
         die("something went worng");
