@@ -200,7 +200,7 @@ include('includes/db.php');
     </div>
 
     <div class="bg-dark" style="padding:1%; color:white;">
-            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="blank" href="images/Privacy Polic1.pdf">policies</a></h6>
+            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="blank" href="images/Privacy Policy.pdf">policies</a></h6>
         </div>
 
 

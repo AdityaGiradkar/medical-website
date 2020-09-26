@@ -664,7 +664,7 @@
                                     <div class="post-slide">
                                         <div class="card mx-auto" style="width: 12rem; border-radius: 12px;">
                                             <div class="contain">
-                                                <img src="images/Rectangle 19 copy.png" class="card-img-top image"
+                                                <img src="images/diet/diet-management.jpg" class="card-img-top image"
                                                     alt="...">
                                                 <div class="overlay-img">
                                                     <a data-target="#diet12" data-toggle="modal"
@@ -882,13 +882,8 @@
                 <div class="row">
                     <div class="col-md-9 pt-4 font-roboto" style="color: white;">
                         <h3>Diagnose at your home with <b>Yodha's Nidaan</b></h3>
-                        <p><span>Sed ut perspiciatis</span> unde
-                            omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium. <span>Sed ut perspiciatis</span> unde
-                            omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium. <span>Sed ut perspiciatis</span> unde
-                            omnis iste natus error sit voluptatem
-                            accusantium doloremque laudantium.
+                        <p>
+                            Vital parameters and measurements give an instant insight in to the condition of the patient. Our application helps to manage the simple ,moderate and critical cases at home or under domicillary hospitalization or in hospitals. It is a helping hand of a doctor 24hr round the clock. it helps in disease staging . disease prognosis, disease diagnosis, treatment response, detecting alarm signs etc.
                         </p>
                         <a href="#" data-target="#select_test" data-toggle="modal" class="take-test">Take The Test</a>
                     </div>
@@ -1055,7 +1050,7 @@
         </div>
 
         <div class="bg-dark" style="padding:1%; color:white;">
-            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="blank" href="images/Privacy Polic1.pdf">policies</a></h6>
+            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="blank" href="images/Privacy Policy.pdf">policies</a></h6>
         </div>
     </div>
 
