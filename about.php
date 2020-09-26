@@ -28,7 +28,7 @@ include('includes/db.php');
 <body>
 
     <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
-        <a class="navbar-brand ml-5" style="font-size:1.8rem" href="#">
+        <a class="navbar-brand ml-5" style="font-size:1.8rem" href="index.php">
             <img src="images/brand.png" width="250" class="d-inline-block align-top" alt="" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
@@ -70,11 +70,12 @@ include('includes/db.php');
     </nav>
 
     <div class="container pt-4">
+        <h4 class=" h3 text-center pb-4">ABOUT US</h4>
         <div class="row">
-            <div class="col-4">
-                <img src="images/doctor.png" width="300" class="img-fluid d-block mx-auto" />
+            <div class="col-md-4">
+                <img src="images/AtmaVeda(334,273).png" width="300" class="img-fluid d-block mx-auto" />
             </div>
-            <div class="col-8 align-self-center pl-5">
+            <div class="col-md-8 align-self-center pl-5">
 
                 <p>AtmaVeda Yog pvt.ltd is a new startup company dedicated and formed on the principles of yoga.
                     It's
@@ -91,18 +92,116 @@ include('includes/db.php');
                     mankind which do not have and definite answers in other systems of medicines</p>
 
 
-                    <p>
-            AtmaVeda Yog Pvt limited has innovative activities, one of its kind around the globe which.</p>
-        <ul>
-            <li>Invents diagnostic tools based on yoga.</li>
-            <li>Runs clinics for chronic and critical management</li>
-            <li>plans and supports hospitals to treat illnesses ,conducts research in yoga and medicine, trains doctors
-                and students in AtmaVeda Yog.</li>
+                <p>
+                    AtmaVeda Yog Pvt limited has innovative activities, one of its kind around the globe which.
+                </p>
+                <ul>
+                    <li>Invents diagnostic tools based on yoga.</li>
+                    <li>Runs clinics for chronic and critical management</li>
+                    <li>plans and supports hospitals to treat illnesses ,conducts research in yoga and medicine, trains doctors
+                        and students in AtmaVeda Yog.</li>
+                    <li>Physical Health & Fitness</li>
+                    <li>Mental Health & Raising Capabilities</li>
+                    <li>Conquering Chronic Medical Illness</li>
+                    <li>Yoga as Definite Scientific Solution to individual, social,community and corporates.</li>
 
-        </ul>
+                </ul>
             </div>
         </div>
+        <hr>
+
+        <h3 class="text-center pt-3 pb-5 mb-3">ABOUT ME</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="images/doctor.png" width="300" class="img-fluid d-block mx-auto" />
+            </div>
+            <div class="col-md-8 pt-5 mt-5">
+                <h4 class="text-center">Dr. Sadanand Shivram Rasal</h4>
+                <h6 class="text-center">BHMS (MCH), PGDMLT.</h6>
+            </div>
+            <div class="mt-5">
+                <ul>
+                    <li><b>In 1996-</b> Graduated from Pune university with degree in BHMS.</li>
+                    <li><b>In 1996-</b> General Practice Pimpri.</li> 
+                    <li><b>In 1998-</b> Nursing home registered with the government agency as “Shree Ganesh Polyclinic”</li>
+                    <li><b>In 2000-</b> Maternity and surgical hospital with intensive care services.</li>
+                    <li><b>In 2000-</b> PGDMLT from MTBTC Centre.</li>
+                    <li><b>In 2002-</b> Specialty diagnostic centre “Shree Ganesh Diagnostic Centre”. Under one roof, this diagnostic centre provided following services:</li> 
+                    <ul type="circle">
+                        <li>Super-specialty lab: equipped with automated biochemistry analyzers. ELISA machines, ABG analyzers, microbiology work etc.</li>
+                        <li>Ultra sonography, 2D-echo, X-ray, Fluoroscopy</li>
+                    </ul>
+                    <li><b>In 2005/6</b> met my master Shri Janglidas Maharaj in Shirdi accidently. I was fascinated and impressed by him. To know him I started following him. This was the time I was attracted to spirituality. I became his disciple, and took Sannyasa. Learned ATMAYOG from him by his method of ATMA sadhana.</li>
+                    <li><b>In 2007</b> met my second master Parampujya Shri Hasmukhmuni Maharaj, Ankai. Learnt the art bridge between spirituality and material world.</li>
+                    <li><b>In 2008</b> met my third master Devrishi Maharishi shri Agastey rishi through Shri Lal Baba Ankai. It is here that the knowledge of veda, Atma, yog, body, functional and life was bestowed on me by maharishimuni’s  blessing. living in the caves the research of food, body ad healing was done.</li>
+                    <li>Till day today I am following my master. Following there each and every step, advice and lifestyle.</li>
+
+                    <b>Only those associated and those that are my patient know my capabilities.</b>
+                </ul>
+
+                <hr>
+                <p><b>In year 2009,</b> I began my research, self funded though about,</p>
+                <ol>
+                    <li>Reversal of cellular aging</li>
+                    <li>Reversal of organ injury</li>
+                    <li>Non medicinal approach to those chronic diseases that are limitations to present day medicines.</li>
+                </ol>
+
+                <p>It was during this period that my brother Mr. Satish Shivram Rasal (Director of Jeevis Health Solutions PVT. LTD.) developed a tool for Health and organ analysis know as JEEVIS NON-INVASIVE SCAN.  This was a tool that redefined my knowledge of medicine and also the scope of my research.</p>
+                <p>I extensively worked in this period of research with,</p>
+                <ol>
+                    <li>Biochemical disease markers.</li>
+                    <li>Immune markers.</li>
+                    <li>Anthropometric analysis.</li>
+                    <li>Chakra physiology.</li>
+                    <li>Psycho somatic axis.</li>
+                    <li>Somato-psychic axis.</li>
+                    <li>Hormones as health indicators and disease markers.</li>
+                    <li>Limitations of modern diagnostic tools and methods.</li>
+                </ol>
+                <p>
+                    After completing my research, though the retrospective research is still a ongoing process, I started my work in Rural area of ratnagiri in year 2013/14. As it was the order of my master to do the work as SEVA.
+                </p>
+                <p>I still continue my work in the rural clinic there.</p>
+
+                <br>
+                <p><b>My scope of work :-</b></p>
+                <ol>
+                    <li>Autoimmune joint and spine disorders</li>
+                    <li>Crippling OA of knee joint ( those cases were knee replacement is the only option )</li>
+                    <li>Uncontrolled Insuin dependent diabetes mellitus</li>
+                    <li>Diabetes mellitus with complication</li>
+                    <li>Congestive cardiac failures</li>
+                    <li>Valvular diseases of heart</li>
+                    <li>Non accidental surgical diseases of  joints</li>
+                    <li>Idiopathic diseases</li>
+                    <li>Hormonal Chronic obstructive pulmonary diseasesabnormalities in men and women</li>
+                    <li>Failure to thrive</li>
+                    <li>Chronic obstructive pulmonary diseases</li>
+                    <li>Genetic diseases</li>
+                    <li>Abdominal chornic ailments</li>
+                    <li>Chronic fatigue syndrome</li>
+                    <li>Dysmorphic features in MPS</li>
+                    <li>Thromboembolism.</li>
+                    <li>Chronic kidney disease</li>
+                    <li>Chronic affections of colons and alimentary tract.</li>
+                    <li>And many other conditions.</li>
+                    <li>Infertility /PCOD / Menopausal syndrome.</li>
+                </ol>
+                <br>
+                <p><b>Note: </b>Other than above conditions every conditions were the medicine field stops , my scope begins.</p>
+                <br><br>
+                <h4>So in short, “Where all stop, I begin”</h4>
+            <br>
+            </div>
+        </div>
+
+
     </div>
+
+    <div class="bg-dark" style="padding:1%; color:white;">
+            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="blank" href="images/Privacy Polic1.pdf">policies</a></h6>
+        </div>
 
 
     <!-- Modal for appointment -->
@@ -201,21 +300,9 @@ include('includes/db.php');
             $date = $_POST['consult_date'];
             $time = $_POST['time_slots'];
 
-            $payment_amount = "SELECT * FROM `consult_type` WHERE `id`='$consult_type'";
-            if($payment_amount_run = mysqli_query($con, $payment_amount)){
-                $payment_amount_res = mysqli_fetch_assoc($payment_amount_run);
-                $price = $payment_amount_res['price'];
-                $consult_name = $payment_amount_res['name'];
-                $datetime= date('Y-m-d H:i:s');
-
-                $update_assigned_user = "UPDATE `consultation_time` SET `assigned_user`='$user_id',`consult_type`='$consult_name',`date_submission`='$datetime',`status`='assigned' WHERE `date`='$date' AND `time_range`='$time'";
-                if($update_assigned_user_run = mysqli_query($con, $update_assigned_user)){
-                    echo "<script>
-                            alert('Your appointment is booked you can see it in your profile.');
-                            window.location.href='index.php';
-                    </script>";
-                }
-            }
+            echo "<script>
+                    window.location.href='payment/consultation_payment.php?type=$consult_type&date=$date&time=$time';
+            </script>";
         } else {
             echo "<script>
                 alert('Please login first.');

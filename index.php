@@ -28,7 +28,10 @@
     <!-- Custom fonts for this template-->
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    <title>login</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <title>Home Page</title>
 </head>
 
 <body>
@@ -36,7 +39,7 @@
     <div class="main">
 
     <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
-        <a class="navbar-brand ml-5" style="font-size:1.8rem" href="#">
+        <a class="navbar-brand ml-5" style="font-size:1.8rem" href="index.php">
             <img src="images/brand.png" width="250"  class="d-inline-block align-top" alt="" loading="lazy">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +55,7 @@
                     <a href="#consult" class="li-header nav-link mr-4">COUNSELLING</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="li-header nav-link mr-4">SHOP</a>
+                    <a href="#" class="li-header nav-link mr-4" disabled>SHOP</a>
                 </li>
                 <li class="nav-item">
                     <a href="#blogs" class=" nav-link li-header mr-4">BLOG</a>
@@ -113,9 +116,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-7 d-flex align-items-center justify-content-center">
-                        <h3>Atmavedayog a new defination for holistic medicine<br><br>
+                        <p class="quotes">Atmavedayog a new defination for holistic medicine.<br><br>
 
-                        _We cure we heal when no one can</h3>
+                        We cure we heal when no one can.</p>
                     </div>
                     <div class="col-5">
                         <img src="images/doctor.png" width="350" class="img-fluid d-block mx-auto" />
@@ -133,14 +136,14 @@
                     </div>
                     <div class="col-md-9 pl-5">
                         <p class="about-heading">AtmaVeda Yog</p>
-                        <p>
+                        <p class="font-roboto">
                             AtmaVeda Yog Pvt. Ltd. is an innovative one of its kind company around the glob which
                             invents
                             diagnostic tools based on yoga, runs clinics, manages hospitals, conducts research in yoga
                             and medicine, trains doctors and students in AtmaVeda Yog. It also involves in making
                             proprietary medical preparation.
                         </p>
-                        <p>
+                        <p class="font-roboto">
                             It works for, Social sector, Corporate sector And is also open to work for governments
                             around the world in field of medicine, community screening, yoga therapies and education.
                         </p>
@@ -154,28 +157,28 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <img src="images/pilar1.png" width="65px" alt="" class="d-block mx-auto" />
+                        <img src="images/pilar1.png" width="85px" alt="" class="d-block mx-auto" />
                         <h5 class="text-center mt-3">Chirayu</h5>
-                        <p class="text-center mt-3">Life is meaningful when we have happiness, inner peace, strength &
+                        <p class="text-center mt-3 font-roboto">Life is meaningful when we have happiness, inner peace, strength &
                             worth
                             living long</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar2.png" width="65px" alt="" class="d-block mx-auto" />
                         <h5 class="text-center mt-3">Diet Pratyahara</h5>
-                        <p class="text-center mt-3">Diet improve guna dharma, sanskar and yoganurup falaprapti cures
+                        <p class="text-center mt-3 font-roboto">Diet improve guna dharma, sanskar and yoganurup falaprapti cures
                             disease and give health.</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar3.png" width="65px" alt="" class="d-block mx-auto" />
                         <h5 class="text-center mt-3">Exercise Chiratarunya</h5>
-                        <p class="text-center mt-3">Exercise healing disease giving arogya sampada & staying young
+                        <p class="text-center mt-3 font-roboto">Exercise healing disease giving arogya sampada & staying young
                             without aging is exercise chiratarunya</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar4.png" width="52px" alt="" class="d-block mx-auto" />
                         <h5 class="text-center mt-3">Yodha's Nidaan</h5>
-                        <p class="text-center mt-3">YODHAS diagnosesthe unknown root cause. know your dosha's prevent
+                        <p class="text-center mt-3 font-roboto">YODHAS diagnosesthe unknown root cause. know your dosha's prevent
                             and cure disease.</p>
                     </div>
                 </div>
@@ -187,16 +190,16 @@
                 <div class="row">
                     <div class="col-md-4">
                         <img src="images/doctor.png" width="250" class="img-fluid" alt="Dr Sadanand photo" />
-                    </div>
-                    <div class="col-md-8">
+                    </div> 
+                    <div class="col-md-8 pb-3">
                         <em>Consult</em>
                         <h4>Dr. Sadanand</h4>
-                        <p>
+                        <p class="font-roboto">
                             ask your questions , doubts queries. know more of your medicine. know treatment options
                             available. know what you need to do in illness. know which is the right pathy or mode of
                             treatment for your disease.
                         </p>
-                        <p>
+                        <p class="font-roboto">
                             have a non biased advice. discuss your symptom . disease ,
                             treatment and medicines.
                         </p>
@@ -877,7 +880,7 @@
         <div class="pb-3 pt-3" id="test">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 pt-4" style="color: white;">
+                    <div class="col-md-9 pt-4 font-roboto" style="color: white;">
                         <h3>Diagnose at your home with <b>Yodha's Nidaan</b></h3>
                         <p><span>Sed ut perspiciatis</span> unde
                             omnis iste natus error sit voluptatem
@@ -910,16 +913,13 @@
                                     <div class="container-fluid review-text">
                                         <img src="images/Quote.png" width="80px" /><br><br><br>
 
-                                        <p><span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium. <span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium. <span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium.
+                                        <p>
+                                            I joined Dr sadanand's "selective weight loss programme". I have reduced my weight 
+                                            by 15 kg , my abdomen has reduced. My abnormal Insulin levels have 
+                                            also been corrected. Feel lighter,strong and improved vigor.
                                         </p>
-                                        <p style="padding-left: 200px;"><b>- Mr. Narendra </b><br>
-                                            <em><small>State Government Officier</small></em>
+                                        <p style="padding-left: 200px;"><b>- Mr. Hemant Choudhari. </b><br>
+                                            <em><small>Director Delta flow Pvt Ltd</small></em>
                                         </p>
                                     </div>
                                 </div>
@@ -931,16 +931,13 @@
                                     <div class="container-fluid review-text">
                                         <img src="images/Quote.png" width="80px" /><br><br><br>
 
-                                        <p><span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium. <span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium. <span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium.
+                                        <p>
+                                            I suffered from severe cervical spondylitis and hyper uriac acid level.
+                                            I joined Dr sadanand's Chronic pain and spine management prog.
+                                            Now I do push-ups,pull-ups, suryanamaskar, weights , head stand. My uric acid levels are normal too. Miraculous!!!
                                         </p>
-                                        <p style="padding-left: 200px;"><b>- Mr. Narendra </b><br>
-                                            <em><small>State Government Officier</small></em>
+                                        <p style="padding-left: 200px;"><b>- Mr. Balasaheb More </b><br>
+                                            <em><small>Director Saras Enterprises Pvt Ltd.</small></em>
                                         </p>
                                     </div>
                                 </div>
@@ -952,16 +949,61 @@
                                     <div class="container-fluid review-text">
                                         <img src="images/Quote.png" width="80px" /><br><br><br>
 
-                                        <p><span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium. <span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium. <span>Sed ut perspiciatis</span> unde
-                                            omnis iste natus error sit voluptatem
-                                            accusantium doloremque laudantium.
+                                        <p>
+                                            I suffered from SLE arthritis and immunosuppressant drug side effects.
+                                            Joining Dr Sadanand's "chronic disease management prog." Has made me recover completely. No injection,no steroid, no hospitalization. My body is also in good shape now.
                                         </p>
-                                        <p style="padding-left: 200px;"><b>- Mr. Narendra </b><br>
-                                            <em><small>State Government Officier</small></em>
+                                        <p style="padding-left: 200px;"><b>- Mrs. Swarna Malatpure </b><br>
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-slide">
+                                <div class="review">
+                                    <img src="images/background_review.png" width="500px"
+                                        class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p style="padding-top: 40px;">
+                                            I joined Dr Sadanand's Stress management programme. 
+                                            I feel stress free, energetic ,alert now. I can now work for long hours.
+                                            Its helping me serve my nation and duty.
+                                        </p>
+                                        <p style="padding-left: 250px;"><b>- Mr Narendra </b><br>
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-slide">
+                                <div class="review">
+                                    <img src="images/background_review.png" width="500px"
+                                        class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p>
+                                            Living in UK ,hectic lifestyle I had Weight ,skin and hormone problems. Joining Dr Sadanand's "Womaniya holistic health"programme. My PCOD is cured. Weight and skin problem all solved. I feel the change within.
+                                        </p>
+                                        <p style="padding-left: 200px;"><b>- Miss. Kanchan More </b><br>
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-slide">
+                                <div class="review">
+                                    <img src="images/background_review.png" width="500px"
+                                        class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p>Joining Dr Sadanand's Chronic disease management programme has helped me totally cure my problem of"spleenic vein thrombosis". My body proportions have improved too.
+                                        </p>
+                                        <p style="padding-left: 200px;"><b>- Mrs. Vidya Anarse </b><br>
+                                            <em><small>teaching & coaching</small></em>
                                         </p>
                                     </div>
                                 </div>

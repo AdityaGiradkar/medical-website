@@ -46,7 +46,7 @@
 <!-- desease 2 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease2" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -87,7 +87,7 @@
 <!-- desease 3 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease3" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -123,7 +123,7 @@
 <!-- desease 4 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease4" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -170,7 +170,7 @@
 <!-- desease 5 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease5" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -212,7 +212,7 @@
 <!-- desease 6 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease6" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -252,7 +252,7 @@
 <!-- desease 7 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease7" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -286,7 +286,7 @@
 <!-- desease 8 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease8" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -316,7 +316,7 @@
 <!-- desease 9 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease9" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -343,7 +343,7 @@
 <!-- desease 10 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease10" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -372,7 +372,7 @@
 <!-- desease 11 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease11" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -403,7 +403,7 @@
 <!-- desease 12 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease12" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -425,7 +425,7 @@
 <!-- desease 13 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease13" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -597,7 +597,7 @@
 <!-- diet2 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet2" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -619,7 +619,7 @@
 <!-- diet3 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet3" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -640,7 +640,7 @@
 <!-- diet4 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet4" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -661,7 +661,7 @@
 <!-- diet5 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet5" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -683,7 +683,7 @@
 <!-- diet6 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet6" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -704,7 +704,7 @@
 <!-- diet7 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet7" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -725,7 +725,7 @@
 <!-- diet8 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet8" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -747,7 +747,7 @@
 <!-- diet9 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet9" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -768,7 +768,7 @@
 <!-- diet10 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet10" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -789,7 +789,7 @@
 <!-- diet11 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet11" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -810,7 +810,7 @@
 <!-- diet12 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet12" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -831,7 +831,7 @@
 <!-- diet13 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="diet13" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -860,7 +860,7 @@
 <!-- yoga1 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga1" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -886,7 +886,7 @@
 <!-- yoga2 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga2" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -912,7 +912,7 @@
 <!-- yoga3 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga3" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -938,7 +938,7 @@
 <!-- yoga4 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga4" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -964,7 +964,7 @@
 <!-- yoga5 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga5" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -990,7 +990,7 @@
 <!-- yoga6 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga6" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1016,7 +1016,7 @@
 <!-- yoga7 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga7" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1042,7 +1042,7 @@
 <!-- yoga8 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga8" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1079,7 +1079,7 @@
 <!-- yoga9 -->
 <div class="modal fade bd-example-modal-lg info-modal" id="yoga9" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="container">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

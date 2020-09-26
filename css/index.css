@@ -1,3 +1,12 @@
+.font-roboto {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    letter-spacing: .7px;
+    word-spacing: 4px;
+}
+
+
+
 /* Header section */
 .red-dot::before {
     content: "•";
@@ -20,6 +29,12 @@
 .intro {
     background-color: rgb(246, 250, 255);
     margin-top: -25px;
+}
+
+.quotes {
+    font-size: 35px !important;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 /* end banner css */
