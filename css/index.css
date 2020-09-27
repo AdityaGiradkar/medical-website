@@ -5,6 +5,14 @@
     word-spacing: 4px;
 }
 
+.font-roboto-500 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: .8px;
+    word-spacing: 3px;
+    color: rgb(0, 48, 123);
+}
+
 
 
 /* Header section */
@@ -19,6 +27,40 @@
 .li-header {
     text-decoration: none !important;
     color: rgb(0, 48, 123);
+    transition: 0.3s;
+    position: relative;
+    font-size: 17px;
+}
+
+.li-header:hover {
+    color: rgb(65, 150, 189) !important;
+}
+
+.nav-item a::before,
+.nav-item a::after {
+    position: absolute;
+    opacity: 0;
+    width: 0%;
+    height: 2px;
+    content: '';
+    background: rgb(5, 49, 121);
+    transition: all 0.3s;
+}
+
+.nav-item a:before {
+    left: 0px;
+    top: 0px;
+}
+
+.nav-item a:after {
+    right: 0px;
+    bottom: 0px;
+}
+
+.nav-item a:hover:before,
+.nav-item a:hover:after {
+    opacity: 1;
+    width: 100%;
 }
 
 /* end Header section */
@@ -57,13 +99,15 @@
     background-image: -ms-linear-gradient(180deg, #0265c2 0%, #01195b 100%);
     padding: 1% 2%;
     text-decoration: none !important;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .Explore-box::after {
     content: '\2192';
-    padding-left: 1%;
+    font-size: 22px;
+    padding-left: 2%;
 }
 
 .Explore-box:hover {
