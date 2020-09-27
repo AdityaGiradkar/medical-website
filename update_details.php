@@ -206,25 +206,25 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Your WhatsApp Number</label>
-                <input type="text" class="form-control" name="contact" value="<?php echo $user_details_res['contact_no']; ?>" id="number">
+                <input type="text" class="form-control" name="contact" value="<?php echo $user_details_res['contact_no']; ?>" id="number" required>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Your Name</label>
-                <input type="text" class="form-control"name="name"  value="<?php echo $user_details_res['name']; ?>" id="name">
+                <input type="text" class="form-control"name="name"  value="<?php echo $user_details_res['name']; ?>" id="name" required>
               </div>
               <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Your husband's / father's name</label>
-                <input type="text" class="form-control" name="father_name" value="<?php echo $user_details_res['father_name']; ?>" id="f_name">
+                <input type="text" class="form-control" name="father_name" value="<?php echo $user_details_res['father_name']; ?>" id="f_name" required>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-3">
                 <label for="inputState">Gender</label>
-                <select id="inputState" name="gender" class="form-control">
+                <select id="inputState" name="gender" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Male" <?php if($user_details_res['gender']=="Male") echo 'selected="selected"'; ?>>Male</option>
                   <option value="Female" <?php if($user_details_res['gender']=="Female") echo 'selected="selected"'; ?>>Female</option>
@@ -233,7 +233,7 @@
               </div>
               <div class="form-group col-md-3">
                 <label for="inputCity">Are you working?</label>
-                <select id="inputState" name="working" class="form-control">
+                <select id="inputState" name="working" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="YES" <?php if($user_details_res['working']=="YES") echo 'selected="selected"'; ?>>Yes</option>
                   <option value="NO" <?php if($user_details_res['working']=="NO") echo 'selected="selected"'; ?>>No</option>
@@ -242,11 +242,11 @@
               </div>
               <div class="form-group col-md-3">
                 <label for="inputState">Date of Birth</label>
-                <input class="form-control" type="date" name="dob" value="<?php if($user_details_res['dob'] != ''){ echo strftime('%Y-%m-%d', strtotime($user_details_res['dob']));} ?>" />
+                <input class="form-control" type="date" name="dob" value="<?php if($user_details_res['dob'] != ''){ echo strftime('%Y-%m-%d', strtotime($user_details_res['dob']));} ?>" required />
               </div>
               <div class="form-group col-md-3">
                 <label for="inputZip">Maritial Status</label>
-                <select id="maritial_status" name="married" class="form-control">
+                <select id="maritial_status" name="married" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="YES" <?php if($user_details_res['married']=="YES") echo 'selected="selected"'; ?>>married</option>
                   <option value="NO" <?php if($user_details_res['married']=="NO") echo 'selected="selected"'; ?>>unmarried</option>
@@ -257,7 +257,7 @@
 
             <div class="form-group">
               <label for="address">Residential postal address</label>
-              <textarea class="form-control" name="address" id="address" rows="3"><?php echo $user_details_res['address']; ?></textarea>
+              <textarea class="form-control" name="address" id="address" rows="3" required><?php echo $user_details_res['address']; ?></textarea>
             </div>
 
             <hr>
@@ -265,7 +265,7 @@
             <h2 class="h4 mb-3 mt-4 text-gray-800">Medical Details</h2>
 
             <div class="form-group">
-              <label><strong>What are problems you have ? </strong></label>
+              <label><strong>What are problems you have? </strong></label>
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-check">
@@ -465,7 +465,7 @@
             <div class="form-group">
               <label><strong>Would you like a programme which has no side effects?</strong> </label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="side_effect" id="side_effect1" value="YES" <?php if($user_details_res['side_effect']=="YES") echo 'selected="selected"'; ?>>
+                <input class="form-check-input" type="radio" name="side_effect" id="side_effect1" value="YES" <?php if($user_details_res['side_effect']=="YES") echo 'selected="selected"'; ?> required>
                 <label class="form-check-label" for="side_effect1">Yes</label>
               </div>
               <div class="form-check">
@@ -477,7 +477,7 @@
             <div class="form-group">
               <label><strong>What time is best daily for your health session?</strong> </label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="health_session" id="health_session1" value="morning">
+                <input class="form-check-input" type="radio" name="health_session" id="health_session1" value="morning" required>
                 <label class="form-check-label" for="health_session1">morning</label>
               </div>
               <div class="form-check">
@@ -497,7 +497,7 @@
             <div class="form-group">
               <label for="releif"><strong>Are you looking for permanent relief or temporary control? </strong></label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="releif" id="releif1" value="Permanent relief">
+                <input class="form-check-input" type="radio" name="releif" id="releif1" value="Permanent relief" required>
                 <label class="form-check-label" for="releif1">Permanent relief</label>
               </div>
               <div class="form-check">
@@ -513,11 +513,11 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputState"><strong>date of first illness detected </strong></label>
-                <input class="form-control" type="date" name="date_illness" value="<?php if($user_details_res['date_first_illness'] != ''){ echo strftime('%Y-%m-%d', strtotime($user_details_res['date_first_illness']));} ?>" />
+                <input class="form-control" type="date" name="date_illness" value="<?php if($user_details_res['date_first_illness'] != ''){ echo strftime('%Y-%m-%d', strtotime($user_details_res['date_first_illness']));} ?>" required />
               </div>
               <div class="form-group col-md-6">
                 <label for="inputState"><strong>Diagnosis made by doctors.</strong></label>
-                <input class="form-control" type="text" name="pre_doctor" placeholder="if not then mention 'NO'" />
+                <input class="form-control" type="text" name="pre_doctor" placeholder="if not then mention 'NO'" required />
               </div>
               
             </div>
@@ -534,7 +534,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="blank" href="images/Privacy Policy.pdf">policies</a></span>
+            <span>&copy; 2020 by AtmaVeda Yog Pvt. Ltd. <a target="_blank" href="images/Privacy Policy.pdf">Privacy Policies</a></span>
           </div>
         </div>
       </footer>
