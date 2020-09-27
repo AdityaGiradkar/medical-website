@@ -619,6 +619,11 @@
                                 rows="3" required></textarea>
                         </div>
 
+                        <div class="form-group">
+                            <label for="e-prescription">E-prescription</label>
+                            <input type="file" name="e-prescription" class="form-control-file" id="e-prescription" required>
+                        </div>
+
                         <button type="submit" name="start_treat" class="btn btn-success">start Treatment</button>
                     </form>
                 </div>
@@ -769,6 +774,7 @@
     if(isset($_POST['start_treat'])){
         $diet = $_FILES['diet'];
         $report = $_FILES['report'];
+        $e_prescription = $_FILES['e-prescription'];
         $extra_note = $_POST['note'];
         $short_name = $_POST['short_name'];
 
@@ -824,7 +830,7 @@
         //$total_price = $total_medi_cost + $total_session_cost;
 
         
-        if($diet != "" && $report != ""){
+        if($diet != "" && $report != "" && $e_prescription != ""){
             $diet_original = $_FILES['diet']['name'];
             $diet_tmp_name = $_FILES['diet']['tmp_name'];
             $diet_error = $_FILES['diet']['error'];
@@ -835,15 +841,23 @@
             $report_error = $_FILES['report']['error'];
             $report_type = $_FILES['report']['type'];
 
+            $prescription_original = $_FILES['e-prescription']['name'];
+            $prescription_tmp_name = $_FILES['e-prescription']['tmp_name'];
+            $prescription_error = $_FILES['e-prescription']['error'];
+            $prescription_type = $_FILES['e-prescription']['type'];
+
             $diet_ext_seprate = explode('.', $diet_original);
             $report_ext_seprate = explode('.', $report_original);
+            $prescription_ext_seprate = explode('.', $prescription_original);
 
             $diet_ext = strtolower(end($diet_ext_seprate));
             $report_ext = strtolower(end($report_ext_seprate));
+            $prescription_ext = strtolower(end($prescription_ext_seprate));
 
-            if($diet_error === 0 && $report_error === 0){
+            if($diet_error === 0 && $report_error === 0 && $prescription_error === 0){
                 $diet_new_name = uniqid('', true).".".$diet_ext;
                 $report_new_name = uniqid('', true).".".$report_ext;
+                $prescription_new_name = uniqid('', true).".".$prescription_ext;
 
                 $diet_destination = "files/diet/".$diet_new_name;
                 move_uploaded_file($diet_tmp_name, $diet_destination);
@@ -851,8 +865,11 @@
                 $report_destination = "files/report/".$report_new_name;
                 move_uploaded_file($report_tmp_name, $report_destination);
 
-                $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`) 
-                                VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note')";
+                $prescription_destination = "files/prescription/".$prescription_new_name;
+                move_uploaded_file($prescription_tmp_name, $prescription_destination);
+
+                $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`) 
+                                VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination')";
                 // $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
                 //                 VALUES ('$test_id',1,'$diet_destination','$report_destination','$extra_note')";          
 

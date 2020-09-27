@@ -148,13 +148,17 @@
             <div class="modal-body p-3">
               <!-- content here -->
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <strong>Report : </strong> <a target="_blank"
                     href="<?php echo $all_subtreatment_res['report']; ?>">view</a>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <strong>Diet Plan : </strong><a target="_blank"
                     href="<?php echo $all_subtreatment_res['diet']; ?>">view</a>
+                </div>
+                <div class="col-md-4">
+                  <strong>E - Precription : </strong><a target="_blank"
+                    href="<?php echo $all_subtreatment_res['e_prescription']; ?>">view</a>
                 </div>
               </div>
               <br>
@@ -330,12 +334,18 @@
                                 rows="3" required></textarea>
                         </div>
 
+                        <div class="form-group">
+                            <label for="e-prescription">E-prescription</label>
+                            <input type="file" name="e-prescription" class="form-control-file" id="e-prescription" required>
+                        </div>
+
                         <button type="submit" name="update_treat" class="btn btn-success">Update Treatment</button>
                     </form>
                 </div>
             </div>
         </div>
       </div>
+      <!-- Section for update treatment -->
 
     </div>
   </div>

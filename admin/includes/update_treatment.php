@@ -12,10 +12,11 @@
 
         $diet = $_FILES['diet'];
         $report = $_FILES['report'];
+        $e_prescription = $_FILES['e-prescription'];
         $extra_note = $_POST['note'];
 
-        print_r($diet);
-        print_r($report);
+        // print_r($diet);
+        // print_r($report);
 
         //firse check if doctor has added medicines or not 
         //if not then do not run query for insertion of data into database
@@ -80,15 +81,23 @@
             $report_error = $_FILES['report']['error'];
             $report_type = $_FILES['report']['type'];
 
+            $prescription_original = $_FILES['e-prescription']['name'];
+            $prescription_tmp_name = $_FILES['e-prescription']['tmp_name'];
+            $prescription_error = $_FILES['e-prescription']['error'];
+            $prescription_type = $_FILES['e-prescription']['type'];
+
             $diet_ext_seprate = explode('.', $diet_original);
             $report_ext_seprate = explode('.', $report_original);
+            $prescription_ext_seprate = explode('.', $prescription_original);
 
             $diet_ext = strtolower(end($diet_ext_seprate));
             $report_ext = strtolower(end($report_ext_seprate));
+            $prescription_ext = strtolower(end($prescription_ext_seprate));
 
             if($diet_error === 0 && $report_error === 0){
                 $diet_new_name = uniqid('', true).".".$diet_ext;
                 $report_new_name = uniqid('', true).".".$report_ext;
+                $prescription_new_name = uniqid('', true).".".$prescription_ext;
 
                 $diet_destination = "../files/diet/".$diet_new_name;
                 $database_name_diet = "files/diet/".$diet_new_name;
@@ -98,8 +107,12 @@
                 $database_name_report = "files/report/".$report_new_name;
                 move_uploaded_file($report_tmp_name, $report_destination);
 
-                $insert_test ="INSERT INTO `treatment`(`user_id`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`) 
-                                VALUES ('$user_id','$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note')";
+                $prescription_destination = "../files/prescription/".$prescription_new_name;
+                $database_name_prescription = "files/report/".$prescription_new_name;
+                move_uploaded_file($prescription_tmp_name, $prescription_destination);
+
+                $insert_test ="INSERT INTO `treatment`(`user_id`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`) 
+                                VALUES ('$user_id','$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note', '$prescription_destination')";
                 // $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
                 //                 VALUES ('$test_id',1,'$diet_destination','$report_destination','$extra_note')";          
 
