@@ -237,7 +237,7 @@
           <form method="post" class="mt-5" action="">
             <div class="form-group col-md-3">
               <label for="exampleInputEmail1">Select Date</label>
-              <input type="date" class="form-control" name="date" min="<?php echo date("Y-m-d"); ?>">
+              <input type="date" class="form-control" name="date" min="<?php echo date("Y-m-d"); ?>" required>
             </div>
             <table class="table table-bordered table-striped">
               <thead>
