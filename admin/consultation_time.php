@@ -104,7 +104,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Time Slots:</h6>
             <a class="collapse-item active" href="consultation_time.php">Add Time Slots</a>
-            <a class="collapse-item" href="available_slots.php">Available Slots</a>
+            <a class="collapse-item" href="added_slot_dates.php">Available Slots</a>
           </div>
         </div>
       </li>
@@ -235,11 +235,25 @@
           <p>Set time as per availability.</p>
 
           <form method="post" class="mt-5" action="">
-            <div class="form-group col-md-3">
-              <label for="exampleInputEmail1">Select Date</label>
-              <input type="date" class="form-control" name="date" min="<?php echo date("Y-m-d"); ?>" required>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="exampleInputEmail1"><b>Select Date</b></label>
+                  <input type="date" class="form-control" name="date" min="<?php echo date("Y-m-d"); ?>" required>
+                </div>
+              </div>
+              <div class="col-md-1">
+                
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="exampleInputEmail1"><b>Add all Slots</b></label>
+                  <button type="submit" name="all_slots" class="btn btn-warning form-control float-right" title="Add all time slots from (5.30AM-11.30PM)">Add All Slots</button>
+                </div>
+                
+              </div>
             </div>
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered mt-4 table-striped">
               <thead>
                 <tr>
                   <th scope="col">Timming</th>
@@ -267,7 +281,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="../images/Privacy Policy.pdf">Privacy Policies</a></span>
           </div>
         </div>
       </footer>
@@ -347,7 +361,7 @@
       $insert_slots = "INSERT INTO `consultation_time`(`date`, `time_range`) VALUES ".$value.";";
       if(mysqli_query($con, $insert_slots)){
         echo "<script> 
-            alert('timming has been sucessfully added.');
+            alert('Timming has been sucessfully added.');
             window.location.href('available_slots.php');
             </script>";
       }
@@ -356,9 +370,57 @@
         alert('please select date first');
       </script>";
     }
+  }
+
+  // all thime slots add
+  if(isset($_POST['all_slots'])){
+    $date = mysqli_real_escape_string($con, $_POST['date']);
+
+    $value = "('".$date."', '05.30 - 06.00')," . 
+             "('".$date."', '06.00 - 06.30')," .
+             "('".$date."', '06.30 - 07.00')," .
+             "('".$date."', '07.00 - 07.30')," .
+             "('".$date."', '07.30 - 08.00')," .
+             "('".$date."', '08.00 - 08.30')," .
+             "('".$date."', '08.30 - 09.00')," .
+             "('".$date."', '09.00 - 09.30')," .
+             "('".$date."', '09.30 - 10.00')," .
+             "('".$date."', '10.00 - 10.30')," .
+             "('".$date."', '10.30 - 11.00')," .
+             "('".$date."', '11.00 - 11.30')," .
+             "('".$date."', '11.30 - 12.00')," .
+             "('".$date."', '12.00 - 12.30')," .
+             "('".$date."', '12.30 - 13.00')," .
+             "('".$date."', '13.00 - 13.30')," .
+             "('".$date."', '13.30 - 14.00')," .
+             "('".$date."', '14.00 - 14.30')," .
+             "('".$date."', '14.30 - 15.00')," .
+             "('".$date."', '15.00 - 15.30')," .
+             "('".$date."', '15.30 - 16.00')," .
+             "('".$date."', '16.00 - 16.30')," .
+             "('".$date."', '16.30 - 17.00')," .
+             "('".$date."', '17.00 - 17.30')," .
+             "('".$date."', '17.30 - 18.00')," .
+             "('".$date."', '18.00 - 18.30')," .
+             "('".$date."', '18.30 - 19.00')," .
+             "('".$date."', '19.00 - 19.30')," .
+             "('".$date."', '19.30 - 20.00')," .
+             "('".$date."', '20.00 - 20.30')," .
+             "('".$date."', '20.30 - 21.00')," .
+             "('".$date."', '21.00 - 21.30')," .
+             "('".$date."', '21.30 - 22.00')," .
+             "('".$date."', '22.00 - 22.30')," .
+             "('".$date."', '22.30 - 23.00')," .
+             "('".$date."', '23.00 - 23.30')" ;
 
 
-
+    $insert_slots = "INSERT INTO `consultation_time`(`date`, `time_range`) VALUES ".$value.";";
+      if(mysqli_query($con, $insert_slots)){
+        echo "<script> 
+            alert('All slots for $date has been sucessfully added.');
+            window.location.href('available_slots.php');
+            </script>";
+      }
   }
 
 

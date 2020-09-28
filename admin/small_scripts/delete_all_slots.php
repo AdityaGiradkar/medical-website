@@ -1,25 +1,23 @@
-
 <?php 
     include("../../includes/db.php");
     session_start();
     if(isset($_SESSION['user_id'])){
         if($_SESSION['role'] == 'doctor'){
-            if(isset($_GET['date']) && isset($_GET['time'])){
+            if(isset($_GET['date'])){
                 $date = $_GET['date'];
-                $time = $_GET['time'];
-                
 
-                $delete = "DELETE FROM `consultation_time` WHERE `date`='$date' AND `time_range`='$time'";
+                
+                $delete = "DELETE FROM `consultation_time` WHERE `date`='$date' AND `assigned_user`=0";
                 if($delete_run = mysqli_query($con, $delete)){
                     echo "<script>
-                    window.location.href='../available_slots.php?date=$date';
+                        alert('All slots are deleted where user is not assigned');
+                        window.location.href='../added_slot_dates.php';
                     </script>";
                 }
-
-            }else{          //else part if date or time is not mention
+            }else{          //else part if date is not mention
                 echo "<script>
                     alert('insufficient data.');
-                    window.location.href='../available_slots.php?date=$date';
+                    window.location.href='../added_slot_dates.php';
                 </script>";
             }
         } else{             // else part when user is not doctor
@@ -28,8 +26,7 @@
                     window.location.href='../../index.php';
                 </script>";
         }
-
-    }else{             //else part if user is not login
+    }else{              //else part if user is not login
         echo "<script>
             window.location.href='../../error/login_error.html';
         </script>";

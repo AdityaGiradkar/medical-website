@@ -123,7 +123,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Time Slots:</h6>
             <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
-            <a class="collapse-item" href="available_slots.php">Available Slots</a>
+            <a class="collapse-item" href="added_slot_dates.php">Available Slots</a>
           </div>
         </div>
       </li>
@@ -900,7 +900,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="../images/Privacy Policy.pdf">Privacy Policies</a></span>
           </div>
         </div>
       </footer>

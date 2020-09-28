@@ -1,19 +1,23 @@
 <?php 
     include("../includes/db.php");
     session_start();
-    
-    //checking if user logged in 
-    //if session is set means user logged in then show this page otherwise redirect to login page
-    if(isset($_SESSION['user_id'])){
 
-        $slots = "SELECT * FROM `consultation_time` WHERE `date` >= CURDATE() ORDER BY `date` ASC, `time_range` ASC;";
-        $slots_run = mysqli_query($con, $slots);
+    // check if date is selected or not
+    if(isset($_GET['date'])){
+      $date = $_GET['date'];
 
-        //finding total number of new patient
-        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-        $new_patient_count_run = mysqli_query($con, $new_patient_count);
-        $data=mysqli_fetch_assoc($new_patient_count_run);
-        //finding total number of new patient
+      //checking if user logged in 
+      //if session is set means user logged in then show this page otherwise redirect to login page
+      if(isset($_SESSION['user_id'])){
+
+          $slots = "SELECT * FROM `consultation_time` WHERE `date`='$date' ORDER BY `time_range` ASC;";
+          $slots_run = mysqli_query($con, $slots);
+
+          //finding total number of new patient
+          $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+          $new_patient_count_run = mysqli_query($con, $new_patient_count);
+          $data=mysqli_fetch_assoc($new_patient_count_run);
+          //finding total number of new patient
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +30,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>All Medicines</title>
+  <title>Available Time Slots</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -106,7 +110,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Time Slots:</h6>
             <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
-            <a class="collapse-item active" href="available_slots.php">Available Slots</a>
+            <a class="collapse-item active" href="added_slot_dates.php">Available Slots</a>
           </div>
         </div>
       </li>
@@ -175,9 +179,9 @@
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
-      <!-- <div class="text-center d-none d-md-inline">
+      <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" onClick="sidebarTog()" id="sidebarToggle"></button>
-        </div> -->
+        </div>
 
     </ul>
     <!-- End of Sidebar -->
@@ -236,7 +240,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">All Questions in Database</h6>
+              <h6 class="m-0 font-weight-bold text-primary">All Slots of Date <?php echo $date; ?> in Database</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -253,9 +257,9 @@
                   </thead>
                   <tbody>
                     <?php 
-                                            $count = 1;
-                                            while($record = mysqli_fetch_assoc($slots_run)) {
-                                        ?>
+                        $count = 1;
+                        while($record = mysqli_fetch_assoc($slots_run)) {
+                    ?>
                     <tr>
                       <th><?php echo $count; ?></th>
                       <td><?php echo $record['date']; ?></td>
@@ -272,9 +276,9 @@
                       </td>
                     </tr>
                     <?php 
-                                                $count++;
-                                            }
-                                        ?>
+                            $count++;
+                        }
+                    ?>
 
                   </tbody>
                 </table>
@@ -292,7 +296,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="../images/Privacy Policy.pdf">Privacy Policies</a></span>
           </div>
         </div>
       </footer>
@@ -352,10 +356,15 @@
 
 
 <?php
-    }else{
+    }else{  //else part for login
       echo "<script>
               window.location.href='../error/login_error.html';
             </script>";
     }
 
+  }else{    //else part for date not mentioned
+    echo "<script>
+            window.location.href='added_slot_dates.php';
+          </script>";
+  }
 ?>

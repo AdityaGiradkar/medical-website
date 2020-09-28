@@ -1,25 +1,20 @@
 <?php 
     include("../includes/db.php");
     session_start();
-
+    
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
 
-      // $all_user = "SELECT * 
-      //             FROM `user` RIGHT JOIN `user-answer` 
-      //             ON `user`.`user_id`=`user-answer`.`user_id`  
-      //             ORDER BY `user-answer`.`time`";
-      $all_blogs = "SELECT * FROM `blogs`";
-      $all_blogs_run = mysqli_query($con, $all_blogs);
+        $slots = "SELECT * FROM `consultation_time` WHERE `date` >= CURDATE() GROUP BY `date` ORDER BY `date` DESC, `time_range` ASC;";
+        $slots_run = mysqli_query($con, $slots);
 
-      //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-      $new_patient_count_run = mysqli_query($con, $new_patient_count);
-      $data=mysqli_fetch_assoc($new_patient_count_run);
-      //finding total number of new patient
+        //finding total number of new patient
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+        $new_patient_count_run = mysqli_query($con, $new_patient_count);
+        $data=mysqli_fetch_assoc($new_patient_count_run);
+        //finding total number of new patient
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +26,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>All Blogs</title>
+  <title>Available Time Slots</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -88,7 +83,8 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePatient"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-user-injured"></i>
-          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle" style="font-size: .75em !important;"></i></sup><?php } ?></span>
+          <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle"
+                style="font-size: .75em !important;"></i></sup><?php } ?></span>
         </a>
         <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
@@ -100,17 +96,17 @@
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#timing" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-clock"></i>
           <span>Timing</span>
         </a>
-        <div id="timing" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="timing" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Time Slots:</h6>
             <a class="collapse-item" href="consultation_time.php">Add Time Slots</a>
-            <a class="collapse-item" href="added_slot_dates.php">Available Slots</a>
+            <a class="collapse-item active" href="added_slot_dates.php">Available Slots</a>
           </div>
         </div>
       </li>
@@ -154,16 +150,16 @@
           </div>
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
           <span>Blogs</span>
         </a>
-        <div id="collapseBlogs" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseBlogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Blogs Section:</h6>
-            <a class="collapse-item active" href="blogs_table.php">All Blogs</a>
+            <a class="collapse-item" href="blogs_table.php">All Blogs</a>
             <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
           </div>
         </div>
@@ -175,15 +171,13 @@
           <span>Users</span></a>
       </li>
 
-
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
       <!-- <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" onClick="sidebarTog()" id="sidebarToggle"></button>
-      </div> -->
+        </div> -->
 
     </ul>
     <!-- End of Sidebar -->
@@ -232,21 +226,17 @@
 
           </ul>
 
+
         </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid main-top main-left">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p>All are patients.</p>
-
-
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <h6 class="m-0 font-weight-bold text-primary">All Dates on which booking are open.</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -254,39 +244,30 @@
                   <thead>
                     <tr>
                       <th>Sr. No.</th>
-                      <th>Blog Name</th>
-                      <th>Blog Link</th>
-                      <th>Cover Image</th>
-                      <th>Small Discription</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
+                      <th>Date</th>
+                      <th>Slots Details</th>
+                      <th>Delete(All Slots)</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php 
-                      $count = 1;
-                      while($record = mysqli_fetch_assoc($all_blogs_run)){
-                          
-                      ?>
+                        $count = 1;
+                        while($record = mysqli_fetch_assoc($slots_run)) {
+                    ?>
                     <tr>
                       <th><?php echo $count; ?></th>
-                      <td><?php echo $record['blog_name']; ?></td>
-                      <td><a href="<?php echo $record['blog_link']; ?>"><?php echo $record['blog_link']; ?></a></td>
-                      <td><img src="img/blog_images/<?php echo $record['cover_img']; ?>" width="100"
-                          alt="blog cover photo" /></td>
-                      <td><?php echo $record['small_description']; ?></td>
-
-                      <!-- <td><?php //echo date("d/m/Y H:i:s", strtotime($record['time'])); ?></td> -->
-
-                      <td><a href="edit_blog.php?bid=<?php echo $record['blog_id']; ?>">Edit</a></td>
-                      <td><a
-                          onClick="javascript: return confirm('Do you want to remove <?php echo $record['blog_name']; ?>?');"
-                          href="small_scripts/delete_blog.php?id=<?php echo $record['blog_id']; ?>" style="color:red;">Delete</a></td>
+                      <td><?php echo $record['date']; ?></td>
+                      <td><a href="available_slots.php?date=<?php echo $record['date']; ?>">View</a></td>
+                      <td><a onClick="javascript: return confirm('This will remove all slots of date <?php echo $record['date']; ?> where patient is not assigned');"
+                          href="small_scripts/delete_all_slots.php?date=<?php echo $record['date']; ?>"
+                          style="color:red;">
+                          Delete
+                        </a>
+                      </td>
                     </tr>
                     <?php 
-                        $count++;
-                          
-                      }
+                            $count++;
+                        }
                     ?>
 
                   </tbody>
@@ -336,7 +317,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="../logout.php">Logout</a>
         </div>
       </div>
     </div>
@@ -362,6 +343,7 @@
 </body>
 
 </html>
+
 
 <?php
     }else{
