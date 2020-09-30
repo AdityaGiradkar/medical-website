@@ -121,9 +121,57 @@
                 </ul>
             </div>
         </div> -->
-
-        <div class="intro pt-5">
-            <div class="container">
+        <div class="intro pt-3">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="images/banner/Banner1.png" alt="First slide">
+                        <div class="carousel-caption button1 d-none d-md-block">
+                            <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="images/banner/Banner2.png" alt="Second slide">
+                        <div class="carousel-caption d-none button2 d-md-block">
+                            <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="images/banner/Banner3.png" alt="Third slide">
+                        <div class="carousel-caption d-none button3 d-md-block">
+                            <a href="about.php" class="d-inline-block mt-2">Explore</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="images/banner/Banner4.png" alt="Third slide">
+                        <div class="carousel-caption d-none button4 d-md-block">
+                            <a href="about.php" class="d-inline-block mt-2">Explore</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="images/banner/Banner5.png" alt="Third slide">
+                        <div class="carousel-caption d-none button5 d-md-block">
+                            <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- <div class="container">
                 <div class="row">
                     <div class="col-7 d-flex align-items-center justify-content-center">
                         <p class="about-heading">Atmavedayog a new defination for holistic medicine.<br><br>
@@ -134,7 +182,7 @@
                         <img src="images/doctor.png" width="350" class="img-fluid d-block mx-auto" />
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="mt-5 pt-5" id="about">
