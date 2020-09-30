@@ -117,16 +117,16 @@
         Hospital
       </div>
 
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMedicine"
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicine"
           aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
           <span>Medicines</span>
         </a>
-        <div id="collapseMedicine" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Medicine Section:</h6>
-            <a class="collapse-item active" href="all_medicines.php">All Medicines</a>
+            <a class="collapse-item" href="all_medicines.php">All Medicines</a>
             <a class="collapse-item" href="add_medicine.php">Add Medicine</a>
           </div>
         </div>
@@ -142,8 +142,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Sssions:</h6>
-                <a class="collapse-item active" href="all_medicines.php">All Sessions</a>
-                <a class="collapse-item" href="add_medicine.php">Add Session</a>
+                <a class="collapse-item active" href="all_sessions.php">All Sessions</a>
+                <a class="collapse-item" href="add_session.php">Add Session</a>
             </div>
         </div>
     </li>
