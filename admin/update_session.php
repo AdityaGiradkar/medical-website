@@ -133,12 +133,12 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseMedicine" aria-expanded="true"
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseSessions" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-pills"></i>
             <span>Sessions</span>
         </a>
-        <div id="collapseMedicine" class="collapse show" aria-labelledby="headingTwo"
+        <div id="collapseSessions" class="collapse show" aria-labelledby="headingTwo"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Sssions:</h6>
