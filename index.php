@@ -216,26 +216,26 @@
                 <div class="row">
                     <div class="col-md-3">
                         <img src="images/pilar1.png" width="85px" alt="" class="d-block mx-auto" />
-                        <h5 class="text-center mt-3">Chirayu</h5>
+                        <h5 class="text-center mt-3 font-mongolian">Chirayu</h5>
                         <p class="text-center mt-3 font-roboto">Life is meaningful when we have happiness, inner peace, strength &
                             worth
                             living long</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar2.png" width="65px" alt="" class="d-block mx-auto" />
-                        <h5 class="text-center mt-3">Diet Pratyahara</h5>
+                        <h5 class="text-center mt-3 font-mongolian">Diet Pratyahara</h5>
                         <p class="text-center mt-3 font-roboto">Diet improve guna dharma, sanskar and yoganurup falaprapti cures
                             disease and give health.</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar3.png" width="65px" alt="" class="d-block mx-auto" />
-                        <h5 class="text-center mt-3">Exercise Chiratarunya</h5>
+                        <h5 class="text-center mt-3 font-mongolian">Exercise Chiratarunya</h5>
                         <p class="text-center mt-3 font-roboto">Exercise healing disease giving arogya sampada & staying young
                             without aging is exercise chiratarunya</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar4.png" width="52px" alt="" class="d-block mx-auto" />
-                        <h5 class="text-center mt-3">Yodha's Nidaan</h5>
+                        <h5 class="text-center mt-3 font-mongolian">Yodha's Nidaan</h5>
                         <p class="text-center mt-3 font-roboto">YODHAS diagnosesthe unknown root cause. know your dosha's prevent
                             and cure disease.</p>
                     </div>
@@ -251,7 +251,7 @@
                     </div> 
                     <div class="col-md-8 pb-3">
                         <em>Consult</em>
-                        <h4>Dr. Sadanand</h4>
+                        <h3 class="font-mongolian">Dr. Sadanand</h3>
                         <p class="font-roboto mt-4">
                             Consult Dr Sadanand for "Advanced Holistic Consultation". Heal your disease, illness. 
                             Solve your health problems, get your holistic diet prescriptions, consult for personal sessions. 

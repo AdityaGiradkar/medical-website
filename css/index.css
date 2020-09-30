@@ -13,6 +13,11 @@
     color: rgb(0, 48, 123);
 }
 
+.font-mongolian {
+    font-family: "Mongolian Baiti";
+    letter-spacing: 0.7px;
+}
+
 
 
 /* Header section */

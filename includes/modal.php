@@ -638,6 +638,28 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>Our stress managent programme starts with assessment of cause of stress,</p>
+                <ul>
+                    <li>Functional</li>
+                    <li>Organic</li>
+                    <li>Emotional</li>
+                    <li>Physical</li>
+                    <li>Psychological</li>
+                </ul>
+                <p>We assess the degre of stress. We diagnose the effect of stress</p>
+                <ul>
+                    <li>Immidiate</li>
+                    <li>Temporary</li>
+                    <li>Long term</li>
+                </ul>
+                <p>Then based on principles of Atmavedayog we prepare a holistic management programme. Our programme helps to,</p>
+                <ul>
+                    <li>Release stress</li>
+                    <li>Adapt to stress</li>
+                    <li>Avoid stress</li>
+                    <li>Perform in stress</li>
+                    <li>Resolve stress.</li>
+                </ul>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -659,6 +681,8 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+               <p>A medical scientific weight gain programme. No supplement, No steroids, No mass gainers, No creatinine All natural.</p>
+                <p>Because natural health is wealth.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -702,6 +726,8 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>Short one or two session programmes that relaxes your mind, body, functions and organs too.</p>
+                <p>Visible difference seen in your vital parameters and charm. Programmes in between lives yog, kaya Yog, sparsh yog techniques.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -723,6 +749,7 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>Scientific muscle training workouts. Power, strength and Mass. With careful selected supplements for professional body builders.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -766,6 +793,18 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>Advanced programme of fitness includes - </p>
+                <ul>
+                    <li>Joint strength</li>
+                    <li>Muscle strength</li>
+                    <li>Core strength</li>
+                    <li>Agility</li>
+                    <li>Flexibility</li>
+                    <li>Stamina</li>
+                    <li>Endurance</li>
+                    <li>Power</li>
+                    <li>Dexterity</li>
+                </ul>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -787,6 +826,8 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>Speciality advanced programmes for men and women who desire to shape up there body, improve curves, proportion.</p>
+                <p>Assisted and non asdisted programmes.</p> 
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -808,6 +849,17 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <ul>
+                    <li>Strong mind</li>
+                    <li>Proportionate body</li>
+                    <li>Chiseled look</li>
+                    <li>Upright balanced posture</li>
+                    <li>Muscle toned</li>
+                    <li>Aura</li>
+                    <li>Relaxed mind</li>
+                </ul>
+                <p>Makes a good personality.</p>
+                <p>Our programme makes you achieve all this.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -829,6 +881,48 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>The unique style of diet prescriptions given by dr sadanand rasal are based on : </p>
+                <ol>
+                    <li>Reversal of cellular aging</li>
+                    <li>Free radical injury of cell</li>
+                    <li>Cellular regeneration theory</li>
+                    <li>Panchakosha tatva</li>
+                    <li>Beej gunadharma</li>
+                    <li>Pratyahara</li>
+                    <li>Dis ease reversal</li>
+                </ol>
+                <hr>
+                <p>This is a way of diet prescriptions developed and designed by dr sadanand himself under the guidance and supervison of his Guru.  Each; diet has a holistic effect on the body . these diet’s when followed sincerely cause’s following changes in each and every one. The changes are,</p>
+ 
+                <ol>
+                    <li>Cellular nutrition</li>
+                    <li>Cellular dysfunction correction</li>
+                    <li>Inter cellular harmony</li>
+                    <li>Improved organ functioning</li>
+                    <li>Organ dysfunction correction</li>
+                    <li>Biochemical and metabolic corrections</li>
+                    <li>Hormone’s axis normalization</li>
+                    <li>Disease process reversal</li>
+                    <li>Selective fat loss and figure correction</li>
+                    <li>Improvement in skin tone</li>
+                    <li>Improve charm</li>
+                    <li>Stronger aura</li>
+                    <li>Stress management</li>
+                    <li>Positive psychological changes</li>
+                    <li>Improve bone density</li>
+                    <li>improve fitness performance test valuation</li>
+                    <li>increase prana</li>
+                    <li>Invigourate chetana</li>
+                    <li>experience higher level of consciousness.</li>
+                    <li>Improved kinesthetic abilities</li>
+                    <li>Improve cognitive abilities.</li>
+                </ol>
+
+        	    <p>This diet are able to create and achieve the same response in patients as he would have when he was in healthy state and in the most natural way. When body corrects things on it’s own it is long lasting and permanent ,if one follows the principles life time.</p>
+
+                <p>So join and experience the effects of this diet prescription programmes.
+                Feel the miracles hiding in this diet prescriptions.
+                A most safer and useful tool you can trust on, Based on the law of mother nature.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -879,10 +973,18 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
-                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
-                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
-                <p>learn basics of yoga , basic of body and mind understanding , 21 asana.</p>
+                <p>Everything starts with a introduction. Yog training also needs to be started for beginners through a basic yoga is a yoga programme for beginners.  
+                    In basic yoga, joint mobility, spine flexibility, body strength, muscular tone, system strength, body control, mind control, breathing efficiency is focussed.
+                    This basic yoga will be conducted by dr sadanand rasal and Mrs. Shital dhole madam.
+                </p>
+                <p>
+                    Basic yoga will be taught depending on the physical healthy and disease history of the person.
+                    As yoga is only safe if done correctly. 
+                    This programme will be based on traditional yog practice.
+                    The clients from this programme upon completion can upgrade to advanced yog programme.
+                </p>
+
+                <p>Contact us for details.</p>
                 <h6>Duration - 1 month</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
@@ -905,10 +1007,9 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
-                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
-                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
-                <p>strengthen yourself , train your body to be prepared to learn yoga. learn yoga according to your body type. master the 21 asanas and its effect.</p>
+                <p>A modified combination of yoga with strength, gym and other training techniques. perfectly suited for young generation who want muscular growth, strength, physique and fitness as goals.</p>
+                <p>Calculated, scientific training schedule. focus is on active training techniques and avoiding passive weight- based training. Dr sadanand ‘s knowledge of yoga, medicine, health, kinesiology will help in you reaching your desired fitness goals.</p>
+                <p>As and when interest of clients will happen in classical traditional yoga. they can enrol themselves for further advanced yog programmes.</p>
                 <h6>Duration - 6 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
@@ -931,10 +1032,11 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
-                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
-                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
-                <p>learn the art of doing nothing by relaxation yoga based on atmaved yog. experience the difference.</p>
+                <p>In today’s demanding world, full of challenges and multi-tasking stress is bound to happen. 
+                    Our relaxation yoga based on Atmanubuti yog will help you manage your life, condition your 
+                    mind and body to the demands of life without stress. A perfectly suited yog programme for 
+                    executives, house wives, students and corporates. The only yog programme which will measure 
+                    and asses your stress pre and post programme to make you feel the benefit of our programme.</p>
                 <h6>Duration- 1 month</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
@@ -983,10 +1085,12 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
-                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
-                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
-                <p>traditional yoga with classical approach based on bakti, mantra , tantra and kriya anubhuti yog. kundalini shashtra and kundalini jagruti.</p>
+                <p>Atmanubuti yog is connecting with yourself within. Exploring your own-self, your basic nature, 
+                    your problems within, your conscious exploration of sub-conscious mind. A strictly disciplined 
+                    programme based on traditional yog practice.  A continuous programme that changes your 
+                    personality, your thoughts, your actions, your intentions, your life. The programmes that gives 
+                    you anubhuti(experience) about things within.
+                </p>
                 <h6>Duration:- 9 months</h6>
             </div>
             <button type="submit" class="login-btn mt-5 info-modal-btn" style="color:white;font-size: 18px;"
@@ -1009,9 +1113,11 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
-                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
-                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
+                <p>Sparsh is the connect with your soul. The connect with our self. The connect that happens 
+                    with the exploration of your 5 sense’s. Making your sense’s as your tools to know the unknown 
+                    part of you.
+                </p>
+                <p>Antarsamvad, atmanubhuti, swanubhuti are the techinique that are used in this yog.</p>
                 <p>traditional yoga incorporating the teaching of indriya daman and indriya shakti niyantran. undersstanding shakti and shakti yoga from sparsh or physical and spiritual touch.</p>
                 <h6>Duration :- 9 months</h6>
             </div>
@@ -1035,10 +1141,22 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
-                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
-                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
-                <p>A strict disciplined type of yoga based on guru shishya parampara. starting with self regulation and taking to course to samadhanastha sthiti , samadhi.</p>
+                <p>Yog is a disciplined branch which has been given in our veda and shashtra. Its has been 
+                    explainted in various sutra, shloka, rucha etc.. Yog is based on learning and following 8 
+                    limbs. These 8 limbs are called ashtaang yog. These 8 limbs consist of :  </p>
+                    <ul>
+                        <li>Yama</li>
+                        <li>Niyama</li>
+                        <li>Asana</li>
+                        <li>Pranayama</li>
+                        <li>Pratyahara</li>
+                        <li>Dharana</li>
+                        <li>Dhyan</li>
+                        <li>Samadhi</li>
+                    </ul>
+                <p>This is a on going study, the timing of course cannot be decided. This is traditional form of yog. It will be taught in a traditional method only. No short cuts, no short courses.</p>
+                <p>The intention is promotion and awareness of traditional yog without compromise. A non flexible programme. based on strict Siddhanta or yog Shashtra.  No effort will be made to compromise the Siddhanta of yog to accommodate modern lifestyle and practices.</p>
+                <p>Those with patience and sill to have a anushashit proyoga will be benefited from this programme.</p>
                 <h6>Duration :- 12 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
@@ -1098,14 +1216,7 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>learn yoga in the most authentic way. traditional yoga with scientific know how. 
-                not all is yoga, yoga is in everything, lets learn the process to know it,explore it.
-                classical way of yoga. yoga is not gymnastic, yoga is not gyming, learn yoga as YOG, yogya , yoganubhute.</p>
-                
-                <p>A yog advanced course who have learnt bsic yoga or asthaang yoga were the practice is given 
-                    to understand and control the system within and increase the power of systemic health. 
-                    it involves rapid burst yog training which prepares for the power within. short time sessions and 
-                    high energy burst yoga. best suited for those who have paucity of time in life.</p>
+                <p>a perfect programme to unveil the power of yoga. A modern perspective of yoga. A complete training of advanced yoga.</p>
                 <h6>Duration:-9 months</h6>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
