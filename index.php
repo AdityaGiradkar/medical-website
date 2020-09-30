@@ -132,33 +132,33 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="images/banner/Banner1.png" alt="First slide">
-                        <div class="carousel-caption button1 d-none d-md-block">
+                        <img class="d-block w-100" src="images/banner/Banner2.png" alt="First slide">
+                        <div class="carousel-caption button1 d-none d-md-inline-block">
                             <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/Banner2.png" alt="Second slide">
-                        <div class="carousel-caption d-none button2 d-md-block">
-                            <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
+                        <img class="d-block w-100" src="images/banner/Banner1.png" alt="Second slide">
+                        <div class="carousel-caption d-none button2 d-md-inline-block">
+                            <a href="#" data-target="#banner_diet" data-toggle="modal" class="d-inline-block mt-2 Explore-box ">Explore</a>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="images/banner/Banner3.png" alt="Third slide">
-                        <div class="carousel-caption d-none button3 d-md-block">
-                            <a href="about.php" class="d-inline-block mt-2">Explore</a>
+                        <div class="carousel-caption d-none button3 d-md-inline-block">
+                            <a href="#" data-target="#select_test" data-toggle="modal" class="d-inline-block mt-2">Explore</a>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="images/banner/Banner4.png" alt="Third slide">
-                        <div class="carousel-caption d-none button4 d-md-block">
-                            <a href="about.php" class="d-inline-block mt-2">Explore</a>
+                        <div class="carousel-caption d-none button4 d-md-inline-block">
+                            <a href="#" data-target="#medicine_imagica" data-toggle="modal" class="d-inline-block mt-2">Explore</a>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="images/banner/Banner5.png" alt="Third slide">
-                        <div class="carousel-caption d-none button5 d-md-block">
-                            <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
+                        <div class="carousel-caption d-none button5 d-md-inline-block">
+                            <a href="#" data-target="#banner_covid" data-toggle="modal" class="d-inline-block mt-2 Explore-box ">Explore</a>
                         </div>
                     </div>
                 </div>

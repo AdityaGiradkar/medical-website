@@ -27,7 +27,7 @@ include('includes/db.php');
 
 <body>
 
-    <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
+    <!-- <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
         <a class="navbar-brand ml-5" style="font-size:1.8rem" href="index.php">
             <img src="images/brand.png" width="250" class="d-inline-block align-top" alt="" loading="lazy">
         </a>
@@ -67,7 +67,53 @@ include('includes/db.php');
             </ul>
 
         </div>
+    </nav> -->
+
+
+    <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
+        <div class="container">
+            <a class="navbar-brand ml-2" style="font-size:1.8rem" href="index.php">
+                <img src="images/brand.png" width="250"  class="d-inline-block align-top" alt="" loading="lazy">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a href="index.php#about" class="li-header nav-link mr-3">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php#consult" class="li-header nav-link mr-3">Consultations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-3">Book Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php" data-target="#select_test" data-toggle="modal" class="li-header nav-link mr-3">Take Test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php#blogs" class=" nav-link li-header mr-3">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="li-header nav-link mr-3" disabled>Shop</a>
+                    </li>
+                    <?php if(!isset($_SESSION['user_id'])){ ?>
+                    <li class="nav-item">
+                        <a href="login.php" class="li-header nav-link">Login</a>
+                    </li>
+                    <?php }else{ ?>
+                    <li class="nav-item">
+                        <a href="<?php if($_SESSION['role'] == 'doctor'){?> admin/index.php <?php }else{ ?> user_page.php <?php } ?>" class="li-header nav-link ">User</a>
+                    </li>
+                    <?php } ?>
+                </ul>
+                
+            </div>
+        </div>
     </nav>
+
 
     <div class="container pt-4">
         <h4 class=" h3 text-center pb-4">ABOUT US</h4>
@@ -278,6 +324,50 @@ include('includes/db.php');
     </div>
     <!-- Modal for appointment -->
 
+        <!-- modal for test selection -->
+        <div class="modal fade" id="select_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="card-title mx-auto brand-name">SELECT TEST</p>
+                    <form method="post" action="">
+                        <div class="form-check pt-3 pb-3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type1" value="1" disabled>
+                            <label class="form-check-label" for="test_type1">YogE TEST</label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
+                                title="General Consultation" data-content="Some nice text hereknjfsdb"><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                        <div class="form-check pb-3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type2" value="2" required>
+                            <label class="form-check-label" for="test_type2">YogE@HOME</label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
+                                title="YogE @ HOME"
+                                data-content="Vital parameters and measurements give an instant insight in to the condition of the patient. Our application helps to manage the simple ,moderate and critical cases at home or under domicillary hospitalization or in hospitals. It is a helping hand of a doctor 24hr round the clock.  it helps in disease staging . disease prognosis, disease diagnosis, treatment response, detecting alarm signs etc."><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                        <div class="form-check pb-3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type3" value="3" disabled>
+                            <label class="form-check-label" for="test_type3">YogE@SUPERFIT</label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
+                                title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                        <button type="submit" class="login-btn mt-5" style="color:white;font-size: 18px;"
+                            name="start_test">START TEST</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal for test selection -->
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -304,6 +394,22 @@ include('includes/db.php');
                     window.location.href='payment/consultation_payment.php?type=$consult_type&date=$date&time=$time';
             </script>";
         } else {
+            echo "<script>
+                alert('Please login first.');
+                window.location.href='login.php';
+            </script>";
+        }
+    }
+
+    // Php for taking test
+    if(isset($_POST['start_test'])){
+        if(isset($_SESSION['user_id'])){
+            $test_type = $_POST['test_type'];
+
+            echo "<script>
+                    window.location.href='payment/test_payment.php?type=$test_type';
+            </script>";
+        }else{
             echo "<script>
                 alert('Please login first.');
                 window.location.href='login.php';

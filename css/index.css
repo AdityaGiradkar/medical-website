@@ -63,6 +63,10 @@
     width: 100%;
 }
 
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 0, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
 /* end Header section */
 
 
@@ -94,54 +98,71 @@
 /* individual buttons */
 .carousel-caption {
     position: absolute;
-    left: 5%;
+    right: 30%;
     z-index: 10;
     padding: 0;
+    text-align: left;
 }
 
 /* button 1 */
 .button1 {
-    right: 72%;
-    top: 60%;
+    left: 16%;
+    top: 62%;
 }
 
 .button2 {
-    right: 63%;
-    top: 62%;
+    /* right: 50%; */
+    left: 12%;
+    top: 63%;
 }
 
 .button3 {
-    right: 6%;
-    top: 65%;
+    right: 15%;
+    left: 46%;
+    top: 67%;
 }
 
 .button3 a {
-    font-size: 18px;
+    font-size: 20px;
     color: white;
-    padding: 5px;
+    padding: 1% 2%;
     background-color: green;
     text-decoration: none !important;
     letter-spacing: 2px;
     cursor: pointer;
+}
+
+.button3 a::after {
+    content: '\2192';
+    font-size: 22px;
+    padding-left: 2%;
 }
 
 .button4 {
-    right: 61%;
-    top: 62%;
+    /* right: 61%; */
+    left: 18%;
+    top: 65%;
 }
 
 .button4 a {
-    font-size: 18px;
+    font-size: 20px;
     color: white;
-    padding: 5px;
+    padding: 1% 2%;
     background-color: green;
     text-decoration: none !important;
     letter-spacing: 2px;
     cursor: pointer;
 }
 
+.button4 a::after {
+    content: '\2192';
+    font-size: 22px;
+    padding-left: 2%;
+}
+
 .button5 {
-    right: 60%;
+    /* right: 60%; */
+    left: 18%;
     top: 58%;
 }
 

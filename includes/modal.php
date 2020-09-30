@@ -436,6 +436,14 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
+                <p>Corona virus has rocked the whole world. With No vaccine and the highly costly treatment and dangerous effects of COVID19 it is a worrying situation. 
+                Atmaveda yog Pvt Ltd offers a perfect complete solution for managing COVID19 situation.</p>
+                <ol>
+                    <li>Assessment of Immunity rakshakavach and dosha analysis with COVID risk possibility through “Yog-E @Rakshakavach test”. Early diagnosis, earliest risk assessment, real-time health analysis.</li>
+                    <li>Treatment of COVID19 cases at home through “HomeCare@KaroNa”. with the help of our AI based tools daily surveillance, monitoring and screening of patients/persons is possible through our web-based app. Through our Yog- E clinic support based medical care can be availed at your home.</li>
+                    <li>Treatment of COVID19 critical care patients at home and day care centres in emergencies is possible through “CritiCare@GharPe KaroNa”. Our Yog-E clinic will advice support and guide in management as good as hospitalization at home. </li>
+                    <li>Treatment programmes for Post-COVID19 management is also offered through “Yog-E @PostCovid Health”. We diagnose, treat and prevent Post-COVID complication and health issues.</li>
+                </ol>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -1105,3 +1113,137 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+<!-- Modal For banners -->
+<!-- Diet Pratyahar -->
+<div class="modal fade bd-example-modal-lg info-modal" id="banner_diet" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLongTitle">Diet Pratyahara</h5>
+
+            </div>
+            <div class="modal-body">
+                <!-- content here -->
+                <p>The unique style of diet prescriptions given by dr sadanand rasal are based on : </p>
+                <ol>
+                    <li>Reversal of cellular aging</li>
+                    <li>Free radical injury of cell</li>
+                    <li>Cellular regeneration theory</li>
+                    <li>Panchakosha tatva</li>
+                    <li>Beej gunadharma</li>
+                    <li>Pratyahara</li>
+                    <li>Dis ease reversal</li>
+                </ol>
+                <hr>
+                <p>This is a way of diet prescriptions developed and designed by dr sadanand himself under the guidance and supervison of his Guru.  Each; diet has a holistic effect on the body . these diet’s when followed sincerely cause’s following changes in each and every one. The changes are,</p>
+ 
+                <ol>
+                    <li>Cellular nutrition</li>
+                    <li>Cellular dysfunction correction</li>
+                    <li>Inter cellular harmony</li>
+                    <li>Improved organ functioning</li>
+                    <li>Organ dysfunction correction</li>
+                    <li>Biochemical and metabolic corrections</li>
+                    <li>Hormone’s axis normalization</li>
+                    <li>Disease process reversal</li>
+                    <li>Selective fat loss and figure correction</li>
+                    <li>Improvement in skin tone</li>
+                    <li>Improve charm</li>
+                    <li>Stronger aura</li>
+                    <li>Stress management</li>
+                    <li>Positive psychological changes</li>
+                    <li>Improve bone density</li>
+                    <li>improve fitness performance test valuation</li>
+                    <li>increase prana</li>
+                    <li>Invigourate chetana</li>
+                    <li>experience higher level of consciousness.</li>
+                    <li>Improved kinesthetic abilities</li>
+                    <li>Improve cognitive abilities.</li>
+                </ol>
+
+        	    <p>This diet are able to create and achieve the same response in patients as he would have when he was in healthy state and in the most natural way. When body corrects things on it’s own it is long lasting and permanent ,if one follows the principles life time.</p>
+
+                <p>So join and experience the effects of this diet prescription programmes.
+                Feel the miracles hiding in this diet prescriptions.
+                A most safer and useful tool you can trust on, Based on the law of mother nature.</p>
+            </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
+        </div>
+    </div>
+</div>
+
+<!-- banner Medicine Imagica -->
+<div class="modal fade bd-example-modal-lg info-modal" id="medicine_imagica" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLongTitle">Medicine Imagica</h5>
+
+            </div>
+            <div class="modal-body">
+                <!-- content here -->
+                <p>A gift from Dr. Sadanand made from mother nature that fits the Guna-dharma and nature of 
+                    patient.
+                </p>
+                <p>
+                    Helps to live a medicine free life.Our treatment plans and fitness health plans are medicine 
+                    free and supplement free programmes.We do not believe in giving medicine, unless it’s an 
+                    emergency or patient condition needs one.Our body is equipped with all tools to prepare 
+                    medicine within. Our basic line of primary treatment in each condition is holistic diet, 
+                    holistic exercises and programmes. Dr sadanand has made some formulation from nature which 
+                    helps this primary treatment programme. the medicine along with diet and exercise give magical 
+                    results in shortest time possible. They heal even the incurables. They support the critical 
+                    patients. Medicine Imagica are harmless, safe. 100% natural, non-habit-forming formulations 
+                    are hand-made preparations made by Dr. Sadanand Rasal himself.
+                </p>
+            </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
+        </div>
+    </div>
+</div>
+
+<!-- banner covid-19 -->
+<div class="modal fade bd-example-modal-lg info-modal" id="banner_covid" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="container">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalLongTitle">COVID-19</h5>
+
+            </div>
+            <div class="modal-body">
+                <!-- content here -->
+                <p>Corona virus has rocked the whole world. With No vaccine and the highly costly treatment and dangerous effects of COVID19 it is a worrying situation. 
+                Atmaveda yog Pvt Ltd offers a perfect complete solution for managing COVID19 situation.</p>
+                <ol>
+                    <li>Assessment of Immunity rakshakavach and dosha analysis with COVID risk possibility through “Yog-E @Rakshakavach test”. Early diagnosis, earliest risk assessment, real-time health analysis.</li>
+                    <li>Treatment of COVID19 cases at home through “HomeCare@KaroNa”. with the help of our AI based tools daily surveillance, monitoring and screening of patients/persons is possible through our web-based app. Through our Yog- E clinic support based medical care can be availed at your home.</li>
+                    <li>Treatment of COVID19 critical care patients at home and day care centres in emergencies is possible through “CritiCare@GharPe KaroNa”. Our Yog-E clinic will advice support and guide in management as good as hospitalization at home. </li>
+                    <li>Treatment programmes for Post-COVID19 management is also offered through “Yog-E @PostCovid Health”. We diagnose, treat and prevent Post-COVID complication and health issues.</li>
+                </ol>
+            </div>
+            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+                APPOINTMNET</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal For banners -->
