@@ -1,2 +1,22 @@
 database user = sadanand
 database pass = Sadanand@123
+
+
+Gmail Account 1
+Gmail - atmavedayog@gmail.com
+pass - Sadanand@123
+
+related website Account
+Email - drsadanand@atmavedayog.com
+pass - Sadanand@123
+
+
+
+
+gamil Account 2
+Gmail - askdrsadanand@gmail.com
+pass - Sadanand@123
+
+relatiod website Account
+email - enquiry@atmavedayog.com
+pass - Sadanand@123

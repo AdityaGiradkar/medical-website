@@ -144,8 +144,8 @@
               data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Sssions:</h6>
-                  <a class="collapse-item" href="all_medicines.php">All Sessions</a>
-                  <a class="collapse-item" href="add_medicine.php">Add Session</a>
+                  <a class="collapse-item" href="all_sessions.php">All Sessions</a>
+                  <a class="collapse-item" href="add_session.php">Add Session</a>
               </div>
           </div>
       </li>

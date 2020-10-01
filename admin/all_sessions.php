@@ -250,8 +250,8 @@
                                         <tr>
                                             <th>Sr. No.</th>
                                             <th>Session Name</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
+                                            <th>Particulars</th>
+                                            <th>Price(In Rs.)</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
 
