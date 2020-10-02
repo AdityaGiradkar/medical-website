@@ -40,9 +40,12 @@
           
           while($all_subtreatment_res = mysqli_fetch_assoc($all_subtreatment_run)){
               $subtreatment_number = $all_subtreatment_res['sub_treat_number'];
+              $treat_id = $all_subtreatment_res['treat_id'];
+              $discount = (int)$all_subtreatment_res['discount'];
               $prescribed_medi_details = array();
               $prescribed_session_details = array();
               $total_price = 0;
+              $grand_total = 0;
 
               //first take all medicines from prescribed_medicine table which matches treatment_no, user_id, subtreat_number
               $all_prescribed_medi = "SELECT `medicine_id`, `quantity` FROM `prescribed_medicine` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$subtreatment_number'";
@@ -71,6 +74,7 @@
                               "quantity" => $medi_Id_quantity['quantity'],    //quantity multiple of medicine table
                               "price" => $medicine_detail_res['price'],
                               "total_price" => $medi_Id_quantity['quantity'] * $medicine_detail_res['price']
+                  
                           );
 
                           $total_price = $total_price + (int)$temp['total_price'];
@@ -120,11 +124,16 @@
 
             ?>
 
+            <?php
+                $grand_total = $total_price - ($total_price * $discount)/100;
+
+            ?>
+
       <!-- subtreatment fields -->
       <?php echo $all_subtreatment_res['sub_treat_number']; ?>'s month : <a
         data-target="#t_<?php echo $treatment_number; ?>_d_<?php echo $all_subtreatment_res['sub_treat_number']; ?>" href="" data-toggle="modal">View
         Details</a> |
-      Total : Rs. <?php echo $total_price; ?>
+      Total : Rs. <?php echo $grand_total; ?>
       (<?php echo $all_subtreatment_res['fees_status']=='pending'?"<span style='color:red'>Pending</span>":"<span style='color:green'>Paid</span>"; ?>)<br>
       <!-- subtreatment fields -->
 
@@ -233,7 +242,8 @@
               <p><strong>Extra Note : </strong> <?php echo $all_subtreatment_res['extra_note']; ?></p>
               <?php //echo $all_subtreatment_res['extra_note']; ?></p>
               <div class="Actions">
-
+                  <strong>Detailed Recipt : </strong>
+                  <a target="_blank" href="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $user_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $subtreatment_number; ?>">View Recipt</a>
               </div>
 
             </div>
@@ -334,9 +344,19 @@
                                 rows="3" required></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="e-prescription">E-prescription</label>
-                            <input type="file" name="e-prescription" class="form-control-file" id="e-prescription" required>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="e-prescription">E-prescription</label>
+                                    <input type="file" name="e-prescription" class="form-control-file" id="e-prescription" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="diet">Discount (In %) : </label>
+                                    <input type="number" name="dicount" class="form-control" id="dicount" required>
+                                </div>
+                            </div>
                         </div>
 
                         <button type="submit" name="update_treat" class="btn btn-success">Update Treatment</button>

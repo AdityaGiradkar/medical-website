@@ -14,6 +14,7 @@
         $report = $_FILES['report'];
         $e_prescription = $_FILES['e-prescription'];
         $extra_note = $_POST['note'];
+        $discount = $_POST['dicount'];
 
         // print_r($diet);
         // print_r($report);
@@ -111,8 +112,8 @@
                 $database_name_prescription = "files/prescription/".$prescription_new_name;
                 move_uploaded_file($prescription_tmp_name, $prescription_destination);
 
-                $insert_test ="INSERT INTO `treatment`(`user_id`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`) 
-                                VALUES ('$user_id','$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note', '$database_name_prescription')";
+                $insert_test ="INSERT INTO `treatment`(`user_id`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`) 
+                                VALUES ('$user_id','$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note', '$database_name_prescription', '$discount')";
                 // $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
                 //                 VALUES ('$test_id',1,'$diet_destination','$report_destination','$extra_note')";          
 

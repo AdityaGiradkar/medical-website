@@ -200,8 +200,8 @@
 
             <!-- Sidebar Toggler (Sidebar) -->
             <!-- <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" onClick="sidebarTog()" id="sidebarToggle"></button>
-      </div> -->
+                <button class="rounded-circle border-0" onClick="sidebarTog()" id="sidebarToggle"></button>
+            </div> -->
 
         </ul>
         <!-- End of Sidebar -->
@@ -521,7 +521,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- modal for test selection -->
+    <!-- modal for new treatment -->
     <?php 
         $all_medicines = "SELECT * FROM `medicines`";
         $all_medicines_run = mysqli_query($con, $all_medicines);
@@ -619,9 +619,20 @@
                                 rows="3" required></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <label for="e-prescription">E-prescription</label>
-                            <input type="file" name="e-prescription" class="form-control-file" id="e-prescription" required>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="e-prescription">E-prescription</label>
+                                    <input type="file" name="e-prescription" class="form-control-file" id="e-prescription" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="diet">Discount (In %) : </label>
+                                    <input type="number" name="dicount" class="form-control" id="dicount" required>
+                                </div>
+                            </div>
                         </div>
 
                         <button type="submit" name="start_treat" class="btn btn-success">start Treatment</button>
@@ -630,7 +641,7 @@
             </div>
         </div>
     </div>
-    <!-- modal for test selection -->
+    <!-- modal for new treatment -->
 
     <!-- modal for anthropometry test -->
     <div class="modal fade  bd-example-modal-lg" id="start_test" tabindex="-1" role="dialog"
@@ -777,6 +788,7 @@
         $e_prescription = $_FILES['e-prescription'];
         $extra_note = $_POST['note'];
         $short_name = $_POST['short_name'];
+        $discount = (int)$_POST['dicount'];
 
         //firse check if doctor has added medicines or not 
         //if not then do not run query for insertion of data into database
@@ -868,8 +880,8 @@
                 $prescription_destination = "files/prescription/".$prescription_new_name;
                 move_uploaded_file($prescription_tmp_name, $prescription_destination);
 
-                $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`) 
-                                VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination')";
+                $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`) 
+                                VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount')";
                 // $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
                 //                 VALUES ('$test_id',1,'$diet_destination','$report_destination','$extra_note')";          
 

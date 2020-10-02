@@ -40,6 +40,7 @@
           
           while($all_subtreatment_res = mysqli_fetch_assoc($all_subtreatment_run)){
               $subtreatment_number = $all_subtreatment_res['sub_treat_number'];
+              $treat_id = $all_subtreatment_res['treat_id'];
               $prescribed_medi_details = array();
               $prescribed_session_details = array();
               $total_price = 0;
@@ -247,6 +248,10 @@
                   <button type="button" name="t_<?php echo $treatment_number; ?>_s_<?php echo $all_subtreatment_res['sub_treat_number']; ?>" class="btn btn-success mt-3">Pay Treatment</button>
                 </form>
               <?php 
+                }else{
+              ?>
+                <a target="_blank" href="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $user_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">View Recipt</a>
+              <?php
                 }
               ?>
               <?php 
