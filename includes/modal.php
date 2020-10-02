@@ -52,7 +52,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">HRUDAYASPARSH - CARDIAC CARE PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">HRUDAYASPARSH - CARDIAC CARE</h5>
 
             </div>
             <div class="modal-body">
@@ -93,7 +93,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">HORMONE CORRECTION PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">HORMONE CORRECTION</h5>
 
             </div>
             <div class="modal-body">
@@ -129,7 +129,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">JOINT HEALING PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">JOINT HEALING</h5>
 
             </div>
             <div class="modal-body">
@@ -176,7 +176,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">SPINE STRENGHTENING PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">SPINE STRENGHTENING</h5>
 
             </div>
             <div class="modal-body">
@@ -349,7 +349,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">BREATHE NORMAL PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">BREATHE NORMAL</h5>
 
             </div>
             <div class="modal-body">
@@ -431,7 +431,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">COVID 19 MANAGEMENT PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">COVID 19 MANAGEMENT</h5>
 
             </div>
             <div class="modal-body">
@@ -460,7 +460,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">CHRONIC DISEASE MANAGEMENT PROGRAME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">CHRONIC DISEASE MANAGEMENT</h5>
 
             </div>
             <div class="modal-body">
@@ -545,7 +545,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">WEIGHT LOSS PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">WEIGHT LOSS</h5>
 
             </div>
             <div class="modal-body">
@@ -611,7 +611,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">ANTI AGING PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">ANTI AGING</h5>
 
             </div>
             <div class="modal-body">
@@ -633,7 +633,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">STRESS MANAGEMENT PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">STRESS MANAGEMENT</h5>
 
             </div>
             <div class="modal-body">
@@ -676,7 +676,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">WEIGHT GAIN PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">WEIGHT GAIN</h5>
 
             </div>
             <div class="modal-body">
@@ -699,7 +699,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">ANTI TANNING PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">ANTI TANNING</h5>
 
             </div>
             <div class="modal-body">
@@ -721,7 +721,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">RELAXATION PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">RELAXATION</h5>
 
             </div>
             <div class="modal-body">
@@ -744,7 +744,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">MUSCLE GAIN PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">MUSCLE GAIN</h5>
 
             </div>
             <div class="modal-body">
@@ -766,7 +766,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">FAIR ANND GLOW PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">FAIR ANND GLOW</h5>
 
             </div>
             <div class="modal-body">
@@ -788,7 +788,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">SUPER FITNESS PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">SUPER FITNESS</h5>
 
             </div>
             <div class="modal-body">
@@ -821,7 +821,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">FIGURE MANAGEMENT PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">FIGURE MANAGEMENT</h5>
 
             </div>
             <div class="modal-body">
@@ -844,7 +844,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">PERSONALITY DEVELOPMENT PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">PERSONALITY DEVELOPMENT</h5>
 
             </div>
             <div class="modal-body">
@@ -876,7 +876,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">DIET MANAGEMENT PROGRAMME</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">DIET MANAGEMENT</h5>
 
             </div>
             <div class="modal-body">
