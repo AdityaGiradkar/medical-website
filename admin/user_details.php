@@ -548,32 +548,28 @@
     </script>
     <!-- Passing medicine array in the js file  -->
 
-    <div class="modal fade  bd-example-modal-lg" id="start_treatatment" tabindex="-1" role="dialog"
+    <div class="modal fade" id="start_treatatment" tabindex="-1"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-dialog  modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <div class="container">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Start New Treatment</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <h5 class="modal-title" id="exampleModalLongTitle"><b>Start New Treatment</b></h5>
-                <div class="modal-body">
+                <!-- <h5 class="modal-title" id="exampleModalLongTitle"><b>Start New Treatment</b></h5> -->
+                <div class="modal-body pl-4">
 
                     <form method="post" onsubmit="return confirm('Are you sure you want to submit this treatment?');"
                         enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Treatment For:</label>
-                            <input type="text" name="short_name" class="form-control-file" id="exampleFormControlFile1"
+                            <label for="exampleFormControlFile1">Treatment Name:</label>
+                            <input type="text" name="short_name" class="form-control" id="exampleFormControlFile1"
                                 required>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Report of test</label>
-                            <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Medicines</label><br>
+                        <div class="form-group mt-4">
+                            <label for="">Medicines : </label><br>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -586,11 +582,11 @@
                                     <!-- Medicine rows are added Dynamically through javascript -->
                                 </tbody>
                             </table>
-                            <button type="button" onClick="addMedicine(0)" class="btn btn-primary">Add Medicines</button>
+                            <button type="button" onClick="addMedicine(0)" class="btn btn-primary btn-sm">Add Medicines</button>
                         </div>
 
-                        <div class="form-group">
-                            <label for="">Sessions</label><br>
+                        <div class="form-group mt-4">
+                            <label for="">Sessions : </label><br>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -604,37 +600,43 @@
                                 </tbody>
                             </table>
 
-                            <button type="button" onClick="addInstrument(0)" class="btn btn-primary">Add
+                            <button type="button" onClick="addInstrument(0)" class="btn btn-primary btn-sm">Add
                                 Instrument</button>
                         </div>
 
-                        <div class="form-group">
-                            <label for="diet">Diet Plan</label>
-                            <input type="file" name="diet" class="form-control-file" id="diet" required>
+                        
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="diet">Diet Plan</label>
+                                    <input type="file" name="diet" class="form-control-file" id="diet">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="e-prescription">E-prescription</label>
+                                    <input type="file" name="e-prescription" class="form-control-file" id="e-prescription">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Extra File</label>
+                                    <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-4">
                             <label for="note">Extra Note</label>
                             <textarea class="form-control" placeholder="If nothing type 'NA'" id="note" name="note"
                                 rows="3" required></textarea>
                         </div>
 
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="e-prescription">E-prescription</label>
-                                    <input type="file" name="e-prescription" class="form-control-file" id="e-prescription" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="diet">Discount (In %) : </label>
-                                    <input type="number" name="dicount" class="form-control" id="dicount" required>
-                                </div>
-                            </div>
+                        <div class="form-group mt-4">
+                            <label for="diet">Discount (In %) : </label>
+                            <input type="number" name="dicount" class="form-control" id="dicount" required>
                         </div>
-
                         <button type="submit" name="start_treat" class="btn btn-success">start Treatment</button>
                     </form>
                 </div>
@@ -841,60 +843,96 @@
 
         //$total_price = $total_medi_cost + $total_session_cost;
 
-        
-        if($diet != "" && $report != "" && $e_prescription != ""){
+        $diet_destination   = "";
+        $report_destination ="";
+        $prescription_destination ="";
+        // if($diet != "" || $report != "" || $e_prescription != ""){
+        if($diet != ""){
             $diet_original = $_FILES['diet']['name'];
             $diet_tmp_name = $_FILES['diet']['tmp_name'];
             $diet_error = $_FILES['diet']['error'];
             $diet_type = $_FILES['diet']['type'];
 
+            $diet_ext_seprate = explode('.', $diet_original);
+            $diet_ext = strtolower(end($diet_ext_seprate));
+
+            if($diet_error === 0){
+                $diet_new_name = uniqid('', true).".".$diet_ext;
+                $diet_destination = "files/diet/".$diet_new_name;
+                move_uploaded_file($diet_tmp_name, $diet_destination);
+            }
+        }
+
+        if($report != ""){
             $report_original = $_FILES['report']['name'];
             $report_tmp_name = $_FILES['report']['tmp_name'];
             $report_error = $_FILES['report']['error'];
             $report_type = $_FILES['report']['type'];
 
+            $report_ext_seprate = explode('.', $report_original);
+            $report_ext = strtolower(end($report_ext_seprate));
+
+            if($report_error === 0){
+                $report_new_name = uniqid('', true).".".$report_ext;
+                $report_destination = "files/report/".$report_new_name;
+                move_uploaded_file($report_tmp_name, $report_destination);  
+            }
+        }
+
+        if($e_prescription != ""){
             $prescription_original = $_FILES['e-prescription']['name'];
             $prescription_tmp_name = $_FILES['e-prescription']['tmp_name'];
             $prescription_error = $_FILES['e-prescription']['error'];
             $prescription_type = $_FILES['e-prescription']['type'];
 
-            $diet_ext_seprate = explode('.', $diet_original);
-            $report_ext_seprate = explode('.', $report_original);
             $prescription_ext_seprate = explode('.', $prescription_original);
-
-            $diet_ext = strtolower(end($diet_ext_seprate));
-            $report_ext = strtolower(end($report_ext_seprate));
             $prescription_ext = strtolower(end($prescription_ext_seprate));
 
-            if($diet_error === 0 && $report_error === 0 && $prescription_error === 0){
-                $diet_new_name = uniqid('', true).".".$diet_ext;
-                $report_new_name = uniqid('', true).".".$report_ext;
+            if($prescription_error === 0){
                 $prescription_new_name = uniqid('', true).".".$prescription_ext;
-
-                $diet_destination = "files/diet/".$diet_new_name;
-                move_uploaded_file($diet_tmp_name, $diet_destination);
-
-                $report_destination = "files/report/".$report_new_name;
-                move_uploaded_file($report_tmp_name, $report_destination);
-
                 $prescription_destination = "files/prescription/".$prescription_new_name;
                 move_uploaded_file($prescription_tmp_name, $prescription_destination);
-
-                $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`) 
-                                VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount')";
-                // $insert_test = "INSERT INTO `treatment`(`test_id`, `treat_number`, `diet`, `report`, `extra_note`) 
-                //                 VALUES ('$test_id',1,'$diet_destination','$report_destination','$extra_note')";          
-
-                if(mysqli_query($con, $insert_test)) {
-                    echo "<script>
-                                alert('Treatment started sucessfully');
-                                window.location.href='user_details.php?uid=$user_id';
-                            </script>";
-                }
-            }else{
-                echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
             }
         }
+            
+
+            
+
+            // $diet_ext_seprate = explode('.', $diet_original);
+            // $report_ext_seprate = explode('.', $report_original);
+            // $prescription_ext_seprate = explode('.', $prescription_original);
+
+            // $diet_ext = strtolower(end($diet_ext_seprate));
+            // $report_ext = strtolower(end($report_ext_seprate));
+            // $prescription_ext = strtolower(end($prescription_ext_seprate));
+
+            // if($diet_error === 0 && $report_error === 0 && $prescription_error === 0){
+            //     $diet_new_name = uniqid('', true).".".$diet_ext;
+            //     $report_new_name = uniqid('', true).".".$report_ext;
+            //     $prescription_new_name = uniqid('', true).".".$prescription_ext;
+
+            //     $diet_destination = "files/diet/".$diet_new_name;
+            //     move_uploaded_file($diet_tmp_name, $diet_destination);
+
+            //     $report_destination = "files/report/".$report_new_name;
+            //     move_uploaded_file($report_tmp_name, $report_destination);
+
+            //     $prescription_destination = "files/prescription/".$prescription_new_name;
+            //     move_uploaded_file($prescription_tmp_name, $prescription_destination);
+
+        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`) 
+                        VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount')";         
+
+        if(mysqli_query($con, $insert_test)) {
+            echo "<script>
+                        alert('Treatment started sucessfully');
+                        window.location.href='user_details.php?uid=$user_id';
+                    </script>";
+        }
+            //else{
+            //     echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
+            // }
+     
     }
 
 ?>

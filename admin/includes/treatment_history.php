@@ -138,39 +138,31 @@
       <!-- subtreatment fields -->
 
       <!-- modal for each Subtreatments -->
-      <div class="modal fade bd-example-modal-lg" id="t_<?php echo $treatment_number; ?>_d_<?php echo $all_subtreatment_res['sub_treat_number']; ?>"
-        tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal fade" id="t_<?php echo $treatment_number; ?>_d_<?php echo $all_subtreatment_res['sub_treat_number']; ?>"
+        tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
           <div class="modal-content">
-            <div class="container">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"><?php echo $pre_treatments_res['treatment_for']; ?></h5>
+              <br>
+              <p></p>
+               
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h5 class="modal-title" id="exampleModalLongTitle">
-                <b><?php echo $pre_treatments_res['treatment_for']; ?></b>
-                <span class="text-right">start Date :
+              <!-- <h5 class="modal-title" id="exampleModalLongTitle">
+                <b><?php echo $pre_treatments_res['treatment_for']; ?></b> -->
+                <!-- <span class="text-right">start Date :
                   <?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?>
                 </span>
-              </h5>
+              </h5> -->
 
             </div>
             <div class="modal-body p-3">
               <!-- content here -->
-              <div class="row">
-                <div class="col-md-4">
-                  <strong>Report : </strong> <a target="_blank"
-                    href="<?php echo $all_subtreatment_res['report']; ?>">view</a>
-                </div>
-                <div class="col-md-4">
-                  <strong>Diet Plan : </strong><a target="_blank"
-                    href="<?php echo $all_subtreatment_res['diet']; ?>">view</a>
-                </div>
-                <div class="col-md-4">
-                  <strong>E - Precription : </strong><a target="_blank"
-                    href="<?php echo $all_subtreatment_res['e_prescription']; ?>">view</a>
-                </div>
-              </div>
-              <br>
+
+              <lable>Date : <b><?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?></b></lable>
+              <br><br>
 
               <label for=""><strong>Prescribed Medicines:</strong></label><br>
               <table class="table table-bordered table-striped">
@@ -239,6 +231,21 @@
               </table>
               <br>
 
+              <div class="row">
+              <div class="col-md-4">
+                  <strong>Diet Plan : </strong><a <?php if($all_subtreatment_res['diet'] != ""){ ?> target="_blank"
+                    href="<?php echo $all_subtreatment_res['diet']; ?>" <?php } ?> >view</a>
+                </div>
+                <div class="col-md-4">
+                  <strong>E - Precription : </strong><a <?php if($all_subtreatment_res['e_prescription'] != ""){ ?> target="_blank"
+                    href="<?php echo $all_subtreatment_res['e_prescription']; ?>" <?php } ?> >view</a>
+                </div>
+                <div class="col-md-4">
+                  <strong>Extra : </strong> <a <?php if($all_subtreatment_res['report'] != ""){ ?> target="_blank"
+                  href="<?php echo $all_subtreatment_res['report']; ?>" <?php } ?> >view</a>
+                </div>
+              </div>
+              <br>
               <p><strong>Extra Note : </strong> <?php echo $all_subtreatment_res['extra_note']; ?></p>
               <?php //echo $all_subtreatment_res['extra_note']; ?></p>
               <div class="Actions">
@@ -273,32 +280,29 @@
         }
       ?>
       <!-- Section for update treatment -->
-      <div class="modal fade  bd-example-modal-lg" id="update_treatatment_<?php echo $treatment_number; ?>" tabindex="-1" role="dialog"
+      <div class="modal fade" id="update_treatatment_<?php echo $treatment_number; ?>" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="container">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"><b>Update Treatment</b></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <h5 class="modal-title" id="exampleModalLongTitle"><b>Update Treatment</b></h5>
+                
                 <div class="modal-body">
 
                     <form method="post" action="includes/update_treatment.php?user=<?php echo $user_id; ?>&treatNo=<?php echo $treatment_number; ?>" onsubmit="return confirm('Are you sure you want to submit this treatment?');"
                         enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="exampleFormControlFile1">Treatment For:</label>
-                            <input type="text" name="short_name" value="<?php echo $pre_treatments_res['treatment_for']; ?>" class="form-control-file" id="exampleFormControlFile1"
+                            <label for="exampleFormControlFile1">Treatment Name :</label>
+                            <input type="text" class="form-control" name="short_name" value="<?php echo $pre_treatments_res['treatment_for']; ?>" class="form-control-file" id="exampleFormControlFile1"
                                 disabled>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Report of test</label>
-                            <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Medicines</label><br>
+                        
+                        <div class="form-group mt-4">
+                            <label for="">Medicines : </label><br>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -311,11 +315,11 @@
                                     <!-- Medicine rows are added Dynamically through javascript -->
                                 </tbody>
                             </table>
-                            <button type="button" onClick="addMedicine(<?php echo $treat_no; ?>)" class="btn btn-primary">Add Medicines</button>
+                            <button type="button" onClick="addMedicine(<?php echo $treat_no; ?>)" class="btn btn-primary btn-sm">Add Medicines</button>
                         </div>
 
-                        <div class="form-group">
-                            <label for="">Sessions</label><br>
+                        <div class="form-group mt-4">
+                            <label for="">Sessions : </label><br>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -329,35 +333,42 @@
                                 </tbody>
                             </table>
 
-                            <button type="button" onClick="addInstrument(<?php echo $treat_no; ?>)" class="btn btn-primary">Add
+                            <button type="button" onClick="addInstrument(<?php echo $treat_no; ?>)" class="btn btn-primary btn-sm">Add
                                 Instrument</button>
                         </div>
 
-                        <div class="form-group">
-                            <label for="diet">Diet Plan</label>
-                            <input type="file" name="diet" class="form-control-file" id="diet" required>
+                        <div class="row mt-4">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="diet">Diet Plan : </label>
+                                <input type="file" name="diet" class="form-control-file" id="diet">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="e-prescription">E-prescription : </label>
+                              <input type="file" name="e-prescription" class="form-control-file" id="e-prescription">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="exampleFormControlFile1">Extra : </label>
+                              <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                          </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="note">Extra Note</label>
+                        <div class="form-group mt-4">
+                            <label for="note">Extra Note : </label>
                             <textarea class="form-control" placeholder="If nothing type 'NA'" id="note" name="note"
                                 rows="3" required></textarea>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="e-prescription">E-prescription</label>
-                                    <input type="file" name="e-prescription" class="form-control-file" id="e-prescription" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="diet">Discount (In %) : </label>
-                                    <input type="number" name="dicount" class="form-control" id="dicount" required>
-                                </div>
-                            </div>
+                        <div class="form-group mt-4">
+                          <label for="diet">Discount (In %) : </label>
+                          <input type="number" name="dicount" class="form-control" id="dicount" required>
                         </div>
+                            
 
                         <button type="submit" name="update_treat" class="btn btn-success">Update Treatment</button>
                     </form>
