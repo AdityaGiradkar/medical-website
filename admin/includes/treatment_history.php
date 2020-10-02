@@ -145,22 +145,13 @@
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle"><?php echo $pre_treatments_res['treatment_for']; ?></h5>
               <br>
-              <p></p>
-               
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <!-- <h5 class="modal-title" id="exampleModalLongTitle">
-                <b><?php echo $pre_treatments_res['treatment_for']; ?></b> -->
-                <!-- <span class="text-right">start Date :
-                  <?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?>
-                </span>
-              </h5> -->
-
             </div>
+
             <div class="modal-body p-3">
               <!-- content here -->
-
               <lable>Date : <b><?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?></b></lable>
               <br><br>
 
@@ -232,7 +223,7 @@
               <br>
 
               <div class="row">
-              <div class="col-md-4">
+                <div class="col-md-4">
                   <strong>Diet Plan : </strong><a <?php if($all_subtreatment_res['diet'] != ""){ ?> target="_blank"
                     href="<?php echo $all_subtreatment_res['diet']; ?>" <?php } ?> >view</a>
                 </div>
@@ -245,9 +236,11 @@
                   href="<?php echo $all_subtreatment_res['report']; ?>" <?php } ?> >view</a>
                 </div>
               </div>
+
               <br>
+              
               <p><strong>Extra Note : </strong> <?php echo $all_subtreatment_res['extra_note']; ?></p>
-              <?php //echo $all_subtreatment_res['extra_note']; ?></p>
+              
               <div class="Actions">
                   <strong>Detailed Recipt : </strong>
                   <a target="_blank" href="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $user_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $subtreatment_number; ?>">View Recipt</a>

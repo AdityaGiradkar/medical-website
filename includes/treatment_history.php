@@ -122,7 +122,7 @@
             ?>
 
       <!-- subtreatment fields -->
-      <?php echo $all_subtreatment_res['sub_treat_number']; ?>'s month : <a
+       month <?php echo $all_subtreatment_res['sub_treat_number']; ?> : <a
         data-target="#t_<?php echo $treatment_number; ?>_d_<?php echo $all_subtreatment_res['sub_treat_number']; ?>" href="" data-toggle="modal">View
         Details</a> |
       Total : Rs. <?php echo $total_price; ?>
@@ -134,40 +134,17 @@
         tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
           <div class="modal-content pt-3">
-            <div class="container">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Treatment Name : <?php echo $pre_treatments_res['treatment_for']; ?></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
-              <h5 class="modal-title pb-3" id="exampleModalLongTitle">
-                <div class="row">
-                  <div class="col-md-8">
-                  <b class="text-left">Treatment For : <?php echo $pre_treatments_res['treatment_for']; ?></b>
-                  </div>
-                  <div class="col-md-4 h6">
-                    start Date :
-                    <?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?>
-                  </div>
-                </div>
-              </h5>
-
+              </button>  
             </div>
-            <div class="modal-body p-3">
+
+            <div class="modal-body pl-4">
               <!-- content here -->
-              <div class="row">
-                <div class="col-md-4">
-                  <strong>Report : </strong> <a target="_blank"
-                    href="admin/<?php echo $all_subtreatment_res['report']; ?>">view</a>
-                </div>
-                <div class="col-md-4">
-                  <strong>Diet Plan : </strong><a target="_blank"
-                    href="admin/<?php echo $all_subtreatment_res['diet']; ?>">view</a>
-                </div>
-                <div class="col-md-4">
-                  <strong>E - Precription : </strong><a target="_blank"
-                    href="admin/<?php echo $all_subtreatment_res['e_prescription']; ?>">view</a>
-                </div>
-              </div>
-              <br>
+              <lable>Date : <b><?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?></b></lable>
+              <br><br>
 
               <label for=""><strong>Prescribed Medicines:</strong></label><br>
               <table class="table table-bordered table-striped table-responsive-md">
@@ -236,8 +213,24 @@
               </table>
               <br>
 
+              <div class="row">
+                <div class="col-md-4">
+                  <strong>Diet Plan : </strong><a <?php if($all_subtreatment_res['diet'] != ""){ ?> target="_blank"
+                    href="admin/<?php echo $all_subtreatment_res['diet']; ?>" <?php } ?> >view</a>
+                </div>
+                <div class="col-md-4">
+                  <strong>E - Precription : </strong><a <?php if($all_subtreatment_res['e_prescription'] != ""){ ?> target="_blank"
+                    href="admin/<?php echo $all_subtreatment_res['e_prescription']; ?>"  <?php } ?>>view</a>
+                </div>
+                <div class="col-md-4">
+                  <strong>Extra : </strong> <a <?php if($all_subtreatment_res['report'] != ""){ ?> target="_blank"
+                    href="admin/<?php echo $all_subtreatment_res['report']; ?>" <?php } ?>>view</a>
+                </div>
+              </div>
+
+              <br>
               <p><strong>Extra Note : </strong> <?php echo $all_subtreatment_res['extra_note']; ?></p>
-              <?php //echo $all_subtreatment_res['extra_note']; ?></p>
+            
               <hr>
               <div class="Actions">
                 <h5><b>Total price : Rs. <?php echo $total_price; ?></b></h5>
@@ -245,7 +238,7 @@
                 if($all_subtreatment_res['fees_status'] == 'pending'){
               ?>
                 <form method="post" action="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $user_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">
-                  <button type="submit" class="btn btn-success mt-3">Proccede TO Enroll</button>
+                  <button type="submit" class="btn btn-success mt-3">Proccede To Enroll</button>
                 </form>
               <?php 
                 }else{
