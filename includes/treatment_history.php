@@ -244,8 +244,8 @@
               <?php 
                 if($all_subtreatment_res['fees_status'] == 'pending'){
               ?>
-                <form method="post">
-                  <button type="button" name="t_<?php echo $treatment_number; ?>_s_<?php echo $all_subtreatment_res['sub_treat_number']; ?>" class="btn btn-success mt-3">Pay Treatment</button>
+                <form method="post" action="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $user_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">
+                  <button type="submit" class="btn btn-success mt-3">Proccede TO Enroll</button>
                 </form>
               <?php 
                 }else{

@@ -105,7 +105,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap-4.5.2-dist/css/bootstrap.min.css">
@@ -133,7 +133,8 @@
                     <strong>Date -</strong> <?php echo $treatment_details_res['date']; ?> <br>
                     <strong>Bill To -</strong> <?php echo $user_details_res['name']; ?> <br>
                     <strong>G-mail -</strong> <?php echo $user_details_res['email_id']; ?> <br>
-                    <strong>Age -</strong> <?php echo $user_details_res['age']; ?> 
+                    <strong>Age -</strong> <?php echo $user_details_res['age']; ?> <br>
+                    <strong>Payment Status - </strong><span style="color:<?php if($treatment_details_res['fees_status']=='pending') { echo 'red'; }else{ echo 'green'; } ?>"><?php echo $treatment_details_res['fees_status']; ?></span>
                 </div>
             </div>
             <hr>
@@ -207,6 +208,10 @@
                     </tbody>
                 </table>
             </div>
+
+            <?php
+                if($treatment_details_res['fees_status'] !=='pending'){ 
+            ?>
             <hr class="mt-5 pt-5">
             <div class="mt-3 pb-5">
                 <div class="row">
@@ -220,6 +225,9 @@
                     </div>
                 </div>
             </div>
+            <?php 
+                }
+            ?>
         </div>
 
         

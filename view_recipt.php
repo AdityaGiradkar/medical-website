@@ -1,103 +1,133 @@
 <?php 
     session_start();
-    include("includes/db.php");
 
-    if (isset($_GET['user_id']) && isset($_GET['treat_no']) && isset($_GET['sub_treat_no']) && isset($_GET['treat_id'])){
-        $user_id = $_GET['user_id'];
-        $treatment_number = $_GET['treat_no'];
-        $sub_treatment_no = $_GET['sub_treat_no'];
-        $treatment_id = $_GET['treat_id'];
+    require_once "includes/db.php";
+    require_once "payment/razorpay-php/Razorpay.php";
 
-        $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, '1970-02-01', CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`";
-        $user_details_run = mysqli_query($con, $user_details);
-        $user_details_res = mysqli_fetch_assoc($user_details_run);
+    use Razorpay\Api\Api;
 
-        $treatment_details = "SELECT  `date`, `discount`, `fees_status` FROM `treatment` WHERE `treat_id`='$treatment_id'";
-        $treatment_details_run = mysqli_query($con, $treatment_details);
-        $treatment_details_res = mysqli_fetch_assoc($treatment_details_run);
+    if(isset($_SESSION['user_id'])){
 
-        $prescribed_medi_details = array();
-        $prescribed_session_details = array();
-        $total_price = 0;
+        $keyId = "rzp_test_bj6y2rUzCCQsX4";
+        $secretKey = "x9PYMbnUlJggKM6cmj7dBOyH";
+        $api = new Api($keyId, $secretKey);
 
-        //first take all medicines from prescribed_medicine table which matches treatment_no, user_id, subtreat_number
-        $all_prescribed_medi = "SELECT `medicine_id`, `quantity` FROM `prescribed_medicine` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$sub_treatment_no'";
-        if($all_prescribed_medi_run = mysqli_query($con, $all_prescribed_medi)){
-            $all_prescribed_medi_row = mysqli_num_rows($all_prescribed_medi_run);
-            if($all_prescribed_medi_row > 0){
-                $prescribed_medi_idQuantity_array = array();
-                $medi_count =0; 
-                while ($prescribed_medi_idQuantity = mysqli_fetch_assoc($all_prescribed_medi_run)){
-                    $prescribed_medi_idQuantity_array[$medi_count] = $prescribed_medi_idQuantity;
-                    $medi_count++;
+
+        if (isset($_GET['user_id']) && isset($_GET['treat_no']) && isset($_GET['sub_treat_no']) && isset($_GET['treat_id'])){
+            $user_id = $_GET['user_id'];
+            $treatment_number = $_GET['treat_no'];
+            $sub_treatment_no = $_GET['sub_treat_no'];
+            $treatment_id = $_GET['treat_id'];
+
+            $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, '1970-02-01', CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`";
+            $user_details_run = mysqli_query($con, $user_details);
+            $user_details_res = mysqli_fetch_assoc($user_details_run);
+
+            $treatment_details = "SELECT  `date`, `discount`, `fees_status` FROM `treatment` WHERE `treat_id`='$treatment_id'";
+            $treatment_details_run = mysqli_query($con, $treatment_details);
+            $treatment_details_res = mysqli_fetch_assoc($treatment_details_run);
+
+            $prescribed_medi_details = array();
+            $prescribed_session_details = array();
+            $total_price = 0;
+
+            //first take all medicines from prescribed_medicine table which matches treatment_no, user_id, subtreat_number
+            $all_prescribed_medi = "SELECT `medicine_id`, `quantity` FROM `prescribed_medicine` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$sub_treatment_no'";
+            if($all_prescribed_medi_run = mysqli_query($con, $all_prescribed_medi)){
+                $all_prescribed_medi_row = mysqli_num_rows($all_prescribed_medi_run);
+                if($all_prescribed_medi_row > 0){
+                    $prescribed_medi_idQuantity_array = array();
+                    $medi_count =0; 
+                    while ($prescribed_medi_idQuantity = mysqli_fetch_assoc($all_prescribed_medi_run)){
+                        $prescribed_medi_idQuantity_array[$medi_count] = $prescribed_medi_idQuantity;
+                        $medi_count++;
+                    }
+
+                    //after that take price and dose for prescribed medicine from actual medicine table 
+                    $medi_count =0;
+                    foreach($prescribed_medi_idQuantity_array as $medi_Id_quantity){
+                        $tempid = $medi_Id_quantity['medicine_id'];
+                        $medicine_detail = "SELECT * FROM `medicines` WHERE `medicine_id`='$tempid'";
+                        $medicine_detail_run = mysqli_query($con, $medicine_detail);
+                        $medicine_detail_res = mysqli_fetch_assoc($medicine_detail_run);
+                        $temp = array(
+                            "name" => $medicine_detail_res['Name'],
+                            "type" => $medicine_detail_res['type'],
+                            "price" => $medicine_detail_res['price'],
+                            "medi_quantity" => $medicine_detail_res['quantity'], //quantity from medicine table
+                            "quantity" => $medi_Id_quantity['quantity'],    //quantity multiple of medicine table
+                            "price" => $medicine_detail_res['price'],
+                            "total_price" => $medi_Id_quantity['quantity'] * $medicine_detail_res['price']
+                
+                        );
+
+                        $total_price = $total_price + (int)$temp['total_price'];
+                        $prescribed_medi_details[$medi_count] = $temp;
+                        $medi_count++;
+                    }
+                    // print_r($prescribed_medi_details);
+                    // print_r($total_price);
                 }
-
-                //after that take price and dose for prescribed medicine from actual medicine table 
-                $medi_count =0;
-                foreach($prescribed_medi_idQuantity_array as $medi_Id_quantity){
-                    $tempid = $medi_Id_quantity['medicine_id'];
-                    $medicine_detail = "SELECT * FROM `medicines` WHERE `medicine_id`='$tempid'";
-                    $medicine_detail_run = mysqli_query($con, $medicine_detail);
-                    $medicine_detail_res = mysqli_fetch_assoc($medicine_detail_run);
-                    $temp = array(
-                        "name" => $medicine_detail_res['Name'],
-                        "type" => $medicine_detail_res['type'],
-                        "price" => $medicine_detail_res['price'],
-                        "medi_quantity" => $medicine_detail_res['quantity'], //quantity from medicine table
-                        "quantity" => $medi_Id_quantity['quantity'],    //quantity multiple of medicine table
-                        "price" => $medicine_detail_res['price'],
-                        "total_price" => $medi_Id_quantity['quantity'] * $medicine_detail_res['price']
-            
-                    );
-
-                    $total_price = $total_price + (int)$temp['total_price'];
-                    $prescribed_medi_details[$medi_count] = $temp;
-                    $medi_count++;
-                }
-                // print_r($prescribed_medi_details);
-                // print_r($total_price);
             }
-        }
 
 
-        //first take all sessions from prescribed_session table which matches treatment_no, user_id, subtreat_number
-        $all_prescribed_session = "SELECT * FROM `prescribed_session` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$sub_treatment_no'";
-        if($all_prescribed_session_run = mysqli_query($con, $all_prescribed_session)){
-            $all_prescribed_session_row = mysqli_num_rows($all_prescribed_session_run);
-            if($all_prescribed_session_row > 0){
-                $prescribed_session_idQuantity_array = array();
-                $session_count =0;
-                while ($prescribed_session_idQuantity = mysqli_fetch_assoc($all_prescribed_session_run)){
-                    $prescribed_session_idQuantity_array[$session_count] = $prescribed_session_idQuantity;
-                    $session_count++;
+            //first take all sessions from prescribed_session table which matches treatment_no, user_id, subtreat_number
+            $all_prescribed_session = "SELECT * FROM `prescribed_session` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$sub_treatment_no'";
+            if($all_prescribed_session_run = mysqli_query($con, $all_prescribed_session)){
+                $all_prescribed_session_row = mysqli_num_rows($all_prescribed_session_run);
+                if($all_prescribed_session_row > 0){
+                    $prescribed_session_idQuantity_array = array();
+                    $session_count =0;
+                    while ($prescribed_session_idQuantity = mysqli_fetch_assoc($all_prescribed_session_run)){
+                        $prescribed_session_idQuantity_array[$session_count] = $prescribed_session_idQuantity;
+                        $session_count++;
+                    }
+
+                    //after that take price and quantity for prescribed sessions from actual session table 
+                    $session_count =0;
+                    foreach($prescribed_session_idQuantity_array as $session_Id_quantity){
+                        $tempid = $session_Id_quantity['session_id'];
+                        $session_detail = "SELECT * FROM `sessions` WHERE `session_id`='$tempid'";
+                        $session_detail_run = mysqli_query($con, $session_detail);
+                        $session_detail_res = mysqli_fetch_assoc($session_detail_run);
+                        $temp = array(
+                            "name" => $session_detail_res['session_name'],
+                            "price" => $session_detail_res['price'],
+                            "quantity" => $session_detail_res['quantity'],
+                            "quantity_prescribed" => $session_Id_quantity['session_per_month'],
+                            "price" => $session_detail_res['price'],
+                            "total_price" => $session_Id_quantity['session_per_month'] * $session_detail_res['price']
+                        );
+                        $total_price = $total_price + (int)$temp['total_price'];
+                        $prescribed_session_details[$session_count] = $temp;
+                        $session_count++;
+                    }
+                    // print_r($prescribed_session_details);
+                    // print_r($total_price);
                 }
-
-                //after that take price and quantity for prescribed sessions from actual session table 
-                $session_count =0;
-                foreach($prescribed_session_idQuantity_array as $session_Id_quantity){
-                    $tempid = $session_Id_quantity['session_id'];
-                    $session_detail = "SELECT * FROM `sessions` WHERE `session_id`='$tempid'";
-                    $session_detail_run = mysqli_query($con, $session_detail);
-                    $session_detail_res = mysqli_fetch_assoc($session_detail_run);
-                    $temp = array(
-                        "name" => $session_detail_res['session_name'],
-                        "price" => $session_detail_res['price'],
-                        "quantity" => $session_detail_res['quantity'],
-                        "quantity_prescribed" => $session_Id_quantity['session_per_month'],
-                        "price" => $session_detail_res['price'],
-                        "total_price" => $session_Id_quantity['session_per_month'] * $session_detail_res['price']
-                    );
-                    $total_price = $total_price + (int)$temp['total_price'];
-                    $prescribed_session_details[$session_count] = $temp;
-                    $session_count++;
-                }
-                // print_r($prescribed_session_details);
-                // print_r($total_price);
             }
-        }
 
-        $total_payble_amount = $total_price - ($total_price * (int)$treatment_details_res['discount'])/100;
-        $total_payble_amount = $total_payble_amount + 200;
+            $total_payble_amount = $total_price - ($total_price * (int)$treatment_details_res['discount'])/100;
+            $total_payble_amount = $total_payble_amount + 200;
+
+
+            // for razorpay details
+            $CUSTOMER_NAME = $_SESSION['name'];
+            $CUSTOMER_EMAIL = $_SESSION['email'];
+            $CUSTOMER_MOBILE = $_SESSION['mobile'];
+            // razorpay send amount
+            $PAY_AMT = $total_payble_amount;
+            $PAY_AMT = (int)$PAY_AMT * 100;
+
+
+            $order = $api->order->create(array(
+                'receipt' => rand(1000, 9999) . 'ORD',
+                'amount' => $PAY_AMT,
+                'payment_capture' => 1,
+                'currency' => 'INR'
+                )
+              );
+            // for razorpay details
    
 
 ?>
@@ -105,15 +135,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
     <title>Recipt</title>
+
+    <style>
+        .razorpay-payment-button{
+            border-radius: 12px;
+            background-image: -moz-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+            background-image: -webkit-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+            background-image: -ms-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
+            
+            height: 45px;
+            border: 0;
+            color:white;
+            margin-top:1.5rem;
+            display: inline-block;
+        }
+        .razorpay-payment-button:hover{
+            background-image: -webkit-linear-gradient(179deg, rgb(2, 56, 179) 0%, rgb(2, 233, 236) 100%);
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container pt-3 mb-3">
+        &larr; <a href="ongoing_treatments.php" >Go back to treatment page</a>    
+    </div>
     <div class="container p-3 border mt-3">
         <div class="printableArea" id="printableArea">
             <h4 class="text-center mb-3">Bill cum Recipt</h4>
@@ -207,6 +257,11 @@
                     </tbody>
                 </table>
             </div>
+
+            <?php 
+                if($treatment_details_res['fees_status'] !== 'pending'){
+            
+            ?>
             <hr class="mt-5 pt-5">
             <div class="mt-3 pb-5">
                 <div class="row">
@@ -220,12 +275,51 @@
                     </div>
                 </div>
             </div>
+            <?php
+                }
+            ?>
         </div>
 
         
     </div>
-    <input type="button" class="btn mt-3 mb-5 btn-primary d-block mx-auto" onclick="printDiv('printableArea')" value="print Recipt" />
-
+    <?php 
+        if($treatment_details_res['fees_status'] !== 'pending'){
+    ?>
+            <input type="button" class="btn mt-3 mb-5 btn-primary d-block mx-auto" onclick="printDiv('printableArea')" value="print Recipt" />
+            <script>
+                function printDiv(divName) {
+                    var printContents = document.getElementById(divName).innerHTML;
+                    var originalContents = document.body.innerHTML;
+                    document.body.innerHTML = printContents;
+                    window.print();
+                    document.body.innerHTML = originalContents;
+                }
+            </script>
+    <?php 
+        }else{
+            
+    ?>
+            <form action="payment/treatment_sucess.php?treat_id=<?php echo $treatment_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $sub_treatment_no; ?>&charge=<?php echo $order->amount; ?>" method="POST" style="text-align:center" class="mb-3">
+                <script
+                    src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key=<?php echo $keyId ?> 
+                    data-amount="<?php echo $order->amount; ?>" 
+                    data-currency="INR"
+                    data-order_id="<?php echo $order->id; ?>"
+                    data-buttontext="Pay with Razorpay"
+                    data-name="AtmaVeda Yog"
+                    data-description="We live long..."
+                    data-image="images/AtmaVeda Logo.png"
+                    data-prefill.name="<?php echo $CUSTOMER_NAME; ?>"
+                    data-prefill.email="<?php echo $CUSTOMER_EMAIL; ?>"
+                    data-prefill.contact="<?php echo $CUSTOMER_MOBILE; ?>"
+                    data-theme.color="#F37254"
+                ></script>
+                <input type="hidden" custom="Hidden Element" name="hidden">
+                </form>
+    <?php
+       }
+    ?>
     <div class="bg-dark" style="padding:2%; margin-bottom:-24px;color:white;">
             <p class="text-center mb-0">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
         </div>
@@ -244,26 +338,18 @@
 </html>
 
 <?php 
-    }else{
+        }else{              //else part of isset($_GET[''] && ....)
+            echo "<script>
+                    alert('Insufficient data.');
+                    window.location.href='index.php';
+                </script>";
+        }
+    }else{                 //else part of session not set
         echo "<script>
-                alert('Insufficient data.');
-                window.location.href='index.php';
+                window.location.href='error/login_error.html';
             </script>";
     }
 
 
 ?>
 
-<script>
-
-function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-}
-</script>
