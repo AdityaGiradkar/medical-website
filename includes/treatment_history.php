@@ -237,19 +237,17 @@
               <?php 
                 if($all_subtreatment_res['fees_status'] == 'pending'){
               ?>
-                <form method="post" action="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $user_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">
+                <form method="post" action="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $all_subtreatment_res['user_id']; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">
                   <button type="submit" class="btn btn-success mt-3">Proccede To Enroll</button>
                 </form>
               <?php 
                 }else{
               ?>
-                <a target="_blank" href="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $user_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">View Recipt</a>
+                <a target="_blank" href="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $all_subtreatment_res['user_id']; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">View Recipt</a>
               <?php
                 }
               ?>
-              <?php 
               
-              ?>
 
               </div>
 

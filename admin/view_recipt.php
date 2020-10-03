@@ -8,7 +8,7 @@
         $sub_treatment_no = $_GET['sub_treat_no'];
         $treatment_id = $_GET['treat_id'];
 
-        $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, '1970-02-01', CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`";
+        $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
         $user_details_run = mysqli_query($con, $user_details);
         $user_details_res = mysqli_fetch_assoc($user_details_run);
 
@@ -118,23 +118,25 @@
         <div class="printableArea" id="printableArea">
             <h4 class="text-center mb-3">Bill cum Recipt</h4>
             <div class="row">
-                <div class="col-7">
+                <div class="col-5">
                     <img src="../images/brand.png" width="300" class="" >
                     
                     <p>
                         <br>
-                        Sant Tukdoji Nagar . Rahatni .Pune 411017 <br>
-                        <strong>Phone no.:</strong> 7028831784 <br>
-                        <strong>Email :</strong> drsadanand@atmavedayog.com
+                        <strong class="text-muted">Sant Tukdoji Nagar . Rahatni .Pune 411017</strong> <br>
+                        Phone no.: <strong class="text-muted">7028831784 </strong><br>
+                        Email : <strong class="text-muted">drsadanand@atmavedayog.com</strong>
                     </p>
                 </div>
-                <div class="col-5 mt-3">
-                    <strong>Bill/Recipt No. - </strong><?php echo $treatment_id; ?> <br>
-                    <strong>Date -</strong> <?php echo $treatment_details_res['date']; ?> <br>
-                    <strong>Bill To -</strong> <?php echo $user_details_res['name']; ?> <br>
-                    <strong>G-mail -</strong> <?php echo $user_details_res['email_id']; ?> <br>
-                    <strong>Age -</strong> <?php echo $user_details_res['age']; ?> <br>
-                    <strong>Payment Status - </strong><span style="color:<?php if($treatment_details_res['fees_status']=='pending') { echo 'red'; }else{ echo 'green'; } ?>"><?php echo $treatment_details_res['fees_status']; ?></span>
+                <div class="col-4 mt-5 pt-3">
+                    Bill To - <strong class="text-muted"><?php echo $user_details_res['name']; ?> </strong><br>
+                    Email - <strong class="text-muted"><?php echo $user_details_res['email_id']; ?> </strong><br>
+                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> </strong> <br> 
+                    <!-- <strong>Payment Status - </strong><span style="color:<?php if($treatment_details_res['fees_status']=='pending') { echo 'red'; }else{ echo 'green'; } ?>"><?php echo $treatment_details_res['fees_status']; ?></span> -->
+                </div>
+                <div class="col-3">
+                    Bill/Recipt No. - <strong class="text-muted"><?php echo $treatment_id; ?></strong> <br>
+                    Date - <strong class="text-muted"><?php echo date("d/m/Y", strtotime($treatment_details_res['date'])); ?> </strong><br>
                 </div>
             </div>
             <hr>
@@ -143,12 +145,12 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">Sr. No.</th>
-                            <th scope="col">Details</th>
-                            <th scope="col">Particular</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Cost/Unit (Rs.)</th>
-                            <th scope="col">Total (Rs.)</th>
+                            <th scope="col" class="text-muted">Sr. No.</th>
+                            <th scope="col" class="text-muted">Details</th>
+                            <th scope="col" class="text-muted">Particular</th>
+                            <th scope="col" class="text-muted">Quantity</th>
+                            <th scope="col" class="text-muted">Cost/Unit (Rs.)</th>
+                            <th scope="col" class="text-muted">Total (Rs.)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -172,7 +174,7 @@
                             foreach($prescribed_session_details as $session){
                         ?>
                         <tr>
-                            <th scope="row"><?php echo $count; ?></th>
+                            <th scope="row" class="text-muted"><?php echo $count; ?></th>
                             <td><?php echo $session['name']; ?></td>
                             <td><?php echo $session['quantity']; ?></td>
                             <td><?php echo $session['quantity_prescribed']; ?></td>
@@ -184,25 +186,25 @@
                             } 
                         ?>
                         <tr>
-                            <th scope="row" class="text-center" colspan="5">Total</th>
-                            <td><b>&#x20B9;</b> <?php echo $total_price.".00"; ?></td>
+                            <th scope="row" class="text-center text-muted" colspan="5">Total</th>
+                            <td>&#x20B9; <?php echo $total_price.".00"; ?></td>
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center mt-5" colspan="3" rowspan="4">Grand Total</th>
-                            <th colspan="2" class="text-center">Discount</th>
-                            <td>- <?php echo $treatment_details_res['discount']; ?>%</td>
+                            <th scope="row" class="text-center text-muted mt-5" colspan="3" rowspan="4">Grand Total</th>
+                            <td colspan="2" class="text-center">Discount</td>
+                            <th class=" text-muted">- <?php echo $treatment_details_res['discount']; ?>%</th>
                         </tr>
                         <tr>
-                            <th colspan="2" class="text-center">Courear Charges </th>
-                            <td>&#x20B9; <?php echo "200" ?>.00</td>
+                            <td colspan="2" class="text-center">Courear Charges </td>
+                            <th class=" text-muted">&#x20B9; <?php echo "200" ?>.00</th>
                         </tr>
                         <tr>
-                            <th colspan="2" class="text-center">Received</th>
-                            <td>- &#x20B9; <?php echo "0" ?>.00</td>
+                            <td colspan="2" class="text-center">Received</td>
+                            <th class=" text-muted">- &#x20B9; <?php echo "0" ?>.00</th>
                         </tr>
                         <tr>
-                            <th colspan="2" class="text-center">Payble Amount</th>
-                            <td><b>&#x20B9; <?php echo $total_payble_amount; ?>.00</b></td>
+                            <td colspan="2" class="text-center">Payble Amount</td>
+                            <th class=" text-muted">&#x20B9; <?php echo $total_payble_amount; ?>.00</th>
                         </tr>
                         
                     </tbody>
