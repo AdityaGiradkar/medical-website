@@ -111,20 +111,20 @@
 
 /* button 1 */
 .button1 {
-    left: 16%;
-    top: 62%;
+    left: 17%;
+    top: 63%;
 }
 
 .button2 {
     /* right: 50%; */
-    left: 12%;
-    top: 63%;
+    left: 15.4%;
+    top: 72%;
 }
 
 .button3 {
     right: 15%;
     left: 46%;
-    top: 67%;
+    top: 74%;
 }
 
 .button3 a {
@@ -167,8 +167,8 @@
 
 .button5 {
     /* right: 60%; */
-    left: 18%;
-    top: 58%;
+    left: 19%;
+    top: 69%;
 }
 
 /* carosal custumizations */
