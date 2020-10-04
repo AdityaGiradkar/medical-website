@@ -115,9 +115,9 @@ include('includes/db.php');
     </nav>
 
 
-    <div class="container pt-4">
-        <h4 class=" h3 text-center pb-4">ABOUT US</h4>
-        <div class="row">
+    <div class="container pt-5">
+        <h4 class=" h3 text-center pt-4 pb-5">ABOUT US</h4>
+        <div class="row pb-4">
             <div class="col-md-4">
                 <img src="images/AtmaVeda(334,273).png" width="300" class="img-fluid d-block mx-auto" />
             </div>
@@ -156,17 +156,15 @@ include('includes/db.php');
         </div>
         <hr>
 
-        <h3 class="text-center pt-3 pb-5 mb-3">ABOUT ME</h3>
+        <h3 class="text-center pt-5 pb-3 mb-3">ABOUT ME</h3>
         <div class="row">
             <div class="col-md-4">
                 <img src="images/doctor.png" width="300" class="img-fluid d-block mx-auto" />
-            </div>
-            <div class="col-md-8 pt-5 mt-5">
-                <h4 class="text-center">Dr. Sadanand Shivram Rasal</h4>
+                <h4 class="text-center mt-4">Dr. Sadanand Shivram Rasal</h4>
                 <h6 class="text-center">BHMS (MCH), PGDMLT.</h6>
             </div>
-            <div class="mt-5">
-                <ul>
+            <div class="col-md-8 mt-3">
+            <ul>
                     <li><b>In 1996-</b> Graduated from Pune university with degree in BHMS.</li>
                     <li><b>In 1996-</b> General Practice Pimpri.</li> 
                     <li><b>In 1998-</b> Nursing home registered with the government agency as “Shree Ganesh Polyclinic”</li>
@@ -184,8 +182,11 @@ include('includes/db.php');
 
                     <b>Only those associated and those that are my patient know my capabilities.</b>
                 </ul>
+            </div>
+            <div class="mt-5">
+                
 
-                <hr>
+ 
                 <p><b>In year 2009,</b> I began my research, self funded though about,</p>
                 <ol>
                     <li>Reversal of cellular aging</li>
@@ -241,13 +242,53 @@ include('includes/db.php');
             <br>
             </div>
         </div>
+        <hr>
+        <h4 class=" h3 text-center mt-5 pb-4">Partners</h4>
+        <div style=" backgrund-color: rgb(249, 250, 255)">
+            <div class="container">
+                <div class="row pb-4">
+                    <div class="col-md-4">
+                        <img src="images/madam.jpeg" class="d-block mx-auto" width="200" >
+                    </div>
+                    <div class="col-md-8 mt-5 pt-5">
+                        <h4 class="tet-center">Mrs Shital Narendra Dhole</h4>
+                        <h6 class="txt-center">Yog instructor and advanced yog expert.</h6>
+                        <h6 class="ext-center">Beautician.</h6>
+                        <p class="ext-center">Mrs. Shital Dhole a Young dyanamic entrepreneur is also a Director  of Atmavedayog pvt ltd.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
 
-    <div class="bg-dark" style="padding:1%; color:white;">
-            <h6 class="text-center">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></h6>
+    <div class="bg-dark pt-5 pb-4" style="paddig:2%; margin-bottom:-24px;color:white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="images/AtmaVeda(334,273).png" width="200" class="img-fluid" >
+                </div>
+                <div class="col-md-6">
+                    <h4 class="mb-5 text-center" style="font-family: 'Roboto', sans-serif;">Social Media Handel</h4>
+                    <ul class="list-unstyled text-center" style="font-size: 2em">
+                        <li class="d-inline"><a target="_blank" href="https://www.facebook.com/drsadanand.ke.yodhas/"><i class="fab fa-facebook-square fa-3x facebook"></i></a></li>
+                        <li class="d-inline pl-5"><a target="_blank" href="https://www.instagram.com/drsadanand.atmavedayog"><i class="fab fa-instagram fa-3x instagram"></i></a></li>
+                        <li class="d-inline pl-5"><a target="_blank" href="https://twitter.com/ForSadanand?s=09"><i class="fab fa-twitter-square fa-3x tweter"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3" style="font-family: 'Roboto', sans-serif;">
+                    <h4 class="text-cener">Contact Us</h4><br>
+                    <p class="text-cener">Dr. Sadanand Rasal</p>
+                    <p class="text-ceter">enquiry@atmavedayog.com</p>
+                    <p class="text-cnter">WhatsApp : +91 82085 37972</p>
+                    
+                </div>
+            </div>
         </div>
+        <p class="text-center mt-5 mb-0">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
+    </div>
+
 
 
     <!-- Modal for appointment -->

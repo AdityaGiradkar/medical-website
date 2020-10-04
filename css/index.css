@@ -123,7 +123,7 @@
 
 .button3 {
     right: 15%;
-    left: 46%;
+    left: 42%;
     top: 74%;
 }
 
@@ -530,3 +530,36 @@
 }
 
 /* End of Book Appointment modal */
+
+
+/* social media icon */
+
+.facebook {
+    font-size: 1.2em !important;
+    color: #f5f8fa;
+    transition: 0.3s;
+}
+
+.facebook:hover {
+    color: #1877f2;
+}
+
+.instagram {
+    font-size: 1.2em !important;
+    color: #f5f8fa;
+    transition: 0.3s;
+}
+
+.instagram:hover {
+    color: #c32aa3;
+}
+
+.tweter {
+    font-size: 1.2em !important;
+    color: #f5f8fa;
+    transition: 0.3s;
+}
+
+.tweter:hover {
+    color: #1da1f2;
+}
