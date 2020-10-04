@@ -12,7 +12,7 @@
         $user_details_run = mysqli_query($con, $user_details);
         $user_details_res = mysqli_fetch_assoc($user_details_run);
 
-        $treatment_details = "SELECT  `date`, `discount`, `fees_status` FROM `treatment` WHERE `treat_id`='$treatment_id'";
+        $treatment_details = "SELECT  `treatment_for`, `date`, `discount`, `fees_status` FROM `treatment` WHERE `treat_id`='$treatment_id'";
         $treatment_details_run = mysqli_query($con, $treatment_details);
         $treatment_details_res = mysqli_fetch_assoc($treatment_details_run);
 
@@ -116,7 +116,7 @@
     
     <div class="container p-3 border mt-3">
         <div class="printableArea" id="printableArea">
-            <h4 class="text-center mb-3">Bill cum Recipt</h4>
+            <h4 class="text-center mb-3">Bill/Recipt</h4>
             <div class="row">
                 <div class="col-5">
                     <img src="../images/brand.png" width="300" class="" >
@@ -132,7 +132,7 @@
                     Bill To - <strong class="text-muted"><?php echo $user_details_res['name']; ?> </strong><br>
                     Email - <strong class="text-muted"><?php echo $user_details_res['email_id']; ?> </strong><br>
                     Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> </strong> <br> 
-                    <!-- <strong>Payment Status - </strong><span style="color:<?php if($treatment_details_res['fees_status']=='pending') { echo 'red'; }else{ echo 'green'; } ?>"><?php echo $treatment_details_res['fees_status']; ?></span> -->
+                    Diagnosis - <strong class="text-muted"><?php echo $treatment_details_res['treatment_for']; ?></strong>
                 </div>
                 <div class="col-3">
                     Bill/Recipt No. - <strong class="text-muted"><?php echo $treatment_id; ?></strong> <br>
@@ -141,7 +141,6 @@
             </div>
             <hr>
             <div class="mt-3">
-                <lable class="h6" for="">Medicines : </lable>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -163,8 +162,8 @@
                             <td><?php echo $medi['name']; ?></td>
                             <td><?php echo $medi['medi_quantity']; ?></td>
                             <td><?php echo $medi['quantity']; ?></td>
-                            <td><?php echo $medi['price']; ?>.00</td>
-                            <td><?php echo $medi['quantity']. " * " .$medi['price']. ".00 = " .$medi['total_price'].".00"; ?></td>
+                            <td>&#x20B9; <?php echo $medi['price']; ?>.00</td>
+                            <td>&#x20B9; <?php echo $medi['total_price'].".00"; ?></td>
                         </tr>
                         <?php
                         $count++;
@@ -178,8 +177,8 @@
                             <td><?php echo $session['name']; ?></td>
                             <td><?php echo $session['quantity']; ?></td>
                             <td><?php echo $session['quantity_prescribed']; ?></td>
-                            <td><?php echo $session['price']; ?>.00</td>
-                            <td><?php echo $session['quantity_prescribed']. " * " .$session['price']. ".00 = " .$session['total_price'].".00"; ?></td>
+                            <td>&#x20B9; <?php echo $session['price']; ?>.00</td>
+                            <td>&#x20B9; <?php echo $session['total_price'].".00"; ?></td>
                         </tr>
                         <?php
                         $count++;
@@ -190,23 +189,59 @@
                             <td>&#x20B9; <?php echo $total_price.".00"; ?></td>
                         </tr>
                         <tr>
-                            <th scope="row" class="text-center text-muted mt-5" colspan="3" rowspan="4">Grand Total</th>
+                            <th scope="row" class="text-muted mt-5" colspan="3" rowspan="4">
+                                <small>
+                                    <p><b>Terms and conditions:-</b></p>
+                                    <ol>
+                                        <li>No refund policy. rescheduling of appointment/session can be done within 30 days subject to availablility of appointments.</li>
+                                        <li>The seller is not responsible for any damage that happens in transit of medicine/goods</li>
+                                        <li>All matters subject to pune jurisdiction.</li>
+                                    </ol>
+                                </small>
+                            </th>
                             <td colspan="2" class="text-center">Discount</td>
                             <th class=" text-muted">- <?php echo $treatment_details_res['discount']; ?>%</th>
                         </tr>
                         <tr>
-                            <td colspan="2" class="text-center">Courear Charges </td>
+                            <td colspan="2" class="text-center">Courier Charges </td>
                             <th class=" text-muted">&#x20B9; <?php echo "200" ?>.00</th>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td colspan="2" class="text-center">Received</td>
                             <th class=" text-muted">- &#x20B9; <?php echo "0" ?>.00</th>
                         </tr>
                         <tr>
                             <td colspan="2" class="text-center">Payble Amount</td>
                             <th class=" text-muted">&#x20B9; <?php echo $total_payble_amount; ?>.00</th>
-                        </tr>
-                        
+                        </tr> -->
+                        <?php 
+                            if($treatment_details_res['fees_status'] == 'pending'){
+                        ?>
+                                <tr>
+                                    <td colspan="2" class="text-center">Payment Received</td>
+                                    <th class=" text-muted">- &#x20B9; <?php echo "0" ?>.00</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Payable Amount</td>
+                                    <th class=" text-muted">&#x20B9; <?php echo $total_payble_amount; ?>.00</th>
+                                </tr>
+                        <?php 
+                            }else{
+                                ?>
+                                
+                                <tr>
+                                    <td colspan="2" class="text-center">Payable Amount</td>
+                                    <th class=" text-muted">&#x20B9; <?php echo "0" ?>.00</th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">Payment Received</td>
+                                    <th class=" text-muted"> &#x20B9; <?php echo $total_payble_amount; ?>.00</th>
+                                </tr>
+                                
+                                
+                                <?php
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -222,7 +257,7 @@
                     </div>
                     <div class="col-5">
                         <p class="text-center">For, Atmavedayog Pvt. Ltd.</p>
-                        <img src="../images/brand.png" width="300" class="d-block mx-auto" >
+                        <img src="../images/sign.jpeg" width="200" class="d-block mx-auto" >
                         <p class="text-center">Authorized Signatory</p>
                     </div>
                 </div>
