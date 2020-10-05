@@ -372,13 +372,14 @@
                                                         <th>Time</th>
                                                         <th>Consultation Type</th>
                                                         <th>Status</th>
-
+                                                        <th>Recipt</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php 
                                                         $count = 1;
                                                         while($record = mysqli_fetch_assoc($all_consultations_run)) {
+                                                            $bill_number = $record['bill_number'];
                                                     ?>
                                                     <tr
                                                         style="font-weight:<?php echo $record['status'] == 'assigned'?'bold': ''; ?>">
@@ -389,6 +390,7 @@
                                                         <td><?php echo $record['consult_type']; ?></td>
                                                         <td><?php echo $record['status'] == 'assigned'?"Pending":"Checked"; ?>
                                                         </td>
+                                                        <td><a href="view_recipt_consultation.php?bill_no=<?php echo $bill_number; ?>">View</a></td>
                                                     </tr>
                                                     <?php 
                                                             $count++;

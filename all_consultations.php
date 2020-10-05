@@ -16,8 +16,8 @@
         $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
         $tests = array(0,0,0,0,0);
         while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
-        $index = $check_remaining_tests_res['test_type'];
-        $tests[$index] = $check_remaining_tests_res['order_id'];
+            $index = $check_remaining_tests_res['test_type'];
+            $tests[$index] = $check_remaining_tests_res['order_id'];
         }
 ?>
 <!DOCTYPE html>
@@ -219,6 +219,7 @@
                                             <th>Consultation Type</th>
                                             <th>Charges</th>
                                             <th>Status</th>
+                                            <th>Recipt</th>
 
                                         </tr>
                                     </thead>
@@ -226,6 +227,7 @@
                                         <?php 
                                             $count = 1;
                                             while($record = mysqli_fetch_assoc($all_consultations_run)) {
+                                                $bill_number = $record['bill_number'];
                                         ?>
                                         <tr <?php if($record['status']=='assigned'){ ?> style="font-weight:bold;"<?php }?>>
                                             <th><?php echo $count; ?></th>
@@ -234,6 +236,7 @@
                                             <td><?php echo $record['consult_type']; ?></td>
                                             <td><?php echo $record['consult_fees']; ?></td>
                                             <td><?php echo $record['status'] == 'assigned'?"Pending":"Checked"; ?></td>
+                                            <td><a href="view_recipt_consultation.php?bill_no=<?php echo $bill_number; ?>">View</a></td>
                                         </tr>
                                         <?php 
                                                 $count++;

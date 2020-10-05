@@ -20,7 +20,17 @@
                         VALUES ('$payment_id','$order_id','$signiture','$user_id','$treatment_no','$sub_treat_no','$charges')";
 
 
-        $update_payment_status = "UPDATE `treatment` SET `fees_status`='paid',`fees`='$charges' WHERE `treat_id`= '$treat_id' AND `user_id`='$user_id'";
+        // fetch bill number
+        $last_bill_no = "SELECT max(`bill_number`) AS lastest FROM `bill_number`";
+        $last_bill_no_run = mysqli_query($con, $last_bill_no);
+        $last_bill_no_res = mysqli_fetch_assoc($last_bill_no_run);
+        $lastest_bill = $last_bill_no_res['lastest'];
+
+        $this_bill_no = $lastest_bill + 1;
+        $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`) VALUES ('$this_bill_no')";
+        $insert_bill_no_run = mysqli_query($con, $insert_bill_no);
+
+        $update_payment_status = "UPDATE `treatment` SET `fees_status`='paid',`fees`='$charges',`bill_number`='$this_bill_no' WHERE `treat_id`= '$treat_id' AND `user_id`='$user_id'";
 
         if($con->query($insert_entry) === TRUE && $con->query($update_payment_status) === TRUE){
             echo "<script>

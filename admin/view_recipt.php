@@ -12,9 +12,14 @@
         $user_details_run = mysqli_query($con, $user_details);
         $user_details_res = mysqli_fetch_assoc($user_details_run);
 
-        $treatment_details = "SELECT  `treatment_for`, `date`, `discount`, `fees_status` FROM `treatment` WHERE `treat_id`='$treatment_id'";
+        $treatment_details = "SELECT  `treatment_for`, `date`, `discount`, `fees_status`, `bill_number` FROM `treatment` WHERE `treat_id`='$treatment_id'";
         $treatment_details_run = mysqli_query($con, $treatment_details);
         $treatment_details_res = mysqli_fetch_assoc($treatment_details_run);
+
+        $bill_number = $treatment_details_res['bill_number'];
+        $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_number'";
+        $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
+        $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
 
         $prescribed_medi_details = array();
         $prescribed_session_details = array();
@@ -116,7 +121,7 @@
     
     <div class="container p-3 border mt-3">
         <div class="printableArea" id="printableArea">
-            <h4 class="text-center mb-3">Bill/Recipt</h4>
+            <h4 class="text-center mb-3">Bill/Receipt</h4>
             <div class="row">
                 <div class="col-5">
                     <img src="../images/brand.png" width="300" class="" >
@@ -135,8 +140,8 @@
                     Diagnosis - <strong class="text-muted"><?php echo $treatment_details_res['treatment_for']; ?></strong>
                 </div>
                 <div class="col-3">
-                    Bill/Recipt No. - <strong class="text-muted"><?php echo $treatment_id; ?></strong> <br>
-                    Date - <strong class="text-muted"><?php echo date("d/m/Y", strtotime($treatment_details_res['date'])); ?> </strong><br>
+                    Bill/Recipt No. - <strong class="text-muted"><?php if($bill_number != 0){ echo $treatment_details_res['bill_number']; } ?></strong> <br>
+                    Date - <strong class="text-muted"><?php if($bill_number != 0){ echo date("d/m/Y", strtotime($fetch_bill_generation_date_res['date'])); } ?> </strong><br>
                 </div>
             </div>
             <hr>
