@@ -156,7 +156,7 @@
 
                 <p>A only programme which promotes no drug therapy with clinical evaluated results based programmes.</p>
 
-                <strong>SAVE YOUR KNEE FROM GOING TO SCALPELS.</strong>
+                <strong>SAVE YOUR KNEE FROM GOING TO SCALPELS.</strong><br>
 
                 - Complete restoration of knee strength.<br>
                 - Resolve your knee issues without operations
@@ -182,26 +182,35 @@
             <div class="modal-body">
                 <!-- content here -->
 
-                <h6>RECOVER SPINE STRENGHTEN SPINE</h6>
-                <h6>MAKE SPINE YOUR AXIS OF STRENGTH</h6>
+                <h6>Recover spine. Strengthen spine</h6>
+                <h6>Make spine your axis of strength</h6>
+                <h6>Completely safe treatment programmes</h6>
                 <ul>
-                    <li>get no steroid</li>
-                    <li>ger no pain killer</li>
-                    <li>get no NSAID</li>
-                    <li>get no surgery</li>
-                    <li>get no immunosuppresant</li>
-                    <li>get no adverse effects</li>
+                    <li>No steroid</li>
+                    <li>No pain killer</li>
+                    <li>No N.S.A.I.D.</li>
+                    <li>No surgery</li>
+                    <li>No Immuno-suppressant</li>
+                    <li>No Adverse Effects</li>
                 </ul>
-                <p>heal by HOLSITIC TREATMENT PLAN OF DR SADANAND. Assured results in cervical spondylitis, 
-                    lumbar or lumbo sacral spondylitis, radiculopahty, disc compression, akylosing spondylitis, 
-                    severe diseases of spine</p>
+                <p>Heal by Holistic Treatment Plan of Dr Sadanand.<br>
+                    Assured results in,<br>
+                    - cervical spondylitis, <br>
+                    - Lumbar or Lumbo-Sacral Spondylitis.<br>
+                    - Radiculopathy. <br>
+                    - Disc Compression.<br>
+                    - Ankylosing Spondylitis.<br>
+                    - Other Severe Diseases of Spine.<br>
+                </p>
                 <p>
-                    spine is not just a set of bones places on each other to carry the weight. But it is a centre for ,
+                    Spine is not just a set of bones places on each other to carry the weight. But it is a centre for ,
                     control, flexibility, extension, mobility, proprioception, strength, stability, firmness.
                 </p>
                 <p>
-                dr sadnand 's spine disorder healing porgramme brings all the above changes in each and every case he treats. find definite solution for any condition of spine.
+                Dr. Sadanand's spine disorder healing programme brings all the above healthy changes in
+                each and every case he treats.
                 </p>
+                <p>Find definite solution for any condition of spine.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -263,10 +272,10 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Liver is the laboratory of our body. be it health or disease or immunity. it plays the most important
-                    role in it. lifestyle changes , addictions, viral diseases and allopathic drugs have caused a lot of
-                    adverse effect on this caretaker of the body.</p>
-                <p>our holistic programme provides answers to - </p>
+                <p>Liver is the laboratory of our body. Be it health or disease or immunity,it plays the most
+                    important role in it. Lifestyle changes , addictions, viral diseases and allopathic drugs have
+                    caused a lot of adverse effect on this caretaker of the body.</p>
+                <p>Our Holistic programme provides answers to - </p>
                 <ul>
                     <li>Fatty liver</li>
                     <li>Cirrhosis of liver</li>
@@ -275,7 +284,8 @@
                     <li>Drug induced liver disease</li>
                     <li>Gallstones</li>
                 </ul>
-                <p>join us early , and recover your liver fully.</p>
+                <p>Join us and recover your liver fully.</p>
+                <p>The earlier you join the better to see your liver healthy and strong.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -299,12 +309,12 @@
                 <!-- content here -->
                 we have definite treatment plan for:
                 <ul>
-                    <li>acid peptic disease</li>
-                    <li>anorexia nervosa</li>
-                    <li>duodenal ulcer</li>
-                    <li>reflux oesophagitis</li>
-                    <li>stomach cancer</li>
-                    <li>achalasia cardia</li>
+                    <li>Acid Peptic Disease.</li>
+                    <li>Anorexia Nervosa.</li>
+                    <li>Duodenal Ulcer</li>
+                    <li>Reflux Oesophagitis.</li>
+                    <li>Stomach Cancer.</li>
+                    <li>Achalasia Cardia.</li>
                 </ul>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
@@ -436,13 +446,12 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Corona virus has rocked the whole world. With No vaccine and the highly costly treatment and dangerous effects of COVID19 it is a worrying situation. 
-                Atmaveda yog Pvt Ltd offers a perfect complete solution for managing COVID19 situation.</p>
+                <p>Corona virus has rocked the whole world. With No vaccine and the high cost of treatment and dangerous effects of COVID19 ,it is a worrying situation. Atmaveda Yog Pvt Ltd offers a complete solution for managing COVID19 situation.</p>
                 <ol>
-                    <li>Assessment of Immunity rakshakavach and dosha analysis with COVID risk possibility through “Yog-E @Rakshakavach test”. Early diagnosis, earliest risk assessment, real-time health analysis.</li>
-                    <li>Treatment of COVID19 cases at home through “HomeCare@KaroNa”. with the help of our AI based tools daily surveillance, monitoring and screening of patients/persons is possible through our web-based app. Through our Yog- E clinic support based medical care can be availed at your home.</li>
-                    <li>Treatment of COVID19 critical care patients at home and day care centres in emergencies is possible through “CritiCare@GharPe KaroNa”. Our Yog-E clinic will advice support and guide in management as good as hospitalization at home. </li>
-                    <li>Treatment programmes for Post-COVID19 management is also offered through “Yog-E @PostCovid Health”. We diagnose, treat and prevent Post-COVID complication and health issues.</li>
+                    <li><b>YOG-E @Rakshakavach test: </b>Does your Assessment of Immunity rakshakavach and dosha analysis with COVID risk possibility. Early diagnosis, earliest risk assessment, real-time health analysis.</li>
+                    <li><b>HomeCare@KaroNa: </b>Treatment of COVID19 cases at home through now made possible with the help of our AI based tools. Daily surveillance, monitoring and screening of patients/persons is possible through our web-based app. Through our YOG- E Clinic support, medical care can be availed at your home.</li>
+                    <li><b>CritiCare@GharPe KaroNa: </b>Treatment of COVID19 critical care patients at home and day care centres in emergencies is possible through Our Yog-E clinic. Now avail at home- support, advice and guided management, as good as hospitalization.</li>
+                    <li><b>Yog-E @PostCovid Health: </b>Treatment programmes for Post-COVID19 management is also offered through. We diagnose, treat and prevent Post-COVID complication and health issues.</li>
                 </ol>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
@@ -638,7 +647,7 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Our stress managent programme starts with assessment of cause of stress,</p>
+                <p>Our Stress Management programme starts with assessment of cause of stress,</p>
                 <ul>
                     <li>Functional</li>
                     <li>Organic</li>
@@ -646,13 +655,14 @@
                     <li>Physical</li>
                     <li>Psychological</li>
                 </ul>
-                <p>We assess the degre of stress. We diagnose the effect of stress</p>
+                <p>We assess the degree of stress. We diagnose the effect of stress</p>
                 <ul>
-                    <li>Immidiate</li>
+                    <li>Immediate</li>
                     <li>Temporary</li>
                     <li>Long term</li>
                 </ul>
-                <p>Then based on principles of Atmavedayog we prepare a holistic management programme. Our programme helps to,</p>
+                <p>Then based on principles of Atmavedayog we prepare a holistic management programme.
+                    Our programme helps to,</p>
                 <ul>
                     <li>Release stress</li>
                     <li>Adapt to stress</li>
@@ -726,8 +736,14 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Short one or two session programmes that relaxes your mind, body, functions and organs too.</p>
-                <p>Visible difference seen in your vital parameters and charm. Programmes in between lives yog, kaya Yog, sparsh yog techniques.</p>
+                <p>Short one or two session programmes that relaxes your mind, body, functions and organs too.
+                    Visible difference seen in your vital parameters and charm.</p>
+                    <p>Programmes includes:</p>
+                    <ul>
+                        <li>Yog.</li>
+                        <li>Kaya-yog.</li>
+                        <li>Sparsha-yog techniques.</li>
+                    </ul>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -944,10 +960,15 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Human body is gifted with curves and balanced proportion of body, due to lifestyle fat gets collected
-                    and with or without obesity the curves are lost. so is lost the toning of the body. the body looks
-                    disproportionate . the figure looks not curvy, not beautiful , not attractive. regain your shape ,
-                    curves and body tone with our shape up curves programme.</p>
+                <p>Human body is gifted with curves and balanced proportion of body.</p>
+                <p>
+                    Due to lifestyle, fat gets collected and with or without obesity the curves are lost. The body
+                    tone is lost. Body looks disproportionate. The curves are lost. Body looks not beautiful , not
+                    attractive.
+                </p>
+                <p>
+                    Now regain your Shape , Curves and Body tone with our Shape Up Curves Programme.
+                </p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -1342,13 +1363,12 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Corona virus has rocked the whole world. With No vaccine and the highly costly treatment and dangerous effects of COVID19 it is a worrying situation. 
-                Atmaveda yog Pvt Ltd offers a perfect complete solution for managing COVID19 situation.</p>
+                <p>Corona virus has rocked the whole world. With No vaccine and the high cost of treatment and dangerous effects of COVID19 ,it is a worrying situation. Atmaveda Yog Pvt Ltd offers a complete solution for managing COVID19 situation.</p>
                 <ol>
-                    <li>Assessment of Immunity rakshakavach and dosha analysis with COVID risk possibility through “Yog-E @Rakshakavach test”. Early diagnosis, earliest risk assessment, real-time health analysis.</li>
-                    <li>Treatment of COVID19 cases at home through “HomeCare@KaroNa”. with the help of our AI based tools daily surveillance, monitoring and screening of patients/persons is possible through our web-based app. Through our Yog- E clinic support based medical care can be availed at your home.</li>
-                    <li>Treatment of COVID19 critical care patients at home and day care centres in emergencies is possible through “CritiCare@GharPe KaroNa”. Our Yog-E clinic will advice support and guide in management as good as hospitalization at home. </li>
-                    <li>Treatment programmes for Post-COVID19 management is also offered through “Yog-E @PostCovid Health”. We diagnose, treat and prevent Post-COVID complication and health issues.</li>
+                    <li><b>YOG-E @Rakshakavach test: </b>Does your Assessment of Immunity rakshakavach and dosha analysis with COVID risk possibility. Early diagnosis, earliest risk assessment, real-time health analysis.</li>
+                    <li><b>HomeCare@KaroNa: </b>Treatment of COVID19 cases at home through now made possible with the help of our AI based tools. Daily surveillance, monitoring and screening of patients/persons is possible through our web-based app. Through our YOG- E Clinic support, medical care can be availed at your home.</li>
+                    <li><b>CritiCare@GharPe KaroNa: </b>Treatment of COVID19 critical care patients at home and day care centres in emergencies is possible through Our Yog-E clinic. Now avail at home- support, advice and guided management, as good as hospitalization.</li>
+                    <li><b>Yog-E @PostCovid Health: </b>Treatment programmes for Post-COVID19 management is also offered through. We diagnose, treat and prevent Post-COVID complication and health issues.</li>
                 </ol>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN

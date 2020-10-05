@@ -195,15 +195,21 @@
                     <div class="col-md-9 pl-5">
                         <p class="about-heading">AtmaVeda Yog</p>
                         <p class="font-roboto">
-                            AtmaVeda Yog Pvt. Ltd. is an innovative one of its kind company around the glob which
-                            invents
-                            diagnostic tools based on yoga, runs clinics, manages hospitals, conducts research in yoga
-                            and medicine, trains doctors and students in AtmaVeda Yog. It also involves in making
-                            proprietary medical preparation.
+                            AtmaVeda Yog Pvt Ltd. is an innovative one of its kind company around the globe which works in following fields:
+                            <ul class="font-roboto">
+                                <li>Invention of diagnostic tools based on yoga.</li>
+                                <li>YOG-E yoga- based e-clinics.</li>
+                                <li>Holistic residential medical centres</li>
+                                <li>Research in yoga and life sciences</li>
+                                <li>Development of Homecare and criticare tools for management at home.</li>
+                                <li>Training institutions in AtmaVeda Yog.</li>
+                                <li>Making proprietary medicinal preparations</li>
+                            </ul>
                         </p>
+
                         <p class="font-roboto mb-3">
-                            It works for, Social sector, Corporate sector And is also open to work for governments
-                            around the world in field of medicine, community screening, yoga therapies and education.
+                            It works for, Social sector, Corporate sector and is also open to work for governments around the
+                            world in field of medicine, community screening, yoga therapies and education.
                         </p>
                         <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
                     </div>
@@ -219,25 +225,25 @@
                         <h5 class="text-center mt-3 font-mongolian">Chirayu</h5>
                         <p class="text-center mt-3 font-roboto">Life is meaningful when we have happiness, inner peace, strength &
                             worth
-                            living long</p>
+                            living long.</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar2.png" width="65px" alt="" class="d-block mx-auto" />
                         <h5 class="text-center mt-3 font-mongolian">Diet Pratyahara</h5>
-                        <p class="text-center mt-3 font-roboto">Diet improve guna dharma, sanskar and yoganurup falaprapti cures
-                            disease and give health.</p>
+                        <p class="text-center mt-3 font-roboto">Diet Pratyahara improves Guna-dharma, Sanskar &amp; Yog-anurup falaprapti. It cures disease and give
+                            health.</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar3.png" width="65px" alt="" class="d-block mx-auto" />
                         <h5 class="text-center mt-3 font-mongolian">Exercise Chiratarunya</h5>
-                        <p class="text-center mt-3 font-roboto">Exercise healing disease giving arogya sampada & staying young
-                            without aging is exercise chiratarunya</p>
+                        <p class="text-center mt-3 font-roboto">Exercise healing disease, giving Arogya-sampada &amp; staying young without aging is Exercise
+                            Chiratarunya.</p>
                     </div>
                     <div class="col-md-3">
                         <img src="images/pilar4.png" width="52px" alt="" class="d-block mx-auto" />
                         <h5 class="text-center mt-3 font-mongolian">Yog-E Nidaan</h5>
-                        <p class="text-center mt-3 font-roboto">Yog-E diagnosesthe unknown root cause. know your dosha's prevent
-                            and cure disease.</p>
+                        <p class="text-center mt-3 font-roboto">Yog-E diagnoses the unknown Root Cause, your Dosha&#39;s. Detects early before the disease
+                            process begins ,helps to prevent and cure disease.</p>
                     </div>
                 </div>
             </div>
@@ -940,15 +946,15 @@
                     <div class="col-md-9 pt-3 " style="color: white;">
                         <h3>Diagnose at your home with <b>Yog-E Nidaan</b></h3>
                         <p class="font-roboto mt-4">
-                            AB YOG KARE NIDAAN. Stay at home and diagnose your health issues and fitness through 
-                            our most innovative AtmavedaYog based YOG-E tests. diagnose health issue, doshas, 
-                            immunity, chakra, and many other useful parameters required for health assessment, 
-                            disease diagnosis, therapeutic utility and predictive analysis.
+                            AB YOG KARE NIDAAN. Stay at home and diagnose your health issues and fitness through
+                            our most innovative AtmaVedaYog based YOG-E tests. Diagnose health issue, doshas,
+                            immunity, chakra, and many other useful parameters required for health assessment, disease
+                            diagnosis, therapeutic utility and predictive analysis.
                         </p>
                         <p class="font-roboto">
-                            Our YOG-E tests also make HomeCare@KaroNa possible. Makes remote management of simple 
-                            and critical patients at home or hospital possible by giving medical diagnostic and 
-                            clinical support. Manage distant rural clinics  with efficiency and makes Domiciliary 
+                            Our YOG-E tests also make HomeCare@KaroNa successful. Makes remote management of
+                            simple and critical patients at home or hospital possible by giving medical diagnostic and
+                            clinical support. Helps to Manage distant rural clinics with efficiency and makes Domiciliary
                             care a best alternative.
                         </p>
                         <div class="mt-4 pb-3">
@@ -1169,8 +1175,8 @@
                             <label class="form-check-label" for="consult_type1">
                                 General Consultation
                             </label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="General Consultation" data-content="consult online and seek advice treatment for general issues. 25 years experience of general practise as family physician and general practitioner."><i
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
+                                title="General Consultation" data-content="Consult online and seek advice treatment for general issues. 25 years experience of general practise as family physician and general practitioner."><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check pb-3">
@@ -1179,8 +1185,8 @@
                             <label class="form-check-label" for="consult_type2">
                                 Holistic Pre-program Counselling
                             </label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="Holistic Pre-program Counselling" data-content="want to know about our treatment? , want to know your decision to choose is right?. want to discuss your health programme with us? want to show your reports? want to seek holistic perspective?  take our counselling pre programme session."><i
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
+                                title="Holistic Pre-program Counselling" data-content="Want to know about our treatment?, want to know your decision to choose is right?. want to discuss your health programme with us? want to show your reports? want to seek holistic perspective?  take our counselling pre programme session."><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-check">
@@ -1189,8 +1195,8 @@
                             <label class="form-check-label" for="consult_type3">
                                 Advanced Holistic Consultation
                             </label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="Advanced Holistic Consultation" data-content="Specialized personal consultation includes advice and prescription of, 1. medical consultation and prescription, 2. yogic consultation and advice, 3. holsitic diet prescription and reciepe, 4. atma veda yog session"><i
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
+                                title="Advanced Holistic Consultation" data-content="Specialized personal consultation includes advice and prescription of,<ol><li>medical consultation and prescription</li> <li>yogic consultation and advice</li> <li>holsitic diet prescription and reciepe</li> <li>atma veda yog session</li>"><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
                         <div class="form-group mt-5 mb-4">

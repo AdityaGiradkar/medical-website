@@ -212,11 +212,11 @@
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="exampleInputEmail1">Your Name</label>
+                <label for="exampleInputEmail1">Your Full Name</label>
                 <input type="text" class="form-control"name="name"  value="<?php echo $user_details_res['name']; ?>" id="name" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="exampleInputEmail1">Your husband's / father's name</label>
+                <label for="exampleInputEmail1">Your husband's / father's Full name</label>
                 <input type="text" class="form-control" name="father_name" value="<?php echo $user_details_res['father_name']; ?>" id="f_name" required>
               </div>
             </div>

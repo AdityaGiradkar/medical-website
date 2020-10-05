@@ -116,14 +116,14 @@ include('includes/db.php');
 
 
     <div class="container pt-5">
-        <h4 class=" h3 text-center pt-4 pb-5">ABOUT US</h4>
+        <h4 class=" h2 text-center pt-4 pb-5"><b>ABOUT US</b></h2>
         <div class="row pb-4">
             <div class="col-md-4">
                 <img src="images/AtmaVeda(334,273).png" width="300" class="img-fluid d-block mx-auto" />
             </div>
             <div class="col-md-8 align-self-center pl-5">
 
-                <p>AtmaVeda Yog pvt.ltd is a new startup company dedicated and formed on the principles of yoga.
+                <p><b>AtmaVeda Yog pvt. ltd</b> is a new startup company dedicated and formed on the principles of yoga.
                     It's
                     founder is
                     Dr Sadanand Shivram Rasal . It's partners are Mrs Shital Narendra dhole.</p>
@@ -254,7 +254,7 @@ include('includes/db.php');
                         <h4 class="tet-center">Mrs Shital Narendra Dhole</h4>
                         <h6 class="txt-center">Yog instructor and advanced yog expert.</h6>
                         <h6 class="ext-center">Beautician.</h6>
-                        <p class="ext-center">Mrs. Shital Dhole a Young dyanamic entrepreneur is also a Director  of Atmavedayog pvt ltd.</p>
+                        <p class="ext-center">Mrs. Shital Dhole a Young dynamic entrepreneur, she is also a Director  of Atmavedayog pvt ltd.</p>
                     </div>
                 </div>
             </div>
