@@ -1117,30 +1117,30 @@
         </div>
 
         <div class="bg-dark pt-5 pb-4" style="paddig:2%; margin-bottom:-24px;color:white;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="images/AtmaVeda(334,273).png" width="200" class="img-fluid" >
-                </div>
-                <div class="col-md-6">
-                    <h4 class="mb-5 text-center" style="font-family: 'Roboto', sans-serif;">Social Media Handel</h4>
-                    <ul class="list-unstyled text-center" style="font-size: 2em">
-                        <li class="d-inline"><a target="_blank" href="https://www.facebook.com/drsadanand.ke.yodhas/"><i class="fab fa-facebook-square fa-3x facebook"></i></a></li>
-                        <li class="d-inline pl-5"><a target="_blank" href="https://www.instagram.com/drsadanand.atmavedayog"><i class="fab fa-instagram fa-3x instagram"></i></a></li>
-                        <li class="d-inline pl-5"><a target="_blank" href="https://twitter.com/ForSadanand?s=09"><i class="fab fa-twitter-square fa-3x tweter"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3" style="font-family: 'Roboto', sans-serif;">
-                    <h4 class="text-cener">Contact Us</h4><br>
-                    <p class="text-cener">Dr. Sadanand Rasal</p>
-                    <p class="text-ceter">enquiry@atmavedayog.com</p>
-                    <p class="text-cnter">WhatsApp : +91 82085 37972</p>
-                    
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/AtmaVeda(334,273).png" width="200" class="img-fluid" >
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="mb-5 text-center" style="font-family: 'Roboto', sans-serif;">Social Media Handel</h4>
+                        <ul class="list-unstyled text-center" style="font-size: 2em">
+                            <li class="d-inline"><a target="_blank" href="https://www.facebook.com/drsadanand.ke.yodhas/"><i class="fab fa-facebook-square fa-3x facebook"></i></a></li>
+                            <li class="d-inline pl-5"><a target="_blank" href="https://www.instagram.com/drsadanand.atmavedayog"><i class="fab fa-instagram fa-3x instagram"></i></a></li>
+                            <li class="d-inline pl-5"><a target="_blank" href="https://twitter.com/ForSadanand?s=09"><i class="fab fa-twitter-square fa-3x tweter"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="font-family: 'Roboto', sans-serif;">
+                        <h4 class="text-cener">Contact Us</h4><br>
+                        <p class="text-cener">Dr. Sadanand Rasal</p>
+                        <p class="text-ceter">enquiry@atmavedayog.com</p>
+                        <p class="text-cnter">WhatsApp : +91 82085 37972</p>
+                        
+                    </div>
                 </div>
             </div>
+            <p class="text-center mt-5 mb-0">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
         </div>
-        <p class="text-center mt-5 mb-0">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
-    </div>
     </div>
 
 
@@ -1279,12 +1279,25 @@
 </html>
 
 <?php 
+    //check for user have filled the details or not
+    $check_detailes_fieled = "SELECT  `problems` FROM `medical_history` WHERE `user_id`='$user_id'";
+    $check_detailes_fieled_run = mysqli_query($con, $check_detailes_fieled);
+    $check_detailes_fieled_res = mysqli_fetch_assoc($check_detailes_fieled_run);
+
     //php for booking appointment
     if(isset($_POST['appoint'])){
         if(isset($_SESSION['user_id'])){
             $consult_type = $_POST['consult_type'];
             $date = $_POST['consult_date'];
             $time = $_POST['time_slots'];
+
+            //check for user have filled the details or not
+            if($check_detailes_fieled_res['problems'] == ""){
+                echo "<script>
+                        alert('Please first Fill the details.');
+                        window.location.href='update_details.php';
+                    </script>";
+            }
 
             echo "<script>
                     window.location.href='payment/consultation_payment.php?type=$consult_type&date=$date&time=$time';
@@ -1301,6 +1314,14 @@
     if(isset($_POST['start_test'])){
         if(isset($_SESSION['user_id'])){
             $test_type = $_POST['test_type'];
+
+            //check for user have filled the details or not
+            if($check_detailes_fieled_res['problems'] == ""){
+                echo "<script>
+                        alert('Please first Fill the details.');
+                        window.location.href='update_details.php';
+                    </script>";
+            }
 
             echo "<script>
                     window.location.href='payment/test_payment.php?type=$test_type';

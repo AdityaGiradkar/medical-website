@@ -181,7 +181,7 @@
                 <div class="col-4 mt-5 pt-4">
                     Bill To - <strong class="text-muted"><?php echo $user_details_res['name']; ?> </strong><br>
                     Email - <strong class="text-muted"><?php echo $user_details_res['email_id']; ?> </strong><br>
-                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> </strong>
+                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> </strong><br>
                     Diagnosis - <strong class="text-muted"><?php echo $treatment_details_res['treatment_for']; ?></strong>
                 </div>
                 <div class="col-3   ">

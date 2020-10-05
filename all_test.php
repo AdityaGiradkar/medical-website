@@ -337,10 +337,26 @@
 </html>
 
 <?php
+
+//check for user have filled the details or not
+$check_detailes_fieled = "SELECT  `problems` FROM `medical_history` WHERE `user_id`='$user_id'";
+$check_detailes_fieled_run = mysqli_query($con, $check_detailes_fieled);
+$check_detailes_fieled_res = mysqli_fetch_assoc($check_detailes_fieled_run);
+
+
     if(isset($_POST['select_test'])){
         if(isset($_SESSION['user_id'])){
             $test_type = $_POST['test_type'];
 
+
+            //check for user have filled the details or not
+            if($check_detailes_fieled_res['problems'] == ""){
+                echo "<script>
+                        alert('Please first Fill the details.');
+                        window.location.href='update_details.php';
+                    </script>";
+            }
+            
             echo "<script>
                     window.location.href='payment/test_payment.php?type=$test_type';
             </script>";

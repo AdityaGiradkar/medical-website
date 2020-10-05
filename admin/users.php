@@ -5,7 +5,7 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
-      $all_user = "SELECT * FROM `user`";
+      $all_user = "SELECT *, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age FROM `user`";
       $all_user_run = mysqli_query($con, $all_user);
 
       //finding total number of new patient
@@ -240,7 +240,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <h6 class="m-0 font-weight-bold text-primary">All Patients</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -266,7 +266,7 @@
                       <th><?php echo $count; ?></th>
                       <td><?php echo $record['name']; ?></td>
                       <td><?php echo $record['gender']; ?></td>
-                      <td>61</td>
+                      <td><?php echo $record['age']; ?></td>
                       <td><?php echo $record['contact_no']; ?></td>
                       <td><?php echo $record['email_id']; ?></td>
                       <td><a href="user_details.php?uid=<?php echo $record['user_id']; ?>">View</a></td>
