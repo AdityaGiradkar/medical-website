@@ -12,7 +12,7 @@
         $user_details_run = mysqli_query($con, $user_details);
         $user_details_res = mysqli_fetch_assoc($user_details_run);
 
-        $treatment_details = "SELECT  `treatment_for`, `date`, `discount`, `fees_status`, `bill_number` FROM `treatment` WHERE `treat_id`='$treatment_id'";
+        $treatment_details = "SELECT  `treatment_for`, `date`, `discount`, `fees_status`, `bill_number`, `courier_charge` FROM `treatment` WHERE `treat_id`='$treatment_id'";
         $treatment_details_run = mysqli_query($con, $treatment_details);
         $treatment_details_res = mysqli_fetch_assoc($treatment_details_run);
 
@@ -102,7 +102,7 @@
         }
 
         $total_payble_amount = $total_price - ($total_price * (int)$treatment_details_res['discount'])/100;
-        $total_payble_amount = $total_payble_amount + 200;
+        $total_payble_amount = (int)($total_payble_amount + $treatment_details_res['courier_charge']);
    
 
 ?>
@@ -209,7 +209,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" class="text-center">Courier Charges </td>
-                            <th class=" text-muted">&#x20B9; <?php echo "200" ?>.00</th>
+                            <th class=" text-muted">&#x20B9; <?php echo $treatment_details_res['courier_charge'] ?>.00</th>
                         </tr>
                         <!-- <tr>
                             <td colspan="2" class="text-center">Received</td>

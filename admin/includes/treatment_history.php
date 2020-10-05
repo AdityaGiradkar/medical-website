@@ -286,7 +286,7 @@
                 
                 <div class="modal-body">
 
-                    <form method="post" action="includes/update_treatment.php?user=<?php echo $user_id; ?>&treatNo=<?php echo $treatment_number; ?>" onsubmit="return confirm('Are you sure you want to submit this treatment?');"
+                    <form method="post" action="includes/update_treatment.php?user=<?php echo $user_id; ?>&treatNo=<?php echo $treatment_number; ?>&treat_name=<?php echo $pre_treatments_res['treatment_for']; ?>" onsubmit="return confirm('Are you sure you want to submit this treatment?');"
                         enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="exampleFormControlFile1">Treatment Name :</label>
@@ -357,9 +357,19 @@
                                 rows="3" required></textarea>
                         </div>
 
-                        <div class="form-group mt-4">
-                          <label for="diet">Discount (In %) : </label>
-                          <input type="number" name="dicount" class="form-control" id="dicount" required>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mt-4">
+                                    <label for="diet">Discount (In %) : </label>
+                                    <input type="number" name="dicount" class="form-control" id="dicount" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mt-4">
+                                    <label for="diet">Courier Charges : </label>
+                                    <input type="number" name="courier" class="form-control" id="courier" required>
+                                </div>
+                            </div>
                         </div>
                             
 

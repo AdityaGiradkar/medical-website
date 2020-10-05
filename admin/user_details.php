@@ -635,9 +635,19 @@
                                 rows="3" required></textarea>
                         </div>
 
-                        <div class="form-group mt-4">
-                            <label for="diet">Discount (In %) : </label>
-                            <input type="number" name="dicount" class="form-control" id="dicount" required>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mt-4">
+                                    <label for="diet">Discount (In %) : </label>
+                                    <input type="number" name="dicount" class="form-control" id="dicount" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mt-4">
+                                    <label for="diet">Courier Charges : </label>
+                                    <input type="number" name="courier" class="form-control" id="courier" required>
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" name="start_treat" class="btn btn-success">start Treatment</button>
                     </form>
@@ -793,6 +803,7 @@
         $extra_note = $_POST['note'];
         $short_name = $_POST['short_name'];
         $discount = (int)$_POST['dicount'];
+        $courier = (int)$_POST['courier'];
 
         //firse check if doctor has added medicines or not 
         //if not then do not run query for insertion of data into database
@@ -922,8 +933,8 @@
             //     $prescription_destination = "files/prescription/".$prescription_new_name;
             //     move_uploaded_file($prescription_tmp_name, $prescription_destination);
 
-        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`) 
-                        VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount')";         
+        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`, `courier_charge`) 
+                        VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount', '$courier')";         
 
         if(mysqli_query($con, $insert_test)) {
             echo "<script>

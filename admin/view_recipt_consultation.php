@@ -54,7 +54,7 @@
     </div>
     <div class="container p-3 border mt-3">
         <div class="printableArea" id="printableArea">
-            <h4 class="text-center text-muted mb-3">Bill/Recipt</h4>
+            <h4 class="text-center text-muted mb-3">Bill/Receipt</h4>
             <div class="row">
                 <div class="col-5">
                     <img src="../images/brand.png" width="300" class="" >

@@ -3,6 +3,7 @@
         include("../../includes/db.php");
         $user_id = (int)$_GET['user'];
         $treat_id = (int)$_GET['treatNo'];
+        $treatment_name = $_GET['treat_name'];
 
         $get_sub_treat_id = "SELECT max(`sub_treat_number`) AS maxSubId FROM `treatment` WHERE `user_id`='$user_id' AND `treat_number`='$treat_id'";
         $get_sub_treat_id_run = mysqli_query($con, $get_sub_treat_id);
@@ -14,7 +15,8 @@
         $report = $_FILES['report'];
         $e_prescription = $_FILES['e-prescription'];
         $extra_note = $_POST['note'];
-        $discount = $_POST['dicount'];
+        $discount = (int)$_POST['dicount'];
+        $courier = (int)$_POST['courier'];
 
         // print_r($diet);
         // print_r($report);
@@ -128,8 +130,8 @@
 
           
 
-        $insert_test ="INSERT INTO `treatment`(`user_id`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`) 
-                        VALUES ('$user_id','$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note', '$database_name_prescription', '$discount')";         
+        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`, `courier_charge`) 
+                        VALUES ('$user_id', '$treatment_name', '$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note', '$database_name_prescription', '$discount', '$courier')";         
 
         if(mysqli_query($con, $insert_test)) {
             echo "<script>
