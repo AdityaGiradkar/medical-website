@@ -535,8 +535,9 @@
 /* social media icon */
 
 .facebook {
-    font-size: 1.2em !important;
-    color: #f5f8fa;
+    font-size: .8em !important;
+    ;
+    color: #bfbfbf;
     transition: 0.3s;
 }
 
@@ -545,8 +546,9 @@
 }
 
 .instagram {
-    font-size: 1.2em !important;
-    color: #f5f8fa;
+    font-size: .8em !important;
+    ;
+    color: #bfbfbf;
     transition: 0.3s;
 }
 
@@ -555,8 +557,9 @@
 }
 
 .tweter {
-    font-size: 1.2em !important;
-    color: #f5f8fa;
+    font-size: .8em !important;
+    ;
+    color: #bfbfbf;
     transition: 0.3s;
 }
 

@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include('includes/db.php');
+$user_id = $_SESSION['user_id'];
 
 
 
@@ -263,31 +264,31 @@ include('includes/db.php');
 
     </div>
 
-    <div class="bg-dark pt-5 pb-4" style="paddig:2%; margin-bottom:-24px;color:white;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <img src="images/AtmaVeda(334,273).png" width="200" class="img-fluid" >
-                </div>
-                <div class="col-md-6">
-                    <h4 class="mb-5 text-center" style="font-family: 'Roboto', sans-serif;">Social Media Handel</h4>
-                    <ul class="list-unstyled text-center" style="font-size: 2em">
-                        <li class="d-inline"><a target="_blank" href="https://www.facebook.com/drsadanand.ke.yodhas/"><i class="fab fa-facebook-square fa-3x facebook"></i></a></li>
-                        <li class="d-inline pl-5"><a target="_blank" href="https://www.instagram.com/drsadanand.atmavedayog"><i class="fab fa-instagram fa-3x instagram"></i></a></li>
-                        <li class="d-inline pl-5"><a target="_blank" href="https://twitter.com/ForSadanand?s=09"><i class="fab fa-twitter-square fa-3x tweter"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3" style="font-family: 'Roboto', sans-serif;">
-                    <h4 class="text-cener">Contact Us</h4><br>
-                    <p class="text-cener">Dr. Sadanand Rasal</p>
-                    <p class="text-ceter">enquiry@atmavedayog.com</p>
-                    <p class="text-cnter">WhatsApp : +91 82085 37972</p>
-                    
+    <div class="bg-dark pt-4 pb-3" style="paddig:2%; margin-bottom:-24px;color:white;">
+            <div class="container">
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <img src="images/AtmaVeda(334,273).png" width="150" class="img-fluid d-block mx-auto" >
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="mb-4 text-center" style="font-family: 'Roboto', sans-serif; font-size:16px">Social Media Handel</h4>
+                        <ul class="list-unstyled text-center" style="font-size: 2em">
+                            <li class="d-inline"><a target="_blank" href="https://www.facebook.com/drsadanand.ke.yodhas/"><i class="fab fa-facebook-square fa-2x facebook"></i></a></li>
+                            <li class="d-inline pl-5"><a target="_blank" href="https://www.instagram.com/drsadanand.atmavedayog"><i class="fab fa-instagram fa-2x instagram"></i></a></li>
+                            <li class="d-inline pl-5"><a target="_blank" href="https://twitter.com/ForSadanand?s=09"><i class="fab fa-twitter-square fa-2x tweter"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="font-family: 'Roboto', sans-serif;">
+                        <h4 class="text-cener" style=" font-size:16px">Contact Us</h4><br>
+                        <p class="text-cener" style=" font-size:12px; color:#bfbfbf">Dr. Sadanand Rasal</p>
+                        <p class="text-ceter" style=" font-size:12px; color:#bfbfbf">enquiry@atmavedayog.com</p>
+                        <p class="text-cnter" style=" font-size:12px; color:#bfbfbf">WhatsApp : +91 82085 37972</p>
+                        
+                    </div>
                 </div>
             </div>
+            <p class="text-center mt-0 mb-0" style=" font-size:12px">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
         </div>
-        <p class="text-center mt-5 mb-0">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
-    </div>
 
 
 
