@@ -69,8 +69,11 @@
                             <a href="#blogs" class=" nav-link li-header mr-3">Blogs</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="li-header nav-link mr-3" disabled>Shop</a>
+                            <a href="#" data-target="#banner_covid" data-toggle="modal" class="li-header nav-link mr-3">Covid-19</a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a href="#" class="li-header nav-link mr-3" disabled>Shop</a>
+                        </li> -->
                         <?php if(!isset($_SESSION['user_id'])){ ?>
                         <li class="nav-item">
                             <a href="login.php" class="li-header nav-link">Login</a>
@@ -1123,29 +1126,25 @@
         </div>
 
         <div class="bg-dark pt-4 pb-3" style="paddig:2%; margin-bottom:-24px;color:white;">
-            <div class="container">
-                <div class="row mt-3">
-                    <div class="col-md-3">
-                        <img src="images/AtmaVeda(334,273).png" width="150" class="img-fluid  d-block mx-auto" >
+            <div class="container-fluid">
+                <div class="row mt-2">
+                    <div class="col-md-4 mt-3 ">
+                        <p class="text-center" style=" font-size:12px;color:#bfbfbf">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. All rights reserved &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
                     </div>
-                    <div class="col-md-6">
-                        <h4 class="mb-4 text-center" style="font-family: 'Roboto', sans-serif; font-size:16px">Social Media Handel</h4>
-                        <ul class="list-unstyled text-center" style="font-size: 2em">
-                            <li class="d-inline"><a target="_blank" href="https://www.facebook.com/drsadanand.ke.yodhas/"><i class="fab fa-facebook-square fa-2x facebook"></i></a></li>
-                            <li class="d-inline pl-5"><a target="_blank" href="https://www.instagram.com/drsadanand.atmavedayog"><i class="fab fa-instagram fa-2x instagram"></i></a></li>
-                            <li class="d-inline pl-5"><a target="_blank" href="https://twitter.com/ForSadanand?s=09"><i class="fab fa-twitter-square fa-2x tweter"></i></a></li>
-                        </ul>
+                    <div class="col-md-4">
+                        <img src="images/AtmaVeda(334,273).png" width="80" class="img-fluid  d-block mx-auto" >
                     </div>
-                    <div class="col-md-3" style="font-family: 'Roboto', sans-serif;">
-                        <h4 class="text-cener" style=" font-size:16px">Contact Us</h4><br>
-                        <p class="text-cener" style=" font-size:12px; color:#bfbfbf">Dr. Sadanand Rasal</p>
-                        <p class="text-ceter" style=" font-size:12px; color:#bfbfbf">enquiry@atmavedayog.com</p>
-                        <p class="text-cnter" style=" font-size:12px; color:#bfbfbf">WhatsApp : +91 82085 37972</p>
-                        
+                    <div class="col-md-4" style="font-family: 'Roboto', sans-serif;">
+                        <p class="text-ceter d-inline-block" style=" font-size:13px; color:#bfbfbf">enquiry@atmavedayog.com &nbsp; &nbsp;|&nbsp; &nbsp; 
+                            <ul class="list-unstyled text-center d-inline-block" style="font-size: 2em">
+                                <li class="d-inline"><a target="_blank" href="https://www.facebook.com/drsadanand.ke.yodhas/"><i class="fab fa-facebook-square fa-2x facebook"></i></a></li>
+                                <li class="d-inline pl-3"><a target="_blank" href="https://www.instagram.com/drsadanand.atmavedayog"><i class="fab fa-instagram fa-2x instagram"></i></a></li>
+                                <li class="d-inline pl-3"><a target="_blank" href="https://twitter.com/ForSadanand?s=09"><i class="fab fa-twitter-square fa-2x tweter"></i></a></li>
+                            </ul>
+                        </p>
                     </div>
                 </div>
             </div>
-            <p class="text-center mt-0 mb-0" style=" font-size:12px">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
         </div>
     </div>
 
@@ -1285,10 +1284,12 @@
 </html>
 
 <?php 
+if(isset($_SESSION['user_id'])){
     //check for user have filled the details or not
     $check_detailes_fieled = "SELECT  `problems` FROM `medical_history` WHERE `user_id`='$user_id'";
     $check_detailes_fieled_run = mysqli_query($con, $check_detailes_fieled);
     $check_detailes_fieled_res = mysqli_fetch_assoc($check_detailes_fieled_run);
+}
 
     //php for booking appointment
     if(isset($_POST['appoint'])){
