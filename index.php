@@ -1149,6 +1149,7 @@
     </div>
 
 
+    
     <!-- Modal for appointment -->
     <?php 
         $minAvailableDate = "SELECT MAX(`date`) AS maxDate FROM `consultation_time` WHERE `assigned_user`=0";
@@ -1164,48 +1165,43 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <h5 class="modal-title brand-name" id="exampleModalLongTitle">BOOK AN APPOINTMENT</h5>
                 </div>
+                <?php 
+                    $consultations = "SELECT * FROM `consult_type`";
+                    $consultations_run = mysqli_query($con, $consultations);                    
+                ?>
                 <div class="modal-body">
-                    <p class="card-title mx-auto brand-name">BOOK AN APPOINTMENT</p>
+                    <!-- <p class="card-title mx-auto brand-name">BOOK AN APPOINTMENT</p> -->
                     <form method="post" action="">
-                        <div class="form-check pt-3 pb-3">
-                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type1"
-                                value="1" required>
-                            <label class="form-check-label" for="consult_type1">
-                                General Consultation
+                    <?php
+                    $count = 1;
+                        while($consultations_res = mysqli_fetch_assoc($consultations_run)){
+                            if($consultations_res['id'] <= 3){
+                    ?>
+                        <div class="form-check pt-2 pb-3">
+                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type<?php echo $count; ?>"
+                                value="<?php echo $consultations_res['id']; ?>" required>
+                            <label class="form-check-label" for="consult_type<?php echo $count; ?>">
+                                <?php echo $consultations_res['name']; ?>
                             </label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
-                                title="General Consultation" data-content="Consult online and seek advice treatment for general issues. 25 years experience of general practise as family physician and general practitioner."><i
+                                title="<?php echo $consultations_res['name']; ?>" data-content="<?php echo $consultations_res['consult_info']; ?>"><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
-                        <div class="form-check pb-3">
-                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type2"
-                                value="2">
-                            <label class="form-check-label" for="consult_type2">
-                                Holistic Pre-program Counselling
-                            </label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
-                                title="Holistic Pre-program Counselling" data-content="Want to know about our treatment?, want to know your decision to choose is right?. want to discuss your health programme with us? want to show your reports? want to seek holistic perspective?  take our counselling pre programme session."><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type3"
-                                value="3">
-                            <label class="form-check-label" for="consult_type3">
-                                Advanced Holistic Consultation
-                            </label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
-                                title="Advanced Holistic Consultation" data-content="Specialized personal consultation includes advice and prescription of,<ol><li>medical consultation and prescription</li> <li>yogic consultation and advice</li> <li>holsitic diet prescription and reciepe</li> <li>atma veda yog session</li>"><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
+                    <?php 
+                        $count++;
+                            }
+                        }
+                    ?>
                         <div class="form-group mt-5 mb-4">
                             <!-- <label for="exampleInputEmail1">Username</label> -->
                             <input type="date" class="form-control input-box" name="consult_date"
-                                onchange="availableSlots(this.value)" id="datepicker" min="<?php echo date("Y-m-d"); ?>"
+                                onchange="availableSlots(this.value, 1)" id="datepicker" min="<?php echo date("Y-m-d"); ?>"
                                 max="<?php echo $maxDate['maxDate']; ?>" required>
                         </div>
                         <div class="form-group">
-                            <select class="form-control input-box" id="time_slots" name="time_slots" required>
+                            <select class="form-control input-box" id="time_slots1" name="time_slots" required>
                                 <!-- data will be fetched in real time by using AJAX -->
                             </select>
                         </div>
@@ -1219,6 +1215,66 @@
         </div>
     </div>
     <!-- Modal for appointment -->
+
+
+    <!-- Modal for Covid appointment -->
+    <div class="modal fade" id="Covid_Appointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title brand-name" id="exampleModalLongTitle">BOOK AN APPOINTMENT</h5>
+                </div>
+                <?php 
+                    $consultations = "SELECT * FROM `consult_type`";
+                    $consultations_run = mysqli_query($con, $consultations);                    
+                ?>
+                <div class="modal-body">
+                    <!-- <p class="card-title mx-auto brand-name">BOOK AN APPOINTMENT</p> -->
+                    <form method="post" action="">
+                    <?php
+                        $count = 4;
+                        while($consultations_res = mysqli_fetch_assoc($consultations_run)){
+                            if($consultations_res['id'] > 3 ){
+                    ?>
+                        <div class="form-check pt-2 pb-3">
+                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type<?php echo $count; ?>"
+                                value="<?php echo $consultations_res['id']; ?>" required>
+                            <label class="form-check-label" for="consult_type<?php echo $count; ?>">
+                                <?php echo $consultations_res['name']; ?>
+                            </label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
+                                title="<?php echo $consultations_res['name']; ?>" data-content="<?php echo $consultations_res['consult_info']; ?>"><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                    <?php 
+                        $count++;
+                            }
+                        }
+                    ?>
+                        <div class="form-group mt-5 mb-4">
+                            <!-- <label for="exampleInputEmail1">Username</label> -->
+                            <input type="date" class="form-control input-box" name="consult_date"
+                                onchange="availableSlots(this.value, 2)" id="datepicker" min="<?php echo date("Y-m-d"); ?>"
+                                max="<?php echo $maxDate['maxDate']; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control input-box" id="time_slots2" name="time_slots" required>
+                                <!-- data will be fetched in real time by using AJAX -->
+                            </select>
+                        </div>
+
+                        <button type="submit" class="login-btn mt-5" style="color:white;font-size: 18px;"
+                            name="appoint">Book an
+                            Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- modal for test selection -->
     <div class="modal fade" id="select_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -1292,6 +1348,32 @@ if(isset($_SESSION['user_id'])){
 }
 
     //php for booking appointment
+    if(isset($_POST['appoint'])){
+        if(isset($_SESSION['user_id'])){
+            $consult_type = $_POST['consult_type'];
+            $date = $_POST['consult_date'];
+            $time = $_POST['time_slots'];
+
+            //check for user have filled the details or not
+            if($check_detailes_fieled_res['problems'] == ""){
+                echo "<script>
+                        alert('Please first Fill the details.');
+                        window.location.href='update_details.php';
+                    </script>";
+            }
+
+            echo "<script>
+                    window.location.href='payment/consultation_payment.php?type=$consult_type&date=$date&time=$time';
+            </script>";
+        } else {
+            echo "<script>
+                alert('Please login first.');
+                window.location.href='login.php';
+            </script>";
+        }
+    }
+
+    //php for booking Covid appointment
     if(isset($_POST['appoint'])){
         if(isset($_SESSION['user_id'])){
             $consult_type = $_POST['consult_type'];
@@ -1410,8 +1492,13 @@ if(isset($_SESSION['user_id'])){
         $('#Appointment').modal('show');
     });
 
+    $('body').on('click', '.info-modal-btn_covid', function() {
+        $('.info-modal').modal('hide');
+        $('#Covid_Appointment').modal('show');
+    });
 
-    function availableSlots(date) {
+
+    function availableSlots(date, id) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -1424,7 +1511,7 @@ if(isset($_SESSION['user_id'])){
                     htmlSlotsOption = htmlSlotsOption + "<option value='" + item.time_range + "'>" + item
                         .time_range + "</option>";
                 }
-                document.getElementById("time_slots").innerHTML = htmlSlotsOption;
+                document.getElementById("time_slots"+id).innerHTML = htmlSlotsOption;
 
                 // console.log(slots_array);
             }

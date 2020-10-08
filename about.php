@@ -306,21 +306,33 @@ if(isset($_SESSION['user_id'])){
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                <?php 
+                    $consultations = "SELECT * FROM `consult_type`";
+                    $consultations_run = mysqli_query($con, $consultations);
+
+                ?>
                 <div class="modal-body">
                     <p class="card-title mx-auto brand-name">BOOK AN APPOINTMENT</p>
                     <form method="post" action="">
-                        <div class="form-check pt-3 pb-3">
-                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type1"
-                                value="1" required>
-                            <label class="form-check-label" for="consult_type1">
-                                General Consultation
-                            </label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="General Consultation"
-                                data-content="consult online and seek advice treatment for general issues. 25 years experience of general practise as family physician and general practitioner."><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
-                        <div class="form-check pb-3">
+                        <?php
+                        $count = 1;
+                            while($consultations_res = mysqli_fetch_assoc($consultations_run)){
+                        ?>
+                            <div class="form-check pt-2 pb-3">
+                                <input class="form-check-input" type="radio" name="consult_type" id="consult_type<?php echo $count; ?>"
+                                    value="<?php echo $consultations_res['id']; ?>" required>
+                                <label class="form-check-label" for="consult_type<?php echo $count; ?>">
+                                    <?php echo $consultations_res['name']; ?>
+                                </label>
+                                <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
+                                    title="<?php echo $consultations_res['name']; ?>" data-content="<?php echo $consultations_res['consult_info']; ?>"><i
+                                        class="fas fa-info-circle"></i></a>
+                            </div>
+                        <?php 
+                            $count++;
+                            }
+                        ?>
+                        <!-- <div class="form-check pb-3">
                             <input class="form-check-input" type="radio" name="consult_type" id="consult_type2"
                                 value="2">
                             <label class="form-check-label" for="consult_type2">
@@ -341,7 +353,7 @@ if(isset($_SESSION['user_id'])){
                                 title="Advanced Holistic Consultation"
                                 data-content="Specialized personal consultation includes advice and prescription of, 1. medical consultation and prescription, 2. yogic consultation and advice, 3. holsitic diet prescription and reciepe, 4. atma veda yog session"><i
                                     class="fas fa-info-circle"></i></a>
-                        </div>
+                        </div> -->
                         <div class="form-group mt-5 mb-4">
                             <!-- <label for="exampleInputEmail1">Username</label> -->
                             <input type="date" class="form-control input-box" name="consult_date"

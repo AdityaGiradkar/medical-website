@@ -454,7 +454,7 @@
                     <li><b>Yog-E @PostCovid Health: </b>Treatment programmes for Post-COVID19 management is also offered through. We diagnose, treat and prevent Post-COVID complication and health issues.</li>
                 </ol>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_covid" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -1371,7 +1371,7 @@
                     <li><b>Yog-E @PostCovid Health: </b>Treatment programmes for Post-COVID19 management is also offered through. We diagnose, treat and prevent Post-COVID complication and health issues.</li>
                 </ol>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_covid" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
