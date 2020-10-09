@@ -1087,7 +1087,7 @@
         </div>
 
         <?php 
-            $all_blogs ="SELECT * FROM `blogs`";
+            $all_blogs ="SELECT * FROM `blogs` ORDER BY `blog_id` DESC";
             $all_blogs_run = mysqli_query($con, $all_blogs);
              
         ?>
@@ -1275,8 +1275,10 @@
             </div>
         </div>
     </div>
-
     <!-- Modal for Covid appointment -->
+
+
+    <!-- Modal for Yoga appointment -->
     <div class="modal fade" id="yoga_Appointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -1334,6 +1336,8 @@
             </div>
         </div>
     </div>
+    <!-- Modal for Yoga appointment -->
+
 
     <!-- modal for test selection -->
     <div class="modal fade" id="select_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -1379,8 +1383,10 @@
     </div>
     <!-- modal for test selection -->
 
+
     <!-- Include all modal html -->
     <?php include("includes/modal.php"); ?>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

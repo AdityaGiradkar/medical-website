@@ -152,13 +152,13 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
-          <span>Blogs</span>
+          <span>Blogs & Videos</span>
         </a>
         <div id="collapseBlogs" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Blogs Section:</h6>
-            <a class="collapse-item" href="blogs_table.php">All Blogs</a>
-            <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
+            <h6 class="collapse-header">Blogs & Videos:</h6>
+            <a class="collapse-item" href="blogs_table.php">All Blogs & Videos</a>
+            <a class="collapse-item" href="add_blogs.php">Add Blogs & Videos</a>
           </div>
         </div>
       </li>

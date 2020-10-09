@@ -148,13 +148,13 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
-          <span>Blogs</span>
+          <span>Blogs & Videos</span>
         </a>
         <div id="collapseBlogs" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Blogs Section:</h6>
-            <a class="collapse-item" href="blogs_table.php">All Blogs</a>
-            <a class="collapse-item active" href="add_blogs.php">Add Blogs</a>
+            <h6 class="collapse-header">Blogs & Videos:</h6>
+            <a class="collapse-item" href="blogs_table.php">All Blogs & Videos</a>
+            <a class="collapse-item active" href="add_blogs.php">Add Blog & Video</a>
           </div>
         </div>
       </li>
@@ -228,19 +228,19 @@
         <div class="container-fluid main-top main-left">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <h1 class="h3 mb-4 text-gray-800">Add Blogs / Videos</h1>
 
 
           <form method="post" enctype="multipart/form-data">
             <div class="form-group">
-              <label for="blog_name">Blog Name</label>
+              <label for="blog_name">Blog / Video Name</label>
               <input type="text" class="form-control" id="blog_name" name="blog_name" aria-describedby="emailHelp"
                 required>
             </div>
             <div class="row pt-3">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="blog_link">Blog Link</label>
+                  <label for="blog_link">Blog / video Link</label>
                   <textarea class="form-control" id="blog_link" name="blog_link" rows="3"></textarea>
                 </div>
               </div>

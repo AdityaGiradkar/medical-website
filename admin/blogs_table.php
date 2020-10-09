@@ -10,7 +10,7 @@
       //             FROM `user` RIGHT JOIN `user-answer` 
       //             ON `user`.`user_id`=`user-answer`.`user_id`  
       //             ORDER BY `user-answer`.`time`";
-      $all_blogs = "SELECT * FROM `blogs`";
+      $all_blogs = "SELECT * FROM `blogs` ORDER BY `blog_id` DESC";
       $all_blogs_run = mysqli_query($con, $all_blogs);
 
       //finding total number of new patient
@@ -158,13 +158,13 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
-          <span>Blogs</span>
+          <span>Blogs & Videos</span>
         </a>
         <div id="collapseBlogs" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Blogs Section:</h6>
-            <a class="collapse-item active" href="blogs_table.php">All Blogs</a>
-            <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
+            <h6 class="collapse-header">Blogs & Videos:</h6>
+            <a class="collapse-item active" href="blogs_table.php">All Blogs & Videos</a>
+            <a class="collapse-item" href="add_blogs.php">Add Blogs & Videos</a>
           </div>
         </div>
       </li>
@@ -245,13 +245,13 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p>All are patients.</p>
+          
 
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <h6 class="m-0 font-weight-bold text-primary">List of All Blogs / Videos</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -259,9 +259,9 @@
                   <thead>
                     <tr>
                       <th>Sr. No.</th>
-                      <th>Blog Name</th>
-                      <th>Blog Link</th>
-                      <th>Cover Image</th>
+                      <th>Blog / Video Name</th>
+                      <th>Blog / Video Link</th>
+                      <th>Cover Image </th>
                       <th>Small Discription</th>
                       <th>Edit</th>
                       <th>Delete</th>

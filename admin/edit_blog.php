@@ -153,13 +153,13 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseBlogs" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-pills"></i>
-          <span>Blogs</span>
+          <span>Blogs & Videos</span>
         </a>
         <div id="collapseBlogs" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Blogs Section:</h6>
-            <a class="collapse-item active" href="blogs_table.php">All Blogs</a>
-            <a class="collapse-item" href="add_blogs.php">Add Blogs</a>
+            <h6 class="collapse-header">Blogs & Videos:</h6>
+            <a class="collapse-item active" href="blogs_table.php">All Blogs & Videos</a>
+            <a class="collapse-item" href="add_blogs.php">Add Blogs & Videos</a>
           </div>
         </div>
       </li>
@@ -238,19 +238,19 @@
         <div class="container-fluid main-top main-left">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <h1 class="h3 mb-4 text-gray-800">Edit Blog / Video Details</h1>
 
 
           <form method="post" enctype="multipart/form-data">
             <div class="form-group">
-              <label for="blog_name">Blog Name</label>
+              <label for="blog_name">Blog / Video Name</label>
               <input type="text" class="form-control" id="blog_name" name="blog_name"
                 value="<?php echo $result['blog_name']; ?>" aria-describedby="emailHelp" required>
             </div>
             <div class="row pt-3">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label for="blog_link">Blog Link</label>
+                  <label for="blog_link">Blog / Video Link</label>
                   <textarea class="form-control" id="blog_link" name="blog_link"
                     rows="3"><?php echo $result['blog_link']; ?></textarea>
                 </div>
@@ -264,9 +264,10 @@
               </div>
             </div>
             <div class="form-group mt-3">
-              <label for="cover_image">Cover Photo</label><br>
-              <img src="img/blog_images/<?php echo $result['cover_img']; ?>" width="200" />
-              <input type="file" class="form-control-file mt-3" id="cover_image" name="cover_image">
+              <label for="">Current Cover Photo</label><br>
+              <img src="img/blog_images/<?php echo $result['cover_img']; ?>" width="200" /><br><br>
+              <label for="cover_image">Select New</label>
+              <input type="file" class="form-control-file " id="cover_image" name="cover_image">
             </div>
             <button type="submit" name="add_blog" class="btn btn-primary mt-3">Add Blog</button>
           </form>
