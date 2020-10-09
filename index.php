@@ -1373,32 +1373,6 @@ if(isset($_SESSION['user_id'])){
         }
     }
 
-    //php for booking Covid appointment
-    if(isset($_POST['appoint'])){
-        if(isset($_SESSION['user_id'])){
-            $consult_type = $_POST['consult_type'];
-            $date = $_POST['consult_date'];
-            $time = $_POST['time_slots'];
-
-            //check for user have filled the details or not
-            if($check_detailes_fieled_res['problems'] == ""){
-                echo "<script>
-                        alert('Please first Fill the details.');
-                        window.location.href='update_details.php';
-                    </script>";
-            }
-
-            echo "<script>
-                    window.location.href='payment/consultation_payment.php?type=$consult_type&date=$date&time=$time';
-            </script>";
-        } else {
-            echo "<script>
-                alert('Please login first.');
-                window.location.href='login.php';
-            </script>";
-        }
-    }
-
     // Php for taking test
     if(isset($_POST['start_test'])){
         if(isset($_SESSION['user_id'])){
