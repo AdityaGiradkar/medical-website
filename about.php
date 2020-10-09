@@ -377,7 +377,7 @@ if(isset($_SESSION['user_id'])){
                     <?php
                         $count = 4;
                         while($consultations_res = mysqli_fetch_assoc($consultations_run)){
-                            if($consultations_res['id'] > 3 ){
+                            if($consultations_res['id'] > 3 && $consultations_res['id'] < 7){
                     ?>
                         <div class="form-check pt-2 pb-3">
                             <input class="form-check-input" type="radio" name="consult_type" id="consult_type<?php echo $count; ?>"

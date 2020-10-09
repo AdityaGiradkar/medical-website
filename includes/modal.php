@@ -1008,7 +1008,7 @@
                 <p>Contact us for details.</p>
                 <h6>Duration - 1 month</h6>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -1033,7 +1033,7 @@
                 <p>As and when interest of clients will happen in classical traditional yoga. they can enrol themselves for further advanced yog programmes.</p>
                 <h6>Duration - 6 months</h6>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -1060,7 +1060,7 @@
                     and asses your stress pre and post programme to make you feel the benefit of our programme.</p>
                 <h6>Duration- 1 month</h6>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -1086,7 +1086,7 @@
                 <p>train yourself in a combination of plyometry, pilates, strength training  and then learn modified yoga that will be youthful and full of exuberance.</p>
                 <h6>Duration -6 months</h6>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -1114,7 +1114,7 @@
                 </p>
                 <h6>Duration:- 9 months</h6>
             </div>
-            <button type="submit" class="login-btn mt-5 info-modal-btn" style="color:white;font-size: 18px;"
+            <button type="submit" class="login-btn mt-5 info-modal-btn_yoga" style="color:white;font-size: 18px;"
                 name="start_test">BOOK AN APPOINTMNET</button>
         </div>
     </div>
@@ -1142,7 +1142,7 @@
                 <p>traditional yoga incorporating the teaching of indriya daman and indriya shakti niyantran. undersstanding shakti and shakti yoga from sparsh or physical and spiritual touch.</p>
                 <h6>Duration :- 9 months</h6>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -1180,7 +1180,7 @@
                 <p>Those with patience and sill to have a anushashit proyoga will be benefited from this programme.</p>
                 <h6>Duration :- 12 months</h6>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -1217,7 +1217,7 @@
                 </p>
                 <h6>Duration:- 15 months</h6>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -1240,7 +1240,7 @@
                 <p>a perfect programme to unveil the power of yoga. A modern perspective of yoga. A complete training of advanced yoga.</p>
                 <h6>Duration:-9 months</h6>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>

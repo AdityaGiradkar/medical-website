@@ -1168,7 +1168,7 @@
                     <h5 class="modal-title brand-name" id="exampleModalLongTitle">BOOK AN APPOINTMENT</h5>
                 </div>
                 <?php 
-                    $consultations = "SELECT * FROM `consult_type`";
+                    $consultations = "SELECT * FROM `consult_type` WHERE `id`<4";
                     $consultations_run = mysqli_query($con, $consultations);                    
                 ?>
                 <div class="modal-body">
@@ -1177,7 +1177,7 @@
                     <?php
                     $count = 1;
                         while($consultations_res = mysqli_fetch_assoc($consultations_run)){
-                            if($consultations_res['id'] <= 3){
+                            // if($consultations_res['id'] <= 3){
                     ?>
                         <div class="form-check pt-2 pb-3">
                             <input class="form-check-input" type="radio" name="consult_type" id="consult_type<?php echo $count; ?>"
@@ -1191,7 +1191,7 @@
                         </div>
                     <?php 
                         $count++;
-                            }
+                            // }
                         }
                     ?>
                         <div class="form-group mt-5 mb-4">
@@ -1229,7 +1229,7 @@
                     <h5 class="modal-title brand-name" id="exampleModalLongTitle">BOOK AN APPOINTMENT</h5>
                 </div>
                 <?php 
-                    $consultations = "SELECT * FROM `consult_type`";
+                    $consultations = "SELECT * FROM `consult_type` WHERE `id`>3 AND `id`<7";
                     $consultations_run = mysqli_query($con, $consultations);                    
                 ?>
                 <div class="modal-body">
@@ -1238,7 +1238,7 @@
                     <?php
                         $count = 4;
                         while($consultations_res = mysqli_fetch_assoc($consultations_run)){
-                            if($consultations_res['id'] > 3 ){
+                            // if($consultations_res['id'] > 3 & $consultations_res['id'] < 7){
                     ?>
                         <div class="form-check pt-2 pb-3">
                             <input class="form-check-input" type="radio" name="consult_type" id="consult_type<?php echo $count; ?>"
@@ -1252,7 +1252,7 @@
                         </div>
                     <?php 
                         $count++;
-                            }
+                            // }
                         }
                     ?>
                         <div class="form-group mt-5 mb-4">
@@ -1263,6 +1263,65 @@
                         </div>
                         <div class="form-group">
                             <select class="form-control input-box" id="time_slots2" name="time_slots" required>
+                                <!-- data will be fetched in real time by using AJAX -->
+                            </select>
+                        </div>
+
+                        <button type="submit" class="login-btn mt-5" style="color:white;font-size: 18px;"
+                            name="appoint">Book an
+                            Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Covid appointment -->
+    <div class="modal fade" id="yoga_Appointment" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title brand-name" id="exampleModalLongTitle">BOOK AN APPOINTMENT</h5>
+                </div>
+                <?php 
+                    $consultations = "SELECT * FROM `consult_type` WHERE `id`=7";
+                    $consultations_run = mysqli_query($con, $consultations);                    
+                ?>
+                <div class="modal-body">
+                    <!-- <p class="card-title mx-auto brand-name">BOOK AN APPOINTMENT</p> -->
+                    <form method="post" action="">
+                    <?php
+                        $count = 7;
+                        while($consultations_res = mysqli_fetch_assoc($consultations_run)){
+                            // if($consultations_res['id'] == 7 ){
+                    ?>
+                        <div class="form-check pt-2 pb-3">
+                            <input class="form-check-input" type="radio" name="consult_type" id="consult_type<?php echo $count; ?>"
+                                value="<?php echo $consultations_res['id']; ?>" required>
+                            <label class="form-check-label" for="consult_type<?php echo $count; ?>">
+                                <?php echo $consultations_res['name']; ?>
+                            </label>
+                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus" data-html="true"
+                                title="<?php echo $consultations_res['name']; ?>" data-content="<?php echo $consultations_res['consult_info']; ?>"><i
+                                    class="fas fa-info-circle"></i></a>
+                        </div>
+                    <?php 
+                        $count++;
+                            // }
+                        }
+                    ?>
+                        <div class="form-group mt-5 mb-4">
+                            <!-- <label for="exampleInputEmail1">Username</label> -->
+                            <input type="date" class="form-control input-box" name="consult_date"
+                                onchange="availableSlots(this.value, 3)" id="datepicker" min="<?php echo date("Y-m-d"); ?>"
+                                max="<?php echo $maxDate['maxDate']; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control input-box" id="time_slots3" name="time_slots" required>
                                 <!-- data will be fetched in real time by using AJAX -->
                             </select>
                         </div>
@@ -1469,6 +1528,11 @@ if(isset($_SESSION['user_id'])){
     $('body').on('click', '.info-modal-btn_covid', function() {
         $('.info-modal').modal('hide');
         $('#Covid_Appointment').modal('show');
+    });
+
+    $('body').on('click', '.info-modal-btn_yoga', function() {
+        $('.info-modal').modal('hide');
+        $('#yoga_Appointment').modal('show');
     });
 
 
