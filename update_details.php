@@ -29,7 +29,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Edit Question</title>
+  <title>User Details</title>
 
   <!-- Custom fonts for this template-->
   <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -198,6 +198,11 @@
           <form method="post">
             <!-- Page Heading -->
             <h2 class="h4 mb-3 text-gray-800">Personal Details</h2>
+            <div class="form-group">
+              <label for="exampleInputEmail1">User Name</label>
+              <input type="text" class="form-control" value="<?php echo $user_details_res['user_name']; ?>" name="u_name" id="u_name"
+                aria-describedby="emailHelp">
+            </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">Email address</label>
@@ -587,6 +592,7 @@
 
 <?php 
   if(isset($_POST['update'])){
+    $u_name           = mysqli_real_escape_string($con, $_POST['u_name']); 
     $name             = mysqli_real_escape_string($con, $_POST['name']);
     $father_name      = mysqli_real_escape_string($con, $_POST['father_name']);
     $gender           = mysqli_real_escape_string($con, $_POST['gender']);
@@ -620,7 +626,7 @@
     //flag1 is 1 if user profile update sucessfully similarly in flag2 when medical history update sucess
     $flag1 = 0;
     $update_user = "UPDATE `user` 
-                    SET `name`='$name',`father_name`='$father_name',`gender`='$gender',`contact_no`='$contact',`dob`='$dob',`married`='$married',`working`='$working',`address`='$address' 
+                    SET `user_name`='$u_name',`name`='$name',`father_name`='$father_name',`gender`='$gender',`contact_no`='$contact',`dob`='$dob',`married`='$married',`working`='$working',`address`='$address' 
                     WHERE `user_id`='$user_id'";
     $update_user_run = mysqli_query($con, $update_user);
     if(mysqli_affected_rows($con)){

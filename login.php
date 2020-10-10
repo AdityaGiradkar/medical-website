@@ -3,9 +3,9 @@
     session_start();
     if(!isset($_SESSION['user_id'])) {
         if(isset($_POST['submit'])){
-            $email = mysqli_real_escape_string($con, $_POST['email']);
+            $u_name = mysqli_real_escape_string($con, $_POST['u_name']);
             $pass = mysqli_real_escape_string($con, $_POST['pass']);
-            $qry = "SELECT * FROM `user` WHERE `email_id` = '$email' AND `password` = '$pass'";
+            $qry = "SELECT * FROM `user` WHERE `user_name` = '$u_name' AND `password` = '$pass'";
             $run = mysqli_query($con, $qry);
             $row = mysqli_num_rows($run);
             $record = mysqli_fetch_array($run);
@@ -14,6 +14,7 @@
                 if($record['verified'] == 1){
                     //account is verified procced further
                     $_SESSION['user_id'] = $record['user_id'];
+                    $_SESSION['u_name'] = $record['user_name'];
                     $_SESSION['name'] = $record['name'];
                     $_SESSION['email'] = $record['email_id'];
                     $_SESSION['mobile'] = $record['contact_no'];
@@ -34,7 +35,7 @@
             }else{
                 ?>
                 <script>
-                    alert("User id or password wrong.")
+                    alert("User id or password is wrong.")
                 </script>
                 <?php
             }
@@ -71,7 +72,7 @@
                 <form method="post" action="">
                     <div class="form-group mt-5 mb-4">
                         <!-- <label for="exampleInputEmail1">Username</label> -->
-                        <input type="text" class="form-control input-box" placeholder="Username or Email" name="email"
+                        <input type="text" class="form-control input-box" placeholder="Username" name="u_name"
                             id="exampleInputEmail1">
                     </div>
                     <div class="form-group">
@@ -79,7 +80,7 @@
                         <input type="password" class="form-control input-box" placeholder="Password" name="pass"
                             id="exampleInputPassword1">
                     </div>
-                    <a href="#"><small class="form-text text-muted text-right"><em>Forget Password ?</em></small></a>
+                    <a href="forget_pass.php"><small class="form-text text-muted text-right"><em>Forget Password ?</em></small></a>
                     <button type="submit" class="login-btn mt-5" name="submit">LOGIN</button>
                 </form>
                 <small class="form-text text-center mt-5"><em>Not an existing user ?</em> <a href="register.php">Create
