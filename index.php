@@ -135,31 +135,31 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="images/banner/Banner2.png" alt="First slide">
+                        <img class="d-block w-100" src="images/banner/Banner2.png" alt="First slide" loading="lazy">
                         <div class="carousel-caption button1 d-none d-md-inline-block">
                             <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/Banner1.png" alt="Second slide">
+                        <img class="d-block w-100" src="images/banner/Banner1.png" alt="Second slide" loading="lazy">
                         <div class="carousel-caption d-none button2 d-md-inline-block">
                             <a href="#" data-target="#banner_diet" data-toggle="modal" class="d-inline-block mt-2 Explore-box ">Explore</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/Banner3.png" alt="Third slide">
+                        <img class="d-block w-100" src="images/banner/Banner3.png" alt="Third slide" loading="lazy">
                         <div class="carousel-caption d-none button3 d-md-inline-block">
                             <a href="#" data-target="#select_test" data-toggle="modal" class="d-inline-block mt-2">Explore</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/Banner4.png" alt="Third slide">
+                        <img class="d-block w-100" src="images/banner/Banner4.png" alt="Third slide" loading="lazy">
                         <div class="carousel-caption d-none button4 d-md-inline-block">
                             <a href="#" data-target="#medicine_imagica" data-toggle="modal" class="d-inline-block mt-2">Explore</a>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/Banner5.png" alt="Third slide">
+                        <img class="d-block w-100" src="images/banner/Banner5.png" alt="Third slide" loading="lazy">
                         <div class="carousel-caption d-none button5 d-md-inline-block">
                             <a href="#" data-target="#banner_covid" data-toggle="modal" class="d-inline-block mt-2 Explore-box ">Explore</a>
                         </div>
@@ -1104,7 +1104,7 @@
                                 <div class="card mx-auto" style="width: 15rem; border-radius: 12px;">
                                     <div class="contain">
                                         <img src="admin/img/blog_images/<?php echo $all_blogs_res['cover_img']; ?>"
-                                            height="300" class="card-img-top image" alt="...">
+                                            height="300" class="card-img-top image" alt="..." loading="lazy">
                                     </div>
                                     <div class="card-body">
                                         <h6 class="post-title text-center">
@@ -1519,48 +1519,50 @@ if(isset($_SESSION['user_id'])){
             pagination: true,
             autoPlay: false
         });
+    
+
+        // for popover
+        $('[data-toggle="popover"]').popover();
+
+        // for switching modal
+    
+        $('body').on('click', '.info-modal-btn', function() {
+            $('.info-modal').modal('hide');
+            $('#Appointment').modal('show');
+        });
+
+        $('body').on('click', '.info-modal-btn_covid', function() {
+            $('.info-modal').modal('hide');
+            $('#Covid_Appointment').modal('show');
+        });
+
+        $('body').on('click', '.info-modal-btn_yoga', function() {
+            $('.info-modal').modal('hide');
+            $('#yoga_Appointment').modal('show');
+        });
+
+
+        
     });
-
-    // for popover
-    $('[data-toggle="popover"]').popover();
-
-    // for switching modal
- 
-    $('body').on('click', '.info-modal-btn', function() {
-        $('.info-modal').modal('hide');
-        $('#Appointment').modal('show');
-    });
-
-    $('body').on('click', '.info-modal-btn_covid', function() {
-        $('.info-modal').modal('hide');
-        $('#Covid_Appointment').modal('show');
-    });
-
-    $('body').on('click', '.info-modal-btn_yoga', function() {
-        $('.info-modal').modal('hide');
-        $('#yoga_Appointment').modal('show');
-    });
-
-
     function availableSlots(date, id) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var slots_array = JSON.parse(this.responseText);
-               // var htmlSlotsOption = "<option selected='selected' disabled='disabled' hidden>Select Time</option>";
-                var htmlSlotsOption ="";
-                slots_array.forEach(add);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var slots_array = JSON.parse(this.responseText);
+                // var htmlSlotsOption = "<option selected='selected' disabled='disabled' hidden>Select Time</option>";
+                    var htmlSlotsOption ="";
+                    slots_array.forEach(add);
 
-                function add(item, index) {
-                    htmlSlotsOption = htmlSlotsOption + "<option value='" + item.time_range + "'>" + item
-                        .time_range + "</option>";
+                    function add(item, index) {
+                        htmlSlotsOption = htmlSlotsOption + "<option value='" + item.time_range + "'>" + item
+                            .time_range + "</option>";
+                    }
+                    document.getElementById("time_slots"+id).innerHTML = htmlSlotsOption;
+
+                    // console.log(slots_array);
                 }
-                document.getElementById("time_slots"+id).innerHTML = htmlSlotsOption;
-
-                // console.log(slots_array);
-            }
-        };
-        xmlhttp.open("GET", "includes/getSlots.php?date=" + date, true);
-        xmlhttp.send();
-    }
+            };
+            xmlhttp.open("GET", "includes/getSlots.php?date=" + date, true);
+            xmlhttp.send();
+        }
 </script>

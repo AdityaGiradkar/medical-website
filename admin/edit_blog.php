@@ -335,6 +335,25 @@
 
 
 <?php
+
+function compressImage($source, $destination, $quality) {
+
+  $info = getimagesize($source);
+
+  if ($info['mime'] == 'image/jpeg') 
+    $image = imagecreatefromjpeg($source);
+
+  elseif ($info['mime'] == 'image/gif') 
+    $image = imagecreatefromgif($source);
+
+  elseif ($info['mime'] == 'image/png') 
+    $image = imagecreatefrompng($source);
+
+  imagejpeg($image, $destination, $quality);
+
+  return $destination;
+}
+
     if(isset($_POST['add_blog'])){
         $blog_name = mysqli_real_escape_string($con, $_POST['blog_name']);
         $blog_link = mysqli_real_escape_string($con, $_POST['blog_link']);
@@ -362,7 +381,9 @@
                 if($file_error === 0){
                     $file_new_name = uniqid('', true).".".$file_ext;
                     $file_destination = "img/blog_images/".$file_new_name;
-                    move_uploaded_file($file_tmp_name, $file_destination);
+
+                    $compressed_image = compressImage($file_tmp_name, $file_destination, 50);
+                    //move_uploaded_file($file_tmp_name, $file_destination);
 
                     $update = "UPDATE `blogs` SET `blog_name`='$blog_name',`blog_link`='$blog_link',`cover_img`='$file_new_name',`small_description`='$discription' WHERE `blog_id`='$bid'";
                     if($update_run = mysqli_query($con, $update)) {

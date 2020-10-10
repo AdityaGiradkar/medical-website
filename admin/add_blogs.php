@@ -321,11 +321,30 @@
 
 
 <?php
+
+    function compressImage($source, $destination, $quality) {
+
+      $info = getimagesize($source);
+
+      if ($info['mime'] == 'image/jpeg') 
+        $image = imagecreatefromjpeg($source);
+
+      elseif ($info['mime'] == 'image/gif') 
+        $image = imagecreatefromgif($source);
+
+      elseif ($info['mime'] == 'image/png') 
+        $image = imagecreatefrompng($source);
+
+      imagejpeg($image, $destination, $quality);
+
+      return $destination;
+    }
+
     if(isset($_POST['add_blog'])){
         $blog_name = mysqli_real_escape_string($con, $_POST['blog_name']);
         $blog_link = mysqli_real_escape_string($con, $_POST['blog_link']);
         $discription = mysqli_real_escape_string($con, $_POST['discription']);
-        $file = mysqli_real_escape_string($con, $_FILES['cover_image']);
+        $file = $_FILES['cover_image'];
         
         $file_original = $_FILES['cover_image']['name'];
         $file_tmp_name = $_FILES['cover_image']['tmp_name'];
@@ -338,14 +357,17 @@
         $file_ext = strtolower(end($file_ext_seprate));
 
         //echo $file_ext;
-        echo "<script>alert('$file_error');</script>";
+        //echo "<script>alert('$file_error');</script>";
         $valid_ext = array('jpg', 'jpeg', 'png');
 
         if(in_array($file_ext, $valid_ext)){
             if($file_error === 0){
                 $file_new_name = uniqid('', true).".".$file_ext;
                 $file_destination = "img/blog_images/".$file_new_name;
-                move_uploaded_file($file_tmp_name, $file_destination);
+
+                $compressed_image = compressImage($file_tmp_name, $file_destination, 50);
+
+                // move_uploaded_file($file_tmp_name, $file_destination);
 
                 $update = "INSERT INTO `blogs`(`blog_name`, `blog_link`, `cover_img`, `small_description`) VALUES ('$blog_name', '$blog_link', '$file_new_name', '$discription')";
                 if($update_run = mysqli_query($con, $update)) {

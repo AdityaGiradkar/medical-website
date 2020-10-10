@@ -605,7 +605,7 @@
                 Its been 100% success stories.
                 <b>"we dont just reduce obesity, we treat it and heal it."</b>
             </div>
-            <button type="submit" class="login-btn mt-4 p-2 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 p-2 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -627,7 +627,7 @@
                 <!-- content here -->
                 <p>these are specialized treatment plans, book a consultation and know more about the plans that will help you.</p>
             </div>
-            <button type="submit" class="login-btn mt-4 p-2 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 p-2 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -671,7 +671,7 @@
                     <li>Resolve stress.</li>
                 </ul>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -694,7 +694,7 @@
                <p>A medical scientific weight gain programme. No supplement, No steroids, No mass gainers, No creatinine All natural.</p>
                 <p>Because natural health is wealth.</p>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -716,7 +716,7 @@
                 <!-- content here -->
                 <p>These are specialized treatment plans, book a consultation  and know more about the plans that will help you </p>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -745,7 +745,7 @@
                         <li>Sparsha-yog techniques.</li>
                     </ul>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -767,7 +767,7 @@
                 <!-- content here -->
                 <p>Scientific muscle training workouts. Power, strength and Mass. With careful selected supplements for professional body builders.</p>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -789,7 +789,7 @@
                 <!-- content here -->
                 <p>These are specialized treatment plans, book a consultation  and know more about the plans that will help you </p>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -822,7 +822,7 @@
                     <li>Dexterity</li>
                 </ul>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -845,7 +845,7 @@
                 <p>Speciality advanced programmes for men and women who desire to shape up there body, improve curves, proportion.</p>
                 <p>Assisted and non asdisted programmes.</p> 
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -877,7 +877,7 @@
                 <p>Makes a good personality.</p>
                 <p>Our programme makes you achieve all this.</p>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -940,7 +940,7 @@
                 Feel the miracles hiding in this diet prescriptions.
                 A most safer and useful tool you can trust on, Based on the law of mother nature.</p>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
     </div>
@@ -970,7 +970,7 @@
                     Now regain your Shape , Curves and Body tone with our Shape Up Curves Programme.
                 </p>
             </div>
-            <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
+            <button type="submit" class="login-btn mt-4 info-modal-btn_yoga" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
         </div>
 
