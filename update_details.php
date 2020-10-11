@@ -410,6 +410,12 @@
                     <label class="form-check-label" for="defaultCheck23">Chronic disease</label>
                   </div>
                 </div>
+                <div class="col-md-3">
+                  <div class="form-check"> 
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="None" id="defaultCheck24">
+                    <label class="form-check-label" for="defaultCheck24">None</label>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -645,8 +651,33 @@
     if($flag1 == 1 && $flag2 == 1){
       echo "<script>
           alert('user Info updated sucessfully');
-          window.location.href='update_details.php';
       </script>";
+
+      if(isset($_SESSION['consult_type']) && isset($_SESSION['consult_date']) && isset($_SESSION['time_slots'])){
+        $consult_type = $_SESSION['consult_type'];
+        $date = $_SESSION['consult_date'];
+        $time = $_SESSION['time_slots'];
+
+        unset($_SESSION['consult_type'], $_SESSION['consult_date'], $_SESSION['time_slots']);
+
+        echo "<script>
+                    window.location.href='payment/consultation_payment.php?type=$consult_type&date=$date&time=$time';
+            </script>";
+
+      }elseif (isset($_SESSION['test_type'])){
+        $test_type = $_SESSION['test_type'];
+
+        unset($_SESSION['test_type']);
+
+        echo "<script>
+                    window.location.href='payment/test_payment.php?type=$test_type';
+            </script>";
+
+      }else{
+        echo "<script>
+                window.location.href='update_details.php';
+            </script>";
+      }
     }
 
 

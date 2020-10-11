@@ -1421,6 +1421,10 @@ if(isset($_SESSION['user_id'])){
 
             //check for user have filled the details or not
             if($check_detailes_fieled_res['problems'] == ""){
+                $_SESSION['consult_type'] = $consult_type;
+                $_SESSION['consult_date'] = $date;
+                $_SESSION['time_slots'] = $time;
+
                 echo "<script>
                         alert('Please first Fill the details.');
                         window.location.href='update_details.php';
@@ -1445,6 +1449,7 @@ if(isset($_SESSION['user_id'])){
 
             //check for user have filled the details or not
             if($check_detailes_fieled_res['problems'] == ""){
+                $_SESSION['test_type'] = $test_type;
                 echo "<script>
                         alert('Please first Fill the details.');
                         window.location.href='update_details.php';

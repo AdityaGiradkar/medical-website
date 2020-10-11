@@ -20,9 +20,15 @@
         $get_consult_price_run = mysqli_query($con, $get_consult_price);
         $get_consult_price_res = mysqli_fetch_assoc($get_consult_price_run);
 
+        $u_id = $_SESSION['user_id'];
+        $get_user_detatils = "SELECT * FROM `user` WHERE `user_id`='$u_id'";
+        $get_user_detatils_run = mysqli_query($con, $get_user_detatils);
+        $get_user_detatils_res = mysqli_fetch_assoc($get_user_detatils_run);
+        $CUSTOMER_MOBILE = $get_user_detatils_res['contact_no'];
+
         $CUSTOMER_NAME = $_SESSION['name'];
         $CUSTOMER_EMAIL = $_SESSION['email'];
-        $CUSTOMER_MOBILE = $_SESSION['mobile'];
+        //$CUSTOMER_MOBILE = $_SESSION['mobile'];
         $PAY_AMT = $get_consult_price_res['price'];
         $PAY_AMT = (int)$PAY_AMT * 100;
         
@@ -89,7 +95,7 @@
                         <label for="exampleInputEmail1">Consultation Amount (Rs.) : </label>
                         <input type="text" class="form-control input-box" value="<?php echo $get_consult_price_res['price']; ?>" disabled>
                     </div>
-                    <a href="../images/Privacy Polic1.pdf" target="_blank"><small class="form-text text-right">policies</small></a>
+                    <a href="../images/Privacy Policy.pdf" target="_blank"><small class="form-text text-right">policies</small></a>
 
                     <script
                         src="https://checkout.razorpay.com/v1/checkout.js"

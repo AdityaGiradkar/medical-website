@@ -9,6 +9,7 @@
             $get_email_run = mysqli_query($con, $get_email);
             $get_email_res = mysqli_fetch_assoc($get_email_run);
             $email = $get_email_res['email_id'];
+            $name = $_SESSION['name'];
 
             $vkey = md5(time().$name);
 
