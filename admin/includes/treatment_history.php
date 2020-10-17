@@ -366,7 +366,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mt-4">
-                                    <label for="diet">Courier Charges : </label>
+                                    <label for="diet">Courier Charges (In Rs.): </label>
                                     <input type="number" name="courier" class="form-control" id="courier" required>
                                 </div>
                             </div>

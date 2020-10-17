@@ -166,10 +166,11 @@
     </style>
 </head>
 <body>
-    <div class="container pt-3 mb-3">
-        &larr; <a href="ongoing_treatments.php" >Go back to treatment page</a>    
+    <div class="container pt-3 ">
+        &larr; <a onClick="javascript: window.close()" href="ongoing_treatments.php" >Close Receipt</a> 
+        <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="print Recipt" />   
     </div>
-    <div class="container p-3 border mt-3">
+    <div class="container p-3 border mt-3 mb-3">
         <div class="printableArea" id="printableArea">
             <h4 class="text-center text-muted mb-3">Bill/Receipt</h4>
             <div class="row">
@@ -318,21 +319,9 @@
 
         
     </div>
+     
     <?php 
-        if($treatment_details_res['fees_status'] !== 'pending'){
-    ?>
-            <input type="button" class="btn mt-3 mb-5 btn-primary d-block mx-auto" onclick="printDiv('printableArea')" value="print Recipt" />
-            <script>
-                function printDiv(divName) {
-                    var printContents = document.getElementById(divName).innerHTML;
-                    var originalContents = document.body.innerHTML;
-                    document.body.innerHTML = printContents;
-                    window.print();
-                    document.body.innerHTML = originalContents;
-                }
-            </script>
-    <?php 
-        }else{
+        if($treatment_details_res['fees_status'] === 'pending'){
             
     ?>
             <form action="payment/treatment_sucess.php?treat_id=<?php echo $treatment_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $sub_treatment_no; ?>&charge=<?php echo $order->amount; ?>" method="POST" style="text-align:center" class="mb-3">
@@ -356,10 +345,37 @@
     <?php
        }
     ?>
-    <div class="bg-dark" style="padding:2%; margin-bottom:-24px;color:white;">
-            <p class="text-center mb-0">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. &nbsp; &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
+    <div class="bg-dark pt-4 pb-3" style="paddig:2%; margin-bottom:-24px;color:white;">
+        <div class="container-fluid">
+            <div class="row mt-2">
+                <div class="col-md-4 mt-3 ">
+                    <p class="text-center" style=" font-size:12px;color:#bfbfbf">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. All rights reserved &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/AtmaVeda(334,273).png" width="80" class="img-fluid  d-block mx-auto" >
+                </div>
+                <div class="col-md-4" style="font-family: 'Roboto', sans-serif;">
+                    <p class="text-ceter d-inline-block" style=" font-size:13px; color:#bfbfbf">enquiry@atmavedayog.com &nbsp; &nbsp;|&nbsp; &nbsp; 
+                        <ul class="list-unstyled text-center d-inline-block" style="font-size: 2em">
+                            <li class="d-inline"><a target="_blank" href="https://www.facebook.com/drsadanand.ke.yodhas/"><i class="fab fa-facebook-square fa-2x facebook"></i></a></li>
+                            <li class="d-inline pl-3"><a target="_blank" href="https://www.instagram.com/drsadanand.atmavedayog"><i class="fab fa-instagram fa-2x instagram"></i></a></li>
+                            <li class="d-inline pl-3"><a target="_blank" href="https://twitter.com/ForSadanand?s=09"><i class="fab fa-twitter-square fa-2x tweter"></i></a></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
         </div>
+    </div>
 
+    <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

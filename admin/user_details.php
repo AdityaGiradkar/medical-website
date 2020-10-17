@@ -649,7 +649,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mt-4">
-                                    <label for="diet">Courier Charges : </label>
+                                    <label for="diet">Courier Charges (In Rs.) : </label>
                                     <input type="number" name="courier" class="form-control" id="courier" required>
                                 </div>
                             </div>
@@ -938,8 +938,21 @@
             //     $prescription_destination = "files/prescription/".$prescription_new_name;
             //     move_uploaded_file($prescription_tmp_name, $prescription_destination);
 
-        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`, `courier_charge`) 
-                        VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount', '$courier')";         
+
+        // fetch bill number
+        $last_bill_no = "SELECT max(`bill_number`) AS lastest FROM `bill_number`";
+        $last_bill_no_run = mysqli_query($con, $last_bill_no);
+        $last_bill_no_res = mysqli_fetch_assoc($last_bill_no_run);
+        $lastest_bill = $last_bill_no_res['lastest'];
+
+        $this_bill_no = $lastest_bill + 1;
+        $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`) VALUES ('$this_bill_no')";
+        mysqli_query($con, $insert_bill_no);
+
+        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`, `courier_charge`, `bill_number`) 
+                        VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount', '$courier', '$this_bill_no')";         
+
+
 
         if(mysqli_query($con, $insert_test)) {
             echo "<script>
