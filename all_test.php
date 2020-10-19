@@ -7,18 +7,18 @@
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
 
-        $yoge_test = "SELECT * FROM `yoge_home` WHERE `user_id`='$user_id' ORDER BY `date_time` DESC";
-        $yoge_test_run = mysqli_query($con, $yoge_test);
+        // $yoge_test = "SELECT * FROM `yoge_home` WHERE `user_id`='$user_id' ORDER BY `date_time` DESC";
+        // $yoge_test_run = mysqli_query($con, $yoge_test);
 
-        // Check for remaining tests
-        $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
-        $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
-        $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
-        $tests = array(0,0,0,0,0);
-        while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
-            $index = $check_remaining_tests_res['test_type'];
-            $tests[$index] = $check_remaining_tests_res['order_id'];
-        }
+        // // Check for remaining tests
+        // $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
+        // $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
+        // $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
+        // $tests = array(0,0,0,0,0);
+        // while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
+        //     $index = $check_remaining_tests_res['test_type'];
+        //     $tests[$index] = $check_remaining_tests_res['order_id'];
+        // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +102,7 @@
       </li>
 
       <!-- Tests  --> 
-      <?php
+      <!-- <?php
         if($check_remaining_tests_rows > 0){
       ?>
       <li class="nav-item">
@@ -122,7 +122,7 @@
       </li>
       <?php
         }
-      ?>
+      ?> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -211,9 +211,16 @@
                                     <div class="form-group">
                                         <select name="test_type" class="form-control" id="exampleFormControlSelect1">
                                             <!-- <option disabled selected hidden value="0">Select new Test</option> -->
-                                            <option value="1" disabled>YodhaE TEST</option>
-                                            <option value="2">YogE@HOME</option>
-                                            <option value="3" disabled>YogE@SUPERFIT</option>
+                                            <?php 
+                                                $fetch_all_test = "SELECT * FROM `test_type`";
+                                                $fetch_all_test_run = mysqli_query($con, $fetch_all_test);
+                                                while($fetch_all_test_res = mysqli_fetch_assoc($fetch_all_test_run)){
+                                            ?>
+                                            <option value="<?php echo $fetch_all_test_res['test_id']; ?>"><?php echo $fetch_all_test_res['test_name']; ?></option>
+                                            <?php 
+                                                }
+                                            
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -238,24 +245,26 @@
                                             <th>Date</th>
                                             <th>Test Type</th>
                                             <th>Charges</th>
-                                            <th>Details</th>
+                                            <th>View Receipt</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
+                                            $all_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' ORDER BY `pay_id` DESC";
+                                            $all_tests_run = mysqli_query($con, $all_tests);
                                             $count = 1;
-                                            while($record = mysqli_fetch_assoc($yoge_test_run)) {
-                                                $test_id = $record['test_id'];
-                                                $charge_paid = "SELECT * FROM `test_payments` WHERE `test_id`='$test_id'";
-                                                $charge_paid_run = mysqli_query($con, $charge_paid);
-                                                $charge_paid_res = mysqli_fetch_assoc($charge_paid_run);
+                                            while($record = mysqli_fetch_assoc($all_tests_run)) {
+                                                $test_type = $record['test_type'];
+                                                $test_details = "SELECT * FROM `test_type` WHERE `test_id`='$test_type'";
+                                                $test_details_run = mysqli_query($con, $test_details);
+                                                $test_details_res = mysqli_fetch_assoc($test_details_run); 
                                         ?>
                                         <tr>
                                             <th><?php echo $count; ?></th>
-                                            <td><?php echo date("d-m-Y", strtotime($record['date_time'])); ?></td>
-                                            <td>YogE@Home</td>
-                                            <td><?php echo $charge_paid_res['charges']; ?></td>
-                                            <td><a href="yoge_test_details.php?testID=<?php echo $record['test_id']; ?>">view</a></td>
+                                            <td><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></td>
+                                            <td><?php echo $test_details_res['test_name']; ?></td>
+                                            <td><?php echo $record['charges']; ?></td>
+                                            <td><a href="view_receipt_test.php?bill_no=<?php echo $record['bill_no']; ?>">view</a></td>
                                         </tr>
                                         <?php 
                                                 $count++;

@@ -1340,44 +1340,45 @@
 
 
     <!-- modal for test selection -->
+    <?php 
+        $get_test = "SELECT * FROM `test_type`";
+        $get_test_run = mysqli_query($con, $get_test);
+
+    ?>
     <div class="modal fade" id="select_test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <div class="container">
+                <div class="container pb-4">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
                     <p class="card-title mx-auto brand-name">SELECT TEST</p>
-                    <form method="post" action="">
-                        <div class="form-check pt-3 pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type1" value="1" disabled>
-                            <label class="form-check-label" for="test_type1">YogE TEST</label>
+                </div>
+                
+                <div class="modal-body">
+                    <form method="post" id="myform" action="">
+                        <?php 
+                            while($get_test_res = mysqli_fetch_assoc($get_test_run)){
+
+                        ?>
+                        <div class="form-check pt-3">
+                            <input class="form-check-input" type="radio" name="test_type" id="test_type<?php echo $get_test_res['test_id']; ?>" value="<?php echo $get_test_res['test_id']; ?>" required>
+                            <label class="form-check-label" for="test_type<?php echo $get_test_res['test_id']; ?>"><?php echo $get_test_res['test_name']; ?></label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="General Consultation" data-content="Some nice text hereknjfsdb"><i
+                                title="<?php echo $get_test_res['test_name']; ?>" data-content="<?php echo $get_test_res['test_info']; ?>"><i
                                     class="fas fa-info-circle"></i></a>
                         </div>
-                        <div class="form-check pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type2" value="2" required>
-                            <label class="form-check-label" for="test_type2">YogE@HOME</label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="YogE @ HOME"
-                                data-content="Vital parameters and measurements give an instant insight in to the condition of the patient. Our application helps to manage the simple ,moderate and critical cases at home or under domicillary hospitalization or in hospitals. It is a helping hand of a doctor 24hr round the clock.  it helps in disease staging . disease prognosis, disease diagnosis, treatment response, detecting alarm signs etc."><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
-                        <div class="form-check pb-3">
-                            <input class="form-check-input" type="radio" name="test_type" id="test_type3" value="3" disabled>
-                            <label class="form-check-label" for="test_type3">YogE@SUPERFIT</label>
-                            <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
-                                title="Advanced Holistic Consultation" data-content="Some nice text hereknjfsdb"><i
-                                    class="fas fa-info-circle"></i></a>
-                        </div>
-                        <button type="submit" class="login-btn mt-5" style="color:white;font-size: 18px;"
-                            name="start_test">START TEST</button>
+                        <?php 
+                        
+                            }
+                        ?>
                     </form>
                 </div>
+                <div class="modal-footer">
+                    <button type="submit" class="login-btn mt-4" form="myform" style="color:white;font-size: 18px;"
+                        name="start_test">START TEST</button>
+                </div> 
             </div>
         </div>
     </div>
@@ -1458,7 +1459,7 @@ if(isset($_SESSION['user_id'])){
 
             echo "<script>
                     window.location.href='payment/test_payment.php?type=$test_type';
-            </script>";
+                </script>";
         }else{
             echo "<script>
                 alert('Please login first.');

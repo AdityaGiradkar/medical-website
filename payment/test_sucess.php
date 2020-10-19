@@ -18,22 +18,36 @@
         
     $price = $payment_amount_res['price'];
     $test_name = $payment_amount_res['test_name'];
-    
-    $insert_entry = "INSERT INTO `test_payments`(`payment_id`, `order_id`, `signiture_hash`, `user_id`, `test_type`, `charges`) 
-                    VALUES ('$payment_id', '$order_id', '$signiture', '$user_id', '$test_type', '$price')";
+
+    // fetch bill number
+    $last_bill_no = "SELECT max(`bill_number`) AS lastest FROM `bill_number`";
+    $last_bill_no_run = mysqli_query($con, $last_bill_no);
+    $last_bill_no_res = mysqli_fetch_assoc($last_bill_no_run);
+    $lastest_bill = $last_bill_no_res['lastest'];
+
+    $this_bill_no = $lastest_bill + 1;
+    $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`) VALUES ('$this_bill_no')";
+    $insert_bill_no_run = mysqli_query($con, $insert_bill_no);
+
+  
+    $insert_entry = "INSERT INTO `test_payments`(`payment_id`, `order_id`, `signiture_hash`, `user_id`, `test_type`, `bill_no`, `charges`) 
+                    VALUES ('$payment_id', '$order_id', '$signiture', '$user_id', '$test_type', '$this_bill_no', '$price')";
 
     
     if($con->query($insert_entry) === TRUE){
         echo "<script>
-            alert('Your payment for test is sucessfull now you can give Test.');
+            alert('Your payment for test is sucessfull now you can see Test Receipt in All test Section in user panel.');
+            window.location.href='../all_test.php';
         </script>";
-        if($test_type == 1){
-            echo "<script>window.location.href='../Yodha_test.php'</script>";
-        }else if($test_type == 2){
-            echo "<script>window.location.href='../YogE_HOME.php?orderId=$order_id'</script>";
-        }else if($test_type == 3){
-            echo "<script>window.location.href='#'</script>";
-        }
+        // if($test_type == 1){
+        //     echo "<script>window.location.href='../Yodha_test.php'</script>";
+        // }else if($test_type == 2){
+        //     echo "<script>window.location.href='../YogE_HOME.php?orderId=$order_id'</script>";
+        // }else if($test_type == 3){
+        //     echo "<script>window.location.href='#'</script>";
+        // }else if($test_type == 4){
+        //     echo "<script>window.location.href='#'</script>";
+        // }
     }else{
         echo "Error: " . $insert_entry . "<br>" . $con->error;
     }

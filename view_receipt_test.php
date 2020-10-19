@@ -3,29 +3,37 @@
     include('includes/db.php');
 
     if(isset($_SESSION['user_id'])){
-
+        
         if (isset($_GET['bill_no'])){
             $bill_no = $_GET['bill_no'];
 
-            $fetch_consultation = "SELECT * FROM `consultation_time` WHERE `bill_number`='$bill_no'";
-            $fetch_consultation_run = mysqli_query($con, $fetch_consultation);
-            $fetch_consultation_res = mysqli_fetch_assoc($fetch_consultation_run);
+            $fetch_test_details = "SELECT * FROM `test_payments` WHERE `bill_no`='$bill_no'";
+            $fetch_test_details_run = mysqli_query($con, $fetch_test_details);
+            $fetch_test_details_rows = mysqli_num_rows($fetch_test_details_run);
 
-            $user_id = $fetch_consultation_res['assigned_user'];
-            $consult_fees = $fetch_consultation_res['consult_fees'];
-            $consult_status = $fetch_consultation_res['status'];
-            $consultation_date = $fetch_consultation_res['date'];
-            $consultation_time = $fetch_consultation_res['time_range'];
-            $consultation_type = $fetch_consultation_res['consult_type'];
+            if($fetch_test_details_rows > 0){
 
-            $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
-            $user_details_run = mysqli_query($con, $user_details);
-            $user_details_res = mysqli_fetch_assoc($user_details_run);
+                $fetch_test_details_res = mysqli_fetch_assoc($fetch_test_details_run);
+
+                $user_id = $fetch_test_details_res['user_id'];
+                $test_fees = $fetch_test_details_res['charges'];
+                //$consult_status = $fetch_consultation_res['status'];
+                //$test_date = $fetch_test_details_res['created_at'];
+                //$consultation_time = $fetch_consultation_res['time_range'];
+                $test_type = $fetch_test_details_res['test_type'];
+
+                $fetch_test_name = "SELECT * FROM `test_type` WHERE `test_id`='$test_type'";
+                $fetch_test_name_run = mysqli_query($con, $fetch_test_name);
+                $fetch_test_name_res = mysqli_fetch_assoc($fetch_test_name_run);
+
+                $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
+                $user_details_run = mysqli_query($con, $user_details);
+                $user_details_res = mysqli_fetch_assoc($user_details_run);
 
 
-            $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_no'";
-            $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
-            $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
+                $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_no'";
+                $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
+                $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
 
    
 
@@ -50,7 +58,7 @@
 </head>
 <body>
     <div class="container pt-3">
-        &larr; <a onClick="javascript: window.close()" href="all_consultations.php" >Close Receipt</a>   
+        &larr; <a onClick="javascript: window.close()" href="all_test.php" >Close Receipt</a>   
         <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="print Recipt" />   
     </div>
     <div class="container p-3 border mt-3 mb-3">
@@ -83,9 +91,9 @@
                     <thead>
                         <tr>
                             <th scope="col" class="text-muted">Sr. No.</th>
-                            <th scope="col" class="text-muted">Consultation Type</th>
-                            <th scope="col" class="text-muted">Consultation Date</th>
-                            <th scope="col" class="text-muted">Consultation Time</th>
+                            <th scope="col" class="text-muted">Test Type</th>
+                            <th scope="col" class="text-muted">Test Date</th>
+                            <th scope="col" class="text-muted">Particular</th>
                             <th scope="col" class="text-muted">Charges (Rs.)</th>
                         </tr>
                     </thead>
@@ -93,10 +101,10 @@
                         
                         <tr>
                             <th scope="row"  class="text-muted"><?php echo "1"; ?></th>
-                            <td><?php echo $consultation_type; ?></td>
-                            <td><?php echo date("d/m/Y", strtotime($consultation_date)); ?></td>
-                            <td><?php echo $consultation_time; ?></td>
-                            <td>&#x20B9; <?php echo $consult_fees; ?>.00</td>
+                            <td><?php echo $fetch_test_name_res['test_name']; ?></td>
+                            <td><?php echo date("d/m/Y", strtotime($fetch_bill_generation_date_res['date'])); ?></td>
+                            <td><?php echo $fetch_test_name_res['particular']; ?></td>
+                            <td>&#x20B9; <?php echo $test_fees; ?>.00</td>
                         </tr>
                         
                         
@@ -112,16 +120,12 @@
                                 </small>
                             </th>
                             <td class="text-center pt-5" rowspan="4">Paid Amount</td>
-                            <th class=" text-muted pt-5" rowspan="4">&#x20B9; <?php echo $consult_fees; ?>.00</th>
+                            <th class=" text-muted pt-5" rowspan="4">&#x20B9; <?php echo $test_fees; ?>.00</th>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <?php 
-                if($consult_status == "checked"){
-            
-            ?>
             <hr class="mt-5 pt-5">
             <div class="mt-3 pb-5">
                 <div class="row">
@@ -135,9 +139,6 @@
                     </div>
                 </div>
             </div>
-            <?php
-                }
-            ?>
         </div>
 
         
@@ -192,6 +193,12 @@
 </html>
 
 <?php 
+            }else{          //else part if dosen't find row
+                echo "<script>
+                    alert('No record Found.');
+                    window.location.href='index.php';
+                </script>";
+            }
         }else{              //else part of isset($_GET[''] && ....)
             echo "<script>
                     alert('Insufficient data.');

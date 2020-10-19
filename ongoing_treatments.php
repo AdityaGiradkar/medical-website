@@ -111,7 +111,7 @@
       </li>
 
       <!-- Tests  --> 
-      <?php
+      <!-- <?php
         if($check_remaining_tests_rows > 0){
       ?>
       <li class="nav-item">
@@ -131,7 +131,7 @@
       </li>
       <?php
         }
-      ?>
+      ?> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
