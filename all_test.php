@@ -245,6 +245,7 @@
                                             <th>Date</th>
                                             <th>Test Type</th>
                                             <th>Charges</th>
+                                            <th>Status</th>
                                             <th>View Receipt</th>
                                         </tr>
                                     </thead>
@@ -259,11 +260,12 @@
                                                 $test_details_run = mysqli_query($con, $test_details);
                                                 $test_details_res = mysqli_fetch_assoc($test_details_run); 
                                         ?>
-                                        <tr>
+                                        <tr style="font-weight:<?php echo $record['status'] == 'pending'?'bold': ''; ?>">
                                             <th><?php echo $count; ?></th>
                                             <td><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></td>
                                             <td><?php echo $test_details_res['test_name']; ?></td>
                                             <td><?php echo $record['charges']; ?></td>
+                                            <td><?php echo $record['status']; ?></td>
                                             <td><a href="view_receipt_test.php?bill_no=<?php echo $record['bill_no']; ?>">view</a></td>
                                         </tr>
                                         <?php 

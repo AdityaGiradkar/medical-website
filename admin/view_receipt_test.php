@@ -136,9 +136,9 @@
                         <h4>Thank You for Visiting. Get well soon.</h4>
                     </div>
                     <div class="col-5">
-                        <p class="text-center">For, Atmavedayog Pvt. Ltd.</p>
-                        <img src="../images/sign.jpeg" width="200" class="d-block mx-auto" >
-                        <p class="text-center">Authorized Signatory</p>
+                        <!-- <p class="text-center">For, Atmavedayog Pvt. Ltd.</p> -->
+                        <img src="../images/sign.png" width="200" class="d-block mx-auto" >
+                        <h5 class="text-center text-muted"><b>Dr. Sadanand Rasal</b></h5>
                     </div>
                 </div>
             </div>
