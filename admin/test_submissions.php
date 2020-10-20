@@ -6,15 +6,21 @@
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
 
-        $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
-                    ON u.`user_id`=y.`user_id`
-                    ORDER BY y.`status`, y.`date_time` DESC";
-        $yoge_home_run = mysqli_query($con, $yoge_home);
+        // $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
+        //             ON u.`user_id`=y.`user_id`
+        //             ORDER BY y.`status`, y.`date_time` DESC";
+        // $yoge_home_run = mysqli_query($con, $yoge_home);
 
-        $new_yoge = "SELECT count(*) as cout FROM `yoge_home` WHERE `status`='new'"; 
-        $new_yoge_run = mysqli_query($con, $new_yoge);
-        $new_yoge_res= mysqli_fetch_assoc($new_yoge_run);
-        $new_yoge_submissions = $new_yoge_res['cout'];
+        // $new_yoge = "SELECT count(*) as cout FROM `yoge_home` WHERE `status`='new'"; 
+        // $new_yoge_run = mysqli_query($con, $new_yoge);
+        // $new_yoge_res= mysqli_fetch_assoc($new_yoge_run);
+        // $new_yoge_submissions = $new_yoge_res['cout'];
+
+        $all_taken_test = "SELECT * FROM `user` u RIGHT JOIN `test_payments` tp 
+                         ON u.`user_id`=tp.`user_id`
+                         ORDER BY tp.`status` DESC, tp.`pay_id`";
+        $all_taken_test_run = mysqli_query($con, $all_taken_test);
+        
         
 
       //finding total number of new patient
@@ -248,7 +254,7 @@
                 <div class="container-fluid main-top main-left">
 
 
-                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <!-- <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                                 aria-controls="home" aria-selected="true">Test 1</a>
@@ -265,10 +271,10 @@
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <!-- test1 panel -->...
+                            ..
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <!-- DataTales Example -->
+                           
                             <div class="card shadow mt-4 mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -308,7 +314,7 @@
 
                                                 <?php 
                                                 $count++;
-                                                //end of while loop
+                                                
                                                 }
                                                 ?>
                                             </tbody>
@@ -319,6 +325,64 @@
                         </div>
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
 
+                    </div> -->
+
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">All Submitted Tests</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr. No.</th>
+                                            <th>Date</th>
+                                            <th>User</th>
+                                            <th>Contact</th>
+                                            <th>Test Type</th>
+                                            <th>Charges (&#x20B9;)</th>
+                                            <th>Checked</th>
+                                            <th>Receipt</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $count = 1;
+                                            while($record = mysqli_fetch_assoc($all_taken_test_run)){
+                                                $test_type = $record['test_type'];
+                                                $fetch_test = "SELECT * FROM `test_type` WHERE `test_id`='$test_type'";
+                                                $fetch_test_run = mysqli_query($con, $fetch_test);
+                                                $fetch_test_res = mysqli_fetch_assoc($fetch_test_run);
+                                        ?>
+                                        <tr style="font-weight:<?php echo $record['status'] == 'pending'?'bold': ''; ?>">
+                                            <th><?php echo $count; ?></th>
+                                            <td><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></td>
+                                            <td><?php echo $record['name'];?></td>
+                                            <td><?php echo $record['contact_no']; ?></td>
+                                            <td><?php echo $fetch_test_res['test_name']; ?></td>
+                                            <td>&#x20B9; <?php echo $record['charges']; ?></td>
+                                            <td><?php if($record['status'] == 'pending'){ ?><a
+                                                href="small_scripts/mark_done_test.php?pay_no=<?php echo $record['pay_id']; ?>"
+                                            onClick="javascript: return confirm('you want to mark done to user <?php echo $record['name']; ?>?');">done<?php }else { echo "Checked"; } ?></a>
+                                            </td>
+                                            <td><a href="view_receipt_test.php?bill_no=<?php echo $record['bill_no']; ?>">View</a></td>
+                                        </tr>
+
+                                        <?php 
+                                            $count++;
+                                            //end of while loop
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
 

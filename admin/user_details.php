@@ -415,14 +415,14 @@
                             <!-- test2 tab data -->
                             <?php
                             // different test submissions by user
-                                $yoge_tests = "SELECT * FROM `yoge_home` WHERE `user_id`='$user_id'";
-                                $yoge_tests_run = mysqli_query($con, $yoge_tests);
-
-                                $anthropometry_tests = "SELECT * FROM `test_anthropometry` WHERE `user_id`='$user_id'";
-                                $anthropometry_tests_run = mysqli_query($con, $anthropometry_tests);
+                            $all_taken_test = "SELECT * FROM `test_type` tt RIGHT JOIN `test_payments` tp 
+                                                ON tt.`test_id`=tp.`test_type`
+                                                WHERE tp.`user_id`='$user_id'
+                                                ORDER BY tp.`pay_id` DESC";
+                            $all_taken_test_run = mysqli_query($con, $all_taken_test);
                             ?>
                             <div class="tab-pane fade p-3" id="test2" role="tabpanel" aria-labelledby="test2-tab">
-                                <!-- DataTales Example -->
+                           
                                 <div class="card shadow mt-4 mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary"><?php echo $name; ?>'s
@@ -437,43 +437,30 @@
                                                         <th>Sr. No.</th>
                                                         <th>Date</th>
                                                         <th>Test Name</th>
-                                                        <th>details</th>
+                                                        <th>Charges (&#x20B9;)</th>
+                                                        <th>Status</th>
+                                                        <th>Receipt</th>
 
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php 
                                                         $test_no = 1;
-                                                        while($yoge_tests_res = mysqli_fetch_assoc($yoge_tests_run)){
+                                                        while($all_taken_test_res = mysqli_fetch_assoc($all_taken_test_run)){
                                                     ?>
-                                                    <tr
-                                                        style="font-weight:<?php echo $yoge_tests_res['status'] == 'new'?'bold': ''; ?>">
+                                                    <tr style="font-weight:<?php echo $all_taken_test_res['status'] == 'pending'?'bold': ''; ?>">
                                                         <td><?php echo $test_no; ?></td>
-                                                        <td><?php  echo date("d-m-Y", strtotime($yoge_tests_res['date_time'])); ?>
-                                                        </td>
-                                                        <td>YogE@Home</td>
+                                                        <td><?php echo date("d-m-Y", strtotime($all_taken_test_res['created_at'])); ?></td>
+                                                        <td><?php echo $all_taken_test_res['test_name']; ?></td>
+                                                        <td>&#x20B9; <?php echo $all_taken_test_res['charges']; ?></td>
+                                                        <td><?php echo $all_taken_test_res['status']; ?></td>
                                                         <td><a
-                                                                href="yoge_test_details.php?testID=<?php echo $yoge_tests_res['test_id']; ?>">view</a>
+                                                                href="view_receipt_test.php?bill_no=<?php echo $all_taken_test_res['bill_no']; ?>">view</a>
                                                         </td>
 
                                                     </tr>
-                                                    <?php
-                                                        $test_no++;
-                                                        }
-                                                        while($anthropometry_tests_res = mysqli_fetch_assoc($anthropometry_tests_run)){
-                                                    ?>
-                                                    <tr
-                                                        style="font-weight:<?php echo $anthropometry_tests_res['status'] != 'closed'?'bold': ''; ?>">
-                                                        <td><?php echo $test_no; ?></td>
-                                                        <td><?php  echo date("d-m-Y", strtotime($anthropometry_tests_res['date_time1'])); ?>
-                                                        </td>
-                                                        <td>Anthropometry Test</td>
-                                                        <td><a
-                                                                href="anthropometry_test_details.php?testID=<?php echo $anthropometry_tests_res['test_id']; ?>">view</a>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                        $test_no++;
+                                                    <?php 
+                                                    $test_no++;
                                                         }
                                                     ?>
 

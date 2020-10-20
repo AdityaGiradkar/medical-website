@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include('includes/db.php');
+    include('../includes/db.php');
 
     if(isset($_SESSION['user_id'])){
         
@@ -45,20 +45,20 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
     <!-- fontawesome link-->
-    <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
      <!-- Custom css File -->
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="../css/index.css">
 
     <title>Recipt</title>
 
 </head>
 <body>
     <div class="container pt-3">
-        &larr; <a onClick="javascript: window.close()" href="all_test.php" >Close Receipt</a>   
+        <!-- &larr; <a onClick="javascript: window.close()" href="test_submissions.php" >Close Receipt</a>    -->
         <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="print Recipt" />   
     </div>
     <div class="container p-3 border mt-3 mb-3">
@@ -66,7 +66,7 @@
             <h4 class="text-center text-muted mb-3">Bill/Receipt</h4>
             <div class="row">
                 <div class="col-5">
-                    <img src="images/brand.png" width="300" class="" >
+                    <img src="../images/brand.png" width="300" class="" >
                     
                     <p>
                         <br>
@@ -137,12 +137,12 @@
                     </div>
                     <div class="col-5">
                         <p class="text-center">For, Atmavedayog Pvt. Ltd.</p>
-                        <img src="images/sign.jpeg" width="200" class="d-block mx-auto" >
+                        <img src="../images/sign.jpeg" width="200" class="d-block mx-auto" >
                         <p class="text-center">Authorized Signatory</p>
                     </div>
                 </div>
             </div>
-            <?php
+            <?php 
                 }
             ?>
         </div>
@@ -166,10 +166,10 @@
             <div class="container-fluid">
                 <div class="row mt-2">
                     <div class="col-md-4 mt-3 ">
-                        <p class="text-center" style=" font-size:12px;color:#bfbfbf">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. All rights reserved &nbsp;<a target="blank" href="images/Privacy Policy.pdf">Privacy Policies</a></p>
+                        <p class="text-center" style=" font-size:12px;color:#bfbfbf">&copy; 2020 by AtmaVeda Yog Pvt. Ltd. All rights reserved &nbsp;<a target="blank" href="../images/Privacy Policy.pdf">Privacy Policies</a></p>
                     </div>
                     <div class="col-md-4">
-                        <img src="images/AtmaVeda(334,273).png" width="80" class="img-fluid  d-block mx-auto" >
+                        <img src="../images/AtmaVeda(334,273).png" width="80" class="img-fluid  d-block mx-auto" >
                     </div>
                     <div class="col-md-4" style="font-family: 'Roboto', sans-serif;">
                         <p class="text-ceter d-inline-block" style=" font-size:13px; color:#bfbfbf">enquiry@atmavedayog.com &nbsp; &nbsp;|&nbsp; &nbsp; 
@@ -194,7 +194,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
 
