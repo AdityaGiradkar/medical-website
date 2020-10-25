@@ -273,7 +273,7 @@
                       while($record = mysqli_fetch_assoc($all_user_run)){
                           
                       ?>
-                    <tr>
+                    <tr style="font-weight:<?php echo $record['status'] == 'assigned'?'bold': ''; ?>">
                       <th><?php echo $count; ?></th>
                       <td><?php echo date("d-m-Y", strtotime($record['date'])); ?></td>
                       <td><?php echo $record['time_range']; ?></td>

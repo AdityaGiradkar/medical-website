@@ -37,10 +37,16 @@
     if($con->query($insert_entry) === TRUE){
         echo "<script>
             alert('Your payment for test is sucessfull now you can see Test Receipt in All test Section in user panel.');
-            window.location.href='../all_test.php';
+            //window.location.href='../all_test.php';
         </script>";
+
+        if($test_type == 3){
+            echo "<script>window.location.href='../YogE_CritiCare.php?orderId=$order_id'</script>";
+        }else if($test_type == 2){
+            echo "<script>window.location.href='../YogE_HomeCare.php?orderId=$order_id'</script>";
+        }
         // if($test_type == 1){
-        //     echo "<script>window.location.href='../Yodha_test.php'</script>";
+        //     
         // }else if($test_type == 2){
         //     echo "<script>window.location.href='../YogE_HOME.php?orderId=$order_id'</script>";
         // }else if($test_type == 3){

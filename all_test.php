@@ -7,18 +7,18 @@
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
 
-        // $yoge_test = "SELECT * FROM `yoge_home` WHERE `user_id`='$user_id' ORDER BY `date_time` DESC";
-        // $yoge_test_run = mysqli_query($con, $yoge_test);
+        $yoge_test = "SELECT * FROM `yoge_home` WHERE `user_id`='$user_id' ORDER BY `date_time` DESC";
+        $yoge_test_run = mysqli_query($con, $yoge_test);
 
-        // // Check for remaining tests
-        // $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
-        // $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
-        // $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
-        // $tests = array(0,0,0,0,0);
-        // while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
-        //     $index = $check_remaining_tests_res['test_type'];
-        //     $tests[$index] = $check_remaining_tests_res['order_id'];
-        // }
+        // Check for remaining tests
+        $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_type`<5 AND `test_id` IS NULL GROUP BY `test_type`";
+        $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
+        $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
+        $tests = array(0,0,0,0,0);
+        while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
+            $index = $check_remaining_tests_res['test_type'];
+            $tests[$index] = $check_remaining_tests_res['order_id'];
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +102,7 @@
       </li>
 
       <!-- Tests  --> 
-      <!-- <?php
+      <?php
         if($check_remaining_tests_rows > 0){
       ?>
       <li class="nav-item">
@@ -114,15 +114,16 @@
         <div id="incompleteTest" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Incomplete Tests:</h6>
-            <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="all_consultations.php">All Consultations</a><?php } ?>
-            <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HOME.php?orderId=<?php echo $tests[2]; ?>">YogE@Home Test</a><?php } ?>
-            <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a><?php } ?>
+            <!-- <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="">YOG-E@Rakshakavach/a><?php } ?> -->
+            <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
+            <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
+            <!-- <?php if($tests[4] !== 0) { ?><a class="collapse-item" href=".php">YOG-E@Anthropometry</a><?php } ?> -->
           </div>
         </div>
       </li>
       <?php
         }
-      ?> -->
+      ?>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -246,7 +247,8 @@
                                             <th>Test Type</th>
                                             <th>Charges</th>
                                             <th>Status</th>
-                                            <th>View Receipt</th>
+                                            <th>Receipt</th>
+                                            <th>Details</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -256,6 +258,7 @@
                                             $count = 1;
                                             while($record = mysqli_fetch_assoc($all_tests_run)) {
                                                 $test_type = $record['test_type'];
+                                                $pay_id = $record['pay_id'];
                                                 $test_details = "SELECT * FROM `test_type` WHERE `test_id`='$test_type'";
                                                 $test_details_run = mysqli_query($con, $test_details);
                                                 $test_details_res = mysqli_fetch_assoc($test_details_run); 
@@ -267,6 +270,7 @@
                                             <td><?php echo $record['charges']; ?></td>
                                             <td><?php echo $record['status']; ?></td>
                                             <td><a href="view_receipt_test.php?bill_no=<?php echo $record['bill_no']; ?>">view</a></td>
+                                            <td><a <?php if($record['test_id'] != "" && $record['test_type'] == 2){ ?> href="HomeCare_test_details.php?pay_id=<?php echo $pay_id; ?>" <?php }else if($record['test_id'] != "" && $record['test_type'] == 3) { ?> href="CritiCare_test_details.php?pay_id=<?php echo $pay_id; ?> "<?php } ?>>view</a></td>
                                         </tr>
                                         <?php 
                                                 $count++;

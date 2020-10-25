@@ -347,7 +347,7 @@
                                             <th>Contact</th>
                                             <th>Test Type</th>
                                             <th>Charges (&#x20B9;)</th>
-                                            <th>Checked</th>
+                                            <th>Details/Checked</th>
                                             <th>Receipt</th>
                                         </tr>
                                     </thead>
@@ -367,9 +367,33 @@
                                             <td><?php echo $record['contact_no']; ?></td>
                                             <td><?php echo $fetch_test_res['test_name']; ?></td>
                                             <td>&#x20B9; <?php echo $record['charges']; ?></td>
-                                            <td><?php if($record['status'] == 'pending'){ ?><a
-                                                href="small_scripts/mark_done_test.php?pay_no=<?php echo $record['pay_id']; ?>"
-                                            onClick="javascript: return confirm('you want to mark done to user <?php echo $record['name']; ?>?');">done<?php }else { echo "Checked"; } ?></a>
+                                            <td>
+                                                <?php 
+                                                if($record['test_type'] == 1){
+                                                    ?>
+                                                    <a>Details</a>
+                                                    <?php         
+                                                }else if($record['test_type'] == 2){
+                                                    ?>
+                                                    <a <?php if($record['test_id'] != ''){ ?> href="HomeCare_test_details.php?pay_id=<?php echo $record['pay_id']; ?>" <?php } ?>>Details</a>
+                                                    <?php
+                                                }else if($record['test_type'] == 3){
+                                                    ?>
+                                                    <a <?php if($record['test_id'] != ''){ ?> href="CritiCare_test_details.php?pay_id=<?php echo $record['pay_id']; ?>" <?php } ?>>Details</a>
+                                                    <?php
+                                                }else if($record['test_type'] == 4){
+                                                    ?>
+                                                    <a>Details</a>
+                                                    <?php
+                                                }else{
+                                                    if($record['status'] == 'pending'){
+                                                        ?>
+                                                        <a href="small_scripts/mark_done_test.php?pay_no=<?php echo $record['pay_id']; ?>"
+                                                        onClick="javascript: return confirm('you want to mark done to user <?php echo $record['name']; ?>?');">Done</a>
+                                                        <?php
+                                                    }else { echo "Checked"; }
+                                                }
+                                                ?> 
                                             </td>
                                             <td><a href="view_receipt_test.php?bill_no=<?php echo $record['bill_no']; ?>">View</a></td>
                                         </tr>

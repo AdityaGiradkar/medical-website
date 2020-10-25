@@ -111,7 +111,7 @@
       </li>
 
       <!-- Tests  --> 
-      <!-- <?php
+      <?php
         if($check_remaining_tests_rows > 0){
       ?>
       <li class="nav-item">
@@ -123,9 +123,10 @@
         <div id="incompleteTest" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Incomplete Tests:</h6>
-            <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="all_consultations.php">All Consultations</a><?php } ?>
-            <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HOME.php?orderId=<?php echo $tests[2]; ?>">YogE@Home Test</a><?php } ?>
-            <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a><?php } ?>
+            <!-- <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="">YOG-E@Rakshakavach/a><?php } ?> -->
+            <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
+            <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
+            <!-- <?php if($tests[4] !== 0) { ?><a class="collapse-item" href=".php">YOG-E@Anthropometry</a><?php } ?> -->
           </div>
         </div>
       </li>

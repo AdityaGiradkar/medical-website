@@ -439,6 +439,7 @@
                                                         <th>Test Name</th>
                                                         <th>Charges (&#x20B9;)</th>
                                                         <th>Status</th>
+                                                        <th>Details/Checked</th>
                                                         <th>Receipt</th>
 
                                                     </tr>
@@ -454,6 +455,34 @@
                                                         <td><?php echo $all_taken_test_res['test_name']; ?></td>
                                                         <td>&#x20B9; <?php echo $all_taken_test_res['charges']; ?></td>
                                                         <td><?php echo $all_taken_test_res['status']; ?></td>
+                                                        <td>
+                                                            <?php 
+                                                            if($all_taken_test_res['test_type'] == 1){
+                                                                ?>
+                                                                <a>Details</a>
+                                                                <?php         
+                                                            }else if($all_taken_test_res['test_type'] == 2){
+                                                                ?>
+                                                                <a <?php if($all_taken_test_res['test_id'] != ''){ ?> href="HomeCare_test_details.php?pay_id=<?php echo $all_taken_test_res['pay_id']; ?>" <?php } ?>>Details</a>
+                                                                <?php
+                                                            }else if($all_taken_test_res['test_type'] == 3){
+                                                                ?>
+                                                                <a <?php if($all_taken_test_res['test_id'] != ''){ ?> href="CritiCare_test_details.php?pay_id=<?php echo $all_taken_test_res['pay_id']; ?>" <?php } ?>>Details</a>
+                                                                <?php
+                                                            }else if($all_taken_test_res['test_type'] == 4){
+                                                                ?>
+                                                                <a>Details</a>
+                                                                <?php
+                                                            }else{
+                                                                if($all_taken_test_res['status'] == 'pending'){
+                                                                    ?>
+                                                                    <a href="small_scripts/mark_done_test.php?pay_no=<?php echo $all_taken_test_res['pay_id']; ?>"
+                                                                    onClick="javascript: return confirm('you want to mark done to user <?php echo $all_taken_test_res['name']; ?>?');">Mark Done</a>
+                                                                    <?php
+                                                                }else { echo "Checked"; }
+                                                            }
+                                                            ?> 
+                                                        </td>
                                                         <td><a
                                                                 href="view_receipt_test.php?bill_no=<?php echo $all_taken_test_res['bill_no']; ?>">view</a>
                                                         </td>
