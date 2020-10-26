@@ -282,7 +282,7 @@
               <textarea class="form-control" name="address" id="address" rows="3" disabled><?php echo $user_details_res['address']; ?></textarea>
             </div>
 
-            <small style="font-size:11px;">* ABOVE DETAILS ARE FROM DATABASE, IF ANYTHING CHNAGE IN IT THEN PLEASE UPDATE YOUR DETAILS.</small>
+            <small style="font-size:11px;">* ABOVE DETAILS ARE FROM DATABASE, IF ANYTHING CHANGE IN IT THEN PLEASE UPDATE YOUR DETAILS.</small>
             
             <hr>    
         
@@ -317,14 +317,14 @@
                 <label for="drink_water">How much water did you drink in last 24 hours.</label>
                 <select id="drink_water" name="drink_water" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
-                  <option value="0.5">0.5 Liter</option>
-                  <option value="1">1 Liter</option>
-                  <option value="1.5">1.5 Liter</option>
-                  <option value="2">2 Liter</option>
-                  <option value="2.5">2.5 Liter</option>
-                  <option value="3">3 Liter</option>
-                  <option value="3.5">3.5 Liter</option>
-                  <option value="4">4 Liter</option>
+                  <option value="0.5">0.5 Litre</option>
+                  <option value="1">1 Litre</option>
+                  <option value="1.5">1.5 Litre</option>
+                  <option value="2">2 Litre</option>
+                  <option value="2.5">2.5 Litre</option>
+                  <option value="3">3 Litre</option>
+                  <option value="3.5">3.5 Litre</option>
+                  <option value="4">4 Litre</option>
                 </select>
               </div>
               <div class="form-group col-md-4">
@@ -490,7 +490,7 @@
           if($update_test_payment_run = mysqli_query($con, $update_test_payment))
 
             echo "<script>
-                    alert('your test is submitted sucessfully. You can see your test receipt and report in All test section.');
+                    //alert('your test is submitted sucessfully. You can see your test receipt and report in All test section.');
                     window.location.href='all_test.php';
                 </script>";
           // }

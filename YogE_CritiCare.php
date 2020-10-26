@@ -282,7 +282,7 @@
               <textarea class="form-control" name="address" id="address" rows="3" disabled><?php echo $user_details_res['address']; ?></textarea>
             </div>
 
-            <small style="font-size:11px;">* ABOVE DETAILS ARE FROM DATABASE, IF ANYTHING CHNAGE IN IT THEN PLEASE UPDATE YOUR DETAILS.</small>
+            <small style="font-size:11px;">* ABOVE DETAILS ARE FROM DATABASE, IF ANYTHING CHANGE IN IT THEN PLEASE UPDATE YOUR DETAILS.</small>
             
             <hr>    
         
@@ -732,7 +732,7 @@
           if($update_test_payment_run = mysqli_query($con, $update_test_payment))
 
             echo "<script>
-                    alert('your test is submitted sucessfully, Doctor will contact you soon. You can see your test receipt in All test section.');
+                    //alert('your test is submitted sucessfully, Doctor will contact you soon. You can see your test receipt in All test section.');
                     window.location.href='all_test.php';
                 </script>";
           // }

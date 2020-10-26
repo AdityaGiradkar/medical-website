@@ -147,11 +147,11 @@
                 <div class="col-4 mt-5 pt-3">
                     Bill To - <strong class="text-muted"><?php echo $user_details_res['name']; ?> </strong><br>
                     Email - <strong class="text-muted"><?php echo $user_details_res['email_id']; ?> </strong><br>
-                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> </strong> <br> 
+                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> Yrs.</strong> <br> 
                     Diagnosis - <strong class="text-muted"><?php echo $treatment_details_res['treatment_for']; ?></strong>
                 </div>
                 <div class="col-3">
-                    Bill/Recipt No. - <strong class="text-muted"><?php if($bill_number != 0){ echo $treatment_details_res['bill_number']; } ?></strong> <br>
+                    Bill/Receipt No. - <strong class="text-muted"><?php if($bill_number != 0){ echo $treatment_details_res['bill_number']; } ?></strong> <br>
                     Date - <strong class="text-muted"><?php if($bill_number != 0){ echo date("d/m/Y", strtotime($fetch_bill_generation_date_res['date'])); } ?> </strong><br>
                 </div>
             </div>

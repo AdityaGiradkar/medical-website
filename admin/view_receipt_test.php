@@ -78,10 +78,10 @@
                 <div class="col-4 mt-5 pt-4">
                     Bill To - <strong class="text-muted"><?php echo $user_details_res['name']; ?> </strong><br>
                     Email - <strong class="text-muted"><?php echo $user_details_res['email_id']; ?> </strong><br>
-                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> </strong>
+                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> Yrs.</strong>
                 </div>
                 <div class="col-3   ">
-                    Bill/Recipt No. - <strong class="text-muted"><?php echo $bill_no; ?></strong> <br>
+                    Bill/Receipt No. - <strong class="text-muted"><?php echo $bill_no; ?></strong> <br>
                     Date - <strong class="text-muted"><?php echo date("d/m/Y", strtotime($fetch_bill_generation_date_res['date'])); ?> </strong><br>
                 </div>
             </div>

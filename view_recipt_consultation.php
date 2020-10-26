@@ -51,7 +51,7 @@
 <body>
     <div class="container pt-3">
         &larr; <a onClick="javascript: window.close()" href="all_consultations.php" >Close Receipt</a>   
-        <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="print Recipt" />   
+        <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="print Receipt" />   
     </div>
     <div class="container p-3 border mt-3 mb-3">
         <div class="printableArea" id="printableArea">
@@ -70,10 +70,10 @@
                 <div class="col-4 mt-5 pt-4">
                     Bill To - <strong class="text-muted"><?php echo $user_details_res['name']; ?> </strong><br>
                     Email - <strong class="text-muted"><?php echo $user_details_res['email_id']; ?> </strong><br>
-                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> </strong>
+                    Age - <strong class="text-muted"><?php echo $user_details_res['age']; ?> Yrs.</strong>
                 </div>
                 <div class="col-3   ">
-                    Bill/Recipt No. - <strong class="text-muted"><?php echo $bill_no; ?></strong> <br>
+                    Bill/Receipt No. - <strong class="text-muted"><?php echo $bill_no; ?></strong> <br>
                     Date - <strong class="text-muted"><?php echo date("d/m/Y", strtotime($fetch_bill_generation_date_res['date'])); ?> </strong><br>
                 </div>
             </div>
