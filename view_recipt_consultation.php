@@ -119,7 +119,7 @@
             </div>
 
             <?php 
-                if($consult_status == "checked"){
+                //if($consult_status == "checked"){
             
             ?>
             <hr class="mt-5 pt-5">
@@ -136,7 +136,7 @@
                 </div>
             </div>
             <?php
-                }
+             //   }
             ?>
         </div>
 
