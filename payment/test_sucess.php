@@ -44,6 +44,8 @@
             echo "<script>window.location.href='../YogE_CritiCare.php?orderId=$order_id'</script>";
         }else if($test_type == 2){
             echo "<script>window.location.href='../YogE_HomeCare.php?orderId=$order_id'</script>";
+        }else if($test_type == 1){
+            echo "<script>window.location.href='../YogE_rakshakavach.php?orderId=$order_id'</script>";
         }
         // if($test_type == 1){
         //     

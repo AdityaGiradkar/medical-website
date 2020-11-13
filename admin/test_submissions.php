@@ -205,7 +205,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 fixed-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <button id="sidebarToggleTop" onclick="sidebar()" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
@@ -371,7 +371,7 @@
                                                 <?php 
                                                 if($record['test_type'] == 1){
                                                     ?>
-                                                    <a>Details</a>
+                                                    <a <?php if($record['test_id'] != ''){ ?> href="rakshakavach_test_details.php?pay_id=<?php echo $record['pay_id']; ?>" <?php } ?>>Details</a>
                                                     <?php         
                                                 }else if($record['test_type'] == 2){
                                                     ?>
@@ -473,6 +473,24 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <script>
+    var width = $(document).width();
+    //alert(width);
+    if(width <= 576){
+      var toggle_option = document.getElementById("accordionSidebar");
+      toggle_option.classList.add("toggled");
+    }
+    function sidebar(){
+      var toggle_option = document.getElementById("sidebarToggleTop");
+      if (toggle_option.classList.contains('sidebar-open') == true) {
+        toggle_option.classList.remove("sidebar-open");
+      } else {
+          // button.classList.add("marginLeft");
+          toggle_option.classList.add("sidebar-open");
+      }
+    }
+  </script>
 
 </body>
 

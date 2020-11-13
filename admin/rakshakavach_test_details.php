@@ -47,7 +47,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Patient History</title>
+  <title>YogE@Rakshakavach Test</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -64,14 +64,6 @@
   <!-- custom style sheet for sidebar and navigation bar -->
   <link rel="stylesheet" href="css/sidebar.css">
 
-  <style>
-    @media print {
-      div.footer {
-        position: fixed;
-        bottom: 0;
-      }
-    }
-  </style>
 
 </head>
 
@@ -339,9 +331,84 @@
 
           <!-- CREATE TABLE OF test details  -->
           <?php 
-            $test_details = "SELECT * FROM `test_homecare` WHERE `test_id`='$test_id'";
+            $test_details = "SELECT * FROM `test_rakshakavach` WHERE `test_id`='$test_id'";
             $test_details_run = mysqli_query($con, $test_details);
             $test_details_res = mysqli_fetch_assoc($test_details_run);
+
+            $user_ans = array();
+            $answer_value_count = array();
+            $ans = "";
+            $seventh_1 = "";
+            $seventh_2 = "";
+            $seventh_3 = "";
+
+            // loop through each question
+            for($i=1; $i<26; $i++){
+                $col_name = "test".$i;
+                $test[$i] = unserialize($test_details_res[$col_name]);
+
+                //for question 7 special case 
+                if($i == 7){
+                    $test7 = [['right side','pr','1'], ['left side', 'pr', '1'], ['right side','pr','2'], ['left side', 'pr', '2'], ['right side','ap','3'], ['left side', 'ap', '3']];
+                    foreach($test[7] as $seventh){
+                        $seventh--;
+                        if($test7[$seventh][2] == '1'){
+                            $seventh_1 = $seventh_1.", ".$test7[$seventh][0];
+                        }else if($test7[$seventh][2] == '2'){
+                            $seventh_2 = $seventh_2.", ".$test7[$seventh][0];
+                        }else if($test7[$seventh][2] == 3){
+                            $seventh_3 = $seventh_3.", ".$test7[$seventh][0];
+                        }
+                        $test7[$seventh] = [];
+                    }
+                    $seventh_1 = substr($seventh_1, 2);
+                    $seventh_2 = substr($seventh_2, 2);
+                    $seventh_3 = substr($seventh_3, 2);
+                    //print_r($test7);
+                }
+                
+
+                if($i !== 7){
+                    $count = 0;
+                    
+                    //loop through each selected option of perticular question
+                    foreach($test[$i] as $single_option){
+                        //first remove all white spaces from string(str_replace), remove brackets 1st and last(substr)
+                        // then split remaning string between each comma and add to an array 
+                        $test[$i][$count] = explode(',', substr($single_option, 1, -1));
+
+                        //loop through each value of perticular option of perticular question
+                        $singleValue = 0;
+                        foreach($test[$i][$count] as $single_val){
+                            $test[$i][$count][$singleValue] = substr($single_val, 1, -1);
+                            
+
+                            if($singleValue != 0){
+                                $val = $test[$i][$count][$singleValue];
+                                if(array_key_exists($val, $answer_value_count)){
+                                    $answer_value_count[$val]++; 
+                                }else{
+                                    $answer_value_count[$val] = 1;
+                                }
+                            }
+                            $singleValue++;
+                        }
+
+                        $ans = $ans.", ".$test[$i][$count][0];
+                        $count++;
+                    }
+
+                    $user_ans[$i] = substr($ans, 2);
+                    $ans = "";
+                }
+                //$test[$i][]
+                
+            }
+            // print("<pre>".print_r($test)."</pre>");
+            // print("<pre>".print_r($test,true)."</pre>");
+            // print("<pre>".print_r($answer_value_count,true)."</pre>");
+            // $myArray = explode(',', substr($test[1][0], 1, -1));
+            // print_r($myArray);
           ?>
 
           <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="print Report" />
@@ -358,7 +425,7 @@
               <div class="user_details  mr-3 ml-4">
                 <div class="row">
                     <div class="col-6">
-                        <p>ID : <strong>HCDT<?php echo $test_details_res['homecare_test_no']; ?></strong></p>
+                        <p>ID : <strong>RAKT<?php echo $test_details_res['rakshakavach_test_no']; ?></strong></p>
                         <p>Age : <strong><?php echo $user_detail['age']; ?> Yrs.</strong></p>
                         <p>Tested On : <strong><?php echo $user_detail['name']; ?></strong></p>
                     </div>
@@ -368,7 +435,7 @@
                         <p>Reported On : <strong><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                 </div>
-                <p >Test Name : <strong>YOG-E @HomeCare Daily Test</strong></p>
+                <p >Test Name : <strong>YOG-E @Rakshakavach Test</strong></p>
 
               </div>
               <hr style="height:3px; background-color:#50A6C2">
@@ -379,124 +446,188 @@
                   <tr>
                     <th scope="col">sr. no.</th>
                     <th scope="col">Question</th>
-                    <th scope="col">Normal Range</th>
                     <th scope="col">User Answer</th>
-                    <th scope="col">Alert</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style="color:<?php if($test_details_res['SPO2']/100 < 95 || $test_details_res['SPO2']/100 > 100){echo 'red'; } ?>">
-                    <th scope="row">1</th>
-                    <td>Pulse-ox Reading Of SPO2 (%)</td>
-                    <td>95% to 100%</td>
-                    <td><?php echo $test_details_res['SPO2']/100; ?> %</td>
-                    <td><?php if($test_details_res['SPO2']/100 >= 91 && $test_details_res['SPO2']/100 <= 94){ echo 'Alert'; }else if($test_details_res['SPO2']/100 >= 85 && $test_details_res['SPO2']/100 <= 90){ echo "High Risk"; }else if($test_details_res['SPO2']/100 >= 80 && $test_details_res['SPO2']/100 <= 84){ echo "Intensive Care"; }else if($test_details_res['SPO2']/100 < 85){ echo "Very Critical"; }else{ echo "Normal"; } ?></td>
+                  <tr>
+                    <td>1</td>
+                    <td>Stand with feet , knee's, thigh's touching each other. Straighten the body, expand your chest  and straighten the neck, close eye's, hand's lying straight on side's, focus on balance of your body and observe your balance . Do this for 20 second.</td>
+                    <td><?php echo $user_ans[1]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['s_blod_pressure']/100 < 100 || $test_details_res['s_blod_pressure']/100 > 140){echo 'red'; } ?>">
-                    <th scope="row">2</th>
-                    <td>Systolic Blood Pressure (mm/Hg)</td>
-                    <td>100 to 140 (mm/Hg)</td>
-                    <td><?php echo $test_details_res['s_blod_pressure']/100; ?> mm/Hg</td>
-                    <td><?php if($test_details_res['s_blod_pressure']/100 < 80 || $test_details_res['s_blod_pressure']/100 > 160){ echo 'High Risk'; }else if($test_details_res['s_blod_pressure']/100 < 100 || $test_details_res['s_blod_pressure']/100 > 140){ echo "Alert"; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>2</td>
+                    <td>Stand with shoulder distance between feet, expand your chest fully, Press your shoulders backwards.  Extend your hands  behind your back with palms crossed over each other(vishram pose) , Extend your neck  backward and hold  this position for 20 second and look for:</td>
+                    <td><?php echo $user_ans[2]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['d_blod_pressure']/100 < 70 || $test_details_res['d_blod_pressure']/100 > 90){echo 'red'; } ?>">
-                    <th scope="row">3</th>
-                    <td>Diastolic Blood Pressure (mm/Hg)</td>
-                    <td>70 to 90 (mm/Hg)</td>
-                    <td><?php echo $test_details_res['d_blod_pressure']/100; ?> mm/Hg</td>
-                    <td><?php if($test_details_res['s_blod_pressure']/100 < 50 || $test_details_res['s_blod_pressure']/100 > 100){ echo 'High Risk'; }else if($test_details_res['s_blod_pressure']/100 < 60 || $test_details_res['s_blod_pressure']/100 > 90){ echo "Alert"; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>3</td>
+                    <td>Stand straight with feet  closely touched to each other .Take your arms from sideways over your head . Let both palm touch each other ,bring them down on  your head, and then extend hands with force upward keeping palms close . Repeat it 5-7 times and look for:</td>
+                    <td><?php echo $user_ans[3]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['pulse_rate']/100 < 70 || $test_details_res['pulse_rate']/100 > 80){echo 'red'; } ?>">
-                    <th scope="row">4</th>
-                    <td>Pulse Rate (beat/min)</td>
-                    <td>70 to 80 (beat/min)</td>
-                    <td><?php echo $test_details_res['pulse_rate']/100; ?> beat/min</td>
-                    <td><?php if($test_details_res['pulse_rate']/100 < 70){ echo 'Low Pulse Rate'; }else if($test_details_res['pulse_rate']/100 > 80){ echo 'High Pulse Rate'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>4</td>
+                    <td>Stand with feets  at shoulder distance apart. keep your hands on your waist. Take a deep breath through nose and hold for a while and exhale through nose .Do this 5-7 times. While breathing watch your chest and abdomen movement.</td>
+                    <td><?php echo $user_ans[4]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['respiration_rate']/100 < 8 || $test_details_res['respiration_rate']/100 > 16){echo 'red'; } ?>">
-                    <th scope="row">5</th>
-                    <td>Respiration Rate(per min)</td>
-                    <td>8 to 16 (per min)</td>
-                    <td><?php echo $test_details_res['respiration_rate']/100; ?> per min</td>
-                    <td><?php if($test_details_res['respiration_rate']/100 < 8 || $test_details_res['respiration_rate']/100 > 16){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>5</td>
+                    <td>Keep feets close , extend yor neck straight upward and extend it backward  keep eyes closed. Hold in this position with normal breathing for 20 seconds. Are you loosing balance ?</td>
+                    <td><?php echo $user_ans[5]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['oral_temp']/100 < 97 || $test_details_res['oral_temp']/100 > 98.4){echo 'red'; } ?>">
-                    <th scope="row">6</th>
-                    <td>Oral body Temperature (<sup>0</sup>F)</td>
-                    <td>97 to 98.4 (<sup>0</sup>F) </td>
-                    <td><?php echo $test_details_res['oral_temp']/100; ?> <sup>0</sup>F</td>
-                    <td><?php if($test_details_res['oral_temp']/100 > 102){ echo 'Very High'; }else if($test_details_res['oral_temp']/100 > 100){ echo 'High'; }else if($test_details_res['oral_temp']/100 > 98.4){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>6</td>
+                    <td>(Simple forward step with spine twist) take a step  forward with right leg. Raise your hands  sideways, hold them at shoulder level  and take a twist above waist on right  side .Do this 3-4 times .  Then  take  a step forward  with left leg,Raise your hands sideways ,hold them at shoulder leveland take a twist above waist on left  side .do This 3-4 times. Observe and feel for.</td>
+                    <td><?php echo $user_ans[6]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['drink_water']/100 < 2){echo 'red'; } ?>">
-                  <th scope="row">7</th>
-                    <td>How much water did he drink in last 24 hours (in Liter)</td>
-                    <td>More than 2 (Litre) </td>
-                    <td><?php echo $test_details_res['drink_water']/100; ?> Litre</td>
-                    <td><?php if($test_details_res['drink_water']/100 < 2){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>7</td>
+                    <td>( chanting for vibration in chest) Stand with feet at shoulder distance apart , take a deep breath hold it, touching the palm on chest and chant in hormoney in medium tone"Haa" and feel the vibration , do it on both sides for upper, middle, lower and sides of your chest, Do this for 5-10 breathes. feel for vibrations in chest . feel on both sides.and answer</td>
+                    <td>
+                        upper chest : <?php echo $seventh_1; ?><br>
+                        middle chest : <?php echo $seventh_2; ?><br>
+                        lower chest : <?php echo $seventh_3; ?>
+                        
+                    </td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['headache'] == 'Yes'){echo 'red'; } ?>">
-                    <th scope="row">8</th>
-                    <td>Do you have headache today</td>
-                    <td> - </td>
-                    <td><?php echo $test_details_res['headache']; ?></td>
-                    <td><?php if($test_details_res['headache'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>8</td>
+                    <td>Stand with feet  at shoulder distance apart. Close the ear with thumbs . Do not use the nail part of thumb, just the soft part of thumb, close eyes, and hold for 20 second and observe.</td>
+                    <td><?php echo $user_ans[8]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['bodyache'] == 'Yes'){echo 'red'; } ?>">
-                    <th scope="row">9</th>
-                    <td>Do you have bodyache today</td>
-                    <td> - </td>
-                    <td><?php echo $test_details_res['bodyache']; ?></td>
-                    <td><?php if($test_details_res['bodyache'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>9</td>
+                    <td>stand with feet at shoulder distance apart close your eyes and gently touch  your eyes with tips of middle and index finger . do not press the eyes. feel for 20 sec and observe does your eyes move?</td>
+                    <td><?php echo $user_ans[9]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['cough'] == 'Yes'){echo 'red'; } ?>">
-                    <th scope="row">10</th>
-                    <td>Do you have cough today</td>
-                    <td> - </td>
-                    <td><?php echo $test_details_res['cough']; ?></td>
-                    <td><?php if($test_details_res['cough'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>10</td>
+                    <td>Stand with feet at shoulder distance apart,  keep  your eyes closed , and hold gently your forehead with all fingers except thumb, breathing deeply for atleast 2 minutes. observe for , what are the thoughts coming in your mind ?</td>
+                    <td><?php echo $user_ans[10]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['cold'] == 'Yes'){echo 'red'; } ?>">
-                    <th scope="row">11</th>
-                    <td>Do you have cold today</td>
-                    <td> - </td>
-                    <td><?php echo $test_details_res['cold']; ?></td>
-                    <td><?php if($test_details_res['cold'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>11</td>
+                    <td>Stand at ease with feet at shoulder length apart , touch your face with your palms hold in this postion for 20 second and observe . How do you feel your touch?</td>
+                    <td><?php echo $user_ans[11]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['fever'] == 'Yes'){echo 'red'; } ?>">
-                    <th scope="row">12</th>
-                    <td>Did you have fever  yesterday</td>
-                    <td> - </td>
-                    <td><?php echo $test_details_res['fever']; ?></td>
-                    <td><?php if($test_details_res['fever'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>12</td>
+                    <td>Sit on the chair , resting hands on thighs, close eyes for 20 secons and focus on the saliva in your mouth. Feel your saliva and answer:</td>
+                    <td><?php echo $user_ans[12]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['weakness'] == 'Yes'){echo 'red'; } ?>">
-                    <th scope="row">13</th>
-                    <td>Are you feeling weakness today</td>
-                    <td> - </td>
-                    <td><?php echo $test_details_res['weakness']; ?></td>
-                    <td><?php if($test_details_res['weakness'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>13</td>
+                    <td>Is your sense of taste  normal. Can you taste food ?</td>
+                    <td><?php echo $user_ans[13]; ?></td>
                   </tr>
-                  <tr style="color:<?php if($test_details_res['loose_motion'] == 'Yes'){echo 'red'; } ?>">
-                    <th scope="row">14</th>
-                    <td>Are you having loose motions </td>
-                    <td> - </td>
-                    <td><?php echo $test_details_res['loose_motion']; ?></td>
-                    <td><?php if($test_details_res['loose_motion'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
+                  <tr>
+                    <td>14</td>
+                    <td>sit on chair, hold your back straight, close eyes and tick which food you desire.</td>
+                    <td><?php echo $user_ans[14]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>15</td>
+                    <td>Breathe  from right nostril .Inhale and exhale 5-7 times. Repeat the same from left nostril. Are you feeling your nose is blocked?</td>
+                    <td><?php echo $user_ans[15]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>16</td>
+                    <td>Breath from nose. Hold your hand beneath nose. Inhale and exale 5-7 times. Feel air flowing from nose , is it warm or cold.</td>
+                    <td><?php echo $user_ans[16]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>17</td>
+                    <td>Is your sense of smelling normal.</td>
+                    <td><?php echo $user_ans[17]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>18</td>
+                    <td>Stand erect or Sit on chair holding back straight. Place both palms on your abdomen,place your  hands on the sides of navel ,take care not to overlap the fingers. both  hands should not touch each other, keep breathing gently with closed eyes .focus on your navel. hold for 20 seconds and observe</td>
+                    <td><?php echo $user_ans[18]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>19</td>
+                    <td>Stand with feet close to each other, great toe, knee, thighs touching each other. Extend your hands sideways upto shoulder level. Press your thumb with your index finger(gyan mudra) and close eyes. Breath gently for 20 second  watch for your balance.</td>
+                    <td><?php echo $user_ans[19]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>20</td>
+                    <td>
+                        Do spot running  for-  
+                        <ul>
+                            <li>50 step  if you are above 65 yr old </li>
+                            <li>100 steps if you are above 50 -65 yr  </li>
+                            <li>150 steps if you are 40-50yr.</li>
+                            <li>200 steps if you are less than 40 yr </li>
+                        </ul>   
+                        (This test not to be done by pregnant or heart patient undergone surgery or severe heart disease)
+                    </td>
+                    <td><?php echo $user_ans[20]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>21</td>
+                    <td>stand with legs crossed against each other ( lord krishna with basuri pose). Close eyes, hold your hands like basuri/flute. Hold for 20 sec. What thoughts  came in your mind.</td>
+                    <td><?php echo $user_ans[21]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>22</td>
+                    <td>
+                        Do either A or B 
+                        <ol type="A" style="margin-bottom:0">
+                            <li>For those who can sit in vajrasan: Sit in vajrasan holding back straight , relaxfully keeping your hands on the thighs close your eyes. Observe.</li>    
+                            <li>For those   who cannot do vajrasan: sit on a stool of comfortable height for you, hold back straight and move your feet slightly behind . </li>
+                        </ol>
+                    </td>
+                    <td><?php echo $user_ans[22]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>23</td>
+                    <td>measure body temperature by glass thermometer or digital thermometer . Do not measure in ac room , or immediately after drinking or eating anything. Keep thermometer under your tongue for 2-3 min.</td>
+                    <td><?php echo $user_ans[23]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>24</td>
+                    <td>take a deep breath and try doing as much suryanamaskar holding the breath. Do this only once. Do not repeat it second time.( this test not to be done by pregnant or heart patient undergone surgery or severe heart disease)</td>
+                    <td><?php echo $user_ans[24]; ?></td>
+                  </tr>
+                  <tr>
+                    <td>25</td>
+                    <td>Observation's of your early morning urine.</td>
+                    <td><?php echo $user_ans[25]; ?></td>
                   </tr>
                 </tbody>
               </table>
 
-              <p >Any other complaints? : <b><?php echo $test_details_res['other_complaint']; ?></b></p>
-              <p class="h5 text-danger">
-              Comment : 
-              <b>
-              <?php 
-                  if(($test_details_res['pulse_rate']/100 >= 70 && $test_details_res['pulse_rate']/100 <= 80) && ($test_details_res['SPO2']/100 < 95 || $test_details_res['oral_temp']/100 > 98.4 || $test_details_res['respiration_rate']/100 > 16)){
-                    echo "Possibility of Mechanical error. Please check using Machine or Contact doctor.";
-                  }
+              <p >Any other complaints? : <b><?php echo $test_details_res['other_complain']; ?></b></p>
+
+              <hr>
+
+              <h6><b>Codes : </b></h6>
+              <table class="table table-bordered table-striped table-responsive-md">
+                <thead>
+                  <tr>
+                    <th scope="col">sr. no.</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Number of times</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php 
+                $sr_no = 1;
+                    foreach($answer_value_count as $key => $value){
+                ?>
+                  <tr>
+                    <td><?php echo $sr_no; ?></td>
+                    <td><?php echo $key; ?></td>
+                    <td><?php echo $value; ?></td>
+                  </tr>
+                  <?php
+                  $sr_no++;
+                }
+                ?>
+                </tbody>
+              </table>
               
-              ?>
-              </b></p>
 
               <div class="footer" style="background-color:#50A6C2; color:white">
                 <div class="row pl-4 pr-4 pt-3 pb-3">

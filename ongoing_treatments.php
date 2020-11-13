@@ -123,7 +123,7 @@
         <div id="incompleteTest" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Incomplete Tests:</h6>
-            <!-- <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="">YOG-E@Rakshakavach/a><?php } ?> -->
+            <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach</a><?php } ?>
             <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
             <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
             <!-- <?php if($tests[4] !== 0) { ?><a class="collapse-item" href=".php">YOG-E@Anthropometry</a><?php } ?> -->
@@ -173,7 +173,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 fixed-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <button id="sidebarToggleTop" onclick="sidebar()" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
@@ -397,6 +397,24 @@
 
     <!-- Custom scripts for all pages-->
     <script src="admin/js/sb-admin-2.min.js"></script>
+
+    <script>
+    var width = $(document).width();
+    //alert(width);
+    if(width <= 576){
+      var toggle_option = document.getElementById("accordionSidebar");
+      toggle_option.classList.add("toggled");
+    }
+    function sidebar(){
+      var toggle_option = document.getElementById("sidebarToggleTop");
+      if (toggle_option.classList.contains('sidebar-open') == true) {
+        toggle_option.classList.remove("sidebar-open");
+      } else {
+          // button.classList.add("marginLeft");
+          toggle_option.classList.add("sidebar-open");
+      }
+    }
+  </script>
 
 </body>
 
