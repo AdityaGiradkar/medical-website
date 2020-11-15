@@ -383,7 +383,7 @@
                                                     <?php
                                                 }else if($record['test_type'] == 4){
                                                     ?>
-                                                    <a>Details</a>
+                                                    <a <?php if($record['test_id'] != ''){ ?> href="antropometry_test_details.php?pay_id=<?php echo $record['pay_id']; ?>" <?php } ?>>Details</a>
                                                     <?php
                                                 }else{
                                                     if($record['status'] == 'pending'){

@@ -101,7 +101,7 @@
             }
         }
 
-        $total_payble_amount = $total_price - ($total_price * (int)$treatment_details_res['discount'])/100;
+        $total_payble_amount = $total_price -  (int)$treatment_details_res['discount'];
         $total_payble_amount = (int)($total_payble_amount + $treatment_details_res['courier_charge']);
    
 
@@ -216,7 +216,7 @@
                                 </small>
                             </th>
                             <td colspan="2" class="text-center">Discount</td>
-                            <th class=" text-muted">- <?php echo $treatment_details_res['discount']; ?>%</th>
+                            <th class=" text-muted">- &#x20B9; <?php echo $treatment_details_res['discount']; ?>.00</th>
                         </tr>
                         <tr>
                             <td colspan="2" class="text-center">Courier Charges </td>

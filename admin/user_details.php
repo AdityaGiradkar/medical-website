@@ -332,10 +332,6 @@
 
                     <button type="button" class="btn btn-success mt-3" data-toggle="modal"
                         data-target="#start_treatatment">Start NEW Treatment</button>
-                        
-                    <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
-                        data-target="#start_test">Start NEW Yog-E
-                        Anthropometry</button>
 
                     
 
@@ -659,7 +655,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mt-4">
-                                    <label for="diet">Discount (In %) : </label>
+                                    <label for="diet">Discount (In Rs.) : </label>
                                     <input type="number" name="dicount" class="form-control" id="dicount" required>
                                 </div>
                             </div>
@@ -677,36 +673,6 @@
         </div>
     </div>
     <!-- modal for new treatment -->
-
-    <!-- modal for anthropometry test -->
-    <div class="modal fade  bd-example-modal-lg" id="start_test" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog  modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="container">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <h5 class="modal-title" id="exampleModalLongTitle">STRESS MANAGEMENT PROGRAMME</h5>
-
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Report of test</label>
-                            <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="diet">Diet Plan</label>
-                            <input type="file" name="diet" class="form-control-file" id="diet" required>
-                        </div>
-                        <button type="submit" name="start_test" class="btn btn-primary">start Test</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -783,56 +749,6 @@
     }
 </script>
 
-<?php 
-    if(isset($_POST['start_test'])){
-        $diet = $_FILES['diet'];
-        $report = $_FILES['report'];
-
-        if($diet != "" && $report != ""){
-            $diet_original = $_FILES['diet']['name'];
-            $diet_tmp_name = $_FILES['diet']['tmp_name'];
-            $diet_error = $_FILES['diet']['error'];
-            $diet_type = $_FILES['diet']['type'];
-
-            $report_original = $_FILES['report']['name'];
-            $report_tmp_name = $_FILES['report']['tmp_name'];
-            $report_error = $_FILES['report']['error'];
-            $report_type = $_FILES['report']['type'];
-
-            $diet_ext_seprate = explode('.', $diet_original);
-            $report_ext_seprate = explode('.', $report_original);
-        
-            $diet_ext = strtolower(end($diet_ext_seprate));
-            $report_ext = strtolower(end($report_ext_seprate));
-
-            if($diet_error === 0 && $report_error === 0){
-                $diet_new_name = uniqid('', true).".".$diet_ext;
-                $report_new_name = uniqid('', true).".".$report_ext;
-
-                $diet_destination = "files/anthropometry/diet/".$diet_new_name;
-                move_uploaded_file($diet_tmp_name, $diet_destination);
-
-                $report_destination = "files/anthropometry/report/".$report_new_name;
-                move_uploaded_file($report_tmp_name, $report_destination);
-
-                $test_id = md5(time().$user_id);
-
-                $insert_test = "INSERT INTO `test_anthropometry`(`test_id`, `user_id`, `test_result`, `times`, `status`, `diet_plan`) 
-                                VALUES ('$test_id','$user_id','$report_destination',1,'start','$diet_destination')";
-                if($insert_test_run = mysqli_query($con, $insert_test)) {
-                    echo "<script>
-                                alert('test started sucessfully');
-                                window.location.href='user_details.php?uid=$user_id';
-                            </script>";
-                }
-            }else{
-                echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
-            }
-
-        }
-    }
-
-?>
 
 <?php 
     if(isset($_POST['start_treat'])){

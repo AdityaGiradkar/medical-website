@@ -360,7 +360,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mt-4">
-                                    <label for="diet">Discount (In %) : </label>
+                                    <label for="diet">Discount (In Rs.) : </label>
                                     <input type="number" name="dicount" class="form-control" id="dicount" required>
                                 </div>
                             </div>

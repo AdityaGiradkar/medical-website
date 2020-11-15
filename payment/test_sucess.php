@@ -36,7 +36,7 @@
     
     if($con->query($insert_entry) === TRUE){
         echo "<script>
-            alert('Your payment for test is sucessfull now you can see Test Receipt in All test Section in user panel.');
+            //alert('Your payment for test is sucessfull now you can see Test Receipt in All test Section in user panel.');
             //window.location.href='../all_test.php';
         </script>";
 
@@ -46,16 +46,12 @@
             echo "<script>window.location.href='../YogE_HomeCare.php?orderId=$order_id'</script>";
         }else if($test_type == 1){
             echo "<script>window.location.href='../YogE_rakshakavach.php?orderId=$order_id'</script>";
+        }else if($test_type == 4){
+            echo "<script>window.location.href='../YogE_Antropometry.php?orderId=$order_id'</script>";
+        }else{
+            echo "<script>window.location.href='../all_test.php'</script>";
         }
-        // if($test_type == 1){
-        //     
-        // }else if($test_type == 2){
-        //     echo "<script>window.location.href='../YogE_HOME.php?orderId=$order_id'</script>";
-        // }else if($test_type == 3){
-        //     echo "<script>window.location.href='#'</script>";
-        // }else if($test_type == 4){
-        //     echo "<script>window.location.href='#'</script>";
-        // }
+
     }else{
         echo "Error: " . $insert_entry . "<br>" . $con->error;
     }

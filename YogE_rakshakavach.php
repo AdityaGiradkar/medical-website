@@ -160,7 +160,7 @@
             <?php if($tests[1] !== 0) { ?><a class="collapse-item active" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach</a><?php } ?>
             <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
             <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
-            <!-- <?php if($tests[4] !== 0) { ?><a class="collapse-item" href=".php">YOG-E@Anthropometry</a><?php } ?> -->
+            <?php if($tests[4] !== 0) { ?><a class="collapse-item" href="YogE_Antropometry.php?orderId=<?php echo $tests[4]; ?>">YOG-E@Anthropometry</a><?php } ?>
           </div>
         </div>
       </li>
@@ -597,7 +597,7 @@
                 </div>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test11[]" value="['nothing','st']" id="test116">
-                    <label class="form-check-label option" for="test116">nothing</label>
+                    <label class="form-check-label option" for="test116">No feelings after touch</label>
                 </div>
             </div>
 
@@ -1075,6 +1075,7 @@
       //loop through all questions 
       //each question have id test<sr_number>
       for(var i=1; i<26; i++){
+        if(i !== 7){
         var testID = "#test" + i;
 
         //check for perticular quesion any option is selected or not
@@ -1083,6 +1084,7 @@
           alert("Question " + i + " is not attenpted.");
           return false;
         }
+      }
       }
       
       return true;

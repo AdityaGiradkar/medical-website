@@ -126,7 +126,7 @@
             <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach</a><?php } ?>
             <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
             <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
-            <!-- <?php if($tests[4] !== 0) { ?><a class="collapse-item" href=".php">YOG-E@Anthropometry</a><?php } ?> -->
+            <?php if($tests[4] !== 0) { ?><a class="collapse-item" href="YogE_Antropometry.php?orderId=<?php echo $tests[4]; ?>">YOG-E@Anthropometry</a><?php } ?>
           </div>
         </div>
       </li>
@@ -250,69 +250,9 @@
                     <!-- person info ends  -->
 
 
-                    <!-- User Details all its test history as weel as his consultation hostory -->
-                    <div class="border border-primary rounded-lg p-3 mt-4">
-                        <!-- test2 tab data -->
-                        <?php
-                            $anthropometry_tests = "SELECT * FROM `test_anthropometry` WHERE `user_id`='$user_id' AND `status`='closed'";
-                            $anthropometry_tests_run = mysqli_query($con, $anthropometry_tests);
-                        ?>
-                           
-                        <!-- DataTales Example -->
-                        <div class="card shadow mt-4 mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Yog-E Anthropometry
-                                    Treatment History</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="testTable" width="100%"
-                                        cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Sr. No.</th>
-                                                <th>Date</th>
-                                                <th>Test Name</th>
-                                                <th>Status</th>
-                                                <th>details</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php 
-                                                $test_no = 1;
-                                                while($anthropometry_tests_res = mysqli_fetch_assoc($anthropometry_tests_run)){
-                                            ?>
-                                            <tr
-                                                style="font-weight:<?php echo $anthropometry_tests_res['status'] != 'closed'?'bold': ''; ?>">
-                                                <td><?php echo $test_no; ?></td>
-                                                <td><?php  echo date("d-m-Y", strtotime($anthropometry_tests_res['date_time1'])); ?>
-                                                </td>
-                                                <td>Anthropometry Test</td>
-                                                <td>Ended</td>
-                                                <td><a
-                                                        href="admin/anthropometry_test_details.php?testID=<?php echo $anthropometry_tests_res['test_id']; ?>">view</a>
-                                                </td>
-                                            </tr>
-                                            <?php
-                                                $test_no++;
-                                                }
-                                            ?>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- User Details all its test history as well as his consultation hostory -->
-
-
                     <!-- all its treatment history  -->
-                    <?php 
-                        
+                    <?php   
                             include("includes/past_treatment_history.php");
-    
                     ?>
                     <!-- all its treatment history  -->
 

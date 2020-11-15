@@ -348,7 +348,7 @@
                 $test[$i] = unserialize($test_details_res[$col_name]);
 
                 //for question 7 special case 
-                if($i == 7){
+                if($i == 7 && $test[7] != ""){
                     $test7 = [['right side','pr','1'], ['left side', 'pr', '1'], ['right side','pr','2'], ['left side', 'pr', '2'], ['right side','ap','3'], ['left side', 'ap', '3']];
                     foreach($test[7] as $seventh){
                         $seventh--;

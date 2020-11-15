@@ -127,7 +127,7 @@
             </div>
 
             <?php 
-                if($fetch_test_details_res['status'] == "checked"){
+                //if($fetch_test_details_res['status'] == "checked"){
             ?>
             <hr class="mt-5 pt-5">
             <div class="mt-3 pb-5">
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <?php
-                }
+               // }
             ?>
         </div>
 
