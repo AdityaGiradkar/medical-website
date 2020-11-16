@@ -816,6 +816,13 @@
                 ?>
               </div>
 
+              <hr>
+              <div style="margin-left:65%;">
+                <img src="../images/sign.png" width="200" class="d-block mx-auto">
+                <h5 class="text-center text-muted mt-3"><b>Dr. Sadanand Rasal</b></h5>
+              </div>
+              <br>
+
               <div class="footer" style="background-color:#50A6C2; color:white">
                 <div class="row pl-4 pr-4 pt-3 pb-3">
                     <div class="col-4"><i class="fas fa-envelope"></i> &nbsp;drsadanand@atmavedayog.com</div>

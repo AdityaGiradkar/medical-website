@@ -644,6 +644,13 @@
                 ?>
                 </tbody>
               </table>
+
+              <hr>
+              <div style="margin-left:65%;">
+                <img src="../images/sign.png" width="200" class="d-block mx-auto">
+                <h5 class="text-center text-muted mt-3"><b>Dr. Sadanand Rasal</b></h5>
+              </div>
+              <br>
               
 
               <div class="footer" style="background-color:#50A6C2; color:white">
