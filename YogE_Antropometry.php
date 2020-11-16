@@ -130,8 +130,8 @@
             <h6 class="collapse-header">Incomplete Tests:</h6>
             <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach</a><?php } ?>
             <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
-            <?php if($tests[3] !== 0) { ?><a class="collapse-item active" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
-            <?php if($tests[4] !== 0) { ?><a class="collapse-item" href="YogE_Antropometry.php?orderId=<?php echo $tests[4]; ?>">YOG-E@Anthropometry</a><?php } ?>
+            <?php if($tests[3] !== 0) { ?><a class="collapse-item " href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
+            <?php if($tests[4] !== 0) { ?><a class="collapse-item active" href="YogE_Antropometry.php?orderId=<?php echo $tests[4]; ?>">YOG-E@Anthropometry</a><?php } ?>
           </div>
         </div>
       </li>
@@ -288,141 +288,141 @@
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="para1">Weight in Kg.</label>
+                <label for="para1"><strong>Weight in Kg.</strong></label>
                 <input type="text" class="form-control" name="para1" id="para1" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para2">Height in cm.</label>
+                <label for="para2"><strong>Height in cm.</strong></label>
                 <input type="text" class="form-control" name="para2" id="para2" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para3">Chest in cm.</label>
+                <label for="para3"><strong>Chest in cm.</strong></label>
                 <input type="text" class="form-control" name="para3" id="para3" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para4">Neck circumference in cm.</label>
+                <label for="para4"><strong>Neck circumference in cm.</strong></label>
                 <input type="text" class="form-control" name="para4" id="para4" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para5">Abdominal girth above navel/umbilicus in cm</label>
+                <label for="para5"><strong>Abdominal girth above navel/umbilicus in cm</strong></label>
                 <input type="text" class="form-control" name="para5" id="para5" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para6">Abdominal girth at level of umbilicus /navel in cm</label>
+                <label for="para6"><strong>Abdominal girth at level of umbilicus /navel in cm</strong></label>
                 <input type="text" class="form-control" name="para6" id="para6" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para7">Abdominal girth below level of navel/umbilicus in cm</label>
+                <label for="para7"><strong>Abdominal girth below level of navel/umbilicus in cm</strong></label>
                 <input type="text" class="form-control" name="para7" id="para7" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para8">Waist in cm</label>
+                <label for="para8"><strong>Waist in cm</strong></label>
                 <input type="text" class="form-control" name="para8" id="para8" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para9">Hip measurement where buttock is the largest in cm</label>
+                <label for="para9"><strong>Hip measurement where buttock is the largest in cm</strong></label>
                 <input type="text" class="form-control" name="para9" id="para9" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para10">Thigh measurement where it is the largest in cm</label>
+                <label for="para10"><strong>Thigh measurement where it is the largest in cm</strong></label>
                 <input type="text" class="form-control" name="para10" id="para10" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para11">Calf measurement where it is the largest in cm</label>
+                <label for="para11"><strong>Calf measurement where it is the largest in cm</strong></label>
                 <input type="text" class="form-control" name="para11" id="para11" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para12">Arm measurement where it is the largest in cm</label>
+                <label for="para12"><strong>Arm measurement where it is the largest in cm</strong></label>
                 <input type="text" class="form-control" name="para12" id="para12" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para13">Forearm measurement where it is the largest in cm</label>
+                <label for="para13"><strong>Forearm measurement where it is the largest in cm</strong></label>
                 <input type="text" class="form-control" name="para13" id="para13" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para14">Wrist circumference in cm</label>
+                <label for="para14"><strong>Wrist circumference in cm</strong></label>
                 <input type="text" class="form-control" name="para14" id="para14" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para15">Abdominal skin fold by skin fold meter [anterior upper]</label>
+                <label for="para15"><strong>Abdominal skin fold by skin fold meter [anterior upper]</strong></label>
                 <input type="text" class="form-control" name="para15" id="para15" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para16">Abdominal skin fold by skin fold meter [anterior middle]</label>
+                <label for="para16"><strong>Abdominal skin fold by skin fold meter [anterior middle]</strong></label>
                 <input type="text" class="form-control" name="para16" id="para16" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para17">Abdominal skin fold by skin fold meter [anterior lower]</label>
+                <label for="para17"><strong>Abdominal skin fold by skin fold meter [anterior lower]</strong></label>
                 <input type="text" class="form-control" name="para17" id="para17" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para18">Abdominal skin fold by skin fold meter [lateral upper]</label>
+                <label for="para18"><strong>Abdominal skin fold by skin fold meter [lateral upper]</strong></label>
                 <input type="text" class="form-control" name="para18" id="para18" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para19">Abdominal skin fold by skin fold meter [lateral middle]</label>
+                <label for="para19"><strong>Abdominal skin fold by skin fold meter [lateral middle]</strong></label>
                 <input type="text" class="form-control" name="para19" id="para19" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para20">Abdominal skin fold by skin fold meter [lateral lower]</label>
+                <label for="para20"><strong>Abdominal skin fold by skin fold meter [lateral lower]</strong></label>
                 <input type="text" class="form-control" name="para20" id="para20" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para21">Abdominal skin fold by skin fold meter [suprailiac]</label>
+                <label for="para21"><strong>Abdominal skin fold by skin fold meter [suprailiac]</strong></label>
                 <input type="text" class="form-control" name="para21" id="para21" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para22">Skin fold of arms and forearm [biceps]</label>
+                <label for="para22"><strong>Skin fold of arms and forearm [biceps]</strong></label>
                 <input type="text" class="form-control" name="para22" id="para22" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para23">Skin fold of arms and forearm [triceps]</label>
+                <label for="para23"><strong>Skin fold of arms and forearm [triceps]</strong></label>
                 <input type="text" class="form-control" name="para23" id="para23" required>
               </div>
             
               <div class="form-group col-md-6">
-                <label for="para24">Skin fold of arms and forearm [forearm]</label>
+                <label for="para24"><strong>Skin fold of arms and forearm [forearm]</strong></label>
                 <input type="text" class="form-control" name="para24" id="para24" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para25">Skin fold upper back [subscapular middle]</label>
+                <label for="para25"><strong>Skin fold upper back [subscapular middle]</strong></label>
                 <input type="text" class="form-control" name="para25" id="para25" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para26">Skin fold upper back [subscapular lower]</label>
+                <label for="para26"><strong>Skin fold upper back [subscapular lower]</strong></label>
                 <input type="text" class="form-control" name="para26" id="para26" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para27">Skin fold upper back [nape of neck]</label>
+                <label for="para27"><strong>Skin fold upper back [nape of neck]</strong></label>
                 <input type="text" class="form-control" name="para27" id="para27" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para28">Skin fold thighs [lateral thigh]</label>
+                <label for="para28"><strong>Skin fold thighs [lateral thigh]</strong></label>
                 <input type="text" class="form-control" name="para28" id="para28" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para29">Skin fold thighs [anterior thigh]</label>
+                <label for="para29"><strong>Skin fold thighs [anterior thigh]</strong></label>
                 <input type="text" class="form-control" name="para29" id="para29" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para30">Skin fold neck [neck skin fold]</label>
+                <label for="para30"><strong>Skin fold neck [neck skin fold]</strong></label>
                 <input type="text" class="form-control" name="para30" id="para30" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para31">Skin fold neck [double chin]</label>
+                <label for="para31"><strong>Skin fold neck [double chin]</strong></label>
                 <input type="text" class="form-control" name="para31" id="para31" required>
               </div>
             
               <div class="form-group col-md-6">
-                <label for="para32">Skin fold neck [double neck]</label>
+                <label for="para32"><strong>Skin fold neck [double neck]</strong></label>
                 <input type="text" class="form-control" name="para32" id="para32" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para33">Skin fold face [cheek bone]</label>
+                <label for="para33"><strong>Skin fold face [cheek bone]</strong></label>
                 <input type="text" class="form-control" name="para33" id="para33" required>
               </div>
               <div class="form-group col-md-6">
-                <label for="para34">Skin fold face [cheek]</label>
+                <label for="para34"><strong>Skin fold face [cheek]</strong></label>
                 <input type="text" class="form-control" name="para34" id="para34" required>
               </div>
 
@@ -430,7 +430,7 @@
 
             <div class="row">
               <div class="form-group col-md-4">
-                <label for="para35">Dark circle around eyes</label>
+                <label for="para35"><strong>Dark circle around eyes</strong></label>
                 <select id="para35" name="para35" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -438,7 +438,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para36">Stanning on forehead</label>
+                <label for="para36"><strong>Stanning on forehead</strong></label>
                 <select id="para36" name="para36" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -446,7 +446,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para37">Tanning on temples</label>
+                <label for="para37"><strong>Tanning on temples</strong></label>
                 <select id="para37" name="para37" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -454,7 +454,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para38">Tanning on cheeks/zygoma</label>
+                <label for="para38"><strong>Tanning on cheeks/zygoma</strong></label>
                 <select id="para38" name="para38" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -462,7 +462,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para39">Tanning around mouth</label>
+                <label for="para39"><strong>Tanning around mouth</strong></label>
                 <select id="para39" name="para39" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -470,7 +470,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para40">Meleasma</label>
+                <label for="para40"><strong>Meleasma</strong></label>
                 <select id="para40" name="para40" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -478,7 +478,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para41">Discoloration on nose</label>
+                <label for="para41"><strong>Discoloration on nose</strong></label>
                 <select id="para41" name="para41" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -486,7 +486,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para42">Tanning on nape of neck</label>
+                <label for="para42"><strong>Tanning on nape of neck</strong></label>
                 <select id="para42" name="para42" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -494,7 +494,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para43">Thickness of skin on nape of neck</label>
+                <label for="para43"><strong>Thickness of skin on nape of neck</strong></label>
                 <select id="para43" name="para43" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -502,7 +502,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para44">Tanning in armpit</label>
+                <label for="para44"><strong>Tanning in armpit</strong></label>
                 <select id="para44" name="para44" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -510,7 +510,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para45">Thickening of skin in armpit</label>
+                <label for="para45"><strong>Thickening of skin in armpit</strong></label>
                 <select id="para45" name="para45" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -518,7 +518,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para46">Dark skin behind elbow</label>
+                <label for="para46"><strong>Dark skin behind elbow</strong></label>
                 <select id="para46" name="para46" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -526,7 +526,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para47">Dark skin behind hand</label>
+                <label for="para47"><strong>Dark skin behind hand</strong></label>
                 <select id="para47" name="para47" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -534,7 +534,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para48">Dark knuckles</label>
+                <label for="para48"><strong>Dark knuckles</strong></label>
                 <select id="para48" name="para48" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -542,7 +542,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para49">Dark knees</label>
+                <label for="para49"><strong>Dark knees</strong></label>
                 <select id="para49" name="para49" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -550,7 +550,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para50">Dark ankles</label>
+                <label for="para50"><strong>Dark ankles</strong></label>
                 <select id="para50" name="para50" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -558,7 +558,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para51">Dark malleolus</label>
+                <label for="para51"><strong>Dark malleolus</strong></label>
                 <select id="para51" name="para51" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -566,7 +566,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para52">Vitiligo patch on face</label>
+                <label for="para52"><strong>Vitiligo patch on face</strong></label>
                 <select id="para52" name="para52" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -574,7 +574,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para53">Vitiligo patch on chest</label>
+                <label for="para53"><strong>Vitiligo patch on chest</strong></label>
                 <select id="para53" name="para53" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -582,7 +582,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para54">Vitiligo patch on back</label>
+                <label for="para54"><strong>Vitiligo patch on back</strong></label>
                 <select id="para54" name="para54" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -590,7 +590,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para55">Vitiligo patch on arm</label>
+                <label for="para55"><strong>Vitiligo patch on arm</strong></label>
                 <select id="para55" name="para55" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -598,7 +598,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para56">Vitiligo patch on forearm</label>
+                <label for="para56"><strong>Vitiligo patch on forearm</strong></label>
                 <select id="para56" name="para56" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -606,7 +606,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para57">Vitiligo patch on hands</label>
+                <label for="para57"><strong>Vitiligo patch on hands</strong></label>
                 <select id="para57" name="para57" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -614,7 +614,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para58">Vitiligo patch on legs</label>
+                <label for="para58"><strong>Vitiligo patch on legs</strong></label>
                 <select id="para58" name="para58" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -622,7 +622,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para59">Vitiligo patch on thigh</label>
+                <label for="para59"><strong>Vitiligo patch on thigh</strong></label>
                 <select id="para59" name="para59" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -630,7 +630,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para60">Vitiligo patch on buttock</label>
+                <label for="para60"><strong>Vitiligo patch on buttock</strong></label>
                 <select id="para60" name="para60" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -638,7 +638,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para61">Vitiligo patch in groin</label>
+                <label for="para61"><strong>Vitiligo patch in groin</strong></label>
                 <select id="para61" name="para61" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -646,7 +646,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para62">Vitiligo patch in private parts</label>
+                <label for="para62"><strong>Vitiligo patch in private parts</strong></label>
                 <select id="para62" name="para62" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>
@@ -654,7 +654,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="para63">Vitiligo patch on abdomen</label>
+                <label for="para63"><strong>Vitiligo patch on abdomen</strong></label>
                 <select id="para63" name="para63" class="form-control" required>
                   <option selected disabled hidden value="">Choose...</option>
                   <option value="Yes">Yes</option>

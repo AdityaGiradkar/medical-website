@@ -341,6 +341,7 @@
             $seventh_1 = "";
             $seventh_2 = "";
             $seventh_3 = "";
+            // print_r($answer_value_count);
 
             // loop through each question
             for($i=1; $i<26; $i++){
@@ -348,24 +349,40 @@
                 $test[$i] = unserialize($test_details_res[$col_name]);
 
                 //for question 7 special case 
-                if($i == 7 && $test[7] != ""){
+                if($i == 7){
+                    $pr = 0;
+                    $ap = 0;
                     $test7 = [['right side','pr','1'], ['left side', 'pr', '1'], ['right side','pr','2'], ['left side', 'pr', '2'], ['right side','ap','3'], ['left side', 'ap', '3']];
-                    foreach($test[7] as $seventh){
-                        $seventh--;
-                        if($test7[$seventh][2] == '1'){
-                            $seventh_1 = $seventh_1.", ".$test7[$seventh][0];
-                        }else if($test7[$seventh][2] == '2'){
-                            $seventh_2 = $seventh_2.", ".$test7[$seventh][0];
-                        }else if($test7[$seventh][2] == 3){
-                            $seventh_3 = $seventh_3.", ".$test7[$seventh][0];
-                        }
-                        $test7[$seventh] = [];
+                    if($test[7] != ""){
+                      foreach($test[7] as $seventh){
+                          $seventh--;
+                          
+                          if($test7[$seventh][2] == '1'){
+                              $seventh_1 = $seventh_1.", ".$test7[$seventh][0];
+                              $pr++;
+                          }else if($test7[$seventh][2] == '2'){
+                              $seventh_2 = $seventh_2.", ".$test7[$seventh][0];
+                              $pr++;
+                          }else if($test7[$seventh][2] == 3){
+                              $seventh_3 = $seventh_3.", ".$test7[$seventh][0];
+                              $ap++;
+                          }
+                          $test7[$seventh] = [];
+                      }
+
+                      $seventh_1 = substr($seventh_1, 2);
+                      $seventh_2 = substr($seventh_2, 2);
+                      $seventh_3 = substr($seventh_3, 2);
                     }
-                    $seventh_1 = substr($seventh_1, 2);
-                    $seventh_2 = substr($seventh_2, 2);
-                    $seventh_3 = substr($seventh_3, 2);
+
+                    //taking value for question 7 which is not selected
+                    $answer_value_count['pr'] = $answer_value_count['pr'] + (4 - $pr);
+                    $answer_value_count['ap'] = $answer_value_count['ap'] + (2 - $ap);
                     //print_r($test7);
+                    // print_r($answer_value_count);
                 }
+
+                
                 
 
                 if($i !== 7){
@@ -427,12 +444,12 @@
                     <div class="col-6">
                         <p>ID : <strong>RAKT<?php echo $test_details_res['rakshakavach_test_no']; ?></strong></p>
                         <p>Age : <strong><?php echo $user_detail['age']; ?> Yrs.</strong></p>
-                        <p>Tested On : <strong><?php echo $user_detail['name']; ?></strong></p>
+                        <p>Tested On : <strong><?php echo date("Y-m-d h:ia", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                     <div class="col-6">
                         <p>Name : <strong><?php echo $user_detail['name']; ?></strong></p>
                         <p>Sex : <strong><?php echo $user_detail['gender']; ?></strong></p>
-                        <p>Reported On : <strong><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></strong></p>
+                        <p>Reported On : <strong><?php echo date("Y-m-d h:ia", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                 </div>
                 <p >Test Name : <strong>YOG-E @Rakshakavach Test</strong></p>

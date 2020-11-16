@@ -287,12 +287,12 @@
                     <div class="col-6">
                         <p>ID : <strong>ANPO<?php echo $test_details_res['antropometry_test_no']; ?></strong></p>
                         <p>Age : <strong><?php echo $user_detail['age']; ?> Yrs.</strong></p>
-                        <p>Tested On : <strong><?php echo $user_detail['name']; ?></strong></p>
+                        <p>Test Date : <strong><?php echo date("Y-m-d h:ia", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                     <div class="col-6">
                         <p>Name : <strong><?php echo $user_detail['name']; ?></strong></p>
                         <p>Sex : <strong><?php echo $user_detail['gender']; ?></strong></p>
-                        <p>Reported On : <strong><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></strong></p>
+                        <p>Report Date : <strong><?php echo date("Y-m-d h:ia", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                 </div>
                 <p >Test Name : <strong>YOG-E@Antropometry Test</strong></p>
@@ -634,6 +634,13 @@
                   </tbody>
                 </table>
               </div>
+
+              <hr>
+              <div style="margin-left:65%;">
+                <img src="images/sign.png" width="200" class="d-block mx-auto">
+                <h5 class="text-center text-muted mt-3"><b>Dr. Sadanand Rasal</b></h5>
+              </div>
+              <br>
 
               
 

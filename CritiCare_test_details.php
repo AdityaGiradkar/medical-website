@@ -287,12 +287,12 @@
                     <div class="col-6">
                         <p>ID : <strong>CCDT<?php echo $test_details_res['criticare_test_no']; ?></strong></p>
                         <p>Age : <strong><?php echo $user_detail['age']; ?> Yrs.</strong></p>
-                        <p>Tested On : <strong><?php echo $user_detail['name']; ?></strong></p>
+                        <p>Test Date : <strong><?php echo date("Y-m-d h:ia", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                     <div class="col-6">
                         <p>Name : <strong><?php echo $user_detail['name']; ?></strong></p>
                         <p>Sex : <strong><?php echo $user_detail['gender']; ?></strong></p>
-                        <p>Reported On : <strong><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></strong></p>
+                        <p>Report Date : <strong><?php echo date("Y-m-d h:ia", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                 </div>
                 <p >Test Name : <strong>YOG-E @CritiCare Daily Test</strong></p>
@@ -309,7 +309,7 @@
                       <p>COVID-19 Testing Done : <strong><?php echo $test_details_res['covid_test']; ?></strong></p>
                     </div>
                     <div class="col-md-6">
-                      <p>COVID-19 Test Rrport : <strong><?php echo $test_details_res['covid_report']; ?></strong></p>
+                      <p>COVID-19 Test Report : <strong><?php echo $test_details_res['covid_report']; ?></strong></p>
                     </div>
                   </div>
                   <p>Diagnosis as written on hospital/prescription paper : <strong><?php echo $test_details_res['prescription_paper']; ?></strong></p>
@@ -739,6 +739,13 @@
                   <?php 
                 }
               ?>
+
+              <hr>
+              <div style="margin-left:65%;">
+                <img src="images/sign.png" width="200" class="d-block mx-auto">
+                <h5 class="text-center text-muted mt-3"><b>Dr. Sadanand Rasal</b></h5>
+              </div>
+              <br>
 
               <div class="footer" style="background-color:#50A6C2; color:white">
                 <div class="row pl-4 pr-4 pt-3 pb-3">

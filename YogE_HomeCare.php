@@ -289,32 +289,32 @@
 
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="SPO2">Pulse-ox Reading Of SPO2 (%)</label>
+                <label for="SPO2"><strong>Pulse-ox Reading Of SPO2 (%)</strong></label>
                 <input type="text" class="form-control" name="SPO2" id="SPO2" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="s_blod_pressure">Systolic Blood Pressure (mm/Hg)</label>
+                <label for="s_blod_pressure"><strong>Systolic Blood Pressure (mm/Hg)</strong></label>
                 <input type="text" class="form-control" name="s_blod_pressure" id="s_blod_pressure" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="d_blod_pressure">Diastolic Blood Pressure (mm/Hg)</label>
+                <label for="d_blod_pressure"><strong>Diastolic Blood Pressure (mm/Hg)</strong></label>
                 <input type="text" class="form-control" name="d_blod_pressure" id="d_blod_pressure" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="pulse_rate">Pulse Rate (beat/min)</label>
+                <label for="pulse_rate"><strong>Pulse Rate (beat/min)</strong></label>
                 <input type="text" class="form-control" name="pulse_rate" id="pulse_rate" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="respiration_rate">Respiration Rate(per min)</label>
+                <label for="respiration_rate"><strong>Respiration Rate(per min)</strong></label>
                 <input type="text" class="form-control" name="respiration_rate" id="respiration_rate" required>
               </div>
               <div class="form-group col-md-4">
-                <label for="oral_temp">Oral body Temperature (<sup>0</sup>F)</label>
+                <label for="oral_temp"><strong>Oral body Temperature (<sup>0</sup>F)</strong></label>
                 <input type="text" class="form-control" name="oral_temp" id="oral_temp" required>
                 <p style="margin-top:-3px; margin-bottom:-4px"><small>(Axillary temp if patient intubated)*</small></p>
               </div>
               <div class="form-group col-md-4">
-                <label for="drink_water">How much water did you drink in last 24 hours.</label>
+                <label for="drink_water"><strong>How much water did you drink in last 24 hours.</strong></label>
                 <select id="drink_water" name="drink_water" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="0.5">0.5 Litre</option>
@@ -328,7 +328,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="headache">Do you have headache today.</label>
+                <label for="headache"><strong>Do you have headache today.</strong></label>
                 <select id="headache" name="headache" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Yes">Yes</option>
@@ -336,7 +336,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="bodyache">Do you have bodyache today</label>
+                <label for="bodyache"><strong>Do you have bodyache today</strong></label>
                 <select id="bodyache" name="bodyache" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Yes">Yes</option>
@@ -344,7 +344,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="cough">Do you have cough today</label>
+                <label for="cough"><strong>Do you have cough today</strong></label>
                 <select id="cough" name="cough" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Yes">Yes</option>
@@ -352,7 +352,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="cold">Do you have cold today.</label>
+                <label for="cold"><strong>Do you have cold today.</strong></label>
                 <select id="cold" name="cold" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Yes">Yes</option>
@@ -360,7 +360,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="fever">Did you have fever yesterday.</label>
+                <label for="fever"><strong>Did you have fever yesterday.</strong></label>
                 <select id="fever" name="fever" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Yes">Yes</option>
@@ -368,7 +368,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="weakness">Are you feeling weakness today.</label>
+                <label for="weakness"><strong>Are you feeling weakness today.</strong></label>
                 <select id="weakness" name="weakness" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Yes">Yes</option>
@@ -376,7 +376,7 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                <label for="loose_motion">Are you having loose motions .</label>
+                <label for="loose_motion"><strong>Are you having loose motions.</strong></label>
                 <select id="loose_motion" name="loose_motion" class="form-control" required>
                   <option selected disabled hidden>Choose...</option>
                   <option value="Yes">Yes</option>
