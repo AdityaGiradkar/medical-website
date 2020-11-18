@@ -86,7 +86,7 @@
                             <th scope="col" class="text-muted">Consultation Type</th>
                             <th scope="col" class="text-muted">Consultation Date</th>
                             <th scope="col" class="text-muted">Consultation Time</th>
-                            <th scope="col" class="text-muted">Charges (Rs.)</th>
+                            <th scope="col" class="text-muted">Charges(Rs.)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,7 +96,7 @@
                             <td><?php echo $consultation_type; ?></td>
                             <td><?php echo date("d/m/Y", strtotime($consultation_date)); ?></td>
                             <td><?php echo $consultation_time; ?></td>
-                            <td>&#x20B9; <?php echo $consult_fees; ?>.00</td>
+                            <td>&#x20B9;<?php echo $consult_fees; ?>.00</td>
                         </tr>
                         
                         
@@ -112,7 +112,7 @@
                                 </small>
                             </th>
                             <td class="text-center pt-5" rowspan="4">Paid Amount</td>
-                            <th class=" text-muted pt-5" rowspan="4">&#x20B9; <?php echo $consult_fees; ?>.00</th>
+                            <th class=" text-muted pt-5" rowspan="4">&#x20B9;<?php echo $consult_fees; ?>.00</th>
                         </tr>
                     </tbody>
                 </table>

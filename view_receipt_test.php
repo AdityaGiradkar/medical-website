@@ -104,7 +104,7 @@
                             <td><?php echo $fetch_test_name_res['test_name']; ?></td>
                             <td><?php echo date("d/m/Y", strtotime($fetch_bill_generation_date_res['date'])); ?></td>
                             <td><?php echo $fetch_test_name_res['particular']; ?></td>
-                            <td>&#x20B9; <?php echo $test_fees; ?>.00</td>
+                            <td>&#x20B9;<?php echo $test_fees; ?>.00</td>
                         </tr>
                         
                         
@@ -120,7 +120,7 @@
                                 </small>
                             </th>
                             <td class="text-center pt-5" rowspan="4">Paid Amount</td>
-                            <th class=" text-muted pt-5" rowspan="4">&#x20B9; <?php echo $test_fees; ?>.00</th>
+                            <th class=" text-muted pt-5" rowspan="4">&#x20B9;<?php echo $test_fees; ?>.00</th>
                         </tr>
                     </tbody>
                 </table>

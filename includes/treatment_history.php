@@ -215,15 +215,15 @@
 
               <div class="row">
                 <div class="col-md-4">
-                  <strong>Diet Plan : </strong><a <?php if($all_subtreatment_res['diet'] != ""){ ?> target="_blank"
+                  <strong>Diet Plan : </strong><a <?php if($all_subtreatment_res['diet'] != "" && $pre_treatments_res['fees_status'] == 'paid'){ ?> target="_blank"
                     href="admin/<?php echo $all_subtreatment_res['diet']; ?>" <?php } ?> >view</a>
                 </div>
                 <div class="col-md-4">
-                  <strong>E - Precription : </strong><a <?php if($all_subtreatment_res['e_prescription'] != ""){ ?> target="_blank"
+                  <strong>E - Precription : </strong><a <?php if($all_subtreatment_res['e_prescription'] != "" && $pre_treatments_res['fees_status'] == 'paid'){ ?> target="_blank"
                     href="admin/<?php echo $all_subtreatment_res['e_prescription']; ?>"  <?php } ?>>view</a>
                 </div>
                 <div class="col-md-4">
-                  <strong>Extra : </strong> <a <?php if($all_subtreatment_res['report'] != ""){ ?> target="_blank"
+                  <strong>Extra : </strong> <a <?php if($all_subtreatment_res['report'] != "" && $pre_treatments_res['fees_status'] == 'paid'){ ?> target="_blank"
                     href="admin/<?php echo $all_subtreatment_res['report']; ?>" <?php } ?>>view</a>
                 </div>
               </div>

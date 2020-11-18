@@ -376,8 +376,19 @@
                     }
 
                     //taking value for question 7 which is not selected
-                    $answer_value_count['pr'] = $answer_value_count['pr'] + (4 - $pr);
-                    $answer_value_count['ap'] = $answer_value_count['ap'] + (2 - $ap);
+                    if(array_key_exists('pr', $answer_value_count)){
+                      $answer_value_count['pr'] = $answer_value_count['pr'] + (4 - $pr);
+                    }else{
+                        $answer_value_count['pr'] = 4 - $pr;
+                    }
+    
+                    if(array_key_exists('ap', $answer_value_count)){
+                        $answer_value_count['ap'] = $answer_value_count['ap'] + (2 - $ap);
+                    }else{
+                        $answer_value_count['ap'] = 2 - $ap;
+                    }
+                    // $answer_value_count['pr'] = $answer_value_count['pr'] + (4 - $pr);
+                    // $answer_value_count['ap'] = $answer_value_count['ap'] + (2 - $ap);
                     //print_r($test7);
                     // print_r($answer_value_count);
                 }
@@ -427,8 +438,9 @@
             // $myArray = explode(',', substr($test[1][0], 1, -1));
             // print_r($myArray);
           ?>
-
-          <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="print Report" />
+          <a href="rakshakavach_report.php?pay_id=<?php echo $pay_id; ?>"  class="btn btn-sm mt-3 btn-success" value="View Report" >View Report</a>
+          <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="Print Test Details" />
+          
 
           <div class="border border-primary  rounded-lg mt-4 p-3" style="background-color:white">
 
@@ -617,35 +629,6 @@
 
               <p >Any other complaints? : <b><?php echo $test_details_res['other_complain']; ?></b></p>
 
-              <hr>
-
-              <h6><b>Codes : </b></h6>
-              <table class="table table-bordered table-striped table-responsive-md">
-                <thead>
-                  <tr>
-                    <th scope="col">sr. no.</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Number of times</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php 
-                $sr_no = 1;
-                    foreach($answer_value_count as $key => $value){
-                ?>
-                  <tr>
-                    <td><?php echo $sr_no; ?></td>
-                    <td><?php echo $key; ?></td>
-                    <td><?php echo $value; ?></td>
-                  </tr>
-                  <?php
-                  $sr_no++;
-                }
-                ?>
-                </tbody>
-              </table>
-
-              <hr>
               <div style="margin-left:65%;">
                 <img src="../images/sign.png" width="200" class="d-block mx-auto">
                 <h5 class="text-center text-muted mt-3"><b>Dr. Sadanand Rasal</b></h5>

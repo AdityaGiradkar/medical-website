@@ -270,13 +270,26 @@
                                             <td><?php echo $record['charges']; ?></td>
                                             <td><?php echo $record['status']; ?></td>
                                             <td><a href="view_receipt_test.php?bill_no=<?php echo $record['bill_no']; ?>">view</a></td>
-                                            <td><a <?php if($record['test_id'] != "" && $record['test_type'] == 2){ ?> 
+                                            <td><a <?php 
+                                                        if($record['test_id'] != "" && $record['test_type'] == 2){ 
+                                                    ?> 
                                                             href="HomeCare_test_details.php?pay_id=<?php echo $pay_id; ?>" 
-                                                        <?php }else if($record['test_id'] != "" && $record['test_type'] == 3) { ?> 
+                                                    <?php 
+                                                        }else if($record['test_id'] != "" && $record['test_type'] == 3) { 
+                                                    ?> 
                                                             href="CritiCare_test_details.php?pay_id=<?php echo $pay_id; ?> "
-                                                        <?php }else if($record['test_id'] != "" && $record['test_type'] == 4) { ?> 
+                                                    <?php 
+                                                        }else if($record['test_id'] != "" && $record['test_type'] == 4) { 
+                                                    ?> 
                                                             href="antropometry_test_details.php?pay_id=<?php echo $pay_id; ?> "
-                                                        <?php } ?>>view</a>
+                                                    <?php 
+                                                        }else if($record['test_id'] != "" && $record['test_type'] == 1) { 
+                                                    ?> 
+                                                            href="rakshakavach_test_details.php?pay_id=<?php echo $pay_id; ?> " 
+                                                    <?php 
+                                                        } 
+                                                    ?>
+                                                >view</a>
                                             </td>
                                         </tr>
                                         <?php 

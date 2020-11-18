@@ -8,8 +8,8 @@
 
     if(isset($_SESSION['user_id'])){
 
-        $keyId = "rzp_live_rk3LTdATqKRgUf";
-        $secretKey = "WFJugS35K9vdoFTANLdgo1gI";
+        $keyId = "rzp_test_bj6y2rUzCCQsX4";
+        $secretKey = "x9PYMbnUlJggKM6cmj7dBOyH";
         $api = new Api($keyId, $secretKey);
 
 
@@ -205,7 +205,7 @@
                             <th scope="col" class="text-muted">Particular</th>
                             <th scope="col" class="text-muted">Quantity</th>
                             <th scope="col" class="text-muted">Cost/Unit (Rs.)</th>
-                            <th scope="col" class="text-muted">Total (Rs.)</th>
+                            <th scope="col" class="text-muted">Total(Rs.)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -218,8 +218,8 @@
                             <td><?php echo $medi['name']; ?></td>
                             <td><?php echo $medi['medi_quantity']; ?></td>
                             <td><?php echo $medi['quantity']; ?></td>
-                            <td>&#x20B9; <?php echo $medi['price']; ?>.00</td>
-                            <td>&#x20B9; <?php echo $medi['total_price'].".00"; ?></td>
+                            <td>&#x20B9;<?php echo $medi['price']; ?>.00</td>
+                            <td>&#x20B9;<?php echo $medi['total_price'].".00"; ?></td>
                         </tr>
                         <?php
                         $count++;
@@ -233,8 +233,8 @@
                             <td><?php echo $session['name']; ?></td>
                             <td><?php echo $session['quantity']; ?></td>
                             <td><?php echo $session['quantity_prescribed']; ?></td>
-                            <td>&#x20B9; <?php echo $session['price']; ?>.00</td>
-                            <td>&#x20B9; <?php echo $session['total_price'].".00"; ?></td>
+                            <td>&#x20B9;<?php echo $session['price']; ?>.00</td>
+                            <td>&#x20B9;<?php echo $session['total_price'].".00"; ?></td>
                         </tr>
                         <?php
                         $count++;
@@ -242,7 +242,7 @@
                         ?>
                         <tr>
                             <th scope="row" class="text-center text-muted" colspan="5">Total</th>
-                            <td>&#x20B9; <?php echo $total_price.".00"; ?></td>
+                            <td>&#x20B9;<?php echo $total_price.".00"; ?></td>
                         </tr>
                         <tr>
                             <th scope="row" class="text-muted mt-5" colspan="3" rowspan="4">
@@ -256,22 +256,22 @@
                                 </small>
                             </th>
                             <td colspan="2" class="text-center">Discount</td>
-                            <th class=" text-muted">- &#x20B9; <?php echo $treatment_details_res['discount']; ?>.00</th>
+                            <th class=" text-muted">-&#x20B9;<?php echo $treatment_details_res['discount']; ?>.00</th>
                         </tr>
                         <tr>
                             <td colspan="2" class="text-center">Courier Charges </td>
-                            <th class=" text-muted">&#x20B9; <?php echo $treatment_details_res['courier_charge'] ?>.00</th>
+                            <th class=" text-muted">&#x20B9;<?php echo $treatment_details_res['courier_charge'] ?>.00</th>
                         </tr>
                         <?php 
                             if($treatment_details_res['fees_status'] == 'pending'){
                         ?>
                                 <tr>
                                     <td colspan="2" class="text-center">Payment Received</td>
-                                    <th class=" text-muted">- &#x20B9; <?php echo "0" ?>.00</th>
+                                    <th class=" text-muted">-&#x20B9;<?php echo "0" ?>.00</th>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="text-center">Payable Amount</td>
-                                    <th class=" text-muted">&#x20B9; <?php echo $total_payble_amount; ?>.00</th>
+                                    <th class=" text-muted">&#x20B9;<?php echo $total_payble_amount; ?>.00</th>
                                 </tr>
                         <?php 
                             }else{
@@ -279,11 +279,11 @@
                                 
                                 <tr>
                                     <td colspan="2" class="text-center">Payable Amount</td>
-                                    <th class=" text-muted">&#x20B9; <?php echo "0" ?>.00</th>
+                                    <th class=" text-muted">&#x20B9;<?php echo "0" ?>.00</th>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="text-center">Payment Received</td>
-                                    <th class=" text-muted"> &#x20B9; <?php echo $total_payble_amount; ?>.00</th>
+                                    <th class=" text-muted"> &#x20B9;<?php echo $total_payble_amount; ?>.00</th>
                                 </tr>
                                 
                                 
