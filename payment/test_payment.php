@@ -7,8 +7,8 @@
 
     if(isset($_SESSION['user_id'])){
 
-        $keyId = "rzp_test_bj6y2rUzCCQsX4";
-        $secretKey = "x9PYMbnUlJggKM6cmj7dBOyH";
+        $keyId = "rzp_live_rk3LTdATqKRgUf";
+        $secretKey = "WFJugS35K9vdoFTANLdgo1gI";
         $api = new Api($keyId, $secretKey);
 
 

@@ -19,6 +19,9 @@
     $price = $payment_amount_res['price'];
     $test_name = $payment_amount_res['test_name'];
 
+    date_default_timezone_set('Asia/Kolkata');
+    $date_time_store = date('Y-m-d H:i:s');
+
     // fetch bill number
     $last_bill_no = "SELECT max(`bill_number`) AS lastest FROM `bill_number`";
     $last_bill_no_run = mysqli_query($con, $last_bill_no);
@@ -26,12 +29,12 @@
     $lastest_bill = $last_bill_no_res['lastest'];
 
     $this_bill_no = $lastest_bill + 1;
-    $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`) VALUES ('$this_bill_no')";
+    $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`, `date`) VALUES ('$this_bill_no', '$date_time_store')";
     $insert_bill_no_run = mysqli_query($con, $insert_bill_no);
 
   
-    $insert_entry = "INSERT INTO `test_payments`(`payment_id`, `order_id`, `signiture_hash`, `user_id`, `test_type`, `bill_no`, `charges`) 
-                    VALUES ('$payment_id', '$order_id', '$signiture', '$user_id', '$test_type', '$this_bill_no', '$price')";
+    $insert_entry = "INSERT INTO `test_payments`(`payment_id`, `order_id`, `signiture_hash`, `user_id`, `test_type`, `bill_no`, `charges`, `created_at`) 
+                    VALUES ('$payment_id', '$order_id', '$signiture', '$user_id', '$test_type', '$this_bill_no', '$price', '$date_time_store')";
 
     
     if($con->query($insert_entry) === TRUE){

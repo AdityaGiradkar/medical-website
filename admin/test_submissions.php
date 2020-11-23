@@ -254,80 +254,6 @@
                 <div class="container-fluid main-top main-left">
 
 
-                    <!-- <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="true">Test 1</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">YogE @ HOME Test
-                                (<?php echo $new_yoge_submissions; ?>)</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                aria-controls="contact" aria-selected="false">Test 3</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            ..
-                        </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                           
-                            <div class="card shadow mt-4 mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No.</th>
-                                                    <th>Date</th>
-                                                    <th>Name</th>
-                                                    <th>Contact No.</th>
-                                                    <th>Email ID</th>
-                                                    <th>Details</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php 
-                                                $count = 1;
-                                                while($yoge_home_res = mysqli_fetch_assoc($yoge_home_run)){
-                                                    
-                                                ?>
-                                                
-                                                <tr style="font-weight:<?php echo $yoge_home_res['status'] == 'new'?'bold': ''; ?>">
-                                                    <td><?php echo $count; ?></td>
-                                                    <td><?php echo date("d-m-Y", strtotime($yoge_home_res['date_time'])); ?>
-                                                    </td>
-                                                    <td><?php echo $yoge_home_res['name']; ?></td>
-                                                    <td><?php echo $yoge_home_res['contact_no'];?></td>
-                                                    <td><?php echo $yoge_home_res['email_id']; ?></td>
-                                                    <td><a
-                                                            href="yoge_test_details.php?testID=<?php echo $yoge_home_res['test_id']; ?>">view</a>
-                                                    </td>
-                                                </tr>
-                                                
-
-                                                <?php 
-                                                $count++;
-                                                
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-
-                    </div> -->
-
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Tables</h1>
 
@@ -362,7 +288,7 @@
                                         ?>
                                         <tr style="font-weight:<?php echo $record['status'] == 'pending'?'bold': ''; ?>">
                                             <th><?php echo $count; ?></th>
-                                            <td><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></td>
+                                            <td><?php echo date("d-m-Y h:ia", strtotime($record['created_at'])); ?></td>
                                             <td><?php echo $record['name'];?></td>
                                             <td><?php echo $record['contact_no']; ?></td>
                                             <td><?php echo $fetch_test_res['test_name']; ?></td>

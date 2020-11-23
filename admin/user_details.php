@@ -332,6 +332,7 @@
 
                     <button type="button" class="btn btn-success mt-3" data-toggle="modal"
                         data-target="#start_treatatment">Start NEW Treatment</button>
+                        <a class="btn mt-3 btn-primary d-inline-block" width="200" href="compare_antropometry.php?uid=<?php echo $user_id; ?>">Compaire Antropometry results</a>
 
                     
 
@@ -447,7 +448,7 @@
                                                     ?>
                                                     <tr style="font-weight:<?php echo $all_taken_test_res['status'] == 'pending'?'bold': ''; ?>">
                                                         <td><?php echo $test_no; ?></td>
-                                                        <td><?php echo date("d-m-Y", strtotime($all_taken_test_res['created_at'])); ?></td>
+                                                        <td><?php echo date("d-m-Y h:ia", strtotime($all_taken_test_res['created_at'])); ?></td>
                                                         <td><?php echo $all_taken_test_res['test_name']; ?></td>
                                                         <td>&#x20B9; <?php echo $all_taken_test_res['charges']; ?></td>
                                                         <td><?php echo $all_taken_test_res['status']; ?></td>
@@ -455,7 +456,7 @@
                                                             <?php 
                                                             if($all_taken_test_res['test_type'] == 1){
                                                                 ?>
-                                                                <a>Details</a>
+                                                                <a <?php if($all_taken_test_res['test_id'] != ''){ ?> href="rakshakavach_test_details.php?pay_id=<?php echo $all_taken_test_res['pay_id']; ?>" <?php } ?>>Details</a>
                                                                 <?php         
                                                             }else if($all_taken_test_res['test_type'] == 2){
                                                                 ?>
@@ -467,7 +468,7 @@
                                                                 <?php
                                                             }else if($all_taken_test_res['test_type'] == 4){
                                                                 ?>
-                                                                <a>Details</a>
+                                                                <a <?php if($all_taken_test_res['test_id'] != ''){ ?> href="antropometry_test_details.php?pay_id=<?php echo $all_taken_test_res['pay_id']; ?>" <?php } ?>>Details</a>
                                                                 <?php
                                                             }else{
                                                                 if($all_taken_test_res['status'] == 'pending'){
@@ -889,6 +890,9 @@
             //     move_uploaded_file($prescription_tmp_name, $prescription_destination);
 
 
+        date_default_timezone_set('Asia/Kolkata');
+        $date_time_store = date('Y-m-d H:i:s');
+
         // fetch bill number
         $last_bill_no = "SELECT max(`bill_number`) AS lastest FROM `bill_number`";
         $last_bill_no_run = mysqli_query($con, $last_bill_no);
@@ -896,11 +900,11 @@
         $lastest_bill = $last_bill_no_res['lastest'];
 
         $this_bill_no = $lastest_bill + 1;
-        $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`) VALUES ('$this_bill_no')";
+        $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`, `date`) VALUES ('$this_bill_no', '$date_time_store')";
         mysqli_query($con, $insert_bill_no);
 
-        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`, `courier_charge`, `bill_number`) 
-                        VALUES ('$user_id','$short_name','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount', '$courier', '$this_bill_no')";         
+        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `date`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`, `courier_charge`, `bill_number`) 
+                        VALUES ('$user_id','$short_name','$date_time_store','$current_treat_no',1,'$diet_destination','$report_destination','$extra_note', '$prescription_destination', '$discount', '$courier', '$this_bill_no')";         
 
 
 

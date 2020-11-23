@@ -232,6 +232,8 @@
                         </form>
                     </div>
 
+                    <a class="btn mt-3 mb-3 btn-success d-inline-block" width="200" href="compare_antropometry.php">Compaire Antropometry results</a>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -265,7 +267,7 @@
                                         ?>
                                         <tr style="font-weight:<?php echo $record['status'] == 'pending'?'bold': ''; ?>">
                                             <th><?php echo $count; ?></th>
-                                            <td><?php echo date("d-m-Y", strtotime($record['created_at'])); ?></td>
+                                            <td><?php echo date("d-m-Y h:ia", strtotime($record['created_at'])); ?></td>
                                             <td><?php echo $test_details_res['test_name']; ?></td>
                                             <td><?php echo $record['charges']; ?></td>
                                             <td><?php echo $record['status']; ?></td>

@@ -126,6 +126,9 @@
                 move_uploaded_file($prescription_tmp_name, $prescription_destination);
             }
         }
+
+        date_default_timezone_set('Asia/Kolkata');
+        $date_time_store = date('Y-m-d H:i:s');
         
         // fetch bill number
         $last_bill_no = "SELECT max(`bill_number`) AS lastest FROM `bill_number`";
@@ -134,12 +137,12 @@
         $lastest_bill = $last_bill_no_res['lastest'];
 
         $this_bill_no = $lastest_bill + 1;
-        $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`) VALUES ('$this_bill_no')";
+        $insert_bill_no = "INSERT INTO `bill_number`(`bill_number`, `date`) VALUES ('$this_bill_no', '$date_time_store')";
         mysqli_query($con, $insert_bill_no);
           
 
-        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`, `courier_charge`, `bill_number`) 
-                        VALUES ('$user_id', '$treatment_name', '$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note', '$database_name_prescription', '$discount', '$courier', '$this_bill_no')";         
+        $insert_test ="INSERT INTO `treatment`(`user_id`, `treatment_for`, `date`, `treat_number`, `sub_treat_number`, `diet`, `report`, `extra_note`, `e_prescription`, `discount`, `courier_charge`, `bill_number`) 
+                        VALUES ('$user_id', '$treatment_name', '$date_time_store', '$treat_id','$sub_treat_id','$database_name_diet','$database_name_report','$extra_note', '$database_name_prescription', '$discount', '$courier', '$this_bill_no')";         
 
         if(mysqli_query($con, $insert_test)) {
             echo "<script>

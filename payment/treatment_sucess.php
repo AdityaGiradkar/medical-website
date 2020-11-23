@@ -15,9 +15,12 @@
         $treatment_no = $_GET['treat_no'];
         $sub_treat_no = $_GET['sub_treat_no'];
         $charges = (int)$_GET['charge']/100;
+
+        date_default_timezone_set('Asia/Kolkata');
+        $date_time_store = date('Y-m-d H:i:s');
         
-        $insert_entry = "INSERT INTO `treatment_payment`(`payment_id`, `order_id`, `signiture_hash`, `user_id`, `treat_no`, `sub_treat_no`, `charges`) 
-                        VALUES ('$payment_id','$order_id','$signiture','$user_id','$treatment_no','$sub_treat_no','$charges')";
+        $insert_entry = "INSERT INTO `treatment_payment`(`payment_id`, `order_id`, `signiture_hash`, `user_id`, `treat_no`, `sub_treat_no`, `charges`, `created_at`) 
+                        VALUES ('$payment_id','$order_id','$signiture','$user_id','$treatment_no','$sub_treat_no','$charges', '$date_time_store')";
 
 
         // // fetch bill number

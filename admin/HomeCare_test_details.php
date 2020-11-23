@@ -493,6 +493,8 @@
               <?php 
                   if(($test_details_res['pulse_rate']/100 >= 70 && $test_details_res['pulse_rate']/100 <= 80) && ($test_details_res['SPO2']/100 < 95 || $test_details_res['oral_temp']/100 > 98.4 || $test_details_res['respiration_rate']/100 > 16)){
                     echo "Possibility of Mechanical error. Please check using Machine or Contact doctor.";
+                  }else{
+                    echo " No Comment ";
                   }
               
               ?>

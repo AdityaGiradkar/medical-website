@@ -276,7 +276,7 @@
                                             <td><a
                                                     href="update_session.php?id=<?php echo $record['session_id']; ?>">Edit</a>
                                             </td>
-                                            <td><a onClick="javascript: return confirm('Do you want to remove <?php echo $record['Name']; ?>?');"
+                                            <td><a onClick="javascript: return confirm('Do you want to remove <?php echo $record['session_name']; ?>?');"
                                                     href="small_scripts/delete_session.php?id=<?php echo $record['session_id']; ?>"
                                                     style="color:red;">Delete</a></td>
                                         </tr>

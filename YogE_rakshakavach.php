@@ -317,7 +317,7 @@
         
           
             <div class="form-group" id="test1">
-                <label><strong>1. Stand with feet , knee's, thigh's touching each other. Straighten the body , expand your chest  and straighten the neck, close eye's, hand's lying straight on side's, focus on balance of your body and observe your balance . Do this for 20 second. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/rrusx8bSnrk" data-target="#myModal">Video</a> </strong></label>
+                <label><strong>1. Stand with feet , knee's, thigh's touching each other. Straighten the body , expand your chest  and straighten the neck, close eye's, hand's lying straight on side's, focus on balance of your body and observe your balance . Do this for 20 second. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/rrusx8bSnrk" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a> </strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test1[]" value="['Falling toward's right side','right','ap']" id="test11">
                     <label class="form-check-label option" for="test11">Falling toward's right side</label>
@@ -345,7 +345,7 @@
             </div>
 
             <div class="form-group" id="test2">
-                <label><strong>2. Stand with shoulder distance between feet, expand your chest fully, Press your shoulders backwards. Extend your hands  behind your back with palms crossed over each other(vishram pose), Extend your neck backward and hold this position for 20 second and look for: <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/l3QIjcIQZfo" data-target="#myModal">Video</a> </strong></label>
+                <label><strong>2. Stand with shoulder distance between feet, expand your chest fully, Press your shoulders backwards. Extend your hands  behind your back with palms crossed over each other(vishram pose), Extend your neck backward and hold this position for 20 second and look for: <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/l3QIjcIQZfo" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a> </strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test2[]" value="['Pain and stiffness in chest muscle','pr','an']" id="test21">
                     <label class="form-check-label option" for="test21">Pain and stiffness in chest muscle</label>
@@ -373,7 +373,7 @@
             </div>
 
             <div class="form-group" id="test3">
-                <label><strong>3. Stand straight with feet  closely touched to each other .Take your arms from sideways over your head . Let both palm touch each other ,bring them down on  your head, and then extend hands with force upward keeping palms close . Repeat it 5-7 times and look for: <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/g9maqFGvWP4" data-target="#myModal">Video</a></strong></label>
+                <label><strong>3. Stand straight with feet  closely touched to each other .Take your arms from sideways over your head . Let both palm touch each other ,bring them down on  your head, and then extend hands with force upward keeping palms close . Repeat it 5-7 times and look for: <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/g9maqFGvWP4" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test3[]" value="['feeling headache','ud']" id="test31">
                     <label class="form-check-label option" for="test31">feeling headache</label>
@@ -401,7 +401,7 @@
             </div>
 
             <div class="form-group" id="test4">
-                <label><strong>4. Stand with feets  at shoulder distance apart. keep your hands on your waist. Take a deep breath through nose and hold for a while and exhale through nose .Do this 5-7 times. While breathing watch your chest and abdomen movement. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/CHVYdt7t5oY" data-target="#myModal">Video</a></strong></label>
+                <label><strong>4. Stand with feets  at shoulder distance apart. keep your hands on your waist. Take a deep breath through nose and hold for a while and exhale through nose .Do this 5-7 times. While breathing watch your chest and abdomen movement. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/CHVYdt7t5oY" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test4[]" value="['Chest expanding more']" id="test41">
                     <label class="form-check-label option" for="test41">Chest expanding more</label>
@@ -417,7 +417,7 @@
             </div>
 
             <div class="form-group" id="test5">
-                <label for="formControlRange"><strong>5. Keep feets close , extend yor neck straight upward and extend it backward  keep eyes closed. Hold in this position with normal breathing for 20 seconds. Are you loosing balance? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/Y6czSWibXQI" data-target="#myModal">Video</a></strong></label>
+                <label for="formControlRange"><strong>5. Keep feets close , extend yor neck straight upward and extend it backward  keep eyes closed. Hold in this position with normal breathing for 20 seconds. Are you loosing balance? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/Y6czSWibXQI" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test5[]" id="test51" value="['yes','ud','sa']">
                     <label class="form-check-label option" for="test51">yes</label>
@@ -429,7 +429,7 @@
             </div>
 
             <div class="form-group" id="test6">
-                <label><strong>6. (Simple forward step with spine twist) take a step  forward with right leg. Raise your hands  sideways, hold them at shoulder level  and take a twist above waist on right  side .Do this 3-4 times .  Then  take  a step forward  with left leg,Raise your hands sideways ,hold them at shoulder leveland take a twist above waist on left  side .do This 3-4 times. Observe and feel for: <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/RD3bgmYx_Iw" data-target="#myModal">Video</a></strong></label>
+                <label><strong>6. (Simple forward step with spine twist) take a step  forward with right leg. Raise your hands  sideways, hold them at shoulder level  and take a twist above waist on right  side .Do this 3-4 times .  Then  take  a step forward  with left leg,Raise your hands sideways ,hold them at shoulder leveland take a twist above waist on left  side .do This 3-4 times. Observe and feel for: <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/RD3bgmYx_Iw" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test6[]" value="['Pain or stiffness in shoulder','ap','ma']" id="test61">
                     <label class="form-check-label option" for="test61">Pain or stiffness in shoulder</label>
@@ -457,7 +457,7 @@
             </div>
 
             <div class="form-group" id="test7">
-                <label><strong>7. ( chanting for vibration in chest) Stand with feet at shoulder distance apart , take a deep breath hold it, touching the palm on chest and chant in hormoney in medium tone"Haa" and feel the vibration , do it on both sides for upper, middle, lower and sides of your chest, Do this for 5-10 breathes. feel for vibrations in chest . feel on both sides.and answer <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/0JOEbL9H-6A" data-target="#myModal">Video</a></strong></label>
+                <label><strong>7. ( chanting for vibration in chest) Stand with feet at shoulder distance apart , take a deep breath hold it, touching the palm on chest and chant in hormoney in medium tone"Haa" and feel the vibration , do it on both sides for upper, middle, lower and sides of your chest, Do this for 5-10 breathes. feel for vibrations in chest . feel on both sides.and answer <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/0JOEbL9H-6A" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="row">
                   <div class="col-md-2">
                     <label class="form-check-label"><b>Upper Chest : </b></label>
@@ -506,7 +506,7 @@
             </div>
 
             <div class="form-group" id="test8">
-                <label><strong>8. Stand with feet  at shoulder distance apart. Close the ear with thumbs. Do not use the nail part of thumb, just the soft part of thumb, close eyes, and hold for 20 second and observe. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/RmyvJIAmVCM" data-target="#myModal">Video</a></strong></label>
+                <label><strong>8. Stand with feet  at shoulder distance apart. Close the ear with thumbs. Do not use the nail part of thumb, just the soft part of thumb, close eyes, and hold for 20 second and observe. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/RmyvJIAmVCM" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test8[]" value="['feeling ear blocked or pressure in ear','ud','pr']" id="test81">
                     <label class="form-check-label option" for="test81">feeling ear blocked or pressure in ear</label>
@@ -526,7 +526,7 @@
             </div>
 
             <div class="form-group" id="test9">
-                <label for="formControlRange"><strong>9. Stand with feet at shoulder distance apart close your eyes and gently touch  your eyes with tips of middle and index finger. do not press the eyes. feel for 20 sec and observe does your eyes move? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/yqYWhPdT9Cc" data-target="#myModal">Video</a></strong></label>
+                <label for="formControlRange"><strong>9. Stand with feet at shoulder distance apart close your eyes and gently touch  your eyes with tips of middle and index finger. do not press the eyes. feel for 20 sec and observe does your eyes move? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/yqYWhPdT9Cc" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test9[]" id="test91" value="['yes','ud','st']">
                     <label class="form-check-label option" for="test91">yes</label>
@@ -538,7 +538,7 @@
             </div>
 
             <div class="form-group" id="test10">
-                <label><strong>10. Stand with feet at shoulder distance apart,  keep  your eyes closed, and hold gently your forehead with all fingers except thumb, breathing deeply for atleast 2 minutes. observe for, what are the thoughts coming in your mind? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/IHtfsej2AKo" data-target="#myModal">Video</a></strong></label>
+                <label><strong>10. Stand with feet at shoulder distance apart,  keep  your eyes closed, and hold gently your forehead with all fingers except thumb, breathing deeply for atleast 2 minutes. observe for, what are the thoughts coming in your mind? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/IHtfsej2AKo" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test10[]" value="['many thought','st']" id="test101">
                     <label class="form-check-label option" for="test101">many thought</label>
@@ -574,7 +574,7 @@
             </div>
 
             <div class="form-group" id="test11">
-                <label><strong>11. Stand at ease with feet at shoulder length apart , touch your face with your palms hold in this postion for 20 second and observe. How do you feel your touch? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/7aOWaQZWQZ4" data-target="#myModal">Video</a></strong></label>
+                <label><strong>11. Stand at ease with feet at shoulder length apart , touch your face with your palms hold in this postion for 20 second and observe. How do you feel your touch? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/7aOWaQZWQZ4" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test11[]" value="['soft','re']" id="test111">
                     <label class="form-check-label option" for="test111">soft</label>
@@ -602,7 +602,7 @@
             </div>
 
             <div class="form-group" id="test12">
-                <label for="formControlRange"><strong>12. Sit on the chair, resting hands on thighs, close eyes for 20 secons and focus on the saliva in your mouth. Feel your saliva and answer: <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/R1HgUCW7Eek" data-target="#myModal">Video</a></strong></label>
+                <label for="formControlRange"><strong>12. Sit on the chair, resting hands on thighs, close eyes for 20 secons and focus on the saliva in your mouth. Feel your saliva and answer: <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/R1HgUCW7Eek" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test12[]" id="test121" value="['cold saliva','lo']">
                     <label class="form-check-label option" for="test121">cold saliva</label>
@@ -618,7 +618,7 @@
             </div>
 
             <div class="form-group" id="test13">
-                <label for="formControlRange"><strong>13. Is your sense of taste  normal. Can you taste food? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/skbAp556tV0" data-target="#myModal">Video</a></strong></label>
+                <label for="formControlRange"><strong>13. Is your sense of taste  normal. Can you taste food? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/skbAp556tV0" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test13[]" id="test131" value="['yes']">
                     <label class="form-check-label option" for="test131">yes</label>
@@ -630,7 +630,7 @@
             </div>
 
             <div class="form-group" id="test14">
-                <label><strong>14. Sit on chair, hold your back straight, close eyes and tick which food you desire <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/kAtquDA72w0" data-target="#myModal">Video</a></strong></label>
+                <label><strong>14. Sit on chair, hold your back straight, close eyes and tick which food you desire <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/kAtquDA72w0" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test14[]" value="['sweet','kf']" id="test141">
                     <label class="form-check-label option" for="test141">sweet</label>
@@ -654,7 +654,7 @@
             </div>
 
             <div class="form-group" id="test15">
-                <label><strong>15. Breathe  from right nostril .Inhale and exhale 5-7 times. Repeat the same from left nostril. Are you feeling your nose is blocked? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/mATFw27ytXc" data-target="#myModal">Video</a></strong></label>
+                <label><strong>15. Breathe  from right nostril .Inhale and exhale 5-7 times. Repeat the same from left nostril. Are you feeling your nose is blocked? <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/mATFw27ytXc" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test15[]" value="['right nostril blocked','pi','vy']" id="test151">
                     <label class="form-check-label option" for="test151">right nostril blocked</label>
@@ -674,7 +674,7 @@
             </div>
 
             <div class="form-group" id="test16">
-                <label for="formControlRange"><strong>16. Breath from nose. Hold your hand beneath nose. Inhale and exale 5-7 times. Feel air flowing from nose, is it warm or cold. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/cSSx_wzvsDY" data-target="#myModal">Video</a></strong></label>
+                <label for="formControlRange"><strong>16. Breath from nose. Hold your hand beneath nose. Inhale and exale 5-7 times. Feel air flowing from nose, is it warm or cold. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/cSSx_wzvsDY" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test16[]" id="test161" value="['warm  breath','pr','st']">
                     <label class="form-check-label option" for="test161">warm  breath </label>
@@ -690,7 +690,7 @@
             </div>
             
             <div class="form-group" id="test17">
-                <label for="formControlRange"><strong>17. Is your sense of smelling normal. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/MmqdPzvG870" data-target="#myModal">Video</a></strong></label>
+                <label for="formControlRange"><strong>17. Is your sense of smelling normal. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/MmqdPzvG870" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test17[]" id="test171" value="['yes']">
                     <label class="form-check-label option" for="test171">yes</label>
@@ -702,7 +702,7 @@
             </div>
 
             <div class="form-group" id="test18">
-                <label><strong>18. Stand erect or Sit on chair holding back straight. Place both palms on your abdomen, place your hands on the sides of navel, take care not to overlap the fingers. both hands should not touch each other, keep breathing gently with closed eyes. focus on your navel. hold for 20 seconds and observe <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/1WQAAb3VpR8" data-target="#myModal">Video</a></strong></label>
+                <label><strong>18. Stand erect or Sit on chair holding back straight. Place both palms on your abdomen, place your hands on the sides of navel, take care not to overlap the fingers. both hands should not touch each other, keep breathing gently with closed eyes. focus on your navel. hold for 20 seconds and observe <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/1WQAAb3VpR8" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test18[]" value="['feeling gurgling or movement of bowel','ap','ma']" id="test181">
                     <label class="form-check-label option" for="test181">feeling gurgling or movement of bowel</label>
@@ -730,7 +730,7 @@
             </div>
 
             <div class="form-group" id="test19">
-                <label for="formControlRange"><strong>19. Stand with feet close to each other, great toe, knee, thighs touching each other. Extend your hands sideways upto shoulder level. Press your thumb with your index finger(gyan mudra) and close eyes. Breath gently for 20 second watch for your balance. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/E6y_lL0JEGU" data-target="#myModal">Video</a></strong></label>
+                <label for="formControlRange"><strong>19. Stand with feet close to each other, great toe, knee, thighs touching each other. Extend your hands sideways upto shoulder level. Press your thumb with your index finger(gyan mudra) and close eyes. Breath gently for 20 second watch for your balance. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/E6y_lL0JEGU" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test19[]" id="test191" value="['feeling imbalance','ud']">
                     <label class="form-check-label option" for="test191">feeling imbalance</label>
@@ -753,7 +753,7 @@
                         <li>150 steps if you are 40-50yr.</li>
                         <li>200 steps if you are less than 40 yr </li>
                     </ul>   
-                    (This test not to be done by pregnant or heart patient undergone surgery or severe heart disease) <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/E6pIyvd_G3o" data-target="#myModal">Video</a></strong>
+                    (This test not to be done by pregnant or heart patient undergone surgery or severe heart disease) <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/E6pIyvd_G3o" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong>
                 </label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test20[]" value="['run the steps for as per age']" id="test201">
@@ -791,10 +791,14 @@
                     <input class="form-check-input option" type="checkbox" name="test20[]" value="['None of above']" id="test209">
                     <label class="form-check-label option" for="test209">None of above</label>
                 </div>
+                <div class="form-check">
+                    <input class="form-check-input option" type="checkbox" name="test20[]" value="['I am heart patient/ pregnant lady/ severe orthopaedic illness/ critical patient so cannot do this kriya']" id="test2010">
+                    <label class="form-check-label option" for="test2010">I am heart patient/ pregnant lady/ severe orthopaedic illness/ critical patient so cannot do this kriya.</label>
+                </div>
             </div>
 
             <div class="form-group" id="test21">
-                <label><strong>21. Stand with legs crossed against each other ( lord krishna with basuri pose). Close eyes, hold your hands like basuri/flute. Hold for 20 sec. What thoughts  came in your mind. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/7NVQVtyCeZQ" data-target="#myModal">Video</a></strong></label>
+                <label><strong>21. Stand with legs crossed against each other ( lord krishna with basuri pose). Close eyes, hold your hands like basuri/flute. Hold for 20 sec. What thoughts  came in your mind. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/7NVQVtyCeZQ" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test21[]" value="['past issues','de']" id="test211">
                     <label class="form-check-label option" for="test211">past issues</label>
@@ -822,7 +826,7 @@
             </div>
 
             <div class="form-group" id="test22">
-                <label><strong>22. Do either A or B <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/wVKpPUMzdLU" data-target="#myModal">Video</a>
+                <label><strong>22. Do either A or B <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/wVKpPUMzdLU" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a>
                     <ol type="A" style="margin-bottom:0">
                         <li>For those who can sit in vajrasan: Sit in vajrasan holding back straight , relaxfully keeping your hands on the thighs close your eyes. Observe.</li>    
                         <li>For those   who cannot do vajrasan: sit on a stool of comfortable height for you, hold back straight and move your feet slightly behind . </li>
@@ -879,23 +883,23 @@
             </div>
 
             <div class="form-group" id="test23">
-                <label for="formControlRange"><strong>23. Measure body temperature by glass thermometer or digital thermometer . Do not measure in ac room , or immediately after drinking or eating anything. Keep thermometer under your tongue for 2-3 min. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/ox661ZsdSOg" data-target="#myModal">Video</a></strong></label>
+                <label for="formControlRange"><strong>23. Measure body temperature by glass thermometer or digital thermometer . Do not measure in ac room , or immediately after drinking or eating anything. Keep thermometer under your tongue for 2-3 min. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/ox661ZsdSOg" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test23[]" id="test231" value="['below 98.6']">
-                    <label class="form-check-label option" for="test231">below 98.6</label>
+                    <label class="form-check-label option" for="test231">below 98.4<sup>0</sup> F</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test23[]" id="test232" value="['above 98.6','fe']">
-                    <label class="form-check-label option" for="test232">above 98.6</label>
+                    <label class="form-check-label option" for="test232">above 98.4<sup>0</sup> F</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input option" type="radio" name="test23[]" id="test233" value="['above 100','fe','fe']">
-                    <label class="form-check-label option" for="test233">above 100</label>
+                    <label class="form-check-label option" for="test233">above 100<sup>0</sup> F</label>
                 </div>
             </div>
 
             <div class="form-group" id="test24">
-                <label><strong>24. Take a deep breath and try doing as much suryanamaskar holding the breath. Do this only once. Do not repeat it second time.( this test not to be done by pregnant or heart patient undergone surgery or severe heart disease) <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/UJYiaAUQBu0" data-target="#myModal">Video</a></strong></label>
+                <label><strong>24. Take a deep breath and try doing as much suryanamaskar holding the breath. Do this only once. Do not repeat it second time.( this test not to be done by pregnant or heart patient undergone surgery or severe heart disease) <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/UJYiaAUQBu0" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option" type="checkbox" name="test24[]" value="['less than one','pr']" id="test241">
                     <label class="form-check-label option" for="test241">less than one</label>
@@ -936,10 +940,14 @@
                     <input class="form-check-input option" type="checkbox" name="test24[]" value="['feeling body pain','pr']" id="test2410">
                     <label class="form-check-label option" for="test2410">feeling body pain</label>
                 </div>
+                <div class="form-check">
+                    <input class="form-check-input option" type="checkbox" name="test24[]" value="['I am heart patient/ pregnant lady/ severe orthopaedic illness/ critical patient so cannot do this kriya']" id="test2411">
+                    <label class="form-check-label option" for="test2411">I am heart patient/ pregnant lady/ severe orthopaedic illness/ critical patient so cannot do this kriya</label>
+                </div>
             </div>
 
             <div class="form-group" id="test25">
-                <label><strong>25. Observation's of your early morning urine. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/ZwG2U-cPJEU" data-target="#myModal">Video</a></strong></label>
+                <label><strong>25. Observation's of your early morning urine. <a type="button" href="" class="video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/ZwG2U-cPJEU" data-target="#myModal">( Watch Video <i class="fas fa-film"></i> )</a></strong></label>
                 <div class="form-check">
                     <input class="form-check-input option test25" type="checkbox" name="test25[]" value="['normal color']" id="test251">
                     <label class="form-check-label option" for="test251">normal color</label>
@@ -1405,6 +1413,7 @@
           disable_option("#test206");
           disable_option("#test207");
           disable_option("#test208");
+          disable_option("#test2010");
           uncheck_option("#test201");
           uncheck_option("#test202");
           uncheck_option("#test203");
@@ -1413,6 +1422,7 @@
           uncheck_option("#test206");
           uncheck_option("#test207");
           uncheck_option("#test208");
+          uncheck_option("#test2010");
         }else{
           enable_option("#test201");
           enable_option("#test202");
@@ -1422,6 +1432,40 @@
           enable_option("#test206");
           enable_option("#test207");
           enable_option("#test208");
+          enable_option("#test2010");
+        }
+      });
+
+      $("#test2010").change(function () {
+        if($(this).is(":checked")) {
+          disable_option("#test201");
+          disable_option("#test202");
+          disable_option("#test203");
+          disable_option("#test204");
+          disable_option("#test205");
+          disable_option("#test206");
+          disable_option("#test207");
+          disable_option("#test208");
+          disable_option("#test209");
+          uncheck_option("#test201");
+          uncheck_option("#test202");
+          uncheck_option("#test203");
+          uncheck_option("#test204");
+          uncheck_option("#test205");
+          uncheck_option("#test206");
+          uncheck_option("#test207");
+          uncheck_option("#test208");
+          uncheck_option("#test209");
+        }else{
+          enable_option("#test201");
+          enable_option("#test202");
+          enable_option("#test203");
+          enable_option("#test204");
+          enable_option("#test205");
+          enable_option("#test206");
+          enable_option("#test207");
+          enable_option("#test208");
+          enable_option("#test209");
         }
       });
       // For question 20
@@ -1514,6 +1558,42 @@
           enable_option("#test243");
           enable_option("#test244");
           enable_option("#test241");
+        }
+      });
+
+      $("#test2411").change(function () {
+        if($(this).is(":checked")) {
+          disable_option("#test241");
+          disable_option("#test242");
+          disable_option("#test243");
+          disable_option("#test244");
+          disable_option("#test245");
+          disable_option("#test246");
+          disable_option("#test247");
+          disable_option("#test248");
+          disable_option("#test249");
+          disable_option("#test2410");
+          uncheck_option("#test241");
+          uncheck_option("#test242");
+          uncheck_option("#test243");
+          uncheck_option("#test244");
+          uncheck_option("#test245");
+          uncheck_option("#test246");
+          uncheck_option("#test247");
+          uncheck_option("#test248");
+          uncheck_option("#test249");
+          uncheck_option("#test2410");
+        }else{
+          enable_option("#test241");
+          enable_option("#test242");
+          enable_option("#test243");
+          enable_option("#test244");
+          enable_option("#test245");
+          enable_option("#test246");
+          enable_option("#test247");
+          enable_option("#test248");
+          enable_option("#test249");
+          enable_option("#test2410");
         }
       });
       // For question 24
