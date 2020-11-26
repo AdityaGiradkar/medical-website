@@ -8,9 +8,10 @@
       if(isset($_GET['orderId'])){
         $order_id=$_GET['orderId'];
 
-        $check_availability_of_test = "SELECT `pay_id` FROM `test_payments` WHERE `order_id`='$order_id' AND `test_id` IS NULL";
+        $check_availability_of_test = "SELECT `pay_id`, `test_type` FROM `test_payments` WHERE `order_id`='$order_id' AND `test_id` IS NULL";
         $check_availability_of_test_run = mysqli_query($con, $check_availability_of_test);
         $check_availability_of_test_rows = mysqli_num_rows($check_availability_of_test_run);
+        $check_availability_of_test_res = mysqli_fetch_assoc($check_availability_of_test_run);
         //check for payment is done and test is not given
         if($check_availability_of_test_rows > 0){
 
@@ -22,7 +23,7 @@
           $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
           $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
           $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
-          $tests = array(0,0,0,0,0);
+          $tests = array(0,0,0,0,0,0);
           while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
             $index = $check_remaining_tests_res['test_type'];
             $tests[$index] = $check_remaining_tests_res['order_id'];
@@ -157,10 +158,11 @@
         <div id="incompleteTest" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Incomplete Tests:</h6>
-            <?php if($tests[1] !== 0) { ?><a class="collapse-item active" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach</a><?php } ?>
+            <?php if($tests[1] !== 0) { ?><a class="collapse-item <?php if($check_availability_of_test_res['test_type'] == 1){ echo 'active'; } ?>" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach <br>Basic</a><?php } ?>
             <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
             <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
             <?php if($tests[4] !== 0) { ?><a class="collapse-item" href="YogE_Antropometry.php?orderId=<?php echo $tests[4]; ?>">YOG-E@Anthropometry</a><?php } ?>
+            <?php if($tests[5] !== 0) { ?><a class="collapse-item <?php if($check_availability_of_test_res['test_type'] == 5){ echo 'active'; } ?>" href="YogE_rakshakavach.php?orderId=<?php echo $tests[5]; ?>">YOG-E@Rakshakavach <br>Advanced</a><?php } ?>
           </div>
         </div>
       </li>
@@ -245,8 +247,20 @@
         <div class="container-fluid main-left">
           <form name="test_rakshakavach" onsubmit="return validateForm()" method="post" action="" >  
             <!-- Page Heading -->
-            <h1 class="h3 text-gray-800">YOG-E @Rakshakavach Test</h1>
+            <h1 class="h3 text-gray-800">YOG-E @Rakshakavach Test <?php if($check_availability_of_test_res['test_type'] == 1){ echo 'Basic'; }else if($check_availability_of_test_res['test_type'] == 5) {echo 'Advanced'; } ?></h1>
             <p>A Yog based test invented and developed by dr sadanand rasal. This YOG-E Rakshakavach test diagnoses health status, health risk, health alerts, dosha, kohsa, immune rakshakavach, covid risk, organ risk, system health, psychological assessment, stress, risk of complications, period of recovery.</p>
+            <p><b>Instructions before doing test to be followed:</b>  
+              <ol>
+                <li>Do test empty stomach early moring after sunrise for best results</li>
+                <li>Do test in well illunimated room</li>
+                <li>Room should be free of dust, open space, ventilated and adequate free  space available</li>
+                <li>Wear simple easy light weight and cotton clothing while performing test</li>
+                <li>Preferrably stand facing east direction while doing test kriyas</li>
+                <li>Note self observations without analysing it, note your feel(anubhuti)</li>
+                <li>Note what you feel yourself, rather than being guided by somebody else</li>
+                <li>Perform all the kriya's as shown in video, do not skip or do kriya in hurry</li>
+              </ol>
+            </p>
             <hr>
             <h1 class="h5 text-gray-800">Personal Details</h1>
             <div class="form-row mt-4">

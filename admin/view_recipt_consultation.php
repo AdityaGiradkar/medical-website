@@ -3,29 +3,30 @@
     include('../includes/db.php');
 
     if(isset($_SESSION['user_id'])){
-        $user_id = $_SESSION['user_id'];
-        if (isset($_GET['bill_no'])){
-            $bill_no = $_GET['bill_no'];
+        if($_SESSION['role'] == 'doctor'){
+            $user_id = $_SESSION['user_id'];
+            if (isset($_GET['bill_no'])){
+                $bill_no = $_GET['bill_no'];
 
-            $fetch_consultation = "SELECT * FROM `consultation_time` WHERE `bill_number`='$bill_no'";
-            $fetch_consultation_run = mysqli_query($con, $fetch_consultation);
-            $fetch_consultation_res = mysqli_fetch_assoc($fetch_consultation_run);
+                $fetch_consultation = "SELECT * FROM `consultation_time` WHERE `bill_number`='$bill_no'";
+                $fetch_consultation_run = mysqli_query($con, $fetch_consultation);
+                $fetch_consultation_res = mysqli_fetch_assoc($fetch_consultation_run);
 
-            $user_id = $fetch_consultation_res['assigned_user'];
-            $consult_fees = $fetch_consultation_res['consult_fees'];
-            $consult_status = $fetch_consultation_res['status'];
-            $consultation_date = $fetch_consultation_res['date'];
-            $consultation_time = $fetch_consultation_res['time_range'];
-            $consultation_type = $fetch_consultation_res['consult_type'];
+                $user_id = $fetch_consultation_res['assigned_user'];
+                $consult_fees = $fetch_consultation_res['consult_fees'];
+                $consult_status = $fetch_consultation_res['status'];
+                $consultation_date = $fetch_consultation_res['date'];
+                $consultation_time = $fetch_consultation_res['time_range'];
+                $consultation_type = $fetch_consultation_res['consult_type'];
 
-            $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
-            $user_details_run = mysqli_query($con, $user_details);
-            $user_details_res = mysqli_fetch_assoc($user_details_run);
+                $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
+                $user_details_run = mysqli_query($con, $user_details);
+                $user_details_res = mysqli_fetch_assoc($user_details_run);
 
 
-            $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_no'";
-            $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
-            $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
+                $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_no'";
+                $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
+                $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
 
    
 
@@ -192,10 +193,16 @@
 </html>
 
 <?php 
-        }else{              //else part of isset($_GET[''] && ....)
+            }else{              //else part of isset($_GET[''] && ....)
+                echo "<script>
+                        alert('Insufficient data.');
+                        window.location.href='index.php';
+                    </script>";
+            }
+        }else{   //check if user is docor or not
             echo "<script>
-                    alert('Insufficient data.');
-                    window.location.href='index.php';
+                alert('Invalid Access');
+                window.location.href='../index.php';
                 </script>";
         }
     }else{                 //else part of session not set

@@ -5,6 +5,7 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
+      if($_SESSION['role'] == 'doctor'){
 
         $slots = "SELECT * FROM `consultation_time` WHERE `date` >= CURDATE() GROUP BY `date` ORDER BY `date` DESC, `time_range` ASC;";
         $slots_run = mysqli_query($con, $slots);
@@ -369,6 +370,11 @@
 
 
 <?php
+  }else{//else if user is not doctor
+    echo "<script>
+              window.location.href='../index.php';
+            </script>";
+  }
     }else{
       echo "<script>
               window.location.href='../error/login_error.html';

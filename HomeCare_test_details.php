@@ -31,7 +31,7 @@
         $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
         $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
         $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
-        $tests = array(0,0,0,0,0);
+        $tests = array(0,0,0,0,0,0);
         while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
           $index = $check_remaining_tests_res['test_type'];
           $tests[$index] = $check_remaining_tests_res['order_id'];
@@ -143,10 +143,11 @@
         <div id="incompleteTest" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Incomplete Tests:</h6>
-            <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach</a><?php } ?>
+            <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach <br>Basic</a><?php } ?>
             <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
             <?php if($tests[3] !== 0) { ?><a class="collapse-item" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
             <?php if($tests[4] !== 0) { ?><a class="collapse-item" href="YogE_Antropometry.php?orderId=<?php echo $tests[4]; ?>">YOG-E@Anthropometry</a><?php } ?>
+            <?php if($tests[5] !== 0) { ?><a class="collapse-item" href="YogE_rakshakavach.php?orderId=<?php echo $tests[5]; ?>">YOG-E@Rakshakavach <br>Advanced</a><?php } ?>
           </div>
         </div>
       </li>
@@ -421,7 +422,7 @@
               <b>
               <?php 
                   if(($test_details_res['pulse_rate']/100 >= 70 && $test_details_res['pulse_rate']/100 <= 80) && ($test_details_res['SPO2']/100 < 95 || $test_details_res['oral_temp']/100 > 98.4 || $test_details_res['respiration_rate']/100 > 16)){
-                      echo "Possibility of Mechanical error. Please check using Machine or Contact doctor.";
+                      echo "Possibility of Apparatus error needs to be ruled out OR Contact your doctor.";
                   }else{
                     echo " No Comment ";
                   }

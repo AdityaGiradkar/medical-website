@@ -8,9 +8,10 @@
       if(isset($_GET['orderId'])){
         $order_id=$_GET['orderId'];
 
-        $check_availability_of_test = "SELECT `pay_id` FROM `test_payments` WHERE `order_id`='$order_id' AND `test_id` IS NULL";
+        $check_availability_of_test = "SELECT `pay_id`, `test_type` FROM `test_payments` WHERE `order_id`='$order_id' AND `test_id` IS NULL";
         $check_availability_of_test_run = mysqli_query($con, $check_availability_of_test);
         $check_availability_of_test_rows = mysqli_num_rows($check_availability_of_test_run);
+        $check_availability_of_test_res = mysqli_fetch_assoc($check_availability_of_test_run);
         //check for payment is done and test is not given
         if($check_availability_of_test_rows > 0){
 
@@ -22,7 +23,7 @@
           $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
           $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
           $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
-          $tests = array(0,0,0,0,0);
+          $tests = array(0,0,0,0,0,0);
           while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
             $index = $check_remaining_tests_res['test_type'];
             $tests[$index] = $check_remaining_tests_res['order_id'];
@@ -128,10 +129,11 @@
         <div id="incompleteTest" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Incomplete Tests:</h6>
-            <?php if($tests[1] !== 0) { ?><a class="collapse-item" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach</a><?php } ?>
+            <?php if($tests[1] !== 0) { ?><a class="collapse-item <?php if($check_availability_of_test_res['test_type'] == 1){ echo 'active'; } ?>" href="YogE_rakshakavach.php?orderId=<?php echo $tests[1]; ?>">YOG-E@Rakshakavach <br>Basic</a><?php } ?>
             <?php if($tests[2] !== 0) { ?><a class="collapse-item" href="YogE_HomeCare.php?orderId=<?php echo $tests[2]; ?>">YOG-E@HomeCare</a><?php } ?>
             <?php if($tests[3] !== 0) { ?><a class="collapse-item active" href="YogE_CritiCare.php?orderId=<?php echo $tests[3]; ?>">YOG-E@CritiCare</a><?php } ?>
             <?php if($tests[4] !== 0) { ?><a class="collapse-item" href="YogE_Antropometry.php?orderId=<?php echo $tests[4]; ?>">YOG-E@Anthropometry</a><?php } ?>
+            <?php if($tests[5] !== 0) { ?><a class="collapse-item <?php if($check_availability_of_test_res['test_type'] == 5){ echo 'active'; } ?>" href="YogE_rakshakavach.php?orderId=<?php echo $tests[5]; ?>">YOG-E@Rakshakavach <br>Advanced</a><?php } ?>
           </div>
         </div>
       </li>
@@ -218,6 +220,13 @@
             <!-- Page Heading -->
             <h1 class="h3 text-gray-800">YOG-E@CritiCareDailyTest</h1>
             <p>YOG-E CritiCare Daily test is best suited for those critical patients who donot get facility of hospitalization or who cannot avail hospital bed. It also helps in management of terminally iill critical patinets at home. This test helps to decrease load on hospital infrastructure and also helps patients to save huge amount of money.</p>
+            <ol>
+              <li>Enter the data from the hospital records of the patient under whose name the test is being done.</li>
+              <li>Enter the data form the diagnostic reports  of current date or latest reports</li>
+              <li>If any problem for entering data kindly contat us on whats app no. 8208537972.</li>
+              <li>We will assist you if you send the pictures of the reports, our team member will enter the date on your behalf, so you need not be worried.</li>
+              <li>If any help needed contact us on helpdesk@atmavedayog.com</li>
+            </ol>
             <hr>
             <h1 class="h5 text-gray-800">Personal Details</h1>
             <div class="form-row mt-4">

@@ -5,12 +5,14 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
+      
+      if($_SESSION['role'] == 'doctor'){
 
-      //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-      $new_patient_count_run = mysqli_query($con, $new_patient_count);
-      $data=mysqli_fetch_assoc($new_patient_count_run);
-      //finding total number of new patient
+        //finding total number of new patient
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+        $new_patient_count_run = mysqli_query($con, $new_patient_count);
+        $data=mysqli_fetch_assoc($new_patient_count_run);
+        //finding total number of new patient
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -340,67 +342,74 @@
 
 <?php
 
-    function compressImage($source, $destination, $quality) {
+      function compressImage($source, $destination, $quality) {
 
-      $info = getimagesize($source);
+        $info = getimagesize($source);
 
-      if ($info['mime'] == 'image/jpeg') 
-        $image = imagecreatefromjpeg($source);
+        if ($info['mime'] == 'image/jpeg') 
+          $image = imagecreatefromjpeg($source);
 
-      elseif ($info['mime'] == 'image/gif') 
-        $image = imagecreatefromgif($source);
+        elseif ($info['mime'] == 'image/gif') 
+          $image = imagecreatefromgif($source);
 
-      elseif ($info['mime'] == 'image/png') 
-        $image = imagecreatefrompng($source);
+        elseif ($info['mime'] == 'image/png') 
+          $image = imagecreatefrompng($source);
 
-      imagejpeg($image, $destination, $quality);
+        imagejpeg($image, $destination, $quality);
 
-      return $destination;
-    }
+        return $destination;
+      }
 
-    if(isset($_POST['add_blog'])){
-        $blog_name = mysqli_real_escape_string($con, $_POST['blog_name']);
-        $blog_link = mysqli_real_escape_string($con, $_POST['blog_link']);
-        $discription = mysqli_real_escape_string($con, $_POST['discription']);
-        $file = $_FILES['cover_image'];
+      if(isset($_POST['add_blog'])){
+          $blog_name = mysqli_real_escape_string($con, $_POST['blog_name']);
+          $blog_link = mysqli_real_escape_string($con, $_POST['blog_link']);
+          $discription = mysqli_real_escape_string($con, $_POST['discription']);
+          $file = $_FILES['cover_image'];
+          
+          $file_original = $_FILES['cover_image']['name'];
+          $file_tmp_name = $_FILES['cover_image']['tmp_name'];
+          $file_size = $_FILES['cover_image']['size'];
+          $file_error = $_FILES['cover_image']['error'];
+          $file_type = $_FILES['cover_image']['type'];
+
+          $file_ext_seprate = explode('.', $file_original);
         
-        $file_original = $_FILES['cover_image']['name'];
-        $file_tmp_name = $_FILES['cover_image']['tmp_name'];
-        $file_size = $_FILES['cover_image']['size'];
-        $file_error = $_FILES['cover_image']['error'];
-        $file_type = $_FILES['cover_image']['type'];
+          $file_ext = strtolower(end($file_ext_seprate));
 
-        $file_ext_seprate = explode('.', $file_original);
-       
-        $file_ext = strtolower(end($file_ext_seprate));
+          //echo $file_ext;
+          //echo "<script>alert('$file_error');</script>";
+          $valid_ext = array('jpg', 'jpeg', 'png');
 
-        //echo $file_ext;
-        //echo "<script>alert('$file_error');</script>";
-        $valid_ext = array('jpg', 'jpeg', 'png');
+          if(in_array($file_ext, $valid_ext)){
+              if($file_error === 0){
+                  $file_new_name = uniqid('', true).".".$file_ext;
+                  $file_destination = "img/blog_images/".$file_new_name;
 
-        if(in_array($file_ext, $valid_ext)){
-            if($file_error === 0){
-                $file_new_name = uniqid('', true).".".$file_ext;
-                $file_destination = "img/blog_images/".$file_new_name;
+                  $compressed_image = compressImage($file_tmp_name, $file_destination, 50);
 
-                $compressed_image = compressImage($file_tmp_name, $file_destination, 50);
+                  // move_uploaded_file($file_tmp_name, $file_destination);
 
-                // move_uploaded_file($file_tmp_name, $file_destination);
+                  $update = "INSERT INTO `blogs`(`blog_name`, `blog_link`, `cover_img`, `small_description`) VALUES ('$blog_name', '$blog_link', '$file_new_name', '$discription')";
+                  if($update_run = mysqli_query($con, $update)) {
+                      echo "<script>
+                                  alert('update Sucessfull');
+                                  window.location.href='blogs_table.php';
+                              </script>";
+                  }
+              }else{
+                  echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
+              }
+          }else{
+              echo "<script>alert('please upload file in either of specified format only.');</script>";
+          }
+          
+      }
 
-                $update = "INSERT INTO `blogs`(`blog_name`, `blog_link`, `cover_img`, `small_description`) VALUES ('$blog_name', '$blog_link', '$file_new_name', '$discription')";
-                if($update_run = mysqli_query($con, $update)) {
-                    echo "<script>
-                                alert('update Sucessfull');
-                                window.location.href='blogs_table.php';
-                            </script>";
-                }
-            }else{
-                echo "<script>alert('Error in uploading file Please try again after some time.');</script>";
-            }
-        }else{
-            echo "<script>alert('please upload file in either of specified format only.');</script>";
-        }
-        
+    }else{   //check if user is docor or not
+      echo "<script>
+            alert('Invalid Access');
+            window.location.href='../index.php';
+          </script>";
     }
     
   }else{

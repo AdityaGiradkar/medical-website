@@ -5,16 +5,17 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
-      $bid = $_GET['bid'];
-      $get_blog = "SELECT * FROM `blogs` WHERE `blog_id`='$bid'";
-      $get_blog_run = mysqli_query($con, $get_blog);
-      $result = mysqli_fetch_assoc($get_blog_run);
+      if($_SESSION['role'] == 'doctor'){
+        $bid = $_GET['bid'];
+        $get_blog = "SELECT * FROM `blogs` WHERE `blog_id`='$bid'";
+        $get_blog_run = mysqli_query($con, $get_blog);
+        $result = mysqli_fetch_assoc($get_blog_run);
 
-      //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-      $new_patient_count_run = mysqli_query($con, $new_patient_count);
-      $data=mysqli_fetch_assoc($new_patient_count_run);
-      //finding total number of new patient
+        //finding total number of new patient
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+        $new_patient_count_run = mysqli_query($con, $new_patient_count);
+        $data=mysqli_fetch_assoc($new_patient_count_run);
+        //finding total number of new patient
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -426,6 +427,13 @@ function compressImage($source, $destination, $quality) {
             }
         }
     }
+
+  }else{   //check if user is docor or not
+    echo "<script>
+          alert('Invalid Access');
+          window.location.href='../index.php';
+        </script>";
+  }
     
   }else{
     //else part if session is not set

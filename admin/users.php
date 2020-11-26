@@ -5,14 +5,15 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
-      $all_user = "SELECT *, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age FROM `user`";
-      $all_user_run = mysqli_query($con, $all_user);
+      if($_SESSION['role'] == 'doctor'){
+        $all_user = "SELECT *, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age FROM `user`";
+        $all_user_run = mysqli_query($con, $all_user);
 
-      //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-      $new_patient_count_run = mysqli_query($con, $new_patient_count);
-      $data=mysqli_fetch_assoc($new_patient_count_run);
-      //finding total number of new patient
+        //finding total number of new patient
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+        $new_patient_count_run = mysqli_query($con, $new_patient_count);
+        $data=mysqli_fetch_assoc($new_patient_count_run);
+        //finding total number of new patient
 ?>
 
 <!DOCTYPE html>
@@ -253,6 +254,7 @@
                   <thead>
                     <tr>
                       <th>Sr. No.</th>
+                      <th>Creation Date</th>
                       <th>name</th>
                       <th>Gender</th>
                       <th>Age</th>
@@ -269,6 +271,7 @@
                       ?>
                     <tr>
                       <th><?php echo $count; ?></th>
+                      <th><?php echo date('d-m-Y', strtotime($record['creation_date'])); ?></th>
                       <td><?php echo $record['name']; ?></td>
                       <td><?php echo $record['gender']; ?></td>
                       <td><?php echo $record['age']; ?></td>
@@ -375,6 +378,12 @@
 </html>
 
 <?php
+      }else{   //check if user is docor or not
+        echo "<script>
+              alert('Invalid Access');
+              window.location.href='../index.php';
+            </script>";
+      }
     }else{
       echo "<script>
               window.location.href='../error/login_error.html';

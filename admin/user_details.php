@@ -5,34 +5,35 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
-      $user_id = $_GET['uid'];
-      $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
-      $user_info_run = mysqli_query($con, $user_info);
-      $record = mysqli_fetch_assoc($user_info_run);
+        if($_SESSION['role'] == 'doctor'){
+            $user_id = $_GET['uid'];
+            $user_info = "SELECT * FROM `user` WHERE `user_id`='$user_id'";
+            $user_info_run = mysqli_query($con, $user_info);
+            $record = mysqli_fetch_assoc($user_info_run);
 
-      $medical_history = "SELECT * FROM `medical_history` WHERE `user_id`='$user_id'";
-      $medical_history_run = mysqli_query($con, $medical_history);
-      $medical_history_res = mysqli_fetch_assoc($medical_history_run);
+            $medical_history = "SELECT * FROM `medical_history` WHERE `user_id`='$user_id'";
+            $medical_history_run = mysqli_query($con, $medical_history);
+            $medical_history_res = mysqli_fetch_assoc($medical_history_run);
 
-      // previous treatment number
-      $previous_treat_number = "SELECT max(`treat_number`) as pre_treat_number FROM `treatment` WHERE `user_id`='$user_id'";
-      $previous_treat_number_run = mysqli_query($con, $previous_treat_number);
-      $previous_treat_number_res = mysqli_fetch_assoc($previous_treat_number_run);
-      $current_treat_no = $previous_treat_number_res['pre_treat_number'] + 1;
+            // previous treatment number
+            $previous_treat_number = "SELECT max(`treat_number`) as pre_treat_number FROM `treatment` WHERE `user_id`='$user_id'";
+            $previous_treat_number_run = mysqli_query($con, $previous_treat_number);
+            $previous_treat_number_res = mysqli_fetch_assoc($previous_treat_number_run);
+            $current_treat_no = $previous_treat_number_res['pre_treat_number'] + 1;
 
-      //checking if user present for perticular
-      //if not then redirect to user page
-      if($record){
-        $name = $record['name'];
-        //fetching all consultations by the user till today date
-        $all_consultations = "SELECT * FROM `consultation_time` WHERE `assigned_user`='$user_id' ORDER BY `date` DESC, `time_range` DESC";
-        $all_consultations_run = mysqli_query($con, $all_consultations);
+            //checking if user present for perticular
+            //if not then redirect to user page
+            if($record){
+                $name = $record['name'];
+                //fetching all consultations by the user till today date
+                $all_consultations = "SELECT * FROM `consultation_time` WHERE `assigned_user`='$user_id' ORDER BY `date` DESC, `time_range` DESC";
+                $all_consultations_run = mysqli_query($con, $all_consultations);
 
-        //finding total number of new patient
-        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-        $new_patient_count_run = mysqli_query($con, $new_patient_count);
-        $data=mysqli_fetch_assoc($new_patient_count_run);
-        //finding total number of new patient
+                //finding total number of new patient
+                $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+                $new_patient_count_run = mysqli_query($con, $new_patient_count);
+                $data=mysqli_fetch_assoc($new_patient_count_run);
+                //finding total number of new patient
 
 ?>
 
@@ -454,7 +455,7 @@
                                                         <td><?php echo $all_taken_test_res['status']; ?></td>
                                                         <td>
                                                             <?php 
-                                                            if($all_taken_test_res['test_type'] == 1){
+                                                            if($all_taken_test_res['test_type'] == 1 || $all_taken_test_res['test_type'] == 5){
                                                                 ?>
                                                                 <a <?php if($all_taken_test_res['test_id'] != ''){ ?> href="rakshakavach_test_details.php?pay_id=<?php echo $all_taken_test_res['pay_id']; ?>" <?php } ?>>Details</a>
                                                                 <?php         
@@ -929,6 +930,13 @@
               alert('No record found');
               window.location.href='all_patients.php';
           </script>";
+      }
+      
+    }else{   //check if user is docor or not
+        echo "<script>
+              alert('Invalid Access');
+              window.location.href='../index.php';
+            </script>";
       }
 
     }else{

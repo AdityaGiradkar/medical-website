@@ -42,6 +42,7 @@
               $subtreatment_number = $all_subtreatment_res['sub_treat_number'];
               $treat_id = $all_subtreatment_res['treat_id'];
               $discount = (int)$all_subtreatment_res['discount'];
+              $courer_charges = (int)$all_subtreatment_res['courier_charge'];
               $prescribed_medi_details = array();
               $prescribed_session_details = array();
               $total_price = 0;
@@ -122,18 +123,17 @@
                   }
               }
 
-            ?>
-
-            <?php
-                $grand_total = $total_price - ($total_price * $discount)/100;
+              $total_payble_amount = $total_price -  $discount;
+              $total_payble_amount = (int)($total_payble_amount + $courer_charges);
 
             ?>
+
 
       <!-- subtreatment fields -->
       <?php echo $all_subtreatment_res['sub_treat_number']; ?>'s month : <a
         data-target="#t_<?php echo $treatment_number; ?>_d_<?php echo $all_subtreatment_res['sub_treat_number']; ?>" href="" data-toggle="modal">View
         Details</a> |
-      Total : Rs. <?php echo $grand_total; ?>
+      Total : Rs. <?php echo $total_payble_amount; ?>
       (<?php echo $all_subtreatment_res['fees_status']=='pending'?"<span style='color:red'>Pending</span>":"<span style='color:green'>Paid</span>"; ?>)<br>
       <!-- subtreatment fields -->
 

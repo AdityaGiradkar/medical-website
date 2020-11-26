@@ -5,29 +5,31 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
+        if($_SESSION['role'] == 'doctor'){
 
-        // $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
-        //             ON u.`user_id`=y.`user_id`
-        //             ORDER BY y.`status`, y.`date_time` DESC";
-        // $yoge_home_run = mysqli_query($con, $yoge_home);
+            // $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
+            //             ON u.`user_id`=y.`user_id`
+            //             ORDER BY y.`status`, y.`date_time` DESC";
+            // $yoge_home_run = mysqli_query($con, $yoge_home);
 
-        // $new_yoge = "SELECT count(*) as cout FROM `yoge_home` WHERE `status`='new'"; 
-        // $new_yoge_run = mysqli_query($con, $new_yoge);
-        // $new_yoge_res= mysqli_fetch_assoc($new_yoge_run);
-        // $new_yoge_submissions = $new_yoge_res['cout'];
+            // $new_yoge = "SELECT count(*) as cout FROM `yoge_home` WHERE `status`='new'"; 
+            // $new_yoge_run = mysqli_query($con, $new_yoge);
+            // $new_yoge_res= mysqli_fetch_assoc($new_yoge_run);
+            // $new_yoge_submissions = $new_yoge_res['cout'];
 
-        $all_taken_test = "SELECT * FROM `user` u RIGHT JOIN `test_payments` tp 
-                         ON u.`user_id`=tp.`user_id`
-                         ORDER BY tp.`status` DESC, tp.`pay_id`";
-        $all_taken_test_run = mysqli_query($con, $all_taken_test);
-        
-        
+            $all_taken_test = "SELECT * FROM `user` u RIGHT JOIN `test_payments` tp 
+                            ON u.`user_id`=tp.`user_id`
+                            WHERE tp.`test_id` IS NOT NULL
+                            ORDER BY tp.`pay_id` DESC";
+            $all_taken_test_run = mysqli_query($con, $all_taken_test);
+            
+            
 
-      //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-      $new_patient_count_run = mysqli_query($con, $new_patient_count);
-      $data=mysqli_fetch_assoc($new_patient_count_run);
-      //finding total number of new patient
+        //finding total number of new patient
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+        $new_patient_count_run = mysqli_query($con, $new_patient_count);
+        $data=mysqli_fetch_assoc($new_patient_count_run);
+        //finding total number of new patient
 ?>
 
 <!DOCTYPE html>
@@ -295,7 +297,7 @@
                                             <td>&#x20B9; <?php echo $record['charges']; ?></td>
                                             <td>
                                                 <?php 
-                                                if($record['test_type'] == 1){
+                                                if($record['test_type'] == 1 || $record['test_type'] == 5){
                                                     ?>
                                                     <a <?php if($record['test_id'] != ''){ ?> href="rakshakavach_test_details.php?pay_id=<?php echo $record['pay_id']; ?>" <?php } ?>>Details</a>
                                                     <?php         
@@ -424,6 +426,13 @@
 
 
 <?php
+
+}else{   //check if user is docor or not
+    echo "<script>
+          alert('Invalid Access');
+          window.location.href='../index.php';
+        </script>";
+  }
     }else{
       //else part if session is not set
       echo "<script>

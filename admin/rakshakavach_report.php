@@ -5,21 +5,22 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
-        $pay_id = $_GET['pay_id'];
-        $payment_details = "SELECT * FROM `test_payments` WHERE `pay_id`='$pay_id' AND `test_id` IS NOT NULL";
-        $payment_details_run = mysqli_query($con, $payment_details);
-        $payment_details_rows = mysqli_num_rows($payment_details_run);
+        if($_SESSION['role'] == 'doctor'){
+            $pay_id = $_GET['pay_id'];
+            $payment_details = "SELECT * FROM `test_payments` WHERE `pay_id`='$pay_id' AND `test_id` IS NOT NULL";
+            $payment_details_run = mysqli_query($con, $payment_details);
+            $payment_details_rows = mysqli_num_rows($payment_details_run);
 
-        //checking if user present for perticular
-        //if not then redirect to user page
-        if($payment_details_rows > 0){
-            $record = mysqli_fetch_assoc($payment_details_run);
-            $user_id = $record['user_id'];
-            $test_id = $record['test_id'];
+            //checking if user present for perticular
+            //if not then redirect to user page
+            if($payment_details_rows > 0){
+                $record = mysqli_fetch_assoc($payment_details_run);
+                $user_id = $record['user_id'];
+                $test_id = $record['test_id'];
 
-            $user_info = "SELECT *, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age FROM `user` WHERE `user_id`='$user_id'";
-            $user_info_run = mysqli_query($con, $user_info);
-            $user_detail = mysqli_fetch_assoc($user_info_run);
+                $user_info = "SELECT *, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age FROM `user` WHERE `user_id`='$user_id'";
+                $user_info_run = mysqli_query($con, $user_info);
+                $user_detail = mysqli_fetch_assoc($user_info_run);
 
 ?>
 <!DOCTYPE html>
@@ -49,6 +50,7 @@
         $test_details = "SELECT * FROM `test_rakshakavach` WHERE `test_id`='$test_id'";
         $test_details_run = mysqli_query($con, $test_details);
         $test_details_res = mysqli_fetch_assoc($test_details_run);
+
 
         $answer_value_count = array('right'=>0, 'ap'=>0, 'left'=>0, 'an'=>0, 'pr'=>0, 'sa'=>0, 'vy'=>0, 'ud'=>0, 'ma'=>0, 'sw'=>0, 'vi'=>0, 'mu'=>0, 're'=>0, 'st'=>0, 'de'=>0, 'ax'=>0, 'lo'=>0, 'ts'=>0, 'kf'=>0, 'vt'=>0, 'pt'=>0, 'pi'=>0, 'id'=>0, 'sm'=>0, 'fe'=>0);       
         // print_r($answer_value_count);
@@ -310,7 +312,7 @@
             $preliminary_inference_chart['lo'] = "AGNI DOSHA";
         }
 
-        print_r($preliminary_inference_chart);
+        // print_r($preliminary_inference_chart);
 
         //2nd table
         $health_status = array('PRE-FUNCTIONAL'=>0, 'FUNCTIONAL'=>0, 'PRE-PATHOLOGICAL'=>0, 'PATHOLOGICAL'=>0);
@@ -322,7 +324,7 @@
             }
         }
 
-        print_r($health_status);
+        // print_r($health_status);
         //condition for table values
         //condition for healthy column
         if($health_status['FUNCTIONAL'] == 0 && $health_status['PRE-PATHOLOGICAL'] == 0 && $health_status['PATHOLOGICAL'] == 0){
@@ -332,21 +334,21 @@
         }
 
         //condition for hralth alert column
-        if($health_status['PRE-FUNCTIONAL'] >= 6 && $health_status['FUNCTIONAL'] >= 1 && $health_status['PRE-PATHOLOGICAL'] >= 1 && $health_status['PATHOLOGICAL'] >= 1){
+        if($health_status['PRE-FUNCTIONAL'] >= 6 || $health_status['FUNCTIONAL'] >= 1 || $health_status['PRE-PATHOLOGICAL'] >= 1 || $health_status['PATHOLOGICAL'] >= 1){
             $health_alert = 'YES';
         }else{
             $health_alert = 'NO';
         }
 
         //condition for health risk column
-        if($health_status['FUNCTIONAL'] >= 5 && $health_status['PRE-PATHOLOGICAL'] >= 1 && $health_status['PATHOLOGICAL'] >= 1){
+        if($health_status['FUNCTIONAL'] >= 5 || $health_status['PRE-PATHOLOGICAL'] >= 1 || $health_status['PATHOLOGICAL'] >= 1){
             $health_risk = 'YES';
         }else{
             $health_risk = 'NO';
         }
 
         //condition for high risk column
-        if($health_status['PRE-PATHOLOGICAL'] >= 2 && $health_status['PATHOLOGICAL'] >= 1){
+        if($health_status['PRE-PATHOLOGICAL'] >= 2 || $health_status['PATHOLOGICAL'] >= 1){
             $high_risk = 'YES';
         }else{
             $high_risk = 'NO';
@@ -386,7 +388,8 @@
         //Manomaya kosha
         if($preliminary_inference_chart['ax'] == 'NO' && $preliminary_inference_chart['de'] == 'NO' && $preliminary_inference_chart['st'] == 'NO'){
             $manomaya_kosha = "NO DOSHA";
-        }else if(($preliminary_inference_chart['ax'] == 'MILD' || $preliminary_inference_chart['ax'] == 'NEURASTHENIA') && ($preliminary_inference_chart['de'] == 'MILD' || $preliminary_inference_chart['de'] == 'NEURASTHENIA') && ($preliminary_inference_chart['st'] == 'MILD' || $preliminary_inference_chart['st'] == 'NEURASTHENIA')){
+        }else if(!($preliminary_inference_chart['ax'] == 'NO' && $preliminary_inference_chart['de'] == 'NO' && $preliminary_inference_chart['st'] == 'NO') && !($preliminary_inference_chart['ax'] == 'SOMATIC EFFECT' || $preliminary_inference_chart['de'] == 'SOMATIC EFFECT' || $preliminary_inference_chart['st'] == 'SOMATIC EFFECT')){
+        //else if(($preliminary_inference_chart['ax'] == 'MILD' || $preliminary_inference_chart['ax'] == 'NEURASTHENIA') && ($preliminary_inference_chart['de'] == 'MILD' || $preliminary_inference_chart['de'] == 'NEURASTHENIA') && ($preliminary_inference_chart['st'] == 'MILD' || $preliminary_inference_chart['st'] == 'NEURASTHENIA')){
             $manomaya_kosha = "MADHYAM DOSHA";
         }else if($preliminary_inference_chart['ax'] == 'SOMATIC EFFECT' || $preliminary_inference_chart['de'] == 'SOMATIC EFFECT' || $preliminary_inference_chart['st'] == 'SOMATIC EFFECT'){
             $manomaya_kosha  = "TIVRA DOSHA";
@@ -467,11 +470,11 @@
         if($preliminary_inference_chart['ap'] == 'PATHOLOGICAL' || $preliminary_inference_chart['ap'] == 'PRE-PATHOLOGICAL'){
             $sucess_count++;
         }
-        if($answer_value_count['sm'] == 1){
+        if($answer_value_count['sm'] > 0){
             $sucess_count++;
         }
 
-        if($answer_value_count['ts'] == 1 || $answer_value_count['fe'] > 0){
+        if($answer_value_count['ts'] > 0 || $answer_value_count['fe'] > 0){
             $sucess_count++;
         }
         if($preliminary_inference_chart['pr'] == 'FUNCTIONAL' || $preliminary_inference_chart['pr'] == 'PATHOLOGICAL' || $preliminary_inference_chart['pr'] == 'PRE-PATHOLOGICAL'){
@@ -487,7 +490,7 @@
         }
 
         //Active (Super-spreader)
-        if($covid_risk = 'HIGH' && $answer_value_count['sm'] == 1 && $answer_value_count['ts'] == 1 && $answer_value_count['lo'] > 0 && $answer_value_count['st'] > 0 && $answer_value_count['fe'] == 3){
+        if($covid_risk == 'HIGH' && $answer_value_count['sm'] == 1 && $answer_value_count['ts'] == 1 && $answer_value_count['lo'] > 0 && $answer_value_count['st'] > 0 && $answer_value_count['fe'] == 3){
             $active_super_spreader = 'YES';
         }else{
             $active_super_spreader = 'NO';
@@ -525,19 +528,19 @@
 
         //9th table
         //Recovery from illness
-        if($health_risk == 'NO' && $high_risk == 'NO' && ($healthy == 'YES' || $health_alert = 'YES')){
+        if($health_risk == 'NO' && $high_risk == 'NO' && ($healthy == 'YES' || $health_alert == 'YES')){
             $early_recovery = 'YES';
         }else{
             $early_recovery = 'NO';
         }
 
-        if($health_risk = 'YES'){
+        if($health_risk == 'YES'){
             $weeks = 'YES'; 
         }else{
             $weeks = 'NO';
         }
 
-        if($high_risk = 'YES'){
+        if($high_risk == 'YES'){
             $long_time_recovery ='YES';                 
         }else{
             $long_time_recovery ='NO';
@@ -556,7 +559,7 @@
                         <p>ID : <strong>RAKT<?php echo $test_details_res['rakshakavach_test_no']; ?></strong></p>
                         <p>Age : <strong><?php echo $user_detail['age']; ?> Yrs.</strong></p>
                         <p>Tested On : <strong><?php echo date("d-m-Y h:ia", strtotime($record['created_at'])); ?></strong></p>
-                        <p>Test Name : <strong>YOG-E @Rakshakavach Test</strong></p>
+                        <p>Test Name : <strong>YOG-E @Rakshakavach Test <?php if($record['test_type'] == 1) { echo 'Basic'; }else if($record['test_type'] == 5){ echo 'Advanced'; }?></strong></p>
                     </div>
                     <div class="col-6">
                         <p>Name : <strong><?php echo $user_detail['name']; ?></strong></p>
@@ -1086,6 +1089,14 @@
                     window.location.href='test_submissions.php';
                 </script>";
         }
+
+    }else{   //check if user is docor or not
+        echo "<script>
+              alert('Invalid Access');
+              window.location.href='../index.php';
+            </script>";
+      }
+      
     }else{
         //else part if session is not set
         echo "<script>

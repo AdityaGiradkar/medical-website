@@ -5,12 +5,13 @@
   //checking if user logged in 
   //if session is set means user logged in then show this page otherwise redirect to login page
   if(isset($_SESSION['user_id'])){
+    if($_SESSION['role'] == 'doctor'){
 
-    //finding total number of new patient
-    $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-    $new_patient_count_run = mysqli_query($con, $new_patient_count);
-    $data=mysqli_fetch_assoc($new_patient_count_run);
-    //finding total number of new patient
+      //finding total number of new patient
+      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+      $new_patient_count_run = mysqli_query($con, $new_patient_count);
+      $data=mysqli_fetch_assoc($new_patient_count_run);
+      //finding total number of new patient
 
   
 ?>
@@ -400,7 +401,6 @@
             </div>
           </div>
 
-          <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
         </div>
         <!-- /.container-fluid -->
@@ -487,62 +487,17 @@
   </script>
 
 
-<script>
-window.onload = function () {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title:{
-		text: "Simple Line Chart"
-	},
-	data: [{        
-		type: "line",
-      	indexLabelFontSize: 16,
-		dataPoints: [
-			{ y: 450 },
-			{ y: 414},
-			{ y: 520 },
-			{ y: 460 },
-			{ y: 450 },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 480 },
-			{ y: 410 },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 510 }
-		]
-	},{        
-		type: "line",
-      	indexLabelFontSize: 16,
-		dataPoints: [
-			{ y: 350 },
-			{ y: 214},
-			{ y: 120},
-			{ y: 480 },
-			{ y: 450 },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 480 },
-			{ y: 810 },
-			{ y: 500 },
-			{ y: 480 },
-			{ y: 510 }
-		]
-	}]
-});
-chart.render();
-
-}
-</script>
-
-
 </body>
 
 </html>
 
 <?php
+}else{   //check if user is docor or not
+  echo "<script>
+        alert('Invalid Access');
+        window.location.href='../index.php';
+      </script>";
+}
     }else{
       //else part if session is not set
       echo "<script>

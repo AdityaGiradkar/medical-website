@@ -3,106 +3,107 @@
     include("../includes/db.php");
 
     if (isset($_GET['user_id']) && isset($_GET['treat_no']) && isset($_GET['sub_treat_no']) && isset($_GET['treat_id'])){
-        $user_id = $_GET['user_id'];
-        $treatment_number = $_GET['treat_no'];
-        $sub_treatment_no = $_GET['sub_treat_no'];
-        $treatment_id = $_GET['treat_id'];
+        if($_SESSION['role'] == 'doctor'){
+            $user_id = $_GET['user_id'];
+            $treatment_number = $_GET['treat_no'];
+            $sub_treatment_no = $_GET['sub_treat_no'];
+            $treatment_id = $_GET['treat_id'];
 
-        $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
-        $user_details_run = mysqli_query($con, $user_details);
-        $user_details_res = mysqli_fetch_assoc($user_details_run);
+            $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
+            $user_details_run = mysqli_query($con, $user_details);
+            $user_details_res = mysqli_fetch_assoc($user_details_run);
 
-        $treatment_details = "SELECT  `treatment_for`, `date`, `discount`, `fees_status`, `bill_number`, `courier_charge` FROM `treatment` WHERE `treat_id`='$treatment_id'";
-        $treatment_details_run = mysqli_query($con, $treatment_details);
-        $treatment_details_res = mysqli_fetch_assoc($treatment_details_run);
+            $treatment_details = "SELECT  `treatment_for`, `date`, `discount`, `fees_status`, `bill_number`, `courier_charge` FROM `treatment` WHERE `treat_id`='$treatment_id'";
+            $treatment_details_run = mysqli_query($con, $treatment_details);
+            $treatment_details_res = mysqli_fetch_assoc($treatment_details_run);
 
-        $bill_number = $treatment_details_res['bill_number'];
-        $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_number'";
-        $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
-        $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
+            $bill_number = $treatment_details_res['bill_number'];
+            $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_number'";
+            $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
+            $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
 
-        $prescribed_medi_details = array();
-        $prescribed_session_details = array();
-        $total_price = 0;
+            $prescribed_medi_details = array();
+            $prescribed_session_details = array();
+            $total_price = 0;
 
-        //first take all medicines from prescribed_medicine table which matches treatment_no, user_id, subtreat_number
-        $all_prescribed_medi = "SELECT `medicine_id`, `quantity` FROM `prescribed_medicine` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$sub_treatment_no'";
-        if($all_prescribed_medi_run = mysqli_query($con, $all_prescribed_medi)){
-            $all_prescribed_medi_row = mysqli_num_rows($all_prescribed_medi_run);
-            if($all_prescribed_medi_row > 0){
-                $prescribed_medi_idQuantity_array = array();
-                $medi_count =0; 
-                while ($prescribed_medi_idQuantity = mysqli_fetch_assoc($all_prescribed_medi_run)){
-                    $prescribed_medi_idQuantity_array[$medi_count] = $prescribed_medi_idQuantity;
-                    $medi_count++;
+            //first take all medicines from prescribed_medicine table which matches treatment_no, user_id, subtreat_number
+            $all_prescribed_medi = "SELECT `medicine_id`, `quantity` FROM `prescribed_medicine` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$sub_treatment_no'";
+            if($all_prescribed_medi_run = mysqli_query($con, $all_prescribed_medi)){
+                $all_prescribed_medi_row = mysqli_num_rows($all_prescribed_medi_run);
+                if($all_prescribed_medi_row > 0){
+                    $prescribed_medi_idQuantity_array = array();
+                    $medi_count =0; 
+                    while ($prescribed_medi_idQuantity = mysqli_fetch_assoc($all_prescribed_medi_run)){
+                        $prescribed_medi_idQuantity_array[$medi_count] = $prescribed_medi_idQuantity;
+                        $medi_count++;
+                    }
+
+                    //after that take price and dose for prescribed medicine from actual medicine table 
+                    $medi_count =0;
+                    foreach($prescribed_medi_idQuantity_array as $medi_Id_quantity){
+                        $tempid = $medi_Id_quantity['medicine_id'];
+                        $medicine_detail = "SELECT * FROM `medicines` WHERE `medicine_id`='$tempid'";
+                        $medicine_detail_run = mysqli_query($con, $medicine_detail);
+                        $medicine_detail_res = mysqli_fetch_assoc($medicine_detail_run);
+                        $temp = array(
+                            "name" => $medicine_detail_res['Name'],
+                            "type" => $medicine_detail_res['type'],
+                            "price" => $medicine_detail_res['price'],
+                            "medi_quantity" => $medicine_detail_res['quantity'], //quantity from medicine table
+                            "quantity" => $medi_Id_quantity['quantity'],    //quantity multiple of medicine table
+                            "price" => $medicine_detail_res['price'],
+                            "total_price" => $medi_Id_quantity['quantity'] * $medicine_detail_res['price']
+                
+                        );
+
+                        $total_price = $total_price + (int)$temp['total_price'];
+                        $prescribed_medi_details[$medi_count] = $temp;
+                        $medi_count++;
+                    }
+                    // print_r($prescribed_medi_details);
+                    // print_r($total_price);
                 }
-
-                //after that take price and dose for prescribed medicine from actual medicine table 
-                $medi_count =0;
-                foreach($prescribed_medi_idQuantity_array as $medi_Id_quantity){
-                    $tempid = $medi_Id_quantity['medicine_id'];
-                    $medicine_detail = "SELECT * FROM `medicines` WHERE `medicine_id`='$tempid'";
-                    $medicine_detail_run = mysqli_query($con, $medicine_detail);
-                    $medicine_detail_res = mysqli_fetch_assoc($medicine_detail_run);
-                    $temp = array(
-                        "name" => $medicine_detail_res['Name'],
-                        "type" => $medicine_detail_res['type'],
-                        "price" => $medicine_detail_res['price'],
-                        "medi_quantity" => $medicine_detail_res['quantity'], //quantity from medicine table
-                        "quantity" => $medi_Id_quantity['quantity'],    //quantity multiple of medicine table
-                        "price" => $medicine_detail_res['price'],
-                        "total_price" => $medi_Id_quantity['quantity'] * $medicine_detail_res['price']
-            
-                    );
-
-                    $total_price = $total_price + (int)$temp['total_price'];
-                    $prescribed_medi_details[$medi_count] = $temp;
-                    $medi_count++;
-                }
-                // print_r($prescribed_medi_details);
-                // print_r($total_price);
             }
-        }
 
 
-        //first take all sessions from prescribed_session table which matches treatment_no, user_id, subtreat_number
-        $all_prescribed_session = "SELECT * FROM `prescribed_session` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$sub_treatment_no'";
-        if($all_prescribed_session_run = mysqli_query($con, $all_prescribed_session)){
-            $all_prescribed_session_row = mysqli_num_rows($all_prescribed_session_run);
-            if($all_prescribed_session_row > 0){
-                $prescribed_session_idQuantity_array = array();
-                $session_count =0;
-                while ($prescribed_session_idQuantity = mysqli_fetch_assoc($all_prescribed_session_run)){
-                    $prescribed_session_idQuantity_array[$session_count] = $prescribed_session_idQuantity;
-                    $session_count++;
+            //first take all sessions from prescribed_session table which matches treatment_no, user_id, subtreat_number
+            $all_prescribed_session = "SELECT * FROM `prescribed_session` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$sub_treatment_no'";
+            if($all_prescribed_session_run = mysqli_query($con, $all_prescribed_session)){
+                $all_prescribed_session_row = mysqli_num_rows($all_prescribed_session_run);
+                if($all_prescribed_session_row > 0){
+                    $prescribed_session_idQuantity_array = array();
+                    $session_count =0;
+                    while ($prescribed_session_idQuantity = mysqli_fetch_assoc($all_prescribed_session_run)){
+                        $prescribed_session_idQuantity_array[$session_count] = $prescribed_session_idQuantity;
+                        $session_count++;
+                    }
+
+                    //after that take price and quantity for prescribed sessions from actual session table 
+                    $session_count =0;
+                    foreach($prescribed_session_idQuantity_array as $session_Id_quantity){
+                        $tempid = $session_Id_quantity['session_id'];
+                        $session_detail = "SELECT * FROM `sessions` WHERE `session_id`='$tempid'";
+                        $session_detail_run = mysqli_query($con, $session_detail);
+                        $session_detail_res = mysqli_fetch_assoc($session_detail_run);
+                        $temp = array(
+                            "name" => $session_detail_res['session_name'],
+                            "price" => $session_detail_res['price'],
+                            "quantity" => $session_detail_res['quantity'],
+                            "quantity_prescribed" => $session_Id_quantity['session_per_month'],
+                            "price" => $session_detail_res['price'],
+                            "total_price" => $session_Id_quantity['session_per_month'] * $session_detail_res['price']
+                        );
+                        $total_price = $total_price + (int)$temp['total_price'];
+                        $prescribed_session_details[$session_count] = $temp;
+                        $session_count++;
+                    }
+                    // print_r($prescribed_session_details);
+                    // print_r($total_price);
                 }
-
-                //after that take price and quantity for prescribed sessions from actual session table 
-                $session_count =0;
-                foreach($prescribed_session_idQuantity_array as $session_Id_quantity){
-                    $tempid = $session_Id_quantity['session_id'];
-                    $session_detail = "SELECT * FROM `sessions` WHERE `session_id`='$tempid'";
-                    $session_detail_run = mysqli_query($con, $session_detail);
-                    $session_detail_res = mysqli_fetch_assoc($session_detail_run);
-                    $temp = array(
-                        "name" => $session_detail_res['session_name'],
-                        "price" => $session_detail_res['price'],
-                        "quantity" => $session_detail_res['quantity'],
-                        "quantity_prescribed" => $session_Id_quantity['session_per_month'],
-                        "price" => $session_detail_res['price'],
-                        "total_price" => $session_Id_quantity['session_per_month'] * $session_detail_res['price']
-                    );
-                    $total_price = $total_price + (int)$temp['total_price'];
-                    $prescribed_session_details[$session_count] = $temp;
-                    $session_count++;
-                }
-                // print_r($prescribed_session_details);
-                // print_r($total_price);
             }
-        }
 
-        $total_payble_amount = $total_price -  (int)$treatment_details_res['discount'];
-        $total_payble_amount = (int)($total_payble_amount + $treatment_details_res['courier_charge']);
+            $total_payble_amount = $total_price -  (int)$treatment_details_res['discount'];
+            $total_payble_amount = (int)($total_payble_amount + $treatment_details_res['courier_charge']);
    
 
 ?>
@@ -323,6 +324,13 @@
 </html>
 
 <?php 
+    }else{   //check if user is docor or not
+        echo "<script>
+            alert('Invalid Access');
+            window.location.href='../index.php';
+            </script>";
+    }
+
     }else{
         echo "<script>
                 alert('Insufficient data.');

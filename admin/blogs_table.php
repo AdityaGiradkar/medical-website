@@ -5,19 +5,20 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
+      if($_SESSION['role'] == 'doctor'){
 
-      // $all_user = "SELECT * 
-      //             FROM `user` RIGHT JOIN `user-answer` 
-      //             ON `user`.`user_id`=`user-answer`.`user_id`  
-      //             ORDER BY `user-answer`.`time`";
-      $all_blogs = "SELECT * FROM `blogs` ORDER BY `blog_id` DESC";
-      $all_blogs_run = mysqli_query($con, $all_blogs);
+        // $all_user = "SELECT * 
+        //             FROM `user` RIGHT JOIN `user-answer` 
+        //             ON `user`.`user_id`=`user-answer`.`user_id`  
+        //             ORDER BY `user-answer`.`time`";
+        $all_blogs = "SELECT * FROM `blogs` ORDER BY `blog_id` DESC";
+        $all_blogs_run = mysqli_query($con, $all_blogs);
 
-      //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-      $new_patient_count_run = mysqli_query($con, $new_patient_count);
-      $data=mysqli_fetch_assoc($new_patient_count_run);
-      //finding total number of new patient
+        //finding total number of new patient
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+        $new_patient_count_run = mysqli_query($con, $new_patient_count);
+        $data=mysqli_fetch_assoc($new_patient_count_run);
+        //finding total number of new patient
 ?>
 
 <!DOCTYPE html>
@@ -387,6 +388,11 @@
 </html>
 
 <?php
+  }else{//else if user is not doctor
+    echo "<script>
+              window.location.href='../index.php';
+            </script>";
+  }
     }else{
       echo "<script>
               window.location.href='../error/login_error.html';

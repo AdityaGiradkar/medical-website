@@ -5,6 +5,7 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
+      if($_SESSION['role'] == 'doctor'){
 
       //finding total number of new patient
       $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
@@ -357,6 +358,12 @@
         }
         
     }
+
+  }else{//else if user is not doctor
+    echo "<script>
+              window.location.href='../index.php';
+            </script>";
+  }
 
     }else{
       //else part if session is not set

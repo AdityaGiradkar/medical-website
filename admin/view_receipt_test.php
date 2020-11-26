@@ -3,37 +3,38 @@
     include('../includes/db.php');
 
     if(isset($_SESSION['user_id'])){
+        if($_SESSION['role'] == 'doctor'){
         
-        if (isset($_GET['bill_no'])){
-            $bill_no = $_GET['bill_no'];
+            if (isset($_GET['bill_no'])){
+                $bill_no = $_GET['bill_no'];
 
-            $fetch_test_details = "SELECT * FROM `test_payments` WHERE `bill_no`='$bill_no'";
-            $fetch_test_details_run = mysqli_query($con, $fetch_test_details);
-            $fetch_test_details_rows = mysqli_num_rows($fetch_test_details_run);
+                $fetch_test_details = "SELECT * FROM `test_payments` WHERE `bill_no`='$bill_no'";
+                $fetch_test_details_run = mysqli_query($con, $fetch_test_details);
+                $fetch_test_details_rows = mysqli_num_rows($fetch_test_details_run);
 
-            if($fetch_test_details_rows > 0){
+                if($fetch_test_details_rows > 0){
 
-                $fetch_test_details_res = mysqli_fetch_assoc($fetch_test_details_run);
+                    $fetch_test_details_res = mysqli_fetch_assoc($fetch_test_details_run);
 
-                $user_id = $fetch_test_details_res['user_id'];
-                $test_fees = $fetch_test_details_res['charges'];
-                //$consult_status = $fetch_consultation_res['status'];
-                //$test_date = $fetch_test_details_res['created_at'];
-                //$consultation_time = $fetch_consultation_res['time_range'];
-                $test_type = $fetch_test_details_res['test_type'];
+                    $user_id = $fetch_test_details_res['user_id'];
+                    $test_fees = $fetch_test_details_res['charges'];
+                    //$consult_status = $fetch_consultation_res['status'];
+                    //$test_date = $fetch_test_details_res['created_at'];
+                    //$consultation_time = $fetch_consultation_res['time_range'];
+                    $test_type = $fetch_test_details_res['test_type'];
 
-                $fetch_test_name = "SELECT * FROM `test_type` WHERE `test_id`='$test_type'";
-                $fetch_test_name_run = mysqli_query($con, $fetch_test_name);
-                $fetch_test_name_res = mysqli_fetch_assoc($fetch_test_name_run);
+                    $fetch_test_name = "SELECT * FROM `test_type` WHERE `test_id`='$test_type'";
+                    $fetch_test_name_run = mysqli_query($con, $fetch_test_name);
+                    $fetch_test_name_res = mysqli_fetch_assoc($fetch_test_name_run);
 
-                $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
-                $user_details_run = mysqli_query($con, $user_details);
-                $user_details_res = mysqli_fetch_assoc($user_details_run);
+                    $user_details = "SELECT `name`, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age, `email_id` FROM `user` WHERE `user_id`='$user_id'";
+                    $user_details_run = mysqli_query($con, $user_details);
+                    $user_details_res = mysqli_fetch_assoc($user_details_run);
 
 
-                $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_no'";
-                $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
-                $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
+                    $fetch_bill_generation_date = "SELECT * FROM `bill_number` WHERE `bill_number`='$bill_no'";
+                    $fetch_bill_generation_date_run = mysqli_query($con, $fetch_bill_generation_date);
+                    $fetch_bill_generation_date_res = mysqli_fetch_assoc($fetch_bill_generation_date_run);
 
    
 
@@ -199,16 +200,22 @@
 </html>
 
 <?php 
-            }else{          //else part if dosen't find row
+                }else{          //else part if dosen't find row
+                    echo "<script>
+                        alert('No record Found.');
+                        window.location.href='index.php';
+                    </script>";
+                }
+            }else{              //else part of isset($_GET[''] && ....)
                 echo "<script>
-                    alert('No record Found.');
-                    window.location.href='index.php';
-                </script>";
+                        alert('Insufficient data.');
+                        window.location.href='index.php';
+                    </script>";
             }
-        }else{              //else part of isset($_GET[''] && ....)
+        }else{   //check if user is docor or not
             echo "<script>
-                    alert('Insufficient data.');
-                    window.location.href='index.php';
+                alert('Invalid Access');
+                window.location.href='../index.php';
                 </script>";
         }
     }else{                 //else part of session not set

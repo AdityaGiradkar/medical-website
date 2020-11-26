@@ -1349,11 +1349,13 @@
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
-                <div class="container pb-4">
+                <div class="container pb-3">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <p class="card-title mx-auto brand-name">SELECT TEST</p>
+                    <p class="card-title mx-auto brand-name">SELECT TEST<br>
+                    <small style="font-size:15px;">( Test's Invented & Developed by Dr Sadanand Rasal)</small>
+                    </p>
                 </div>
                 
                 <div class="modal-body">

@@ -5,33 +5,34 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
-      $pay_id = $_GET['pay_id'];
-      $payment_details = "SELECT * FROM `test_payments` WHERE `pay_id`='$pay_id' AND `test_id` IS NOT NULL";
-      $payment_details_run = mysqli_query($con, $payment_details);
-      $payment_details_rows = mysqli_num_rows($payment_details_run);
+      if($_SESSION['role'] == 'doctor'){
+        $pay_id = $_GET['pay_id'];
+        $payment_details = "SELECT * FROM `test_payments` WHERE `pay_id`='$pay_id' AND `test_id` IS NOT NULL";
+        $payment_details_run = mysqli_query($con, $payment_details);
+        $payment_details_rows = mysqli_num_rows($payment_details_run);
 
-      
-      //checking if user present for perticular
-      //if not then redirect to user page
-      if($payment_details_rows > 0){
+        
+        //checking if user present for perticular
+        //if not then redirect to user page
+        if($payment_details_rows > 0){
 
-        $record = mysqli_fetch_assoc($payment_details_run);
-        $user_id = $record['user_id'];
-        $test_id = $record['test_id'];
+          $record = mysqli_fetch_assoc($payment_details_run);
+          $user_id = $record['user_id'];
+          $test_id = $record['test_id'];
 
-        $user_info = "SELECT *, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age FROM `user` WHERE `user_id`='$user_id'";
-        $user_info_run = mysqli_query($con, $user_info);
-        $user_detail = mysqli_fetch_assoc($user_info_run);
+          $user_info = "SELECT *, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age FROM `user` WHERE `user_id`='$user_id'";
+          $user_info_run = mysqli_query($con, $user_info);
+          $user_detail = mysqli_fetch_assoc($user_info_run);
 
-        $medical_history = "SELECT * FROM `medical_history` WHERE `user_id`='$user_id'";
-        $medical_history_run = mysqli_query($con, $medical_history);
-        $medical_history_res = mysqli_fetch_assoc($medical_history_run);
+          $medical_history = "SELECT * FROM `medical_history` WHERE `user_id`='$user_id'";
+          $medical_history_run = mysqli_query($con, $medical_history);
+          $medical_history_res = mysqli_fetch_assoc($medical_history_run);
 
-        //finding total number of new patient
-        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-        $new_patient_count_run = mysqli_query($con, $new_patient_count);
-        $data=mysqli_fetch_assoc($new_patient_count_run);
-        //finding total number of new patient
+          //finding total number of new patient
+          $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+          $new_patient_count_run = mysqli_query($con, $new_patient_count);
+          $data=mysqli_fetch_assoc($new_patient_count_run);
+          //finding total number of new patient
 
 
 ?>
@@ -464,7 +465,7 @@
                         <p>Reported On : <strong><?php echo date("Y-m-d h:ia", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                 </div>
-                <p >Test Name : <strong>YOG-E @Rakshakavach Test</strong></p>
+                <p >Test Name : <strong>YOG-E @Rakshakavach Test <?php if($record['test_type'] == 1) { echo 'Basic'; }else if($record['test_type'] == 5){ echo 'Advanced'; }?></strong></p>
 
               </div>
               <hr style="height:3px; background-color:#50A6C2">
@@ -751,6 +752,13 @@
               window.location.href='test_submissions.php';
           </script>";
       }
+
+    }else{   //check if user is docor or not
+      echo "<script>
+            alert('Invalid Access');
+            window.location.href='../index.php';
+          </script>";
+    }
 
     }else{
       //else part if session is not set

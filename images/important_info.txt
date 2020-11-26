@@ -17,6 +17,36 @@ gamil Account 2
 Gmail - askdrsadanand@gmail.com
 pass - Sadanand@123
 
-relatiod website Account
+related website Account
 email - enquiry@atmavedayog.com
+pass - Sadanand@123
+
+
+
+gmail Account 3
+Gmail - helpdeskatmavedayog@gmail.com
+pass - Sadanand@123
+
+related website Account
+email - helpdesk@atmavedayog.com
+pass - Sadanand@123
+
+
+
+gmail Account 4
+Gmail - info.atmavedayog@gmail.com
+pass - Sadanand@123
+
+related website Account
+email - info@atmavedayog.com
+pass - Sadanand@123
+
+
+
+gmail Account 5
+Gmail - marketing.atmavedayog@gmail.com
+pass - Sadanand@123
+
+related website Account
+email - marketing@atmavedayog.com
 pass - Sadanand@123

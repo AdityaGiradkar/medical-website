@@ -5,12 +5,13 @@
     //checking if user logged in 
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
+      if($_SESSION['role'] == 'doctor'){
 
-      //finding total number of new patient
-      $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-      $new_patient_count_run = mysqli_query($con, $new_patient_count);
-      $data=mysqli_fetch_assoc($new_patient_count_run);
-      //finding total number of new patient
+        //finding total number of new patient
+        $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+        $new_patient_count_run = mysqli_query($con, $new_patient_count);
+        $data=mysqli_fetch_assoc($new_patient_count_run);
+        //finding total number of new patient
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -347,27 +348,33 @@
 
 
 <?php
-    if(isset($_POST['add'])){
-      $name = $_POST['name'];
-      $type = $_POST['type'];
-      $quantity = $_POST['quantity'];
-      $price = $_POST['price'];
+      if(isset($_POST['add'])){
+        $name = $_POST['name'];
+        $type = $_POST['type'];
+        $quantity = $_POST['quantity'];
+        $price = $_POST['price'];
 
-        $add_medicine = "INSERT INTO `medicines`(`Name`, `type`, `quantity`, `price`) VALUES ('$name','$type','$quantity','$price')";
-        if($add_medicine_run = mysqli_query($con, $add_medicine)) {
-            echo "<script>
-                        alert('New Medicine added Sucessfull');
-                        window.location.href='add_medicine.php';
-                    </script>";
-        }
-        
-    }
+          $add_medicine = "INSERT INTO `medicines`(`Name`, `type`, `quantity`, `price`) VALUES ('$name','$type','$quantity','$price')";
+          if($add_medicine_run = mysqli_query($con, $add_medicine)) {
+              echo "<script>
+                          alert('New Medicine added Sucessfull');
+                          window.location.href='add_medicine.php';
+                      </script>";
+          }
+          
+      }
 
-    }else{
-      //else part if session is not set
+    }else{ ///else part if user is not doctor
       echo "<script>
-              window.location.href='../error/login_error.html';
+              window.location.href='../index.php';
             </script>";
     }
+
+  }else{
+    //else part if session is not set
+    echo "<script>
+            window.location.href='../error/login_error.html';
+          </script>";
+  }
 
 ?>

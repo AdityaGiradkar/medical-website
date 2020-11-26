@@ -2,22 +2,24 @@
     include("../includes/db.php");
     session_start();
 
-    // check if date is selected or not
-    if(isset($_GET['date'])){
-      $date = $_GET['date'];
+    if(isset($_SESSION['user_id'])){
+      if($_SESSION['role'] == 'doctor'){
+        // check if date is selected or not
+        if(isset($_GET['date'])){
+          $date = $_GET['date'];
 
-      //checking if user logged in 
-      //if session is set means user logged in then show this page otherwise redirect to login page
-      if(isset($_SESSION['user_id'])){
+          //checking if user logged in 
+          //if session is set means user logged in then show this page otherwise redirect to login page
+          if(isset($_SESSION['user_id'])){
 
-          $slots = "SELECT * FROM `consultation_time` WHERE `date`='$date' ORDER BY `time_range` ASC;";
-          $slots_run = mysqli_query($con, $slots);
+            $slots = "SELECT * FROM `consultation_time` WHERE `date`='$date' ORDER BY `time_range` ASC;";
+            $slots_run = mysqli_query($con, $slots);
 
-          //finding total number of new patient
-          $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
-          $new_patient_count_run = mysqli_query($con, $new_patient_count);
-          $data=mysqli_fetch_assoc($new_patient_count_run);
-          //finding total number of new patient
+            //finding total number of new patient
+            $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
+            $new_patient_count_run = mysqli_query($con, $new_patient_count);
+            $data=mysqli_fetch_assoc($new_patient_count_run);
+            //finding total number of new patient
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -390,4 +392,17 @@
             window.location.href='added_slot_dates.php';
           </script>";
   }
+
+}else{//else if user is not doctor
+  echo "<script>
+            window.location.href='../index.php';
+          </script>";
+}
+
+}else{
+//else part if session is not set
+echo "<script>
+    window.location.href='../error/login_error.html';
+  </script>";
+}
 ?>
