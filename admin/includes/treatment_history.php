@@ -267,7 +267,8 @@
       ?>
       <?php
         if(isset($_POST['close_treat_'.$treatment_number])){
-          $close_treatment = "UPDATE `treatment` SET `treat_status`='closed' WHERE `treat_number`='$treatment_number'";
+          $close_treatment = "UPDATE `treatment` SET `treat_status`='closed' WHERE `treat_number`='$treatment_number' AND `user_id`='$user_id'";
+          //echo $close_treatment;
           $close_treatment_run = mysqli_query($con, $close_treatment);
           echo "<script> window.location.href='user_details.php?uid=$user_id'; </script>";
         }
