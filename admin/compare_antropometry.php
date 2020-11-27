@@ -94,13 +94,13 @@
               <span>Patients <?php if($data['total'] > 0){ ?><sup><i class="fas fa-circle"
                           style="font-size: .75em !important;"></i></sup><?php } ?></span>
           </a>
-          <div id="collapsePatient" class="collapse show" aria-labelledby="headingTwo"
+          <div id="collapsePatient" class="collapse" aria-labelledby="headingTwo"
               data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
                   <h6 class="collapse-header">Patients : </h6>
                   <a class="collapse-item" href="new_patient.php">New consultation
                       (<?php echo $data['total']; ?>)</a>
-                  <a class="collapse-item active" href="test_submissions.php">New Test Submissions</a>
+                  <a class="collapse-item" href="test_submissions.php">New Test Submissions</a>
                   <a class="collapse-item" href="all_treatments.php">All Treatments</a>
               </div>
           </div>
@@ -176,7 +176,7 @@
           </div>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item active">
           <a class="nav-link" href="users.php">
               <i class="fas fa-fw fa-table"></i>
               <span>Users</span></a>
@@ -438,7 +438,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
+          <a class="btn btn-primary" href="../logout.php">Logout</a>
         </div>
       </div>
     </div>

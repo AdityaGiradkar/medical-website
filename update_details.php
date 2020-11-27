@@ -414,8 +414,20 @@
                 </div>
                 <div class="col-md-3">
                   <div class="form-check"> 
-                    <input class="form-check-input" type="checkbox" name="problems[]" value="None" id="defaultCheck24">
-                    <label class="form-check-label" for="defaultCheck24">None</label>
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Hormone" id="defaultCheck24">
+                    <label class="form-check-label" for="defaultCheck24">Hormone</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check"> 
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="Eyes" id="defaultCheck25">
+                    <label class="form-check-label" for="defaultCheck25">Eyes</label>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-check"> 
+                    <input class="form-check-input" type="checkbox" name="problems[]" value="None" id="defaultCheck26">
+                    <label class="form-check-label" for="defaultCheck26">None</label>
                   </div>
                 </div>
               </div>
@@ -525,11 +537,11 @@
 
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputState"><strong>date of first illness detected </strong></label>
-                <input class="form-control" type="date" name="date_illness" value="<?php if($user_details_res['date_first_illness'] != ''){ echo strftime('%Y-%m-%d', strtotime($user_details_res['date_first_illness']));} ?>" required />
+                <label for="inputState"><strong>Disease First Detected </strong></label>
+                <input class="form-control" type="text" placeholder="Mention in Months" name="date_illness" value="<?php if($user_details_res['date_first_illness'] != ''){ echo $user_details_res['date_first_illness']; } ?>" required />
               </div>
               <div class="form-group col-md-6">
-                <label for="inputState"><strong>Diagnosis made by doctors.</strong></label>
+                <label for="inputState"><strong>Diagnosis made by doctors</strong></label>
                 <input class="form-control" type="text" name="pre_doctor" placeholder="if not then mention 'NO'" required />
               </div>
               

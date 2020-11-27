@@ -308,8 +308,7 @@
                 <thead>
                   <tr>
                     <th scope="col">sr. no.</th>
-                    <th scope="col">Question</th>
-                    <!-- <th scope="col">Normal Range</th> -->
+                    <th scope="col">Vital Data</th>
                     <th scope="col">User Answer</th>
                     <th scope="col">Alert</th>
                   </tr>
@@ -318,98 +317,84 @@
                   <tr style="color:<?php if($test_details_res['SPO2']/100 < 95 || $test_details_res['SPO2']/100 > 100){echo 'red'; } ?>">
                     <th scope="row">1</th>
                     <td>Pulse-ox Reading Of SPO2 (%)</td>
-                    <!-- <td>95% to 100%</td> -->
                     <td><?php echo $test_details_res['SPO2']/100; ?> %</td>
                     <td><?php if($test_details_res['SPO2']/100 >= 91 && $test_details_res['SPO2']/100 <= 94){ echo 'Alert'; }else if($test_details_res['SPO2']/100 >= 85 && $test_details_res['SPO2']/100 <= 90){ echo "High Risk"; }else if($test_details_res['SPO2']/100 >= 80 && $test_details_res['SPO2']/100 <= 84){ echo "Intensive Care"; }else if($test_details_res['SPO2']/100 < 85){ echo "Very Critical"; }else{ echo "Normal"; } ?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['s_blod_pressure']/100 < 100 || $test_details_res['s_blod_pressure']/100 > 140){echo 'red'; } ?>">
                     <th scope="row">2</th>
                     <td>Systolic Blood Pressure (mm/Hg)</td>
-                    <!-- <td>100 to 140 (mm/Hg)</td> -->
                     <td><?php echo $test_details_res['s_blod_pressure']/100; ?> mm/Hg</td>
                     <td><?php if($test_details_res['s_blod_pressure']/100 < 80 || $test_details_res['s_blod_pressure']/100 > 160){ echo 'High Risk'; }else if($test_details_res['s_blod_pressure']/100 < 100 || $test_details_res['s_blod_pressure']/100 > 140){ echo "Alert"; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['d_blod_pressure']/100 < 70 || $test_details_res['d_blod_pressure']/100 > 90){echo 'red'; } ?>">
                     <th scope="row">3</th>
                     <td>Diastolic Blood Pressure (mm/Hg)</td>
-                    <!-- <td>70 to 90 (mm/Hg)</td> -->
                     <td><?php echo $test_details_res['d_blod_pressure']/100; ?> mm/Hg</td>
                     <td><?php if($test_details_res['s_blod_pressure']/100 < 50 || $test_details_res['s_blod_pressure']/100 > 100){ echo 'High Risk'; }else if($test_details_res['s_blod_pressure']/100 < 60 || $test_details_res['s_blod_pressure']/100 > 90){ echo "Alert"; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['pulse_rate']/100 < 70 || $test_details_res['pulse_rate']/100 > 80){echo 'red'; } ?>">
                     <th scope="row">4</th>
                     <td>Pulse Rate (beat/min)</td>
-                    <!-- <td>70 to 80 (beat/min)</td> -->
                     <td><?php echo $test_details_res['pulse_rate']/100; ?> beat/min</td>
                     <td><?php if($test_details_res['pulse_rate']/100 < 70){ echo 'Low Pulse Rate'; }else if($test_details_res['pulse_rate']/100 > 80){ echo 'High Pulse Rate'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['respiration_rate']/100 < 8 || $test_details_res['respiration_rate']/100 > 16){echo 'red'; } ?>">
                     <th scope="row">5</th>
                     <td>Respiration Rate(per min)</td>
-                    <!-- <td>8 to 16 (per min)</td> -->
                     <td><?php echo $test_details_res['respiration_rate']/100; ?> per min</td>
                     <td><?php if($test_details_res['respiration_rate']/100 < 8 || $test_details_res['respiration_rate']/100 > 16){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['oral_temp']/100 < 97 || $test_details_res['oral_temp']/100 > 98.4){echo 'red'; } ?>">
                     <th scope="row">6</th>
                     <td>Oral body Temperature (<sup>0</sup>F)</td>
-                    <!-- <td>97 to 98.4 (<sup>0</sup>F) </td> -->
                     <td><?php echo $test_details_res['oral_temp']/100; ?> <sup>0</sup>F</td>
                     <td><?php if($test_details_res['oral_temp']/100 > 102){ echo 'Very High'; }else if($test_details_res['oral_temp']/100 > 100){ echo 'High'; }else if($test_details_res['oral_temp']/100 > 98.4){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['drink_water']/100 < 2){echo 'red'; } ?>">
                   <th scope="row">7</th>
                     <td>How much water did he drink in last 24 hours (in Litre)</td>
-                    <!-- <td>More than 2 (Liter) </td> -->
                     <td><?php echo $test_details_res['drink_water']/100; ?> Litre</td>
                     <td><?php if($test_details_res['drink_water']/100 < 2){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['headache'] == 'Yes'){echo 'red'; } ?>">
                     <th scope="row">8</th>
                     <td>Do you have headache today</td>
-                    <!-- <td> - </td> -->
                     <td><?php echo $test_details_res['headache']; ?></td>
                     <td><?php if($test_details_res['headache'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['bodyache'] == 'Yes'){echo 'red'; } ?>">
                     <th scope="row">9</th>
                     <td>Do you have bodyache today</td>
-                    <!-- <td> - </td> -->
                     <td><?php echo $test_details_res['bodyache']; ?></td>
                     <td><?php if($test_details_res['bodyache'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['cough'] == 'Yes'){echo 'red'; } ?>">
                     <th scope="row">10</th>
                     <td>Do you have cough today</td>
-                    <!-- <td> - </td> -->
                     <td><?php echo $test_details_res['cough']; ?></td>
                     <td><?php if($test_details_res['cough'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['cold'] == 'Yes'){echo 'red'; } ?>">
                     <th scope="row">11</th>
                     <td>Do you have cold today</td>
-                    <!-- <td> - </td> -->
                     <td><?php echo $test_details_res['cold']; ?></td>
                     <td><?php if($test_details_res['cold'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['fever'] == 'Yes'){echo 'red'; } ?>">
                     <th scope="row">12</th>
                     <td>Did you have fever  yesterday</td>
-                    <!-- <td> - </td> -->
                     <td><?php echo $test_details_res['fever']; ?></td>
                     <td><?php if($test_details_res['fever'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['weakness'] == 'Yes'){echo 'red'; } ?>">
                     <th scope="row">13</th>
                     <td>Are you feeling weakness today</td>
-                    <!-- <td> - </td> -->
                     <td><?php echo $test_details_res['weakness']; ?></td>
                     <td><?php if($test_details_res['weakness'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>
                   <tr style="color:<?php if($test_details_res['loose_motion'] == 'Yes'){echo 'red'; } ?>">
                     <th scope="row">14</th>
                     <td>Are you having loose motions </td>
-                    <!-- <td> - </td> -->
                     <td><?php echo $test_details_res['loose_motion']; ?></td>
                     <td><?php if($test_details_res['loose_motion'] == 'Yes'){ echo 'Alert'; }else{ echo "Normal"; }?></td>
                   </tr>

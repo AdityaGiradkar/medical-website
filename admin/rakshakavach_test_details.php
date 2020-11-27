@@ -307,8 +307,8 @@
                 what type of treatment you tried before? :<b> <?php echo $medical_history_res['teratment_tried']; ?></b>
               </div>
               <div class="col-md-4 mb-3">
-                date of first illness detected :
-                <b><?php echo date("d-m-Y", strtotime($medical_history_res['date_first_illness'])); ?></b>
+                Disease First Detected :
+                <b><?php echo $medical_history_res['date_first_illness']; ?></b>
               </div>
               <div class="col-md-4 mb-3">
                 Diagnosis made by doctors.:<b> <?php echo $medical_history_res['prev_doctor']; ?></b>
@@ -474,8 +474,8 @@
               <table class="table table-bordered table-striped table-responsive-md" id="treatBlock">
                 <thead>
                   <tr>
-                    <th scope="col">sr. no.</th>
-                    <th scope="col">Question</th>
+                    <th scope="col">Sr. No.</th>
+                    <th scope="col">Yog Kriya Performed</th>
                     <th scope="col">User Answer</th>
                   </tr>
                 </thead>

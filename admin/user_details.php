@@ -309,8 +309,8 @@
                                 <?php echo $medical_history_res['teratment_tried']; ?>
                             </div>
                             <div class="col-md-4 mb-3">
-                                <b>date of first illness detected :</b>
-                                <?php echo date("d-m-Y", strtotime($medical_history_res['date_first_illness'])); ?>
+                                <b>Disease First Detected :</b>
+                                <?php echo $medical_history_res['date_first_illness']; ?>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <b>Diagnosis made by doctors.:</b> <?php echo $medical_history_res['prev_doctor']; ?>
@@ -642,7 +642,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleFormControlFile1">Extra File</label>
+                                    <label for="exampleFormControlFile1">Exercise/Report</label>
                                     <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1">
                                 </div>
                             </div>

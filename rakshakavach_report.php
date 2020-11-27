@@ -559,7 +559,7 @@
                         <p>ID : <strong>RAKT<?php echo $test_details_res['rakshakavach_test_no']; ?></strong></p>
                         <p>Age : <strong><?php echo $user_detail['age']; ?> Yrs.</strong></p>
                         <p>Tested On : <strong><?php echo date("d-m-Y h:ia", strtotime($record['created_at'])); ?></strong></p>
-                        <p>Test Name : <strong>YOG-E @Rakshakavach Test <?php if($record['test_type'] == 1) { echo 'Basic'; }else if($record['test_type'] == 5){ echo 'Advanced'; }?></strong></p>
+                        <p>Test Name : <strong>YOG-E @Rakshakavach Test <?php if($record['test_type'] == 1) { echo 'Basic'; }else if($record['test_type'] == 5){ echo 'Advanced'; }?> Report</strong></p>
                     </div>
                     <div class="col-6">
                         <p>Name : <strong><?php echo $user_detail['name']; ?></strong></p>

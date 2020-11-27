@@ -306,7 +306,7 @@
               </div>
               <div class="col-md-4 mb-3">
                 date of first illness detected :
-                <b><?php echo date("d-m-Y", strtotime($medical_history_res['date_first_illness'])); ?></b>
+                <b><?php echo $medical_history_res['date_first_illness']; ?></b>
               </div>
               <div class="col-md-4 mb-3">
                 Diagnosis made by doctors.:<b> <?php echo $medical_history_res['prev_doctor']; ?></b>
@@ -358,7 +358,7 @@
                         <p>Report Date : <strong><?php echo date("Y-m-d h:ia", strtotime($record['created_at'])); ?></strong></p>
                     </div>
                 </div>
-                <p >Test Name : <strong>YOG-E @CritiCare Daily Test</strong></p>
+                <p >Test Name : <strong>YOG-E @CritiCare Daily Test Report</strong></p>
                 
               </div>
               <hr style="height:3px; background-color:#50A6C2">
@@ -382,11 +382,11 @@
                 <table class="table table-bordered table-striped table-responsive-md" id="treatBlock">
                   <thead>
                     <tr>
-                      <th scope="col">sr. no.</th>
-                      <th scope="col">Question</th>
+                      <th scope="col">Sr. No.</th>
+                      <th scope="col">Vital Data & Diagnostic Test Values</th>
                       <th scope="col">Normal Range</th>
-                      <th scope="col">User Answer</th>
-                      <th scope="col">Alert</th>
+                      <th scope="col">Value Entered</th>
+                      <th scope="col">Interpretations</th>
                     </tr>
                   </thead>
                   <tbody>

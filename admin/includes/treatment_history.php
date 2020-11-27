@@ -232,7 +232,7 @@
                     href="<?php echo $all_subtreatment_res['e_prescription']; ?>" <?php } ?> >view</a>
                 </div>
                 <div class="col-md-4">
-                  <strong>Extra : </strong> <a <?php if($all_subtreatment_res['report'] != ""){ ?> target="_blank"
+                  <strong>Exercise/Report : </strong> <a <?php if($all_subtreatment_res['report'] != ""){ ?> target="_blank"
                   href="<?php echo $all_subtreatment_res['report']; ?>" <?php } ?> >view</a>
                 </div>
               </div>
@@ -346,7 +346,7 @@
                           </div>
                           <div class="col-md-4">
                             <div class="form-group">
-                              <label for="exampleFormControlFile1">Extra : </label>
+                              <label for="exampleFormControlFile1">Exercise/Report : </label>
                               <input type="file" name="report" class="form-control-file" id="exampleFormControlFile1">
                             </div>
                           </div>

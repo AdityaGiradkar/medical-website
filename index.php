@@ -3,6 +3,8 @@
     include('includes/db.php');
     if(isset($_SESSION['user_id'])){
         $user_id = $_SESSION['user_id'];
+
+        
     }
 ?>
 <!doctype html>
@@ -1339,6 +1341,29 @@
     <!-- Modal for Yoga appointment -->
 
 
+    <!-- Modal for waring about treatment pending amount -->
+    <div class="modal fade" id="warning_pending_amount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title brand-name" id="exampleModalLongTitle">Warning about pending Treatment</h5>
+                </div>
+                
+                <div class="modal-body">
+                    <p class="text-center">Doctor has added treatment in your treatment section, Kindly check it and pay for it.</p>
+                    <a href="ongoing_treatments.php" class="btn btn-primary float-right">Treatment Section</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for waring about treatment pending amount -->
+
+
     <!-- modal for test selection -->
     <?php 
         $get_test = "SELECT * FROM `test_type`";
@@ -1413,6 +1438,24 @@ if(isset($_SESSION['user_id'])){
     $check_detailes_fieled = "SELECT  `problems` FROM `medical_history` WHERE `user_id`='$user_id'";
     $check_detailes_fieled_run = mysqli_query($con, $check_detailes_fieled);
     $check_detailes_fieled_res = mysqli_fetch_assoc($check_detailes_fieled_run);
+
+    //check for painding amount
+    $check_pending_amount = "SELECT * FROM `treatment` WHERE `user_id`='$user_id' AND `fees_status`='pending' AND `treat_status`='ongoing'";
+    $check_pending_amount_run = mysqli_query($con, $check_pending_amount);
+    $check_pending_amount_res = mysqli_num_rows($check_pending_amount_run);
+
+
+
+    if($check_detailes_fieled_res['problems'] == ""){
+        echo "<script>
+                alert('Details are not filled. Please first Fill the details.');
+                window.location.href='update_details.php';
+            </script>";
+    }else if($check_pending_amount_res > 0){
+        echo "<script>              
+                $('#warning_pending_amount').modal('show'); 
+            </script>";
+    }
 }
 
     //php for booking appointment

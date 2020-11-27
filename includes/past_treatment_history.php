@@ -223,7 +223,7 @@
                     href="admin/<?php echo $all_subtreatment_res['e_prescription']; ?>" <?php } ?> >view</a>
                 </div>
                 <div class="col-md-4">
-                  <strong>Extra : </strong> <a <?php if($all_subtreatment_res['report'] != ""){ ?> target="_blank"
+                  <strong>Exercise/Report : </strong> <a <?php if($all_subtreatment_res['report'] != ""){ ?> target="_blank"
                     href="admin/<?php echo $all_subtreatment_res['report']; ?>" <?php } ?> >view</a>
                 </div>
               </div>

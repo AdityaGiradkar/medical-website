@@ -406,8 +406,8 @@
               <table class="table table-bordered table-striped table-responsive-md" id="treatBlock">
                 <thead>
                   <tr>
-                    <th scope="col">sr. no.</th>
-                    <th scope="col">Question</th>
+                    <th scope="col">Sr. No.</th>
+                    <th scope="col">Yog Kriya Performed</th>
                     <th scope="col">User Answer</th>
                   </tr>
                 </thead>
