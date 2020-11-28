@@ -316,6 +316,7 @@
                 }
             ?>
         </div>
+        
 
         
     </div>
@@ -324,7 +325,7 @@
         if($treatment_details_res['fees_status'] === 'pending'){
             
     ?>
-            <form action="payment/treatment_sucess.php?treat_id=<?php echo $treatment_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $sub_treatment_no; ?>&charge=<?php echo $order->amount; ?>" method="POST" style="text-align:center" class="mb-3">
+            <form action="payment/treatment_sucess.php?treat_id=<?php echo $treatment_id; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $sub_treatment_no; ?>&charge=<?php echo $order->amount; ?>&user_id=<?php echo $user_id; ?>" method="POST" style="text-align:center" class="mb-3">
                 <script
                     src="https://checkout.razorpay.com/v1/checkout.js"
                     data-key=<?php echo $keyId ?> 
@@ -342,6 +343,8 @@
                 ></script>
                 <input type="hidden" custom="Hidden Element" name="hidden">
                 </form>
+                <small><p class="text-center">* <b>Note -</b> Please refresh page once and click continue on popup before proceding to pay (Landup on same page then good to go). And after payment please wait for confirmation.</p></small>
+
     <?php
        }
     ?>

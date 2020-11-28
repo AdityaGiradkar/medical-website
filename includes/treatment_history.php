@@ -238,7 +238,7 @@
             
               <hr>
               <div class="Actions">
-                <h5><b>Total price : Rs. <?php echo $total_price; ?></b></h5>
+                <h5><b>Total price : Rs. <?php echo $total_payble_amount; ?></b></h5>
               <?php 
                 if($all_subtreatment_res['fees_status'] == 'pending'){
               ?>
