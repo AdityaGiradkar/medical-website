@@ -286,7 +286,7 @@
                                                     ?> 
                                                             href="antropometry_test_details.php?pay_id=<?php echo $pay_id; ?> "
                                                     <?php 
-                                                        }else if($record['test_id'] != "" && $record['test_type'] == 1) { 
+                                                        }else if($record['test_id'] != "" && ($record['test_type'] == 1 || $record['test_type'] == 5)) { 
                                                     ?> 
                                                             href="rakshakavach_test_details.php?pay_id=<?php echo $pay_id; ?> " 
                                                     <?php 
