@@ -261,6 +261,7 @@
                       <th>Contact No.</th>
                       <th>Email ID</th>
                       <th>User Details</th>
+                      <th>Valid</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -269,15 +270,22 @@
                       while($record = mysqli_fetch_assoc($all_user_run)){
                           if($record['role'] != "doctor"){
                       ?>
-                    <tr>
+                    <tr style="color:<?php if($record['valid'] == 0){ echo ""; }else{ echo "green"; } ?>;">
                       <th><?php echo $count; ?></th>
-                      <th><?php echo date('d-m-Y', strtotime($record['creation_date'])); ?></th>
+                      <td><?php echo date('d-m-Y', strtotime($record['creation_date'])); ?></td>
                       <td><?php echo $record['name']; ?></td>
                       <td><?php echo $record['gender']; ?></td>
                       <td><?php echo $record['age']; ?></td>
                       <td><?php echo $record['contact_no']; ?></td>
                       <td><?php echo $record['email_id']; ?></td>
                       <td><a href="user_details.php?uid=<?php echo $record['user_id']; ?>">View</a></td>
+                      <td>
+                        <?php if($record['valid'] == 0){ ?>
+                          <a href="small_scripts/valid_user.php?user_id=<?php echo $record['user_id']; ?>" onClick="javascript: return confirm('Are you sure?\, proccess can\'t be reversed. user number-<?php echo $count.") ".$record['name']; ?> is valid?');" >Confirm</a>
+                        <?php }else{
+                          echo "Confirmed";
+                        } ?>
+                      </td>
                     </tr>
                     <?php 
                         $count++;
