@@ -125,9 +125,11 @@
         }
         // print("<pre>".print_r($test)."</pre>");
         // print("<pre>".print_r($test,true)."</pre>");
-        print("<pre>".print_r($answer_value_count,true)."</pre>");
+        // print("<pre>".print_r($answer_value_count,true)."</pre>");
         // $myArray = explode(',', substr($test[1][0], 1, -1));
         // print_r($myArray);
+
+        print_r($answer_value_count);
 
 
         //loop through each answer value count 
@@ -428,6 +430,7 @@
 
         //7th table
         //Possibility of COVID risk 
+        $covid_risk = "";
         if($preliminary_inference_chart['pr'] == 'PATHOLOGICAL'){
             if($preliminary_inference_chart['ud'] == 'PATHOLOGICAL' && ($preliminary_inference_chart['vy'] == 'PATHOLOGICAL' || $preliminary_inference_chart['vy'] == 'PRE-PATHOLOGICAL') && $answer_value_count['fe'] == 3 && $answer_value_count['sm'] == 1){
                 $covid_risk = "HIGH";
@@ -546,6 +549,76 @@
             $long_time_recovery ='NO';
         }
 
+
+        //super data
+        //category1 data
+        if($answer_value_count['pr'] >= 2 && $answer_value_count['vy'] >= 2 && $answer_value_count['ud'] > 0 && $answer_value_count['pi'] > 0 && $answer_value_count['st'] > 3){
+            $category1 = 'YES';
+        }else{
+            $category1 = 'NO';
+        }
+
+        echo "<br><br><b>SUPER DATA</b> (Only accessable by doctor)";
+        echo "<br>Category 1 : <b>$category1</b><br>";
+        //category2 data
+        $super2 = 0;
+        if($answer_value_count['id'] > 0){
+            $super2++;
+        }
+        if($answer_value_count['pi'] > 0){
+            $super2++;
+        }
+        if($answer_value_count['sm'] > 0){
+            $super2++;
+        }
+        if($answer_value_count['fe'] > 0 && $answer_value_count['vy'] > 0 && $answer_value_count['ud'] > 0 && $super2 >=2){
+            $category2 = 'YES';
+        }else{
+            $category2 = 'NO';
+        }
+
+        echo "<br>Category 2 : <b>$category2</b><br>";
+
+        //category 3 data
+        if($answer_value_count['fe'] > 2 && $answer_value_count['vy'] > 4 && $answer_value_count['ud'] > 2  && $answer_value_count['pr'] > 4 && $answer_value_count['st'] > 3 && ($answer_value_count['id'] > 0 || $answer_value_count['pi'] > 0) && ($answer_value_count['sm'] > 0 || $answer_value_count['ts'] > 0)){
+            $category3 = 'YES';
+        }else{
+            $category3 = 'NO';
+        }
+        echo "<br>Category 3 : <b>$category3</b><br>";
+
+
+        //ATYPICAL CATEGORY 1
+        $atypical_category = 0;
+        if($answer_value_count['ap'] >= 4){
+            $atypical_category++;
+        }
+        if($answer_value_count['ma'] >= 2){
+            $atypical_category++;
+        }
+        if($answer_value_count['sw'] >= 2){
+            $atypical_category++;
+        }
+        if($answer_value_count['mu'] >= 2){
+            $atypical_category++;
+        }
+
+
+        if($answer_value_count['fe'] >= 1 && $atypical_category >= 2){
+            $atipical_category1 = 'YES';
+        }else{
+            $atipical_category1 = 'NO';
+        }
+
+        echo "<br>Atypical Category1 : <b>$atipical_category1</b></br>";
+
+        //atypicat pategory2
+        if($answer_value_count['fe'] == 0 && $atypical_category >= 3){
+            $atipical_category2 = 'YES';
+        }else{
+            $atipical_category2 = 'NO';
+        }
+        echo "<br>Atypical Category2 : <b>$atipical_category2</b></br>";
     ?>
     <div class="container p-3 border mt-3 mb-3">
         <div class="printableArea" id="printableArea">
