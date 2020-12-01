@@ -22,8 +22,8 @@
             <?php //echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?>
             <?php echo $pre_treatments_res['treatment_for']; ?>
           </div>
-          <div class="text-xs font-weight-bold text-primary mt-2 mb-1">
-            start Date : <?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?> | status : <?php echo $pre_treatments_res['treat_status'] == 'ongoing'?'<span style="color:green;">ongoing</span>':'closed'; ?>
+          <div class="text-xs font-weight-bold text-primary mt-2 mb-1" style="font-size:14px;">
+            Start Date : <?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?> | Status : <?php echo $pre_treatments_res['treat_status'] == 'ongoing'?'<span style="background-color:yellow;">Ongoing</span>':'Closed'; ?>
           </div>
         </div>
         <div class="col-auto">
@@ -36,6 +36,7 @@
       <b>Details : </b><br>
       <?php 
           $sr_no = 1;
+          $follow_treat_count = 1;
           //loop through subtreatments under main treatments
           
           while($all_subtreatment_res = mysqli_fetch_assoc($all_subtreatment_run)){
@@ -47,6 +48,16 @@
               $prescribed_session_details = array();
               $total_price = 0;
               $grand_total = 0;
+
+              $payment_date = "-";
+              $sub_treatment_start_date = "SELECT `created_at` FROM `treatment_payment` WHERE `user_id`='$user_id' AND `treat_no`='$treatment_number' AND `sub_treat_no`='$subtreatment_number'";
+              $sub_treatment_start_date_run = mysqli_query($con, $sub_treatment_start_date);
+              $sub_treatment_start_date_num_row = mysqli_num_rows($sub_treatment_start_date_run);
+              if($sub_treatment_start_date_num_row > 0){
+                $sub_treatment_start_date = mysqli_fetch_assoc($sub_treatment_start_date_run);
+                $payment_date = date("d/m/Y", strtotime($sub_treatment_start_date['created_at']));
+              }
+              
 
               //first take all medicines from prescribed_medicine table which matches treatment_no, user_id, subtreat_number
               $all_prescribed_medi = "SELECT `medicine_id`, `quantity` FROM `prescribed_medicine` WHERE `user_id`='$user_id' AND `treat_number`='$treatment_number' AND `sub_treat_number`='$subtreatment_number'";
@@ -130,11 +141,13 @@
 
 
       <!-- subtreatment fields -->
-      <?php echo $all_subtreatment_res['sub_treat_number']; ?>'s month : <a
-        data-target="#t_<?php echo $treatment_number; ?>_d_<?php echo $all_subtreatment_res['sub_treat_number']; ?>" href="" data-toggle="modal">View
-        Details</a> |
+      
+        <?php if($follow_treat_count == 1){?>Treatment No. <?php echo $follow_treat_count; ?> <?php }else{ ?>Follo-up, Treatment No. <?php echo $follow_treat_count; ?><?php } ?>
+       : <a data-target="#t_<?php echo $treatment_number; ?>_d_<?php echo $all_subtreatment_res['sub_treat_number']; ?>" href="" data-toggle="modal">View
+        Details</a> | Start Date : <?php echo $payment_date; ?> | 
       Total : Rs. <?php echo $total_payble_amount; ?>
       (<?php echo $all_subtreatment_res['fees_status']=='pending'?"<span style='color:red'>Pending</span>":"<span style='color:green'>Paid</span>"; ?>)<br>
+      <?php $follow_treat_count++; ?>
       <!-- subtreatment fields -->
 
       <!-- modal for each Subtreatments -->
@@ -152,7 +165,7 @@
 
             <div class="modal-body p-3">
               <!-- content here -->
-              <lable>Date : <b><?php echo date("d/m/Y", strtotime($pre_treatments_res['date'])); ?></b></lable>
+              <lable>Date : <b><?php echo $payment_date; //date("d/m/Y", strtotime($pre_treatments_res['date'])); ?></b></lable>
               <br><br>
 
               <label for=""><strong>Prescribed Medicines:</strong></label><br>
