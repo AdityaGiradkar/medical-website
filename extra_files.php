@@ -1,25 +1,24 @@
 <?php 
-  session_start();
-  include('includes/db.php');
+    include("includes/db.php");
+    session_start();
 
-  if(isset($_SESSION['user_id'])){
-    $user_id = $_SESSION['user_id']; 
-    $user_details = "SELECT *, TIMESTAMPDIFF(YEAR, '1970-02-01', CURDATE()) AS age FROM `user` WHERE `user_id`='$user_id'";
-    $user_details_run = mysqli_query($con, $user_details);
-    $user_details_res = mysqli_fetch_assoc($user_details_run);
+    //checking if user logged in 
+    //if session is set means user logged in then show this page otherwise redirect to login page
+    if(isset($_SESSION['user_id'])){
 
-    //$age = date_diff(date_create('1970-02-01'), date_create('today'))
+        $user_id = $_SESSION['user_id'];
+        $extra_files = "SELECT * FROM `extra_files` WHERE `user_id`='$user_id' ORDER BY `file_id` DESC";
+        $extra_files_run = mysqli_query($con, $extra_files);
 
-    // Check for remaining tests
-    $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
-    $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
-    $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
-    $tests = array(0,0,0,0,0,0);
-    while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
-      $index = $check_remaining_tests_res['test_type'];
-      $tests[$index] = $check_remaining_tests_res['order_id'];
-    }
-
+        // Check for remaining tests
+        $check_remaining_tests = "SELECT * FROM `test_payments` WHERE `user_id`='$user_id' AND `test_id` IS NULL GROUP BY `test_type`";
+        $check_remaining_tests_run = mysqli_query($con, $check_remaining_tests);
+        $check_remaining_tests_rows = mysqli_num_rows($check_remaining_tests_run);
+        $tests = array(0,0,0,0,0,0);
+        while($check_remaining_tests_res = mysqli_fetch_assoc($check_remaining_tests_run)){
+        $index = $check_remaining_tests_res['test_type'];
+        $tests[$index] = $check_remaining_tests_res['order_id'];
+        }
 ?>
 
 <!DOCTYPE html>
@@ -33,33 +32,22 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>User Page</title>
+  <title>Extra Files</title>
 
-  <!-- Custom fonts for this template-->
+  <!-- Custom fonts for this template -->
   <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
 
-  <!-- Custom styles for this template-->
+  <!-- Custom styles for this template -->
   <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <!-- custom style sheet for sidebar and navigation bar -->
   <link rel="stylesheet" href="admin/css/sidebar.css">
-
-  <style>
-    .edit {
-        border-radius: 12px;
-        background-image: -moz-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
-        background-image: -webkit-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
-        background-image: -ms-linear-gradient(-179deg, rgb(2, 233, 236) 0%, rgb(2, 56, 179) 100%);
-        width: 100%;
-        height: 30px;
-        border: 0;
-    }
-
-  </style>
-
 </head>
 
 <body id="page-top">
@@ -82,7 +70,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item  active">
+      <li class="nav-item">
         <a class="nav-link" href="user_page.php">
           <i class="fas fa-user-circle"></i>
           <span>Profile Page</span></a>
@@ -139,7 +127,7 @@
         }
       ?>
 
-      <li class="nav-item">
+      <li class="nav-item  active">
         <a class="nav-link" href="extra_files.php">
           <i class="fas fa-file"></i>
           <span>Additional Files</span></a>
@@ -171,6 +159,7 @@
           <span>Logout</span></a>
       </li>
 
+
     </ul>
     <!-- End of Sidebar -->
 
@@ -184,8 +173,8 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 fixed-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop"  onclick="sidebar()" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars "></i>
+          <button id="sidebarToggleTop" onclick="sidebar()" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
           </button>
 
           <!-- Topbar Navbar -->
@@ -199,17 +188,25 @@
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="user_page.php">
-                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Profile
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Logout
-                  </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" target="_blank" href="https://dashboard.razorpay.com/#/access/signin">
+                  <!-- <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> -->
+                  <i class="fas fa-external-link-alt mr-2 text-gray-400"></i>
+                  RazorPay 
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
               </div>
             </li>
 
@@ -221,49 +218,41 @@
         <!-- Begin Page Content -->
         <div class="container-fluid main-top main-left">
 
-          <!-- Page Heading -->
-          <div class="container mt-5">
-            <div class="row">
-              <div class="col-md-4">
-                <img class="img-fluid d-block mx-auto rounded-circle" src="images/dummy_profile.png">
-                <a href="update_details.php" class="mt-5 text-center d-block" ><b>UPDATE INFO</b></a>
-              </div>
-              <div class="col-md-8 pl-5 pr-5">
-                <h4 class="text-center pb-3"><b>Personal Details</b></h4>
-                <div class="form-group">
-                  <label for="exampleCheck1"><b>Name : </b></label>
-                  <input type="text" class="form-control" value="<?php echo $_SESSION['name']; ?>" id="exampleCheck1" disabled>
-                </div>
-                <div class="form-group">
-                  <label for="exampleCheck1"><b>Email : </b></label>
-                  <input type="text" class="form-control" value="<?php echo $user_details_res['email_id']; ?>" id="exampleCheck1" disabled>
-                </div>
-                <div class="form-group">
-                  <label for="exampleCheck1"><b>Contact Number : </b></label>
-                  <input type="text" class="form-control" value="<?php echo $user_details_res['contact_no']; ?>" id="exampleCheck1" disabled>
-                </div>
-                <div class="form-group">
-                  <label for="exampleCheck1"><b>Age : </b></label>
-                  <input type="text" class="form-control" value="<?php echo $user_details_res['age']; ?>" id="exampleCheck1" disabled>
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1"><b>Married : </b></label>
-                      <input type="text" class="form-control" value="<?php echo $user_details_res['married']; ?>" id="name" disabled>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1"><b>Working : </b></label>
-                      <input type="text" class="form-control" value="<?php echo $user_details_res['working']; ?>" id="name" disabled>
-                    </div>
-                  </div>
-                </div>               
-              </div>
-            </div>
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Extra Files</h1>
             
-          </div>
+
+            <div class="table-responsive ">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr. No.</th>
+                            <th scope="col">Date & Time</th>
+                            <th scope="col">File Name</th>
+                            <th scope="col">View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $count = 1; 
+                            while($extra_files_res = mysqli_fetch_assoc($extra_files_run)){
+                        ?>
+                        <tr>
+                            <th scope="row"><?php echo $count; ?></th>
+                            <td><?php echo date('d-m-Y h:ia', strtotime($extra_files_res['uploading_time'])); ?></td>
+                            <td><?php echo $extra_files_res['original_name']; ?></td>
+                            <td><a target="_blank" href="admin/<?php echo $extra_files_res['file_path']; ?>">Open</a></td>
+                        </tr>
+                        <?php
+                            $count++; 
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+
+          
 
         </div>
         <!-- /.container-fluid -->
@@ -322,6 +311,9 @@
   <!-- Custom scripts for all pages-->
   <script src="admin/js/sb-admin-2.min.js"></script>
 
+  <!-- Page level custom scripts -->
+  <script src="admin/js/demo/datatables-demo.js"></script>
+
   <script>
     var width = $(document).width();
     //alert(width);
@@ -344,11 +336,12 @@
 
 </html>
 
-<?php 
-  }else{
-    echo "<script>
-          window.location.href='error/login_error.html';
-    </script>";
-  }
+<?php
+      
+    }else{
+      echo "<script>
+              window.location.href='error/login_error.html';
+            </script>";
+    }
 
 ?>

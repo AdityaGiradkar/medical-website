@@ -126,6 +126,12 @@
         }
       ?>
 
+      <li class="nav-item">
+        <a class="nav-link" href="extra_files.php">
+          <i class="fas fa-file"></i>
+          <span>Additional Files</span></a>
+      </li>
+
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

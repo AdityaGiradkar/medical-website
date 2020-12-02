@@ -333,7 +333,8 @@
 
                     <button type="button" class="btn btn-success mt-3" data-toggle="modal"
                         data-target="#start_treatatment">Start NEW Treatment</button>
-                        <a class="btn mt-3 btn-primary d-inline-block" width="200" href="compare_antropometry.php?uid=<?php echo $user_id; ?>">Compaire Antropometry results</a>
+                    <a class="btn mt-3 btn-primary d-inline-block" width="200" href="compare_antropometry.php?uid=<?php echo $user_id; ?>">Compaire Antropometry results</a>
+                    <a class="btn mt-3 btn-danger d-inline-block" width="200" href="extra_files.php?uid=<?php echo $user_id; ?>">Additional Files</a>
 
                     
 

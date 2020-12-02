@@ -6,8 +6,9 @@
     //if session is set means user logged in then show this page otherwise redirect to login page
     if(isset($_SESSION['user_id'])){
       if($_SESSION['role'] == 'doctor'){
-        $all_user = "SELECT *, TIMESTAMPDIFF(YEAR, `dob`, CURDATE()) AS age FROM `user`";
-        $all_user_run = mysqli_query($con, $all_user);
+        $user_id = $_GET['uid'];
+        $extra_files = "SELECT * FROM `extra_files` WHERE `user_id`='$user_id' ORDER BY `file_id` DESC";
+        $extra_files_run = mysqli_query($con, $extra_files);
 
         //finding total number of new patient
         $new_patient_count = "SELECT count(*) as total FROM `consultation_time` WHERE `status`='assigned'";
@@ -27,7 +28,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Tables</title>
+  <title>Extra Files</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -238,68 +239,52 @@
         <!-- Begin Page Content -->
         <div class="container-fluid main-top main-left">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p>All are patients.</p>
+            <form class="form-inline mb-5 mt-4" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Upload Additional file : </label>
+                    <input type="file" name="additional_file" class="form-control-file" id="exampleFormControlFile1" required>
+                </div>
+                <button type="submit" name="upload" class="btn btn-primary mb-2">Upload</button>
+            </form>
+            <hr>
 
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Extra Files</h1>
+            
 
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">All Patients</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Sr. No.</th>
-                      <th>Creation Date</th>
-                      <th>name</th>
-                      <th>Gender</th>
-                      <th>Age</th>
-                      <th>Contact No.</th>
-                      <th>Email ID</th>
-                      <!-- <th>User Details</th> -->
-                      <th>Valid</th>
-                      <th>Extra Files</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php 
-                      $count = 1;
-                      while($record = mysqli_fetch_assoc($all_user_run)){
-                          if($record['role'] != "doctor"){
-                      ?>
-                    <tr style="color:<?php if($record['valid'] == 0){ echo ""; }else{ echo "green"; } ?>;">
-                      <th><?php echo $count; ?></th>
-                      <td><?php echo date('d-m-Y', strtotime($record['creation_date'])); ?></td>
-                      <td><a style="color:<?php if($record['valid'] == 0){ echo ""; }else{ echo "green"; } ?>;" href="user_details.php?uid=<?php echo $record['user_id']; ?>"><?php echo $record['name']; ?></a></td>
-                      <td><?php echo $record['gender']; ?></td>
-                      <td><?php echo $record['age']; ?></td>
-                      <td><?php echo $record['contact_no']; ?></td>
-                      <td><?php echo $record['email_id']; ?></td>
-                      <!-- <td><a href="user_details.php?uid=<?php echo $record['user_id']; ?>">View</a></td> -->
-                      <td>
-                        <?php if($record['valid'] == 0){ ?>
-                          <a href="small_scripts/valid_user.php?user_id=<?php echo $record['user_id']; ?>" onClick="javascript: return confirm('Are you sure?\, proccess can\'t be reversed. user number-<?php echo $count.") ".$record['name']; ?> is valid?');" >Confirm</a>
-                        <?php }else{
-                          echo "Confirmed";
-                        } ?>
-                      </td>
-                      <td><a href="extra_files.php?uid=<?php echo $record['user_id']; ?>">Open</a></td>
-                    </tr>
-                    <?php 
-                        $count++;
-                          }
-                      }
-                    ?>
-
-                  </tbody>
+            <div class="table-responsive ">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr. No.</th>
+                            <th scope="col">Date & Time</th>
+                            <th scope="col">File Name</th>
+                            <th scope="col">View</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $count = 1; 
+                            while($extra_files_res = mysqli_fetch_assoc($extra_files_run)){
+                        ?>
+                        <tr>
+                            <th scope="row"><?php echo $count; ?></th>
+                            <td><?php echo date('d-m-Y h:ia', strtotime($extra_files_res['uploading_time'])); ?></td>
+                            <td><?php echo $extra_files_res['original_name']; ?></td>
+                            <td><a target="_blank" href="<?php echo $extra_files_res['file_path']; ?>">Open</a></td>
+                            <td><a class="text-danger" onClick="javascript: return confirm('Are you sure, you want to delete <?php echo $extra_files_res['original_name']; ?> file?');" href="small_scripts/delete_extra_file.php?file_id=<?php echo $extra_files_res['file_id']?>&user_id=<?php echo $user_id; ?>">Delete</a></td>
+                        </tr>
+                        <?php
+                            $count++; 
+                            }
+                        ?>
+                    </tbody>
                 </table>
-              </div>
             </div>
-          </div>
+
+
+          
 
         </div>
         <!-- /.container-fluid -->
@@ -386,6 +371,43 @@
 </body>
 
 </html>
+<?php 
+    //Upload file
+    if(isset($_POST['upload'])){
+        $uploaded_file = $_FILES['additional_file'];
+
+        date_default_timezone_set('Asia/Kolkata');
+        $date_time_store = date('Y-m-d H:i:s');
+
+        $extra_destination ="";
+        // if($diet != "" || $report != "" || $e_prescription != ""){
+        if($uploaded_file != ""){
+            $extra_original = $_FILES['additional_file']['name'];
+            $extra_tmp_name = $_FILES['additional_file']['tmp_name'];
+            $extra_error = $_FILES['additional_file']['error'];
+            $extra_type = $_FILES['additional_file']['type'];
+
+            $extra_ext_seprate = explode('.', $extra_original);
+            $extra_ext = strtolower(end($extra_ext_seprate));
+
+            if($extra_error === 0){
+                $extra_new_name = uniqid('', true).".".$extra_ext;
+                $extra_destination = "files/extra_files/".$extra_new_name;
+                move_uploaded_file($extra_tmp_name, $extra_destination);
+            }
+        }
+
+        $insert_entry = "INSERT INTO `extra_files`(`user_id`, `file_path`, `original_name`, `uploading_time`) 
+                        VALUES ('$user_id', '$extra_destination', '$extra_original', '$date_time_store')";
+        if($insert_entry_run = mysqli_query($con, $insert_entry)){
+            echo "<script>
+                        window.location.href='extra_files.php?uid=$user_id';
+                    </script>";
+        }
+
+        
+    }
+?>
 
 <?php
       }else{   //check if user is docor or not
