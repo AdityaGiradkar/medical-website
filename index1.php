@@ -13,7 +13,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
     <meta name="description" content="AtmaVeda Yog pvt.ltd is a new startup company dedicated and formed on the principles of yoga. It's founder is Dr Sadanand Shivram Rasal . It's partners are Mrs Shital Narendra dhole.">
     <meta name="author" content="Dr Sadanand">
     <meta name="keywords" content="Hospital, atmaveda, AtmaVeda, AtmaVedaYog, atmavedayog, dr sadanand">
@@ -41,13 +41,13 @@
 
 <body>
 
-    <div class="main m-0">
+    <div class="main">
 
     
-        <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background-color:white!important;padding:1.3rem">
+        <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
             <div class="container">
                 <a class="navbar-brand ml-2" style="font-size:1.8rem" href="index.php">
-                    <img src="images/brand.png" width="220"  class="d-inline-block align-top" alt="" loading="lazy">
+                    <img src="images/brand.png" width="250"  class="d-inline-block align-top" alt="" loading="lazy">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -59,10 +59,10 @@
                             <a href="#about" class="li-header nav-link mr-3">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#consult" class="li-header nav-link mr-3">Treatments</a>
+                            <a href="#consult" class="li-header nav-link mr-3">Consultations</a>
                         </li>
                         <li class="nav-item">
-                            <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-3">Book Consultations</a>
+                            <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-3">Book Appointment</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" data-target="#select_test" data-toggle="modal" class="li-header nav-link mr-3">Take Test</a>
@@ -77,8 +77,8 @@
                             <a href="#" class="li-header nav-link mr-3" disabled>Shop</a>
                         </li> -->
                         <?php if(!isset($_SESSION['user_id'])){ ?>
-                        <li class="login-button">
-                            <a href="login.php" class="li-header nav-link"><b>Login</b></a>
+                        <li class="nav-item">
+                            <a href="login.php" class="li-header nav-link">Login</a>
                         </li>
                         <?php }else{ ?>
                         <li class="nav-item">
@@ -91,7 +91,7 @@
             </div>
         </nav>
 
-        <div class="intro pt-3 desktop_banner">
+        <div class="intro pt-3">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -141,57 +141,105 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-        </div>
+            <!-- <div class="container">
+                <div class="row">
+                    <div class="col-7 d-flex align-items-center justify-content-center">
+                        <p class="about-heading">Atmavedayog a new defination for holistic medicine.<br><br>
 
-        <div class="intro pt-3 mobile_banner">
-            <div id="mobile_banner_indication" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#mobile_banner_indication" data-slide-to="0" class="active"></li>
-                    <li data-target="#mobile_banner_indication" data-slide-to="1"></li>
-                    <li data-target="#mobile_banner_indication" data-slide-to="2"></li>
-                    <li data-target="#mobile_banner_indication" data-slide-to="3"></li>
-                    <li data-target="#mobile_banner_indication" data-slide-to="4"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="images/banner/mob_banner1.png" alt="First slide" loading="lazy">
-                        <!-- <div class="carousel-caption button1 d-none d-md-inline-block">
-                            <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
-                        </div> -->
+                        <span class="about-heading" style="font-family:monteserrat; font-size:30px">We cure we heal when no one can.</span></p>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/mob_banner2.png" alt="Second slide" loading="lazy">
-                        <!-- <div class="carousel-caption d-none button2 d-md-inline-block">
-                            <a href="#" data-target="#banner_diet" data-toggle="modal" class="d-inline-block mt-2 Explore-box ">Explore</a>
-                        </div> -->
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/mob_banner3.png" alt="Third slide" loading="lazy">
-                        <!-- <div class="carousel-caption d-none button3 d-md-inline-block">
-                            <a href="#" data-target="#select_test" data-toggle="modal" class="d-inline-block mt-2">Explore</a>
-                        </div> -->
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/mob_banner4.png" alt="Third slide" loading="lazy">
-                        <!-- <div class="carousel-caption d-none button4 d-md-inline-block">
-                            <a href="#" data-target="#medicine_imagica" data-toggle="modal" class="d-inline-block mt-2">Explore</a>
-                        </div> -->
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="images/banner/mob_banner5.png" alt="Third slide" loading="lazy">
-                        <!-- <div class="carousel-caption d-none button5 d-md-inline-block">
-                            <a href="#" data-target="#banner_covid" data-toggle="modal" class="d-inline-block mt-2 Explore-box ">Explore</a>
-                        </div> -->
+                    <div class="col-5">
+                        <img src="images/doctor.png" width="350" class="img-fluid d-block mx-auto" />
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#mobile_banner_indication" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#mobile_banner_indication" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+            </div> -->
+        </div>
+
+        <div class="mt-5 pt-5" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/AtmaVeda(334,273).png" width="240" style="vertical-align: middle;"
+                            class="img-fluid" />
+                    </div>
+                    <div class="col-md-9 pl-5">
+                        <p class="about-heading">AtmaVeda Yog</p>
+                        <p class="font-roboto">
+                            AtmaVeda Yog Pvt Ltd. is an innovative one of its kind company around the globe which works in following fields:
+                            <ul class="font-roboto">
+                                <li>Invention of diagnostic tools based on yoga.</li>
+                                <li>YOG-E yoga- based e-clinics.</li>
+                                <li>Holistic residential medical centres</li>
+                                <li>Research in yoga and life sciences</li>
+                                <li>Development of Homecare and criticare tools for management at home.</li>
+                                <li>Training institutions in AtmaVeda Yog.</li>
+                                <li>Making proprietary medicinal preparations</li>
+                            </ul>
+                        </p>
+
+                        <p class="font-roboto mb-3">
+                            It works for, Social sector, Corporate sector and is also open to work for governments around the
+                            world in field of medicine, community screening, yoga therapies and education.
+                        </p>
+                        <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pilars marginTop">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="images/pilar1.png" width="85px" alt="" class="d-block mx-auto" />
+                        <h5 class="text-center mt-3 font-mongolian">Chirayu</h5>
+                        <p class="text-center mt-3 font-roboto">Life is meaningful when we have happiness, inner peace, strength &
+                            worth
+                            living long.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/pilar2.png" width="65px" alt="" class="d-block mx-auto" />
+                        <h5 class="text-center mt-3 font-mongolian">Diet Pratyahara</h5>
+                        <p class="text-center mt-3 font-roboto">Diet Pratyahara improves Guna-dharma, Sanskar &amp; Yog-anurup falaprapti. It cures disease and give
+                            health.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/pilar3.png" width="65px" alt="" class="d-block mx-auto" />
+                        <h5 class="text-center mt-3 font-mongolian">Exercise Chiratarunya</h5>
+                        <p class="text-center mt-3 font-roboto">Exercise healing disease, giving Arogya-sampada &amp; staying young without aging is Exercise
+                            Chiratarunya.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="images/pilar4.png" width="52px" alt="" class="d-block mx-auto" />
+                        <h5 class="text-center mt-3 font-mongolian">Yog-E Nidaan</h5>
+                        <p class="text-center mt-3 font-roboto">Yog-E diagnoses the unknown Root Cause, your Dosha&#39;s. Detects early before the disease
+                            process begins ,helps to prevent and cure disease.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-4 marginTop " id="consult">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="images/doctor.png" width="250" class="img-fluid" alt="Dr Sadanand photo" />
+                    </div> 
+                    <div class="col-md-8 pb-3">
+                        <em>Consult</em>
+                        <h3 class="font-mongolian">Dr. Sadanand</h3>
+                        <p class="font-roboto mt-4">
+                            Consult Dr Sadanand for "Advanced Holistic Consultation". Heal your disease, illness. 
+                            Solve your health problems, get your holistic diet prescriptions, consult for personal sessions. 
+                            You can also "Ask Dr Sadanand" for information about your disease, your health queries, doubts, medicines, diagnostic test. 
+                            Have a "Pre-Treatment Consultation before you join treatment programmes. Know all, see all, learn all.
+                        </p>
+                        
+                        <div class="mt-4">
+                            <a data-target="#Appointment" data-toggle="modal" class="Explore-box">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -684,7 +732,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 text-img order-first order-md-last">
+                    <div class="col-md-4 text-img">
                         <img src="images/diet/diet.png" class="img-fluid">
                     </div>
                 </div>
@@ -862,94 +910,6 @@
             </div>
         </div>
 
-        <div class="pt-4" id="consult">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 d-none d-md-block">
-                        <img src="images/doctor.png" width="250" class="img-fluid" alt="Dr Sadanand photo" />
-                    </div> 
-                    <div class="col-md-8 pb-3">
-                        <em>Consult</em>
-                        <h3 class="font-mongolian">Dr. Sadanand</h3>
-                        <p class="font-roboto mt-4">
-                            Consult Dr Sadanand for "Advanced Holistic Consultation". Heal your disease, illness. 
-                            Solve your health problems, get your holistic diet prescriptions, consult for personal sessions. 
-                            You can also "Ask Dr Sadanand" for information about your disease, your health queries, doubts, medicines, diagnostic test. 
-                            Have a "Pre-Treatment Consultation before you join treatment programmes. Know all, see all, learn all.
-                        </p>
-                        
-                        <div class="mt-4">
-                            <a data-target="#Appointment" data-toggle="modal" class="Explore-box">Book Appointment</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-5 pt-5" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 d-none d-md-block">
-                        <img src="images/AtmaVeda(334,273).png" width="240" style="vertical-align: middle;"
-                            class="img-fluid" />
-                    </div>
-                    <div class="col-md-9">
-                        <p class="about-heading">AtmaVeda Yog</p>
-                        <p class="font-roboto">
-                            AtmaVeda Yog Pvt Ltd. is an innovative one of its kind company around the globe which works in following fields:
-                            <ul class="font-roboto">
-                                <li>Invention of diagnostic tools based on yoga.</li>
-                                <li>YOG-E yoga- based e-clinics.</li>
-                                <li>Holistic residential medical centres</li>
-                                <li>Research in yoga and life sciences</li>
-                                <li>Development of Homecare and criticare tools for management at home.</li>
-                                <li>Training institutions in AtmaVeda Yog.</li>
-                                <li>Making proprietary medicinal preparations</li>
-                            </ul>
-                        </p>
-
-                        <p class="font-roboto mb-3">
-                            It works for, Social sector, Corporate sector and is also open to work for governments around the
-                            world in field of medicine, community screening, yoga therapies and education.
-                        </p>
-                        <a href="about.php" class="d-inline-block mt-2 Explore-box ">Explore</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="pilars marginTop">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-xs-6 mb-3">
-                        <img src="images/pilar1.png" width="85px" alt="" class="d-block mx-auto" />
-                        <h5 class="text-center mt-3 font-mongolian">Chirayu</h5>
-                        <p class="text-center mt-3 font-roboto">Life is meaningful when we have happiness, inner peace, strength &
-                            worth
-                            living long.</p>
-                    </div>
-                    <div class="col-md-3 col-xs-6 mb-3">
-                        <img src="images/pilar2.png" width="65px" alt="" class="d-block mx-auto" />
-                        <h5 class="text-center mt-3 font-mongolian">Diet Pratyahara</h5>
-                        <p class="text-center mt-3 font-roboto">Diet Pratyahara improves Guna-dharma, Sanskar &amp; Yog-anurup falaprapti. It cures disease and give
-                            health.</p>
-                    </div>
-                    <div class="col-md-3 col-xs-6 mb-3">
-                        <img src="images/pilar3.png" width="65px" alt="" class="d-block mx-auto" />
-                        <h5 class="text-center mt-3 font-mongolian">Exercise Chiratarunya</h5>
-                        <p class="text-center mt-3 font-roboto">Exercise healing disease, giving Arogya-sampada &amp; staying young without aging is Exercise
-                            Chiratarunya.</p>
-                    </div>
-                    <div class="col-md-3 col-xs-6 mb-3">
-                        <img src="images/pilar4.png" width="52px" alt="" class="d-block mx-auto" />
-                        <h5 class="text-center mt-3 font-mongolian">Yog-E Nidaan</h5>
-                        <p class="text-center mt-3 font-roboto">Yog-E diagnoses the unknown Root Cause, your Dosha&#39;s. Detects early before the disease
-                            process begins ,helps to prevent and cure disease.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="pb-3 pt-3" id="test">
             <div class="container">
                 <div class="row">
@@ -972,7 +932,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <img src="images/lady.png" alt="" class="img-fluid d-none d-md-block" />
+                        <img src="images/lady.png" alt="" class="img-fluid" />
 
                     </div>
                 </div>
@@ -987,32 +947,104 @@
                         <div id="review-slider" class="owl-carousel">
                             <div class="post-slide">
                                 <div class="review">
-                                    <img src="images/reviews/review1.png" width="600px"
+                                    <img src="images/background_review.png" width="500px"
                                         class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p style="padding-top:20px;">
+                                            I joined Dr sadanand's "selective weight loss programme". I have reduced my weight 
+                                            by 15 kg , my abdomen has reduced. My abnormal Insulin levels have 
+                                            also been corrected. Feel lighter,strong and improved vigor.
+                                        </p>
+                                        <p style="padding-left: 200px;"><b>- Mr. Hemant Choudhari. </b><br>
+                                            <em><small>Director Delta flow Pvt Ltd</small></em>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="post-slide">
                                 <div class="review">
-                                    <img src="images/reviews/review2.png" width="600px"
+                                    <img src="images/background_review.png" width="500px"
                                         class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p>
+                                            I suffered from severe cervical spondylitis and hyper uriac acid level.
+                                            I joined Dr sadanand's Chronic pain and spine management prog.
+                                            Now I do push-ups,pull-ups, suryanamaskar, weights , head stand. My uric acid levels are normal too. Miraculous!!!
+                                        </p>
+                                        <p style="padding-left: 200px;"><b>- Mr. Balasaheb More </b><br>
+                                            <em><small>Director Saras Enterprises Pvt Ltd.</small></em>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="post-slide">
                                 <div class="review">
-                                    <img src="images/reviews/review3.png" width="600px"
+                                    <img src="images/background_review.png" width="500px"
                                         class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p>
+                                            I suffered from SLE arthritis and immunosuppressant drug side effects.
+                                            Joining Dr Sadanand's "chronic disease management prog." Has made me recover completely. No injection,no steroid, no hospitalization. My body is also in good shape now.
+                                        </p>
+                                        <p style="padding-left: 200px;"><b>- Mrs. Swarna Malatpure </b><br>
+                                            
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="post-slide">
                                 <div class="review">
-                                    <img src="images/reviews/review5.png" width="600px"
+                                    <img src="images/background_review.png" width="500px"
                                         class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p style="padding-top: 40px;">
+                                            I joined Dr Sadanand's Stress management programme. 
+                                            I feel stress free, energetic ,alert now. I can now work for long hours.
+                                            Its helping me serve my nation and duty.
+                                        </p>
+                                        <p style="padding-left: 250px;"><b>- Mr Narendra </b><br>
+                                            
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="post-slide">
                                 <div class="review">
-                                    <img src="images/reviews/review4.png" width="600px"
+                                    <img src="images/background_review.png" width="500px"
                                         class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p>
+                                            Living in UK ,hectic lifestyle I had Weight ,skin and hormone problems. Joining Dr Sadanand's "Womaniya holistic health"programme. My PCOD is cured. Weight and skin problem all solved. I feel the change within.
+                                        </p>
+                                        <p style="padding-left: 200px;"><b>- Miss. Kanchan More </b><br>
+                                            
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-slide">
+                                <div class="review">
+                                    <img src="images/background_review.png" width="500px"
+                                        class="img-fluid d-block mx-auto" />
+                                    <div class="container-fluid review-text">
+                                        <img src="images/Quote.png" width="80px" /><br><br><br>
+
+                                        <p>Joining Dr Sadanand's Chronic disease management programme has helped me totally cure my problem of"spleenic vein thrombosis". My body proportions have improved too.
+                                        </p>
+                                        <p style="padding-left: 200px;"><b>- Mrs. Vidya Anarse </b><br>
+                                            <em><small>teaching & coaching</small></em>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1026,7 +1058,7 @@
             $all_blogs_run = mysqli_query($con, $all_blogs);
              
         ?>
-        <div class="blogs paddingTobBottom" id="blogs" style="background-color: rgb(249, 250, 255);">
+        <div class="blogs paddingTobBottom" id="blogs" style="margin-top: 405px;  background-color: rgb(249, 250, 255);">
             <div class="container">
                 <h2 class="text-center">Blogs & Videos</h2>
                 <div class="row mt-5">
@@ -1283,11 +1315,11 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h5 class="modal-title brand-name" id="exampleModalLongTitle">Reminder about pending Treatment Charges</h5>
+                    <h5 class="modal-title brand-name" id="exampleModalLongTitle">Warning about pending Treatment</h5>
                 </div>
                 
                 <div class="modal-body">
-                    <p class="text-center">Your treatment has been added in treatment section, Kindly check it and pay to proceed.</p>
+                    <p class="text-center">Doctor has added treatment in your treatment section, Kindly check it and pay for it.</p>
                     <a href="ongoing_treatments.php" class="btn btn-primary float-right">Treatment Section</a>
                     
                 </div>
@@ -1324,7 +1356,7 @@
                         ?>
                         <div class="form-check pt-3">
                             <input class="form-check-input" type="radio" name="test_type" id="test_type<?php echo $get_test_res['test_id']; ?>" value="<?php echo $get_test_res['test_id']; ?>" required>
-                            <label class="form-check-label test_name" for="test_type<?php echo $get_test_res['test_id']; ?>"><?php echo $get_test_res['test_name']; ?></label>
+                            <label class="form-check-label" for="test_type<?php echo $get_test_res['test_id']; ?>"><?php echo $get_test_res['test_name']; ?></label>
                             <a tabindex="0" class="info-btn" data-toggle="popover" data-trigger="focus"
                                 title="<?php echo $get_test_res['test_name']; ?>" data-content="<?php echo $get_test_res['test_info']; ?>"><i
                                     class="fas fa-info-circle"></i></a>
@@ -1381,7 +1413,7 @@ if(isset($_SESSION['user_id'])){
 
     if($check_detailes_fieled_res['problems'] == ""){
         echo "<script>
-                //alert('Details are not filled. Please first Fill the details.');
+                alert('Details are not filled. Please first Fill the details.');
                 window.location.href='update_details.php';
             </script>";
     }else if($check_pending_amount_res > 0){
@@ -1524,18 +1556,6 @@ if(isset($_SESSION['user_id'])){
             $('.info-modal').modal('hide');
             $('#yoga_Appointment').modal('show');
         });
-
-
-        let mob_banner = document.getElementById("mobile").style; 
-        let desk_banner = document.getElementById("desktop").style; 
-        let width = $(document).width();
-
-        if(width <= 576){
-            mob_banner.display = "block";
-            desk_banner.display = "none";
-        }else{
-
-        }
 
 
         
