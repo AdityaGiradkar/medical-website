@@ -59,7 +59,7 @@
                             <a href="#about" class="li-header nav-link mr-3">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#consult" class="li-header nav-link mr-3">Treatments</a>
+                            <a href="all_available_tratments.php" class="li-header nav-link mr-3">All Treatments</a>
                         </li>
                         <li class="nav-item">
                             <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-3">Book Consultations</a>
