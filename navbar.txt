@@ -1,0 +1,76 @@
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background-color:white!important;padding:1.3rem">
+            <div class="container">
+                <!--button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button-->
+
+                <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo02">
+                    <ul class="nav">
+                        <!-- About Us -->
+                        <li class="nav-item">
+                            <a href="#about" class="li-header nav-link">ABOUT US</a>
+                        </li>
+                        <!-- Organe dot-->
+                        <li>
+                            <img class="navbar-vertical-center" src="images/navbar_dot.png" alt="">
+                        </li>
+
+                        <!-- All Treatments -->
+                        <li class="nav-item">
+                            <a href="all_available_tratments.php" class="li-header nav-link">ALL TREATMENTS</a>
+                        </li>
+                        <!-- Organe dot-->
+                        <li>
+                            <img class="navbar-vertical-center" src="images/navbar_dot.png" alt="">
+                        </li>
+
+                        <!-- Book Consultations -->
+                        <li class="nav-item">
+                            <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-3">BOOK CONSULTATIONS</a>
+                        </li>
+
+                        <!-- Atmavedayog Logo -->
+                        <li>
+                            <a class="navbar-brand" style="font-size:1.8rem" href="index.php">
+                                <img src="images/AtmaVeda(334,273).png" width="60" class="d-inline-block align-top" alt="" loading="lazy">
+                            </a>
+                        </li>
+
+                        <!-- Take Test -->
+                        <li class="nav-item">
+                            <a href="#" data-target="#select_test" data-toggle="modal" class="li-header nav-link mr-2">TAKE TEST</a>
+                        </li>
+                        <!-- Organe dot-->
+                        <li>
+                            <img class="navbar-vertical-center" src="images/navbar_dot.png" alt="">
+                        </li>
+
+                        <!-- Blogs -->
+                        <li class="nav-item">
+                            <a href="#blogs" class=" nav-link li-header mr-3 ml-2">BLOGS</a>
+                        </li>
+                        <!-- Organe dot-->
+                        <li>
+                            <img class="navbar-vertical-center" src="images/navbar_dot.png" alt="">
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" data-target="#banner_covid" data-toggle="modal" class="li-header nav-link mr-3">COVID-19</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="#" class="li-header nav-link mr-3" disabled>Shop</a>
+                        </li> -->
+                        <?php if (!isset($_SESSION['user_id'])) { ?>
+                            <li class="login-button">
+                                <a href="login.php" class="li-header nav-link"><b>LOGIN</b></a>
+                            </li>
+                        <?php } else { ?>
+                            <li class="nav-item">
+                                <a href="<?php if ($_SESSION['role'] == 'doctor') { ?> admin/index.php <?php } else { ?> user_page.php <?php } ?>" class="li-header nav-link ">User</a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>

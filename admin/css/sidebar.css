@@ -1,12 +1,11 @@
 .sidebar {
     z-index: 1031 !important;
+    /* overflow: -moz-hidden-unscrollable; */
 }
 
 .main-top {
     padding-top: 5.5rem;
 }
-
-
 
 .main-left {
     padding-left: 16rem;
@@ -16,6 +15,85 @@
     margin-left: 6rem !important;
 }
 
+
+/* #scrollbar-wrapper {
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scrollbar {
+    height: 300px;
+    width: 30px;
+    background: #F5F5F5;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 25px;
+} */
+
+
+/* .force-overflow {
+    min-height: 450px;
+} */
+
+
+/* #style-7::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+#style-7::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-7::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122, 153, 217)), color-stop(0.72, rgb(73, 125, 189)), color-stop(0.86, rgb(28, 58, 148)));
+} */
+
+
+/* .scrollbar {
+    margin-left: 30px;
+    float: left;
+    margin-bottom: 25px;
+    height: 350px;
+    background: #F5F5F5;
+    overflow-y: scroll;
+    width: 60px;
+}
+
+.addScrollStyle {
+    min-height: 450px;
+}
+
+#wrapper {
+    text-align: center;
+    width: 500px;
+    margin: auto;
+}
+
+#scrollbar-2::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    background-color: lightgray;
+}
+
+#scrollbar-2::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+#scrollbar-2::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background-color: blue;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+} */
 
 @media (max-width: 576px) {
     .main-left {

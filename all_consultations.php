@@ -31,6 +31,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- Website icon -->
+    <link rel="icon" href="images/AtmaVeda Logo.png" type="image/icon type">
+
     <title>All Consultations</title>
 
     <!-- Custom fonts for this template -->
@@ -88,15 +91,15 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-newspaper"></i>
-          <span>Treatment History</span>
+          <span>Treatments & Reports</span>
         </a>
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Treatment History:</h6>
             <a class="collapse-item active" href="all_consultations.php">All Consultations</a>
-            <a class="collapse-item" href="all_test.php">All Tests</a>
-            <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
-            <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
+            <a class="collapse-item" href="all_test.php">All Tests & Report</a>
+            <a class="collapse-item" href="ongoing_treatments.php">Treatments & Report</a>
+            <a class="collapse-item" href="past_treatments.php">Past Treatments & Report</a>
           </div>
         </div>
       </li>

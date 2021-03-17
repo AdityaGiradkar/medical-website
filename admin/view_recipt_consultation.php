@@ -37,6 +37,9 @@
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
+    <!-- Website icon -->
+    <link rel="icon" href="../images/AtmaVeda Logo.png" type="image/icon type">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
@@ -46,7 +49,7 @@
      <!-- Custom css File -->
     <link rel="stylesheet" href="../css/index.css">
 
-    <title>Recipt</title>
+    <title>Consultation Recipt - <?php echo $user_details_res['name']; ?></title>
 
 </head>
 <body>

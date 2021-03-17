@@ -47,6 +47,9 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <!-- Website icon -->
+  <link rel="icon" href="images/AtmaVeda Logo.png" type="image/icon type">
+
   <title>YogE@Rakshakavach Test</title>
 
   <!-- Custom fonts for this template-->
@@ -106,15 +109,15 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-newspaper"></i>
-            <span>Treatment History</span>
+            <span>Treatments & Reports</span>
         </a>
         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Treatment History:</h6>
                 <a class="collapse-item" href="all_consultations.php">All Consultations</a>
-                <a class="collapse-item active" href="all_test.php">All Tests</a>
-                <a class="collapse-item" href="ongoing_treatments.php">Ongoing Treatments</a>
-                <a class="collapse-item" href="past_treatments.php">Past Treatments</a>
+                <a class="collapse-item active" href="all_test.php">All Tests & Report</a>
+                <a class="collapse-item" href="ongoing_treatments.php">Treatments & Report</a>
+                <a class="collapse-item" href="past_treatments.php">Past Treatments & Report</a>
             </div>
         </div>
         </li>
@@ -377,7 +380,7 @@
             // $myArray = explode(',', substr($test[1][0], 1, -1));
             // print_r($myArray);
           ?>
-          <a <?php if($record['status'] == "checked"){ ?>href="rakshakavach_report.php?pay_id=<?php echo $pay_id; ?>" <?php } else{ ?> title="Wait for doctor to create report." <?php } ?>  class="btn btn-sm mt-3 btn-success" value="View Report" >View Report</a>
+          <a <?php if($record['status'] == "checked"){ ?>href="rakshakavach_report.php?pay_id=<?php echo $pay_id; ?>" <?php } else{ ?> title="Wait for doctor to create report." <?php } ?>  class="btn btn-sm mt-3 btn-success" style="color:white" value="View Report" >View Report</a>
           <input type="button" class="btn btn-sm mt-3 btn-primary d-flex ml-auto" onclick="printDiv('printableArea')" value="Print Test Details" />
           
 

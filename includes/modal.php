@@ -1,5 +1,5 @@
 <!-- Mmedical Treatment -->
-<!-- desease 1 -->
+<!-- desease 1 - DIABETES -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease1" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -8,34 +8,23 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">PURNA DIABETES CHIKITSA</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">DIABETES</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Diabetes is not all about just fasting and pp sugar control. it about the effect on the whole body as
-                    each organ is affected by it. Our unique Diabetes treatment holistic programme helps by,</p>
                 <ul>
-                    <li>correction of your insulin disorder</li>
-                    <li>correct your body insulin uptake mechanism</li>
-                    <li>regulation of the pancreatic insulin secretions and the pancreatic juice</li>
-                    <li>correction of glucose metablism</li>
-                    <li>reduction of insulin resistance.</li>
-                    <li>we achieve 24 hr sugar control and prevent you from diabetic induced diseases and health
-                        conditions.</li>
-                    <li>we also manage the diabetic complications and prevent surgeries.</li>
-                    <li>we correct 24 hr glucose regulation not just fasting and pp.</li>
-                </ul>
-                <p>We have the best results in even Type 1 Diabetes (juvenile )or insulin dependent diabetes. if you
-                    follow
-                    our regime sincerely , miracles will happen.</p>
-                <h6>Program Includes : </h6>
-                <ol>
                     <li>Diabetes Treatment</li>
                     <li>Juvenile diabetes treatment</li>
                     <li>Diabetes complication treatment</li>
                     <li>Diabetes prevention programme</li>
-                </ol>
+                    <li>Diabetic kidney disease treatement</li>
+                </ul>
+                <p>Diabetes is not all about blood sugar, insulin disorder, fasting and pp blood
+                    sugar control, it affects whole body organs. Our treatment programme has
+                    been most effective in achieving 24 hr sugar control, prevention of diabetes
+                    induced health conditions with correction of cellular insulin uptake
+                    mechanism.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -43,7 +32,7 @@
     </div>
 </div>
 
-<!-- desease 2 -->
+<!-- desease 2 - HRUDAYASPARSH - CARDIAC CARE -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease2" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -57,26 +46,17 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>We make your heart the centre for happiness, energy , health , fitness and vigour. we efficiently
-                    treat
-                    in the best way , better than the best in the world.</p>
-
-                <p>Find sure solutions for - </p>
                 <ul>
-                    <li>High blood pressure</li>
-                    <li>Low blood pressure </li>
-                    <li>Congestive cardiac failure </li>
-                    <li>Valvular diseases of heart</li>
-                    <li>Angina even after angioplasty</li>
-                    <li>Circulation disorders </li>
-                    <li>Stroke </li>
+                    <li>High blood pressure. Hypertension</li>
+                    <li>Low blood pressure. Hypotension</li>
+                    <li>Congestive cardiac failure. CCF. LVH. LVF. RVF.</li>
+                    <li>Valvular diseases of heart. Mitral valve stenosis, Aortic valve sclerosis, Mitral regurgitation, Pulmonary Hypertension.</li>
+                    <li>Angina pectoris. IHD ischaemic heart disease. Heart attack.</li>
+                    <li>Circulation disorders. Coronary artery disease CAD.</li>
+                    <li>Stroke. Embolism. Thrombo-embolism.</li>
                     <li>Paralysis</li>
-                    <li>Hypertrophy of heart etc.</li>
+                    <li>Left ventricular hypertrophy</li>
                 </ul>
-                <p>
-                    we detect heart diseases earliest than anybody. we can also be the most efficient adjuvant therapy
-                    in
-                    end stage patients with heart diseases.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -120,7 +100,7 @@
     </div>
 </div>
 
-<!-- desease 4 -->
+<!-- desease 4 - JOINT PAIN -->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease4" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -129,37 +109,30 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">JOINT HEALING</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">JOINT PAIN</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Complete answer for any type of arthritis.</p>
-                <p>A definite answer for -</p>
                 <ul>
                     <li>Osteoarthritis</li>
                     <li>Inflammatory arthritis</li>
                     <li>Rheumatoid arthritis</li>
                     <li>Ankyslosing spondylitis</li>
-                    <li>SLE arthritis</li>
+                    <li>SLE arthritis Osteoarthritis of Knee</li>
+                    <li>Achilles heel</li>
+                    <li>Heel pain. calcaneal spur</li>
+                    <li>Plantar fasciitis</li>
+                    <li>Frozen shoulder</li>
+                    <li>Rotator cuff injury</li>
+                    <li>Hip joint disease</li>
+                    <li>Carpal tunnel syndrome</li>
+                    <li>Tennis elbow</li>
+                    <li>Golfers elbow.</li>
                 </ul>
-
-                <p>A perfect solution for management of complications due to arthritis medications.
-                    Definite and safe answer to solve arthritis</p>
-                <ul>
-                    <li>No immune suppressant drugs</li>
-                    <li>No steroids</li>
-                    <li>No anti-inflammatory drugs.</li>
-                    <li>No habit forming drugs</li>
-                </ul>
-
-
-                <p>A only programme which promotes no drug therapy with clinical evaluated results based programmes.</p>
-
-                <strong>SAVE YOUR KNEE FROM GOING TO SCALPELS.</strong><br>
-
-                - Complete restoration of knee strength.<br>
-                - Resolve your knee issues without operations
+                <p>AtmaVeda Yog promotes no drug therapy and no surgical procedures offering you
+                    perfect solutions for management of arthritis and treatment of other joint problems
+                    with clinically evaluated result-based programmes.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -167,7 +140,7 @@
     </div>
 </div>
 
-<!-- desease 5 -->
+<!-- desease 5 - SPINE PROBLEMS-->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease5" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -176,41 +149,22 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">SPINE STRENGHTENING</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">SPINE PROBLEMS</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-
-                <h6>Recover spine. Strengthen spine</h6>
-                <h6>Make spine your axis of strength</h6>
-                <h6>Completely safe treatment programmes</h6>
                 <ul>
-                    <li>No steroid</li>
-                    <li>No pain killer</li>
-                    <li>No N.S.A.I.D.</li>
-                    <li>No surgery</li>
-                    <li>No Immuno-suppressant</li>
-                    <li>No Adverse Effects</li>
+                    <li>Cervical spondylitis</li>
+                    <li>Lumbar or lumbo-sacral spondylitis</li>
+                    <li>Radiculopahty</li>
+                    <li>Disc compression</li>
+                    <li>Akylosing spondylitis</li>
+                    <li>Severe diseases of spine</li>
                 </ul>
-                <p>Heal by Holistic Treatment Plan of Dr Sadanand.<br>
-                    Assured results in,<br>
-                    - cervical spondylitis, <br>
-                    - Lumbar or Lumbo-Sacral Spondylitis.<br>
-                    - Radiculopathy. <br>
-                    - Disc Compression.<br>
-                    - Ankylosing Spondylitis.<br>
-                    - Other Severe Diseases of Spine.<br>
-                </p>
-                <p>
-                    Spine is not just a set of bones places on each other to carry the weight. But it is a centre for ,
-                    control, flexibility, extension, mobility, proprioception, strength, stability, firmness.
-                </p>
-                <p>
-                Dr. Sadanand's spine disorder healing programme brings all the above healthy changes in
-                each and every case he treats.
-                </p>
-                <p>Find definite solution for any condition of spine.</p>
+                <p>Our holistic treatment plan finds definite solution for any condition of spine. we
+                    recover and strengthen our spine in all aspects of control, flexibility, extension and
+                    mobility.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -218,7 +172,7 @@
     </div>
 </div>
 
-<!-- desease 6 -->
+<!-- desease 6 - FEMALE WELLNESS-->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease6" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -227,30 +181,25 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">STRI ROG CHIKITSA</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">FEMALE WELLNESS</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Female represents the Prakruti. Prakruti that grows, cares, shares and procreates. We understand
-                    women
-                    beyond their organs and their body. We understand the relation between the Bramhagranthi and the
-                    Beeja-kosha. We understand the relation between antarmann and the garbhashaya. We understand the
-                    influence of muladhar chakra on there health and organ functions. so we treat every disease of women
-                    with complete restoration of health.</p>
-
-                <p>Our 100% effective evaluated success rate in :-</p>
                 <ul>
                     <li>PCOD</li>
-                    <li>Menopause</li>
-                    <li>Hormone disorders</li>
+                    <li>Menopause. Post menopausal syndrome. Oestrogen deficiency.</li>
+                    <li>Hormone disorders. FSH LH PRL Progesterone disorder.</li>
                     <li>PID</li>
                     <li>Menstrual disorders</li>
-                    <li>Ca Breast( as supportive and curative as per stage of ca)</li>
-                    <li>Loss of libido</li>
-                    <li>Anti aging</li>
+                    <li>Ca Breast (as supportive and curative as per stage of ca)</li>
+                    <li>Loss of libido. Sex drive</li>
+                    <li>Anti-aging</li>
                     <li>Infertility</li>
                 </ul>
+                <p>Female represents the Prakruti that grows, cares, shares and procreates. We
+                    understand existence of women beyond their body and organs. So, our
+                    treatment offers complete restoration of women health.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -258,7 +207,7 @@
     </div>
 </div>
 
-<!-- desease 7 -->
+<!-- desease 7 - LIVER RECOVERY-->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease7" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -267,15 +216,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">LIV STRONG</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">LIVER RECOVERY</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>Liver is the laboratory of our body. Be it health or disease or immunity,it plays the most
-                    important role in it. Lifestyle changes , addictions, viral diseases and allopathic drugs have
-                    caused a lot of adverse effect on this caretaker of the body.</p>
-                <p>Our Holistic programme provides answers to - </p>
                 <ul>
                     <li>Fatty liver</li>
                     <li>Cirrhosis of liver</li>
@@ -283,9 +228,11 @@
                     <li>Hepatitis</li>
                     <li>Drug induced liver disease</li>
                     <li>Gallstones</li>
+                    <li>Chronic Liver Disease</li>
                 </ul>
-                <p>Join us and recover your liver fully.</p>
-                <p>The earlier you join the better to see your liver healthy and strong.</p>
+                <p>Liver plays a vital role in the body’s health, disease or immunity. Life style
+                    changes, addictions, viral diseases and adverse effects of medicines injures
+                    liver. We take care of the liver, the care taker of your body.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -293,7 +240,7 @@
     </div>
 </div>
 
-<!-- desease 8 -->
+<!-- desease 8 - STOMACH & DIGESTIVE DISORDERS-->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease8" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -302,20 +249,34 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">STOMACH-HEAL THE FIRE</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">STOMACH &amp; DIGESTIVE DISORDERS</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                we have definite treatment plan for:
                 <ul>
+                    <li>Stomach pain</li>
+                    <li>Heart burn</li>
+                    <li>Vomiting</li>
+                    <li>Difficulty swallowing</li>
+                    <li>Abdominal discomfort</li>
+                    <li>Regurgitation</li>
+                    <li>Burping</li>
+                    <li>Farting</li>
+                    <li>Indigestion</li>
+                    <li>Mouth ulcers</li>
                     <li>Acid Peptic Disease.</li>
                     <li>Anorexia Nervosa.</li>
-                    <li>Duodenal Ulcer</li>
+                    <li>Duodenal Ulcer/Duodenitis</li>
                     <li>Reflux Oesophagitis.</li>
                     <li>Stomach Cancer.</li>
                     <li>Achalasia Cardia.</li>
+                    <li>Piles/rectal haemorrhoids</li>
+                    <li>GERD</li>
                 </ul>
+                <p>All most every 7 in ten persons suffer from either one of the above complaints.
+                    AtmaVeda Yog programme treats successfully with assured results giving you
+                    a happy stomach.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -323,7 +284,7 @@
     </div>
 </div>
 
-<!-- desease 9 -->
+<!-- desease 9 - COLON & IBS-->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease9" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -332,17 +293,22 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">COLON</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">COLON &amp; IBS</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                We treat successfully -
                 <ul>
-                    <li>irritable bowel syndrome</li>
-                    <li>inflammatory bowel disease</li>
-                    <li>rectal haemorrhoids</li>
-                </ul>
+                    <li>IBS</li>
+                    <li>Crohn’s disease</li>
+                    <li>Colitis</li>
+                    <li>Piles</li>
+                    <li>Fissure</li>
+                    <li>Fistula in Ano</li>
+                    <li>Anal warts</li>
+                </ul> 
+                <p>Colon has emerged the most causative organ for many diseases. We offer Colon
+                    healing programmes for instant and long-term results.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -350,7 +316,7 @@
     </div>
 </div>
 
-<!-- desease 10 -->
+<!-- desease 10 - BREATHE NORMAL-->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease10" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -364,13 +330,14 @@
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>effective and safe treatment for-</p>
                 <ul>
-                    <li>acute bronchitis</li>
-                    <li>chronic bronchitis</li>
-                    <li>asthmatic bronchitis</li>
-                    <li>recurrent urti</li>
-                    <li>drug resistant tuberculosis</li>
+                    <li>Acute Bronchitis</li>
+                    <li>Chronic Bronchitis</li>
+                    <li>Asthmatic Bronchitis</li>
+                    <li>Recurrent URTI</li>
+                    <li>Drug Resistant Tuberculosis</li>
+                    <li>COVID19 lung complication</li>
+                    <li>Post COVID Lung recovery</li>
                 </ul>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
@@ -379,7 +346,7 @@
     </div>
 </div>
 
-<!-- desease 11 -->
+<!-- desease 11 - BLOOD DISORDER-->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease11" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -388,21 +355,21 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">BLOOD DISORDER TREATMENT</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">BLOOD DISORDERS</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>These are specialized treatment plans , book a consultation  and know more about the plans that will help you </p>
-                <p>
-                    Treatment includes:
                 <ul>
-                    <li>Chronic anemia</li>
-                    <li>Aplastic anemia</li>
+                    <li>Chronic anaemia</li>
+                    <li>Thrombocytopenia</li>
+                    <li>Aplastic anaemia</li>
                     <li>Thalassemia</li>
                     <li>Blood cancer</li>
+                    <li>Eosinophilia</li>
+                    <li>Leukopenia</li>
                 </ul>
-                </p>
+                <p>join today to know more about these diseases and get assured super effective results.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>
@@ -410,7 +377,7 @@
     </div>
 </div>
 
-<!-- desease 12 -->
+<!-- desease 12 - CANCER THERAPEUTIC &amp; SUPPORT-->
 <div class="modal fade bd-example-modal-lg info-modal" id="disease12" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -419,12 +386,23 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalLongTitle">CANCER THERPAY - THERAPEUTIC OR SUPPORTIVE</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">CANCER THERAPEUTIC &amp; SUPPORT</h5>
 
             </div>
             <div class="modal-body">
                 <!-- content here -->
-                <p>These are specialized treatment plans, book a consultation  and know more about the plans that will help you. </p>
+                <ul>
+                    <li>Breast cancer</li>
+                    <li>Prostate cancer</li>
+                    <li>BEP</li>
+                    <li>Colo-rectal cancer</li>
+                    <li>Uterine cancer</li>
+                    <li>Brain cancer</li>
+                    <li>Benign cancer</li>
+                    <li>Lung cancer</li>
+                </ul>
+                <p>Cancer is the menace affecting all sections of society, rich and poor alike. Our treatment modules
+                    show promising results in cancer prevention, detection, support, care and Treatment.</p>
             </div>
             <button type="submit" class="login-btn mt-4 info-modal-btn" style="color:white;font-size: 18px;">BOOK AN
                 APPOINTMNET</button>

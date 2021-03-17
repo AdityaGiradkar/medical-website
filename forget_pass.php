@@ -49,6 +49,9 @@
     <meta name="author" content="Dr Sadanand">
     <meta name="keywords" content="Hospital, atmaveda, AtmaVeda, AtmaVedaYog, atmavedayog, dr sadanand, login">
 
+    <!-- Website icon -->
+    <link rel="icon" href="images/AtmaVeda Logo.png" type="image/icon type">
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
 

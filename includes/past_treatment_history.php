@@ -1,6 +1,6 @@
 <!-- all its treatment history  -->
 <div class="border border-primary rounded-lg p-3 mt-4">
-  <h1 class="h4 mb-2 text-gray-800">Treatment History</h1>
+  <h1 class="h4 mb-2 text-gray-800">Treatment History & Reports</h1>
   <?php 
         $pre_treatments = "SELECT * FROM `treatment` WHERE `user_id`='$user_id' AND `treat_status`='closed' GROUP By `treat_number` ORDER BY `date` DESC";
         $pre_treatments_run = mysqli_query($con, $pre_treatments);
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="card-body pt-2" style="display:none" id="d_<?php echo $treat_no; ?>">
-      <b>Details : </b><br>
+      <b>Details & Reports : </b><br>
       <?php 
           $sr_no = 1;
           //loop through subtreatments under main treatments
@@ -251,7 +251,7 @@
               <?php 
                 }else{
               ?>
-                <a target="_blank" href="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $all_subtreatment_res['user_id']; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">View Recipt</a>
+                <a target="_blank" class="btn btn-success" href="view_recipt.php?treat_id=<?php echo $treat_id; ?>&user_id=<?php echo $all_subtreatment_res['user_id']; ?>&treat_no=<?php echo $treatment_number; ?>&sub_treat_no=<?php echo $all_subtreatment_res['sub_treat_number']; ?>">View Recipt</a>
               <?php
                 }
               ?>

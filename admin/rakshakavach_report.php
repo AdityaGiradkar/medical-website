@@ -29,6 +29,9 @@
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
+    <!-- Website icon -->
+  <link rel="icon" href="../images/AtmaVeda Logo.png" type="image/icon type">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap-4.5.2-dist/css/bootstrap.min.css">
 
@@ -350,7 +353,7 @@
         }
 
         //condition for high risk column
-        if($health_status['PRE-PATHOLOGICAL'] >= 2 || $health_status['PATHOLOGICAL'] >= 1){
+        if($health_status['PRE-PATHOLOGICAL'] > 2 || $health_status['PATHOLOGICAL'] >= 1){
             $high_risk = 'YES';
         }else{
             $high_risk = 'NO';
@@ -416,7 +419,7 @@
             $strong_raksha_kavach = 'NO';
         }
 
-        if($high_risk == 'YES'){
+        if($health_risk == 'YES'){
             $moderate_raksha_kavach = 'YES';
         }else{
             $moderate_raksha_kavach = 'NO';
@@ -442,7 +445,7 @@
         }
 
         //Healthy Immune Warrior, Susceptible, Carrier, Active (Super Spreader) 
-        if($health_risk == 'NO' && $high_risk == 'NO'){
+        if( $high_risk == 'NO'){
             $healthy_immune_warrior = 'YES'; 
         }else{
             $healthy_immune_warrior = 'NO';

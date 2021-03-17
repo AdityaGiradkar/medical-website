@@ -47,7 +47,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Patient History</title>
+  <!-- Website icon -->
+  <link rel="icon" href="../images/AtmaVeda Logo.png" type="image/icon type">
+
+  <title>Antropometry Test Details - <?php echo $user_detail['name']; ?></title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -200,6 +203,27 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReview" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-pills"></i>
+          <span>User Reviews</span>
+        </a>
+        <div id="collapseReview" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Reviews:</h6>
+            <a class="collapse-item" href="all_reviews.php">All Reviews</a>
+            <a class="collapse-item" href="add_review.php">Add Review</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="all_images.php">
+          <i class="fas fa-images"></i>
+          <span>Website Images</span></a>
+      </li>
+
+      <li class="nav-item">
           <a class="nav-link" href="users.php">
               <i class="fas fa-fw fa-table"></i>
               <span>Users</span></a>
@@ -243,6 +267,10 @@
                         <!-- <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> -->
                         <i class="fas fa-external-link-alt mr-2 text-gray-400"></i>
                         RazorPay 
+                    </a>
+                    <a class="dropdown-item" target="_blank" href="invoices.php">
+                        <i class="fas fa-receipt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Invoice 
                     </a>
                     <a class="dropdown-item" href="#">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>

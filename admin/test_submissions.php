@@ -7,15 +7,6 @@
     if(isset($_SESSION['user_id'])){
         if($_SESSION['role'] == 'doctor'){
 
-            // $yoge_home = "SELECT * FROM `user` u RIGHT JOIN `yoge_home` y 
-            //             ON u.`user_id`=y.`user_id`
-            //             ORDER BY y.`status`, y.`date_time` DESC";
-            // $yoge_home_run = mysqli_query($con, $yoge_home);
-
-            // $new_yoge = "SELECT count(*) as cout FROM `yoge_home` WHERE `status`='new'"; 
-            // $new_yoge_run = mysqli_query($con, $new_yoge);
-            // $new_yoge_res= mysqli_fetch_assoc($new_yoge_run);
-            // $new_yoge_submissions = $new_yoge_res['cout'];
 
             $all_taken_test = "SELECT * FROM `user` u RIGHT JOIN `test_payments` tp 
                             ON u.`user_id`=tp.`user_id`
@@ -43,7 +34,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>New Patient List</title>
+    <!-- Website icon -->
+    <link rel="icon" href="../images/AtmaVeda Logo.png" type="image/icon type">
+
+    <title>All Test Submissions</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -186,6 +180,27 @@
             </li>
 
             <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReview" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-pills"></i>
+          <span>User Reviews</span>
+        </a>
+        <div id="collapseReview" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Reviews:</h6>
+            <a class="collapse-item" href="all_reviews.php">All Reviews</a>
+            <a class="collapse-item" href="add_review.php">Add Review</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="all_images.php">
+          <i class="fas fa-images"></i>
+          <span>Website Images</span></a>
+      </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="users.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Users</span></a>
@@ -230,6 +245,10 @@
                                     <!-- <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> -->
                                     <i class="fas fa-external-link-alt mr-2 text-gray-400"></i>
                                     RazorPay 
+                                </a>
+                                <a class="dropdown-item" target="_blank" href="invoices.php">
+                                    <i class="fas fa-receipt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Invoice 
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>

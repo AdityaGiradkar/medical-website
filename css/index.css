@@ -39,7 +39,9 @@ body {
     color: rgb(0, 48, 123);
     transition: 0.3s;
     position: relative;
-    font-size: 17px;
+    font-size: 15px;
+    font-family: 'Nunito Sans', sans-serif;
+    ;
 }
 
 .li-header:hover {
@@ -77,6 +79,11 @@ body {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 0, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
+.navbar-vertical-center {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
 .login-button {
     border: 2px solid blue;
     border-radius: 18%;
@@ -99,6 +106,43 @@ body {
 
 
 /* end Header section */
+
+
+/* search bar */
+
+.pointer {
+    cursor: pointer;
+}
+
+.search {
+    position: relative;
+}
+
+.search-box {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    width: 40%;
+}
+
+.input-box-search {
+    border: none;
+    background: none!important;
+    outline: none;
+    border-bottom: 2px solid;
+    background-color: rgb(255, 255, 255);
+    font-size: 22px;
+    width: 80%;
+    font-family: "Mongolian Baiti";
+    color: rgb(0, 48, 123);
+}
+
+.list-group-item-action {
+    z-index: 10!important;
+}
+
+
+/* search bar */
 
 
 /* banner css */
@@ -151,13 +195,14 @@ body {
 
 /* button 1 */
 
-.button1 {
+
+/* .button1 {
     left: 17%;
     top: 63%;
 }
 
 .button2 {
-    /* right: 50%; */
+  
     left: 15.4%;
     top: 72%;
 }
@@ -185,7 +230,7 @@ body {
 }
 
 .button4 {
-    /* right: 61%; */
+    
     left: 18%;
     top: 65%;
 }
@@ -207,16 +252,45 @@ body {
 }
 
 .button5 {
-    /* right: 60%; */
     left: 19%;
     top: 69%;
-}
+} */
 
 
 /* carosal custumizations */
 
 
 /* end banner css */
+
+
+/* Four link button */
+
+.four-button::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background: rgb(0, 48, 123);
+    opacity: 0.3;
+}
+
+.zoom-image {
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.zoom-image:hover {
+    transform: scale(1.03);
+}
+
+.four-button-color {
+    color: #01195b;
+    text-decoration: none !important;
+    /* text-decoration-line: none; */
+}
+
+
+/* Four link button */
 
 
 /* About section */
@@ -256,9 +330,13 @@ body {
 /* end About section */
 
 #consult {
-    background-image: -moz-linear-gradient(180deg, #d4f7fb 0%, #d4e1f3 100%);
+    /* background-image: -moz-linear-gradient(180deg, #d4f7fb 0%, #d4e1f3 100%);
     background-image: -webkit-linear-gradient(180deg, #d4f7fb 0%, #d4e1f3 100%);
-    background-image: -ms-linear-gradient(180deg, #d4f7fb 0%, #d4e1f3 100%);
+    background-image: -ms-linear-gradient(180deg, #d4f7fb 0%, #d4e1f3 100%); */
+    background-image: -moz-linear-gradient( 180deg, rgb(0, 78, 157) 0%, rgb(12, 17, 61) 100%);
+    background-image: -webkit-linear-gradient( 180deg, rgb(0, 78, 157) 0%, rgb(12, 17, 61) 100%);
+    background-image: -ms-linear-gradient( 180deg, rgb(0, 78, 157) 0%, rgb(12, 17, 61) 100%);
+    color: white;
 }
 
 
@@ -268,7 +346,8 @@ body {
 /* Start of medical-treatment, yoga and diet */
 
 .medical-treatment,
-.yoga {
+.yoga,
+.gallery {
     background-color: rgb(249, 250, 255);
 }
 
@@ -491,6 +570,41 @@ body {
 }
 
 
+/* gallery */
+
+.view_more {
+    /* display: inline-block; */
+    text-decoration: none!important;
+    padding: 1% 2%;
+    border: 2px solid rgb(35, 106, 187);
+    border-radius: 25px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.view_more:hover {
+    background-color: rgb(35, 106, 187);
+    color: white;
+}
+
+
+/* review related css */
+
+.review_card {
+    border-radius: 50px 0!important;
+}
+
+.reviewer_image {
+    position: relative;
+    /* border-radius: 50%; */
+    top: -60px;
+}
+
+#review-slider .owl-wrapper-outer {
+    padding-top: 40px !important;
+}
+
+
 /* Book appointment modal */
 
 .overlay {
@@ -622,4 +736,32 @@ body {
     .test_name {
         width: 80%;
     }
+    .four-button::before {
+        width: 0;
+    }
+    .four-button-img {
+        width: 30%;
+    }
+    .four-button-txt {
+        font-size: 14px;
+    }
+    .search-box {
+        width: 90%;
+    }
+}
+
+
+/* about-us page */
+
+.pillar-company {
+    margin-inline: auto !important;
+    transition: 0.3s;
+    /* border-radius: 15px; */
+    /*background-color: #D7D6D1;*/
+    background-color: #F8F8F8;
+    box-shadow: 0 5px 8px 0 rgba(0, 0.3, 0, 0.3);
+}
+
+.pillar-company:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0.9, 0, 0.9);
 }

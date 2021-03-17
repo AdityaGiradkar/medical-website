@@ -15,7 +15,7 @@ if(isset($_SESSION['user_id'])){
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap-4.5.2-dist/css/bootstrap.min.css">
@@ -23,60 +23,19 @@ if(isset($_SESSION['user_id'])){
     <!-- Custom fonts for this template-->
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Website icon -->
+    <link rel="icon" href="images/AtmaVeda Logo.png" type="image/icon type">
+
     <link rel="stylesheet" href="css/index.css">
 
     <title>About US</title>
 </head>
 
 <body>
-
-    <!-- <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
-        <a class="navbar-brand ml-5" style="font-size:1.8rem" href="index.php">
-            <img src="images/brand.png" width="250" class="d-inline-block align-top" alt="" loading="lazy">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a href="index.php#about" class="li-header nav-link mr-4">ABOUT US</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.php#consult" class="li-header nav-link mr-4">COUNSELLING</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="li-header nav-link mr-4">SHOP</a>
-                </li>
-                <li class="nav-item">
-                    <a href="index.php#blogs" class=" nav-link li-header mr-4">BLOG</a>
-                </li>
-                <li class="nav-item">
-                    <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-4">BOOK AN
-                        APOINTMENT</a>
-                </li>
-                <?php if(!isset($_SESSION['user_id'])){ ?>
-                <li class="nav-item">
-                    <a href="login.php" class="li-header nav-link mr-4">LOGIN</a>
-                </li>
-                <?php }else{ ?>
-                <li class="nav-item">
-                    <a href="<?php if($_SESSION['role'] == 'doctor'){?> admin/index.php <?php }else{ ?> user_page.php <?php } ?>"
-                        class="li-header nav-link mr-4">USER</a>
-                </li>
-                <?php } ?>
-            </ul>
-
-        </div>
-    </nav> -->
-
-
-    <nav class="navbar navbar-expand-lg sticky-top shadow" style="background-color:white!important;padding:1.3rem">
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background-color:white!important;padding:1.3rem">
         <div class="container">
             <a class="navbar-brand ml-2" style="font-size:1.8rem" href="index.php">
-                <img src="images/brand.png" width="250"  class="d-inline-block align-top" alt="" loading="lazy">
+                <img src="images/brand.png" width="220"  class="d-inline-block align-top" alt="" loading="lazy">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -85,16 +44,16 @@ if(isset($_SESSION['user_id'])){
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a href="index.php#about" class="li-header nav-link mr-3">About Us</a>
+                        <a href="about.php" class="li-header nav-link mr-3">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.php#consult" class="li-header nav-link mr-3">Consultations</a>
+                        <a href="all_available_tratments.php" class="li-header nav-link mr-3">All Treatments</a>
                     </li>
                     <li class="nav-item">
-                        <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-3">Book Appointment</a>
+                        <a data-target="#Appointment" data-toggle="modal" href="" class="li-header nav-link mr-3">Book Consultations</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.php" data-target="#select_test" data-toggle="modal" class="li-header nav-link mr-3">Take Test</a>
+                        <a href="#" data-target="#select_test" data-toggle="modal" class="li-header nav-link mr-3">Take Test</a>
                     </li>
                     <li class="nav-item">
                         <a href="index.php#blogs" class=" nav-link li-header mr-3">Blogs</a>
@@ -102,9 +61,12 @@ if(isset($_SESSION['user_id'])){
                     <li class="nav-item">
                         <a href="#" data-target="#banner_covid" data-toggle="modal" class="li-header nav-link mr-3">Covid-19</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a href="#" class="li-header nav-link mr-3" disabled>Shop</a>
+                    </li> -->
                     <?php if(!isset($_SESSION['user_id'])){ ?>
-                    <li class="nav-item">
-                        <a href="login.php" class="li-header nav-link">Login</a>
+                    <li class="login-button">
+                        <a href="login.php" class="li-header nav-link"><b>Login</b></a>
                     </li>
                     <?php }else{ ?>
                     <li class="nav-item">
@@ -126,79 +88,84 @@ if(isset($_SESSION['user_id'])){
             </div>
             <div class="col-md-8 align-self-center pl-5">
 
-                <p><b>AtmaVeda Yog pvt. ltd</b> is a new startup company dedicated and formed on the principles of yoga.
-                    It's
-                    founder is
-                    Dr Sadanand Shivram Rasal . It's partners are Mrs Shital Narendra dhole.</p>
-                <p>Head office is in Pune at one of the prime location closer to Hinjewadi.</p>
+                <p>AtmaVeda Yog Pvt. Ltd. is a new start-up company dedicated and formed to serve &amp;
+                    Promote affordable Healthcare, Innovation and Research based on the principles of
+                    yoga. Its founder is Dr. Sadanand Shivram Rasal &amp; Mrs Shital Narendra dhole.</p>
+                <p>Head office: 34/3, Santo Tukadoji Nagar, Rahatni, Pune.</p>
                 <p>The company is dedicated for innovation called UEP, which means-</p>
                 <ul>
-                    <li>Utilization of knowledge from Atma ,Veda and Yog</li>
+                    <li>Utilization of knowledge from AtmaVeda and Yog</li>
                     <li>Expansion and</li>
-                    <li>Promotion of atmavedayog through the form of yoga developed by Dr. Sadanand.</li>
+                    <li>Promotion of AtmaVeda Yog through the form of yoga developed by Dr. Sadanand.</li>
                 </ul>
-                <p>Mission is use yoga as a diagnostic and therapeutic tool to heal . Heal the incurable diseases of
-                    mankind which do not have and definite answers in other systems of medicines</p>
-
-
-                <p>
-                    AtmaVeda Yog Pvt limited has innovative activities, one of its kind around the globe which.
-                </p>
-                <ul>
-                    <li>Invents diagnostic tools based on yoga.</li>
-                    <li>Runs clinics for chronic and critical management</li>
-                    <li>plans and supports hospitals to treat illnesses ,conducts research in yoga and medicine, trains doctors
-                        and students in AtmaVeda Yog.</li>
-                    <li>Physical Health & Fitness</li>
-                    <li>Mental Health & Raising Capabilities</li>
-                    <li>Conquering Chronic Medical Illness</li>
-                    <li>Yoga as Definite Scientific Solution to individual, social,community and corporates.</li>
-
-                </ul>
+                
             </div>
         </div>
+        <p>
+            Mission:
+            <ol>
+                <li>Make Yoga as a diagnostic and therapeutic tool to heal. Heal the incurable
+                    diseases of mankind which do not have any definite answers in other systems
+                    of medicines.
+                </li>
+                <li>Invents Diagnostic tools based on Yoga. #makeinindia</li>
+                <li>Affordable Healthcare – through online clinics in Rural and far-reaching areas
+                    of India to make Vision of Shree Narendra Modi’s #HealthcareForAll a true
+                    reality.
+                </li>
+                <li>Promote Nature based Indian traditional art of therapy and develop
+                    HealthCare and Criticare module of treatments which are completely safe.
+                    Supporting the various initiatives of #Ayushministry
+                </li>
+                <li>Bring health care at home and make Criticare at home a reality. Making
+                    healthcare affordable and also reducing the stress on Government and private
+                    overworked healthcare infrastructure.
+                </li>
+                <li>Physical Health &amp; Fitness through Atmaveda yog. #MyLife,MyYoga #FitIndia</li>
+                <li>Mental Health awareness, support and therapy. #Mentalhealthawareness</li>
+                <li>Build sustainable Healthcare industry, education and research.#Atmanirbharbharat</li>
+                <li>Education based on yogic life-sciences.</li>
+                <li>Create job opportunities by skill based training #skillindia</li>
+            </ol>
+        </p>
+        <p>
+            Field of company work:-
+            <ol>
+                <li>Healthcare</li>
+                <li>Diagnostic</li>
+                <li>Infotech (health related)</li>
+                <li>Medicine (homeopathic/herbal/ayurvedic/natural)</li>
+                <li>Research</li>
+                <li>Education</li>
+                <li>Skill development</li>
+                <li>Corporate workshop</li>
+            </ol>
+        </p>
+        <p>
+            Inspiration:
+            <ol>
+                <li>Shri. Narendra Modiji. PM India</li>
+                <li>Late Shri Abdul Kalam ji, Former President of India</li>
+                <li>Shri. Sharadchandra Pawar saheb. our beloved leader. Former CM Maha., President NCP</li>
+            </ol>
+        </p>
         <hr>
 
         <h3 class="text-center pt-5 pb-3 mb-3">ABOUT ME</h3>
         <div class="row">
             <div class="col-md-4">
-                <img src="images/doctor.png" width="300" class="img-fluid d-block mx-auto" />
+                <img src="images/about-page.png" width="300" class="img-fluid d-block mx-auto" />
                 <h4 class="text-center mt-4">Dr. Sadanand Shivram Rasal</h4>
                 <h6 class="text-center">BHMS (MCH), PGDMLT.</h6>
             </div>
             <div class="col-md-8 mt-3">
-            <ul>
-                    <li><b>In 1996-</b> Graduated from Pune university with degree in BHMS.</li>
-                    <li><b>In 1996-</b> General Practice Pimpri.</li> 
-                    <li><b>In 1998-</b> Nursing home registered with the government agency as “Shree Ganesh Polyclinic”</li>
-                    <li><b>In 2000-</b> Maternity and surgical hospital with intensive care services.</li>
-                    <li><b>In 2000-</b> PGDMLT from MTBTC Centre.</li>
-                    <li><b>In 2002-</b> Specialty diagnostic centre “Shree Ganesh Diagnostic Centre”. Under one roof, this diagnostic centre provided following services:</li> 
-                    <ul type="circle">
-                        <li>Super-specialty lab: equipped with automated biochemistry analyzers. ELISA machines, ABG analyzers, microbiology work etc.</li>
-                        <li>Ultra sonography, 2D-echo, X-ray, Fluoroscopy</li>
-                    </ul>
-                    <li><b>In 2005/6</b> met my master Shri Janglidas Maharaj in Shirdi accidently. I was fascinated and impressed by him. To know him I started following him. This was the time I was attracted to spirituality. I became his disciple, and took Sannyasa. Learned ATMAYOG from him by his method of ATMA sadhana.</li>
-                    <li><b>In 2007</b> met my second master Parampujya Shri Hasmukhmuni Maharaj, Ankai. Learnt the art bridge between spirituality and material world.</li>
-                    <li><b>In 2008</b> met my third master Devrishi Maharishi shri Agastey rishi through Shri Lal Baba Ankai. It is here that the knowledge of veda, Atma, yog, body, functional and life was bestowed on me by maharishimuni’s  blessing. living in the caves the research of food, body ad healing was done.</li>
-                    <li>Till day today I am following my master. Following there each and every step, advice and lifestyle.</li>
-
-                    <b>Only those associated and those that are my patient know my capabilities.</b>
-                </ul>
-            </div>
-            <div class="mt-5">
-                
-
- 
-                <p><b>In year 2009,</b> I began my research, self funded though about,</p>
-                <ol>
-                    <li>Reversal of cellular aging</li>
-                    <li>Reversal of organ injury</li>
-                    <li>Non medicinal approach to those chronic diseases that are limitations to present day medicines.</li>
-                </ol>
-
-                <p>It was during this period that my brother Mr. Satish Shivram Rasal (Director of Jeevis Health Solutions PVT. LTD.) developed a tool for Health and organ analysis know as JEEVIS NON-INVASIVE SCAN.  This was a tool that redefined my knowledge of medicine and also the scope of my research.</p>
-                <p>I extensively worked in this period of research with,</p>
+                <p>
+                    Dr Sadanand Rasal is a BHMS graduate from Pune University. After years of General Practice and 
+                    Running a Speciality Diagnostic Centre in Pimpri, Pune he became disciple of Yoga, Spirutuality 
+                    and Holistic Medicine. Through a dedicated research work for nearly 10 years under his Gurus he 
+                    developed extensive knowledge of cellular healing and reversal of cellular ageing.
+                </p>
+                <p>The Research work included -</p>
                 <ol>
                     <li>Biochemical disease markers.</li>
                     <li>Immune markers.</li>
@@ -207,57 +174,120 @@ if(isset($_SESSION['user_id'])){
                     <li>Psycho somatic axis.</li>
                     <li>Somato-psychic axis.</li>
                     <li>Hormones as health indicators and disease markers.</li>
-                    <li>Limitations of modern diagnostic tools and methods.</li>
+                    <li>Alternative approach in modern diagnostic tools and methods.</li>
                 </ol>
                 <p>
-                    After completing my research, though the retrospective research is still a ongoing process, I started my work in Rural area of ratnagiri in year 2013/14. As it was the order of my master to do the work as SEVA.
+                    Using all of this knowledge and experience now along with his partners Dr Sadanand Rasal has 
+                    founded Atma Veda Yog pvt limited. A company which strives to prevent transform and treat 
+                    diseases with no answers.   
                 </p>
-                <p>I still continue my work in the rural clinic there.</p>
+                
 
-                <br>
-                <p><b>My scope of work :-</b></p>
-                <ol>
-                    <li>Autoimmune joint and spine disorders</li>
-                    <li>Crippling OA of knee joint ( those cases were knee replacement is the only option )</li>
-                    <li>Uncontrolled Insuin dependent diabetes mellitus</li>
-                    <li>Diabetes mellitus with complication</li>
-                    <li>Congestive cardiac failures</li>
-                    <li>Valvular diseases of heart</li>
-                    <li>Non accidental surgical diseases of  joints</li>
-                    <li>Idiopathic diseases</li>
-                    <li>Hormonal Chronic obstructive pulmonary diseasesabnormalities in men and women</li>
-                    <li>Failure to thrive</li>
-                    <li>Chronic obstructive pulmonary diseases</li>
-                    <li>Genetic diseases</li>
-                    <li>Abdominal chornic ailments</li>
-                    <li>Chronic fatigue syndrome</li>
-                    <li>Dysmorphic features in MPS</li>
-                    <li>Thromboembolism.</li>
-                    <li>Chronic kidney disease</li>
-                    <li>Chronic affections of colons and alimentary tract.</li>
-                    <li>And many other conditions.</li>
-                    <li>Infertility /PCOD / Menopausal syndrome.</li>
-                </ol>
-                <br>
-                <p><b>Note: </b>Other than above conditions every conditions were the medicine field stops , my scope begins.</p>
-                <br><br>
-                <h4>So in short, “Where all stop, I begin”</h4>
-            <br>
             </div>
         </div>
         <hr>
-        <h4 class=" h3 text-center mt-5 pb-4">Partners</h4>
+
+        
+        <h3 class="text-center pt-4 pb-3 mb-3">CHIRAYU - HAPPY LIFE</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="images/pie_chart.jpeg" width="300" class="img-fluid" >
+            </div>
+            <div class="col-md-4 pt-5">
+                
+                <h5 class="text-center">Happiness is a result of,<br> Liveliness & Love<br> Illness free life<br> fitness<br>Enlightened mind</h5>
+            </div>
+            
+        </div>
+
+        <h3 class="text-center pt-4 pb-3 mb-3">Healing Philosophy</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="images/flow.jpeg" width="400" class="img-fluid" >
+            </div>
+            <div class="col-1"></div>
+            <div class="col-md-5 pt-5">
+                <h5 class="text-center">Heal from within</h5>
+                <p class="text-center">Diagnose cause of disease with help of inovative yog based diagnostic tools and then treat in the most natural way in accordance with the laes of nature with diet, exercise and medicine.</p>
+            </div>
+            
+        </div>
+
+        <hr>
+        
+        
+        
+            <h3 class=" pt-4 pb-3 mb-3">Pillars of company</h3>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card mt-3 mb-3 pt-3 pb-2 pillar-company" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Health care division</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card mt-3 mb-3 pt-3 pb-2 pillar-company" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Diagnostic division</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 ">
+                    <div class="card mt-3 mb-3 pt-3 pb-2 pillar-company" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Research division</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card mt-3 mb-3 pillar-company" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Education and institution</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card mt-3 mb-3 pt-3 pb-2 pillar-company" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Infotech division</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card mt-3 mb-3 pt-3 pb-2 pillar-company" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Corporate division</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card mt-3 mb-3 pillar-company" style="width: 15rem;">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Community &amp; National service</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <h4 class=" h3 text-center mt-5 pb-4">Partner’s &amp; Associate’s</h4>
         <div style=" backgrund-color: rgb(249, 250, 255)">
             <div class="container">
                 <div class="row pb-4">
                     <div class="col-md-4">
                         <img src="images/madam.jpeg" class="d-block mx-auto" width="200" >
                     </div>
-                    <div class="col-md-8 mt-5 pt-5">
+                    <div class="col-md-8 mt-5 pt-3">
                         <h4 class="tet-center">Mrs Shital Narendra Dhole</h4>
                         <h6 class="txt-center">Yog instructor and advanced yog expert.</h6>
                         <h6 class="ext-center">Beautician.</h6>
-                        <p class="ext-center">Mrs. Shital Dhole a Young dynamic entrepreneur, she is also a Director  of Atmavedayog pvt ltd.</p>
+                        <p class="ext-center">Mrs. Shital Dhole a Young dynamic entrepreneur, She is also a Director of
+                                                Atmavedayog pvt ltd. She is in-charge of the wellness programme and heads the
+                                                Management and customer support.</p>
+                                                CHATURVED HERBALS<br>
+
+                                                JEEVIS HEALTH CARE
+
                     </div>
                 </div>
             </div>
